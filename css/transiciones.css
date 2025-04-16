@@ -1,0 +1,33 @@
+:root{
+    --color-base: #DFBEEA;
+    --color-fondo: #FAF4FB;
+    --color-fuerte: #6B416C;
+    --color-texto: #2C2C2C;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-opacity {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-opacity.show {
+    opacity: 1;
+}
+
+li:hover{
+    font-weight: bold;
+    transform: translateY(-5px);
+    transition: transform 0.5s ease-out;
+
+}

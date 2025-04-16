@@ -1,0 +1,164 @@
+:root{
+    --color-base: #DFBEEA;
+    --color-fondo: #FAF4FB;
+    --color-fuerte: #6B416C;
+    --color-texto: #2C2C2C;
+}
+
+.boton-top {
+    border-color: var(--color-fuerte);
+}
+
+
+.color-texto{
+    color: var(--color-texto);
+}
+
+.top-bar{
+    background-color: var(--color-base);
+}
+
+.fondo {
+    background-color: var(--color-fondo);
+}
+
+.color-base {
+    background-color: var(--color-base);
+}
+
+.color-fuerte {
+    background-color: var(--color-fuerte);
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #333;
+}
+
+.navbar {
+    padding: 15px 0;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: #333 !important;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 10px;
+}
+
+.hero-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.product-card {
+    margin-bottom: 30px;
+    border: none;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    font-weight: bold;
+    transform: translateY(-5px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.product-img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 16px;
+    color: #777;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+.footer-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-link {
+    color: #777;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #333;
+}
+
+.social-icon {
+    color: #333;
+    font-size: 18px;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #777;
+}
+
+.newsletter-input {
+    border-radius: 0;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.btn-suscribe {
+    background-color: #333;
+    color: white;
+    border-radius: 0;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+
+.filter-bar {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.filter-dropdown {
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    background-color: white;
+    color: #333;
+}
