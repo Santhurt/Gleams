@@ -11,8 +11,116 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <link href="./css/transiciones.css" rel="stylesheet">
+    <link href="./css/modal.css" rel="stylesheet">
 </head>
 <body>
+
+    <!--Aqui inicia el modal-->
+
+    <!-- Botón para abrir el filtro en móviles -->
+    <button class="filter-toggle-btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"/>
+        </svg>
+    </button>
+
+
+    <!-- Modal de filtros lateral (Offcanvas) -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
+        <div class="offcanvas-header d-flex align-items-center">
+            <h5 class="offcanvas-title" id="filterOffcanvasLabel">Filtrar productos</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <!-- Filtro de Categorías -->
+            <div class="filter-section">
+                <div class="filter-header" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="true">
+                    <span>CATEGORIAS</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </div>
+                <div class="collapse show filter-body" id="categoryCollapse">
+                    <div class="filter-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="catAnillos">
+                            <label class="form-check-label" for="catAnillos">
+                                Anillos
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="catPendientes">
+                            <label class="form-check-label" for="catPendientes">
+                                Pendientes
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="catCollares">
+                            <label class="form-check-label" for="catCollares">
+                                Collares
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="catPulseras">
+                            <label class="form-check-label" for="catPulseras">
+                                Pulseras
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="catBroches">
+                            <label class="form-check-label" for="catBroches">
+                                Broches
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtro de Precio -->
+            <div class="filter-section">
+                <div class="filter-header" data-bs-toggle="collapse" data-bs-target="#priceCollapse" aria-expanded="true">
+                    <span>PRECIO</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </div>
+                <div class="collapse show filter-body" id="priceCollapse">
+                    <div class="filter-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="price1">
+                            <label class="form-check-label" for="price1">
+                                Menos de $25.000
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="price2">
+                            <label class="form-check-label" for="price2">
+                                $25.000 - $50.000
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="d-flex gap-2 mt-4">
+                <button class="btn btn-filter flex-grow-1">Aplicar filtros</button>
+            </div>
+        </div>
+    </div>
+    <!--Aqui termina el modal-->
+
     <!-- Header -->
     <header>
         <!-- Top bar -->
@@ -21,30 +129,24 @@
                 <div class="col-md-6 text-center text-md-start">
                     <small>Envío gratuito en pedidos superiores a $150.000</small>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <i class="fas fa-user"></i>
-                    <small><a href="#" class="text-decoration-none text-dark me-3">Iniciar sesión</a></small>
-
-                    <i class="fas fa-sign-in-alt"></i>
-                    <small><a href="#" class="text-decoration-none text-dark me-3">Crear cuenta</a></small>
-
-                    <i class="fas fa-circle-question"></i>
-                    <small><a href="#" class="text-decoration-none text-dark">Ayuda</a></small>
-                </div>
             </div>
         </div>
-        
+
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg fondo">
             <div class="container">
+                <!-- Logo -->
                 <a class="navbar-brand" href="#">GLEAMS</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <!-- Botón hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
+                <!-- Contenido colapsable (incluye menú y botones) -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Menú de navegación -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="#">Inicio</a>
                         </li>
@@ -61,21 +163,33 @@
                             <a class="nav-link" href="#">Contacto</a>
                         </li>
                     </ul>
-                    <div class="d-flex">
-                        <a href="#" class="text-dark me-3"><i class="fas fa-search"></i></a>
-                        <a href="#" class="text-dark position-relative">
+
+                    <!-- Botones de autenticación y carrito -->
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a href="#" class="text-dark position-relative me-3">
                             <i class="fas fa-shopping-bag"></i>
-                            <!--<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>-->
                         </a>
+                        <button type="button" class="btn boton-ingresar me-2">Ingresar</button>
+                        <button type="button" class="btn boton-registrar">Registrarse</button>
                     </div>
                 </div>
             </div>
         </nav>
+
+
+        <div class="row justify-content-center">
+            <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 p-3">
+                <div class="d-flex align-items-center">
+                    <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- Main Content -->
     <main class="fondo">
-        
+
         <!-- Hero Section -->
         <section class="hero-section fade-opacity color-base" id="hero-section">
             <div class="container">
@@ -83,12 +197,20 @@
                 <p class="text-muted">Descubre nuestra nueva selección de accesorios artesanales</p>
             </div>
         </section>
-        
+
         <!-- Filter Bar -->
-        <div class="container mt-4">
+        <div class="container mt-4 fade-opacity" id="filter-bar">
             <div class="row filter-bar align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0 text-secondary">Mostrando 12 productos</p>
+                    <!-- Botón para abrir el filtro en desktop -->
+                    <div class="container mt-4 d-none d-md-block">
+                        <button class="btn btn-filter" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel me-2" viewBox="0 0 16 16">
+                                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"/>
+                            </svg>
+                            Filtrar productos
+                        </button>
+                    </div>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <select class="filter-dropdown rounded-4 text-secondary">
@@ -99,7 +221,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Products Grid -->
         <div class="container mb-5">
             <div class="row">
@@ -113,7 +235,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 2 -->
                 <div class="col-6 col-md-4 col-lg-3 fade-in">
                     <div class="product-card">
@@ -124,7 +246,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 3 -->
                 <div class="col-6 col-md-4 col-lg-3 fade-in">
                     <div class="product-card">
@@ -135,7 +257,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 4 -->
                 <div class="col-6 col-md-4 col-lg-3 fade-in">
                     <div class="product-card">
@@ -146,7 +268,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 5 -->
                 <div class="col-6 col-md-4 col-lg-3 fade-in">
                     <div class="product-card">
@@ -157,7 +279,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 6 -->
                 <div class="col-6 col-md-4 col-lg-3 fade-in">
                     <div class="product-card">
@@ -168,7 +290,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 7 -->
                 <div class="col-6 col-md-4 col-lg-3 fade-in">
                     <div class="product-card">
@@ -179,7 +301,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product 8 -->
                 <div class="col-6 col-md-4 col-lg-3 fade-in">
                     <div class="product-card">
@@ -191,7 +313,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Pagination -->
             <div class="d-flex justify-content-center mt-5">
                 <nav aria-label="Page navigation">
@@ -226,7 +348,7 @@
                         <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Links Column 1 -->
                 <div class="col-md-3 mb-4 mb-md-0">
                     <h5 class="footer-title">NAVEGACIÓN</h5>
@@ -236,7 +358,7 @@
                     <a href="#" class="footer-link">Nosotros</a>
                     <a href="#" class="footer-link">Contacto</a>
                 </div>
-                
+
                 <!-- Links Column 2 -->
                 <div class="col-md-3 mb-4 mb-md-0">
                     <h5 class="footer-title">AYUDA</h5>
@@ -246,7 +368,7 @@
                     <a href="#" class="footer-link">Política de privacidad</a>
                     <a href="#" class="footer-link">Contáctanos</a>
                 </div>
-                
+
                 <!-- Newsletter Column -->
                 <div class="col-md-3">
                     <h5 class="footer-title">NEWSLETTER</h5>
@@ -259,7 +381,7 @@
                     </form>
                 </div>
             </div>
-            
+
             <!-- Copyright -->
             <div class="row mt-5">
                 <div class="col-12 text-center">

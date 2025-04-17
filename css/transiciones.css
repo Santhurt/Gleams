@@ -1,10 +1,3 @@
-:root{
-    --color-base: #DFBEEA;
-    --color-fondo: #FAF4FB;
-    --color-fuerte: #6B416C;
-    --color-texto: #2C2C2C;
-}
-
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -28,6 +21,10 @@
 li:hover{
     font-weight: bold;
     transform: translateY(-5px);
-    transition: transform 0.5s ease-out;
+    transition: transform 0.5s ease-in-out;
 
+}
+i:hover {
+    transform: translateY(-5px);
+    transition: transform 0.5s ease-in-out;
 }

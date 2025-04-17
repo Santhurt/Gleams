@@ -1,12 +1,23 @@
 :root{
-    --color-base: #DFBEEA;
+    --color-base: #D894F0;
     --color-fondo: #FAF4FB;
-    --color-fuerte: #6B416C;
+    --color-fuerte: #F095E6;
     --color-texto: #2C2C2C;
 }
 
-.boton-top {
+.boton-registrar {
     border-color: var(--color-fuerte);
+    font-weight: bold;
+    color: var(--color-fuerte);
+    letter-spacing: 1px;
+
+}
+
+.boton-ingresar {
+    background-color: var(--color-base);
+    font-weight: bold;
+    color: var(--color-fondo);
+    letter-spacing: 1px;
 }
 
 
@@ -15,7 +26,7 @@
 }
 
 .top-bar{
-    background-color: var(--color-base);
+    background-image: linear-gradient(to right, var(--color-base), var(--color-fuerte)) ;
 }
 
 .fondo {
@@ -23,7 +34,7 @@
 }
 
 .color-base {
-    background-color: var(--color-base);
+    background-image: linear-gradient(to right, var(--color-base), var(--color-fuerte)) ;
 }
 
 .color-fuerte {

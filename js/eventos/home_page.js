@@ -2,8 +2,7 @@
 export function renderizarIndex() {
     // Codigo para aplicar las transiciones al cargar la pagina
     const productos = document.querySelectorAll(".fade-in");
-    const heroSection = document.querySelector("#hero-section");
-
+    const elementos = document.querySelectorAll(".fade-opacity");
 
     const observer = new IntersectionObserver(
         (productosObservados) => {
@@ -15,18 +14,29 @@ export function renderizarIndex() {
 
                     observer.unobserve(producto.target);
                 }
-
             });
         },
-        { threshold: 0.3 },
+        { threshold: 0.2 },
     );
 
     productos.forEach((producto) => {
         observer.observe(producto);
     });
 
-    heroSection.classList.add("show")
+    elementos.forEach(element => {
+        element.classList.add("show");
+    });
 
-    
-
+    // Animación para las flechas de los acordeones
+    const filterHeaders = document.querySelectorAll(".filter-header");
+    filterHeaders.forEach((header) => {
+        header.addEventListener("click", function () {
+            const arrow = this.querySelector("svg");
+            if (this.getAttribute("aria-expanded") === "true") {
+                arrow.style.transform = "rotate(0deg)";
+            } else {
+                arrow.style.transform = "rotate(-180deg)";
+            }
+        });
+    });
 }
