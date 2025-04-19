@@ -1,9 +1,10 @@
 /*Este color lo guardo #E6CBF0*/
 :root {
     --gleams-purple: #D894F0;
-    --gleams-dark-purple: #c88ade;
+    --gleams-dark-purple: #F095E6;
     --gleams-light-purple: #f2c7ff;
 }
+
 
 body {
     font-family: "Segoe UI", Arial, sans-serif;
@@ -48,14 +49,16 @@ body {
 .btn-filter {
     background-color: var(--gleams-purple);
     font-weight: bold;
-    border: none;
     color: white;
-    padding: 8px 5px;
+    padding: 8px 8px;
     transition: background-color 0.3s;
 }
 
 .btn-filter:hover {
-    background-color: var(--gleams-dark-purple);
+    background-color: white;
+    color: var(--gleams-dark-purple);
+    border-color: var(--gleams-dark-purple);
+    
 }
 
 .btn-clean {
@@ -70,7 +73,8 @@ body {
 }
 
 .offcanvas-header {
-    background-color: var(--gleams-light-purple);
+    background-image: linear-gradient(to right, var(--gleams-purple), var(--gleams-dark-purple)) ;
+    letter-spacing: 1.5px;
 }
 
 /* Personalización de checkboxes */

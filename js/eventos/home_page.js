@@ -5,14 +5,14 @@ export function renderizarIndex() {
     const elementos = document.querySelectorAll(".fade-opacity");
 
     const observer = new IntersectionObserver(
-        (productosObservados) => {
-            productosObservados.forEach((producto, i) => {
-                if (producto.isIntersecting) {
-                    const productoVisible = producto.target;
-                    productoVisible.style.transitionDelay = `${i * 0.2}s`;
-                    productoVisible.classList.add("show");
+        (observados) => {
+            observados.forEach((observado, i) => {
+                if (observado.isIntersecting) {
+                    const elementoVisible = observado.target;
+                    elementoVisible.style.transitionDelay = `${i * 0.2}s`;
+                    elementoVisible.classList.add("show");
 
-                    observer.unobserve(producto.target);
+                    observer.unobserve(observado.target);
                 }
             });
         },

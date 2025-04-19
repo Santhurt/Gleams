@@ -1,32 +1,94 @@
-:root{
-    --color-base: #D894F0;
-    --color-fondo: #FAF4FB;
-    --color-fuerte: #F095E6;
-    --color-texto: #2C2C2C;
+:root {
+    --color-base: #d894f0;
+    --color-fondo: #faf4fb;
+    --color-fuerte: #f095e6;
+    --color-texto: #2c2c2c;
+    --bs-btn-active-bg: #f095e6 !important;
 }
 
-.boton-registrar {
-    border-color: var(--color-fuerte);
-    font-weight: bold;
-    color: var(--color-fuerte);
-    letter-spacing: 1px;
-
+.img-crop-card {
+    width: 100%;
+    height: auto;
+    background-color: #f8f9fa; /* gris clarito, típico de Bootstrap */
+    padding: 1rem;
+    border-radius: 1rem; /* bordes redondeados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.boton-ingresar {
+.img-crop-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .img-crop-card img {
+        height: 250px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+
+.accordion {
+    --bs-accordion-active-bg: #fff; /* o el color que quieras */
+}
+
+.letter-spacing {
+    letter-spacing: 1.5px;
+}
+
+.boton-fondo-morado {
     background-color: var(--color-base);
-    font-weight: bold;
+    border-color: var(--color-base);
     color: var(--color-fondo);
     letter-spacing: 1px;
 }
 
+.boton-fondo-morado:hover {
+    background-color: var(--color-fondo);
+    border-color: var(--color-fuerte);
+    color: var(--color-fuerte);
+}
 
-.color-texto{
+.boton-fondo-blanco {
+    border-color: var(--color-fuerte);
+    color: var(--color-fuerte);
+    letter-spacing: 1px;
+}
+
+.boton-fondo-blanco:hover {
+    background-color: var(--color-fuerte);
+    color: var(--color-fondo);
+}
+
+.page-link.active,
+.active > .page-link {
+    color: var(--color-fondo) !important;
+    background-color: var(--color-base) !important;
+    border-color: var(--color-base) !important;
+}
+
+.page-link {
+    color: var(--color-texto) !important;
+}
+/* Ya no se que nombre ponerle*/
+.color-paginacion {
+    background-color: var(--color-base) !important;
+}
+
+.color-texto {
     color: var(--color-texto);
 }
 
-.top-bar{
-    background-image: linear-gradient(to right, var(--color-base), var(--color-fuerte)) ;
+.top-bar {
+    background-image: linear-gradient(
+        to right,
+        var(--color-base),
+        var(--color-fuerte)
+    );
 }
 
 .fondo {
@@ -34,16 +96,15 @@
 }
 
 .color-base {
-    background-image: linear-gradient(to right, var(--color-base), var(--color-fuerte)) ;
+    background-image: linear-gradient(
+        to right,
+        var(--color-base),
+        var(--color-fuerte)
+    );
 }
 
 .color-fuerte {
     background-color: var(--color-fuerte);
-}
-
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: #333;
 }
 
 .navbar {
@@ -53,7 +114,6 @@ body {
 }
 
 .navbar-brand {
-    font-weight: 700;
     font-size: 24px;
     letter-spacing: 1px;
 }
@@ -73,9 +133,8 @@ body {
 
 .hero-title {
     font-size: 32px;
-    font-weight: 300;
     margin-bottom: 20px;
-    letter-spacing: 2px;
+    letter-spacing: 7px !important;
 }
 
 .product-card {
@@ -87,12 +146,9 @@ body {
 .product-card:hover {
     font-weight: bold;
     transform: translateY(-5px);
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.product-img {
-    height: 300px;
-    object-fit: cover;
+    transition:
+        opacity 0.5s ease-in-out,
+        transform 0.5s ease-in-out;
 }
 
 .product-title {
@@ -159,7 +215,6 @@ body {
     font-size: 14px;
     letter-spacing: 1px;
 }
-
 
 .filter-bar {
     padding: 15px 0;

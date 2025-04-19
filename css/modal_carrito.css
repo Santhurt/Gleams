@@ -1,0 +1,34 @@
+
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    height: 100%;
+    right: 0;
+    transform: translateX(100%);
+    width: 400px; /* Ancho fijo en escritorio */
+    max-width: 70%; /* Máximo 90% en pantallas pequeñas */
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15); /* Sombra suave hacia la izquierda */
+    transition: transform 0.4s ease; /* Transición más fluida */
+}
+
+.modal.right.show .modal-dialog {
+    transform: translateX(0);
+}
+
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+    border-radius: 0;
+    border: none;
+}
+
+.modal.right .modal-body {
+    padding: 5px;
+}
+
+/* Responsive: en pantallas pequeñas el modal ocupa toda la pantalla */
+@media (max-width: 300px) {
+    .modal.right .modal-dialog {
+        width: 100%;
+    }
+}

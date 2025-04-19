@@ -6,5 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/home_page.js").then((modulo) => {
             modulo.renderizarIndex();
         });
+    } else if (pagina === "/producto.html") {
+        import("./eventos/producto.js").then((modulo) => {
+            modulo.renderizarProducto();
+        });
+    } else if (pagina == "/login.html") {
+        import("./eventos/login.js").then((modulo) => {
+            modulo.renderLogin();
+        });
     }
 });
