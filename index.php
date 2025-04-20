@@ -16,6 +16,7 @@
 
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -157,7 +158,7 @@
     <!--Aqui termina el modal-->
 
     <!-- Header -->
-    <header>
+    <header class="sticky-top">
         <!-- Top bar -->
         <div class="container-fluid top-bar">
             <div class="row py-2">
@@ -168,7 +169,7 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg fondo">
+        <nav id="navbar" class="navbar navbar-expand-lg fondo">
             <div class="container">
                 <!-- Logo -->
                 <a class="navbar-brand playfair-title" href="#">GLEAMS</a>
@@ -204,7 +205,7 @@
                         <a href="#" class="text-dark position-relative me-4" data-bs-toggle="modal" data-bs-target="#rightModal">
                             <i class="fas fa-shopping-bag"></i>
                         </a>
-                        <a href="./login.html" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</a>
+                        <a href="./login.php" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</a>
                         <a type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</a>
                     </div>
                 </div>
@@ -212,15 +213,16 @@
         </nav>
 
 
-        <div class="row justify-content-center">
-            <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 p-3">
-                <div class="d-flex align-items-center">
-                    <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
-                    <i class="fas fa-search"></i>
-                </div>
+    </header>
+
+    <div class="row justify-content-center">
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 p-3">
+            <div class="d-flex align-items-center">
+                <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
+                <i class="fas fa-search"></i>
             </div>
         </div>
-    </header>
+    </div>
 
     <!-- Main Content -->
     <main class="fondo">
@@ -269,7 +271,7 @@
                                 <h4 class="product-title playfair-title">Aretes Luna</h5>
                                 <p class="product-price poppins-light">$45.000</p>
                             </div>
-                            <a href="./producto.html" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
+                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
                             </a>
                         </div>
@@ -284,7 +286,7 @@
                                 <h4 class="product-title playfair-title">Anillos</h5>
                                 <p class="product-price poppins-light">$45.000</p>
                             </div>
-                            <a href="./producto.html" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
+                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
                             </a>
                         </div>
@@ -299,7 +301,7 @@
                                 <h4 class="product-title playfair-title">Aretes Luna</h5>
                                 <p class="product-price poppins-light">$45.000</p>
                             </div>
-                            <a href="./producto.html" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
+                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
                             </a>
                         </div>
@@ -314,7 +316,7 @@
                                 <h4 class="product-title playfair-title">Anillos</h5>
                                 <p class="product-price poppins-light">$45.000</p>
                             </div>
-                            <a href="./producto.html" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
+                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
                             </a>
                         </div>
@@ -329,7 +331,7 @@
                                 <h4 class="product-title playfair-title">Aretes Luna</h5>
                                 <p class="product-price poppins-light">$45.000</p>
                             </div>
-                            <a href="./producto.html" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
+                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
                             </a>
                         </div>
@@ -344,7 +346,7 @@
                                 <h4 class="product-title playfair-title">Anillos</h5>
                                 <p class="product-price poppins-light">$45.000</p>
                             </div>
-                            <a href="./producto.html" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
+                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
                             </a>
                         </div>
@@ -359,7 +361,7 @@
                                 <h4 class="product-title playfair-title">Aretes Luna</h5>
                                 <p class="product-price poppins-light">$45.000</p>
                             </div>
-                            <a href="./producto.html" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
+                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
                             </a>
                         </div>
@@ -374,7 +376,7 @@
                                 <h4 class="product-title playfair-title">Anillos</h5>
                                 <p class="product-price poppins-light">$45.000</p>
                             </div>
-                            <a href="./producto.html" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
+                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
                             </a>
                         </div>

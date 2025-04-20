@@ -23,7 +23,7 @@ export function renderizarIndex() {
         observer.observe(producto);
     });
 
-    elementos.forEach(element => {
+    elementos.forEach((element) => {
         element.classList.add("show");
     });
 

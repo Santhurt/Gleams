@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./css/fonts.css">
 </head>
 <body>
-    <div class="container poppins-light">
+    <div class="container-fluid poppins-light">
         <div class="login-container fade-in">
             <div class="login-header">
                 <h2 class="playfair-title">Iniciar Sesión</h2>
