@@ -1,219 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Nombre del producto</title>
-        <link href="./css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/transiciones.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-        <link href="./css/fonts.css" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <!-- Top bar -->
-            <div class="container-fluid top-bar">
-                <div class="row py-2">
-                    <div class="col-md-6 text-center text-md-start">
-                        <small>Envío gratuito en pedidos superiores a $150.000</small>
-                    </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nombre del producto</title>
+    <!--Boostrap-->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet" >
+    <link href="./css/transiciones.css" rel="stylesheet" >
+    <link href="./css/fonts.css" rel="stylesheet">
+    <link href="./css/modal_carrito.css" rel="stylesheet">
+    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <!-- Top bar -->
+        <div class="container-fluid top-bar">
+            <div class="row py-2">
+                <div class="col-md-6 text-center text-md-start">
+                    <small>Envío gratuito en pedidos superiores a $150.000</small>
                 </div>
             </div>
-                
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg fondo">
-                <div class="container">
-                    <!-- Logo -->
-                    <a class="navbar-brand playfair-title" href="#">GLEAMS</a>
+        </div>
 
-                    <!-- Botón hamburguesa -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <!-- Contenido colapsable (incluye menú y botones) -->
-                    <div class="collapse navbar-collapse" id="navbarContent">
-                        <!-- Menú de navegación -->
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link poppins-light" href="#">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link poppins-light" href="#">Colecciones</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link poppins-light" href="#">Accesorios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link poppins-light" href="#">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link poppins-light" href="#">Contacto</a>
-                            </li>
-                        </ul>
-
-                        <!-- Botones de autenticación y carrito -->
-                        <div class="d-flex align-items-center justify-content-center">
-                            <a href="#" class="text-dark position-relative me-4">
-                                <i class="fas fa-shopping-bag"></i>
-                            </a>
-                            <button type="button" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</button>
-                            <button type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-
-            <div class="row justify-content-center">
-                <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 p-3">
-                    <div class="d-flex align-items-center">
-                        <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
-                        <i class="fas fa-search"></i>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <main class="fondo">
-            <div class="container mb-5">
-                <div class="row">
-                    <div class="col-lg-6 fade-in">
-                        <div class="img-crop-card">
-                            <img src="./img/accesorio.webp" class="img-fluid" alt="Set de 3 Pines Fauna Tropical">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 fade-in">
-                        <h2 class="mb-3 mt-3 playfair-title">Set de 3 Pines Fauna Tropical</h2>
-
-                        <div class="price-container mb-3">
-                            <h3 class="poppins-light">$49.900</h3>
-                            <p class="text-muted small">Impuesto incluido. Los gastos de envío se calculan en la pantalla de pagos.</p>
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="mb-2 poppins-light">Cantidad</p>
-                            <div class="input-group mb-3" style="width: 120px;">
-                                <button class="btn boton-fondo-blanco" type="button">−</button>
-                                <input type="text" class="form-control text-center" value="1">
-                                <button class="btn boton-fondo-blanco" type="button">+</button>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span class="text-success me-2">●</span>
-                                <span class="poppins-light">En stock</span>
-                            </div>
-                        </div>
-
-                        <div class="d-grid gap-2 mb-4">
-                            <button class="btn boton-fondo-blanco poppins-light py-2">AGREGAR AL CARRITO</button>
-                            <button class="btn boton-fondo-morado poppins-light py-2">COMPRAR AHORA</button>
-                        </div>
-
-                        <div class="accordion mb-3">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#descripcion">
-                                        DESCRIPCIÓN
-                                    </button>
-                                </h2>
-                                <div id="descripcion" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
-                                        <p class="text-secondary poppins-light">Descripción detallada del producto.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#materiales">
-                                        MATERIALES
-                                    </button>
-                                </h2>
-                                <div id="materiales" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
-                                        <p class="text-secondary poppins-light">Información sobre los materiales utilizados.</p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#cuidado">
-                                        CUIDADO Y GARANTÍA
-                                    </button>
-                                </h2>
-                                <div id="cuidado" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
-                                        <p class="text-secondary poppins-light">Detalles sobre el cuidado del producto y garantía.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#envios">
-                                        ENVÍOS
-                                    </button>
-                                </h2>
-                                <div id="envios" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
-                                        <p class="text-secondary poppins-light">Información sobre los envíos y tiempos de entrega.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>               
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg fondo">
             <div class="container">
-                <div class="row">
-                    <!-- About Column -->
-                    <div class="col-md-4 mb-4 mb-md-0">
-                        <h5 class="footer-title">ENTRELAZOS</h5>
-                        <p class="text-muted">Somos una marca colombiana de accesorios artesanales creados con amor y dedicación, apoyando el talento local.</p>
-                        <div class="mt-3">
-                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                        </div>
-                    </div>
+                <!-- Logo -->
+                <a class="navbar-brand playfair-title" href="#">GLEAMS</a>
 
-                    <!-- Links Column 1 -->
-                    <div class="col-md-4 mb-4 mb-md-0">
-                        <h5 class="footer-title">NAVEGACIÓN</h5>
-                        <a href="#" class="footer-link">Inicio</a>
-                        <a href="#" class="footer-link">Colecciones</a>
-                        <a href="#" class="footer-link">Accesorios</a>
-                        <a href="#" class="footer-link">Nosotros</a>
-                        <a href="#" class="footer-link">Contacto</a>
-                    </div>
+                <!-- Botón hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <!-- Links Column 2 -->
-                    <div class="col-md-4 mb-4 mb-md-0">
-                        <h5 class="footer-title">AYUDA</h5>
-                        <a href="#" class="footer-link">Preguntas frecuentes</a>
-                        <a href="#" class="footer-link">Envíos y devoluciones</a>
-                        <a href="#" class="footer-link">Términos y condiciones</a>
-                        <a href="#" class="footer-link">Política de privacidad</a>
-                        <a href="#" class="footer-link">Contáctanos</a>
-                    </div>
+                <!-- Contenido colapsable (incluye menú y botones) -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Menú de navegación -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link poppins-light" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link poppins-light" href="#">Colecciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link poppins-light" href="#">Accesorios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link poppins-light" href="#">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link poppins-light" href="#">Contacto</a>
+                        </li>
+                    </ul>
 
-                </div>
-
-                <!-- Copyright -->
-                <div class="row mt-5">
-                    <div class="col-12 text-center">
-                        <p class="text-muted small">© 2025 Entrelazos. Todos los derechos reservados.</p>
+                    <!-- Botones de autenticación y carrito -->
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a href="#" class="text-dark position-relative me-4" data-bs-toggle="modal" data-bs-target="#rightModal">
+                            <i class="fas fa-shopping-bag"></i>
+                        </a>
+                        <button type="button" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</button>
+                        <button type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</button>
                     </div>
                 </div>
             </div>
-        </footer>
+        </nav>
+    </header>
 
-        <script src="./js/bootstrap.bundle.min.js"></script>
-        <script src="./js/main.js"></script>
-    </body>
+    <div class="row justify-content-center">
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 p-3">
+            <div class="d-flex align-items-center">
+                <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aquí inicia el modal derecho -->
+    <div class="modal right fade" id="rightModal" tabindex="-1" aria-labelledby="rightModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-slideout">
+            <div class="modal-content border-0 shadow-lg rounded-start poppins-light">
+                <div class="modal-header bg-primary text-white color-base">
+                    <h5 class="modal-title mb-0" id="rightModalLabel">Resumen de tu compra</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Lista de productos -->
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                            <div>
+                                <h6 class="mb-1">Camisa Casual</h6>
+                                <small class="text-muted">2 unidades</small>
+                            </div>
+                            <span class="fw-semibold">$59.98</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                            <div>
+                                <h6 class="mb-1">Pantalón Slim Fit</h6>
+                                <small class="text-muted">1 unidad</small>
+                            </div>
+                            <span class="fw-semibold">$49.99</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                            <div>
+                                <h6 class="mb-1">Zapatillas Deportivas</h6>
+                                <small class="text-muted">1 unidad</small>
+                            </div>
+                            <span class="fw-semibold">$89.95</span>
+                        </li>
+                    </ul>
+
+                    <!-- Total -->
+                    <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                        <h5 class="fw-bold mb-0">Total</h5>
+                        <h5 class="fw-bold mb-0">$244.89</h5>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between">
+                    <button type="button" class="btn boton-fondo-morado w-100">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="fondo">
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-lg-6 fade-in">
+                    <div class="img-crop-card">
+                        <img src="./img/accesorio.webp" class="img-fluid" alt="Set de 3 Pines Fauna Tropical">
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <h2 class="mb-3 mt-3 playfair-title">Set de 3 Pines Fauna Tropical</h2>
+
+                    <div class="price-container mb-3">
+                        <h3 class="poppins-light">$49.900</h3>
+                        <p class="text-muted small">Impuesto incluido. Los gastos de envío se calculan en la pantalla de pagos.</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="mb-2 poppins-light">Cantidad</p>
+                        <div class="input-group mb-3" style="width: 120px;">
+                            <button class="btn boton-fondo-blanco" type="button">−</button>
+                            <input type="text" class="form-control text-center" value="1">
+                            <button class="btn boton-fondo-blanco" type="button">+</button>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="text-success me-2">●</span>
+                            <span class="poppins-light">En stock</span>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mb-4">
+                        <button class="btn boton-fondo-blanco poppins-light py-2">AGREGAR AL CARRITO</button>
+                        <button class="btn boton-fondo-morado poppins-light py-2">COMPRAR AHORA</button>
+                    </div>
+
+                    <div class="accordion mb-3">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#descripcion">
+                                    DESCRIPCIÓN
+                                </button>
+                            </h2>
+                            <div id="descripcion" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <p class="text-secondary poppins-light">Descripción detallada del producto.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#materiales">
+                                    MATERIALES
+                                </button>
+                            </h2>
+                            <div id="materiales" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <p class="text-secondary poppins-light">Información sobre los materiales utilizados.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#cuidado">
+                                    CUIDADO Y GARANTÍA
+                                </button>
+                            </h2>
+                            <div id="cuidado" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <p class="text-secondary poppins-light">Detalles sobre el cuidado del producto y garantía.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#envios">
+                                    ENVÍOS
+                                </button>
+                            </h2>
+                            <div id="envios" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <p class="text-secondary poppins-light">Información sobre los envíos y tiempos de entrega.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- About Column -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">ENTRELAZOS</h5>
+                    <p class="text-muted">Somos una marca colombiana de accesorios artesanales creados con amor y dedicación, apoyando el talento local.</p>
+                    <div class="mt-3">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links Column 1 -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">NAVEGACIÓN</h5>
+                    <a href="#" class="footer-link">Inicio</a>
+                    <a href="#" class="footer-link">Colecciones</a>
+                    <a href="#" class="footer-link">Accesorios</a>
+                    <a href="#" class="footer-link">Nosotros</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+
+                <!-- Links Column 2 -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="footer-title">AYUDA</h5>
+                    <a href="#" class="footer-link">Preguntas frecuentes</a>
+                    <a href="#" class="footer-link">Envíos y devoluciones</a>
+                    <a href="#" class="footer-link">Términos y condiciones</a>
+                    <a href="#" class="footer-link">Política de privacidad</a>
+                    <a href="#" class="footer-link">Contáctanos</a>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <p class="text-muted small">© 2025 Entrelazos. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
 </html>

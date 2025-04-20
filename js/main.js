@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pagina = window.location.pathname;
 
     console.log(pagina);
-    if (pagina === "index.php" || pagina === "/") {
+    if (pagina === "/index.php" || pagina === "/") {
         import("./eventos/home_page.js").then((modulo) => {
             modulo.renderizarIndex();
         });

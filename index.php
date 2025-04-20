@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,8 @@
     <!-- Bootstrap CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Bootstrap -->
+    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <link href="./css/transiciones.css" rel="stylesheet">
     <link href="./css/modal.css" rel="stylesheet">
@@ -18,6 +18,7 @@
     <link href="./css/modal_carrito.css" rel="stylesheet">
 
 </head>
+
 <body>
 
     <!-- Aquí inicia el modal derecho -->
@@ -71,9 +72,7 @@
 
     <!-- Botón para abrir el filtro en móviles -->
     <button class="filter-toggle-btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
-            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"/>
-        </svg>
+        <i class="bi bi-funnel" style="font-size: 24px;"></i>
     </button>
 
 
@@ -89,9 +88,7 @@
             <div class="filter-section">
                 <div class="filter-header" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="true">
                     <span>CATEGORIAS</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                    </svg>
+                    <i class="bi bi-chevron-down" style="font-size: 16px;"></i>
                 </div>
                 <div class="collapse show filter-body" id="categoryCollapse">
                     <div class="filter-item">
@@ -125,9 +122,7 @@
             <div class="filter-section">
                 <div class="filter-header" data-bs-toggle="collapse" data-bs-target="#priceCollapse" aria-expanded="true">
                     <span>PRECIO</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                    </svg>
+                    <i class="bi bi-chevron-down" style="font-size: 16px;"></i>
                 </div>
                 <div class="collapse show filter-body" id="priceCollapse">
                     <div class="filter-item">
@@ -203,7 +198,7 @@
                     <!-- Botones de autenticación y carrito -->
                     <div class="d-flex align-items-center justify-content-center">
                         <a href="#" class="text-dark position-relative me-4" data-bs-toggle="modal" data-bs-target="#rightModal">
-                            <i class="fas fa-shopping-bag"></i>
+                            <i class="bi bi-bag-fill"></i>
                         </a>
                         <a href="./login.php" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</a>
                         <a type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</a>
@@ -242,9 +237,7 @@
                     <!-- Botón para abrir el filtro en desktop -->
                     <div class="container mt-4 d-none d-md-block">
                         <button class="btn btn-filter poppins-light" id="btn-filter" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel me-2" viewBox="0 0 16 16">
-                                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"/>
-                            </svg>
+                            <i class="bi bi-funnel" ></i>
                             Filtrar productos
                         </button>
                     </div>
@@ -269,7 +262,7 @@
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
                                 <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                <p class="product-price poppins-light">$45.000</p>
+                                    <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
@@ -284,7 +277,7 @@
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
                                 <h4 class="product-title playfair-title">Anillos</h5>
-                                <p class="product-price poppins-light">$45.000</p>
+                                    <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
@@ -299,7 +292,7 @@
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
                                 <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                <p class="product-price poppins-light">$45.000</p>
+                                    <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
@@ -314,7 +307,7 @@
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
                                 <h4 class="product-title playfair-title">Anillos</h5>
-                                <p class="product-price poppins-light">$45.000</p>
+                                    <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
@@ -329,7 +322,7 @@
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
                                 <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                <p class="product-price poppins-light">$45.000</p>
+                                    <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
@@ -344,7 +337,7 @@
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
                                 <h4 class="product-title playfair-title">Anillos</h5>
-                                <p class="product-price poppins-light">$45.000</p>
+                                    <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
@@ -359,7 +352,7 @@
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
                                 <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                <p class="product-price poppins-light">$45.000</p>
+                                    <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
@@ -374,7 +367,7 @@
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
                                 <h4 class="product-title playfair-title">Anillos</h5>
-                                <p class="product-price poppins-light">$45.000</p>
+                                    <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
@@ -458,4 +451,5 @@
     <script src="./js/main.js" type="module"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
