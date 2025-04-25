@@ -29,7 +29,7 @@ git clone https://github.com/Santhurt/Gleams
 ```
 
 Este comando crea una carpeta con todos los archivos del proyecto. ### 2.
-Verificar las ramas existes
+Verificar las ramas existen
 
 ```bash 
 git branch -a 
