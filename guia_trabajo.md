@@ -30,12 +30,20 @@ git clone https://github.com/Santhurt/Gleams
 
 Este comando crea una carpeta con todos los archivos del proyecto. 
 
-### 2.
-Verificar las ramas existes
+### 2. Verificar las ramas existes
 
 ```bash 
 git branch -a 
 ```
+
+En caso de que no aparezcan las ramas del repositorio, se verifican si
+estan en las ramas remotas:
+
+```bash
+git branch -r
+```
+
+Si se encuentran, se puede seguir con el siguiente paso.
 
 ### 3. Cambiar a la rama `develop`
 
