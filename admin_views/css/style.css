@@ -1,0 +1,101 @@
+.sidebar {
+    height: 100vh;
+    background-color: #212529;
+    position: fixed;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link i {
+    margin-right: 0.5rem;
+}
+
+.main-content {
+    margin-left: 250px;
+}
+
+.card-dashboard {
+    border-left: 4px solid;
+    transition: transform 0.2s;
+}
+
+.card-dashboard:hover {
+    transform: translateY(-5px);
+}
+
+.card-users {
+    border-left-color: #0d6efd;
+}
+
+.card-products {
+    border-left-color: #198754;
+}
+
+.card-orders {
+    border-left-color: #ffc107;
+}
+
+.card-revenue {
+    border-left-color: #6f42c1;
+}
+
+.card-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+
+.icon-users {
+    background-color: rgba(13, 110, 253, 0.2);
+    color: #0d6efd;
+}
+
+.icon-products {
+    background-color: rgba(25, 135, 84, 0.2);
+    color: #198754;
+}
+
+.icon-orders {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+}
+
+.icon-revenue {
+    background-color: rgba(111, 66, 193, 0.2);
+    color: #6f42c1;
+}
+
+.status-badge {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}

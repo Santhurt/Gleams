@@ -7,23 +7,24 @@
     <title>Nombre del producto</title>
     <!--Boostrap-->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet" >
-    <link href="./css/transiciones.css" rel="stylesheet" >
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/transiciones.css" rel="stylesheet">
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
     <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <!-- Top bar -->
-        <div class="container-fluid top-bar">
-            <div class="row py-2">
-                <div class="col-md-6 text-center text-md-start">
-                    <small>Envío gratuito en pedidos superiores a $150.000</small>
-                </div>
+
+    <!-- Top bar -->
+    <div class="container-fluid top-bar">
+        <div class="row py-2">
+            <div class="col-md-6 text-center text-md-start">
+                <small>Envío gratuito en pedidos superiores a $150.000</small>
             </div>
         </div>
+    </div>
+    <header class="sticky-top">
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg fondo">
@@ -214,6 +215,89 @@
             </div>
         </div>
     </main>
+
+    <!-- Sección de comentarios - justo después del acordeón y antes del footer -->
+    <section class="container mb-5">
+
+        <!-- Formulario para dejar una reseña -->
+        <div class="card fondo">
+            <div class="card-body">
+                <form>
+                    <!-- Calificación -->
+                    <div class="mb-3">
+                        <div class="rating">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rating" id="rating5" value="5" checked>
+                                <label class="form-check-label" for="rating5">5★</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rating" id="rating4" value="4">
+                                <label class="form-check-label" for="rating4">4★</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rating" id="rating3" value="3">
+                                <label class="form-check-label" for="rating3">3★</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rating" id="rating2" value="2">
+                                <label class="form-check-label" for="rating2">2★</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rating" id="rating1" value="1">
+                                <label class="form-check-label" for="rating1">1★</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comentario -->
+                    <div class="mb-3">
+                        <label for="reviewText" class="form-label poppins-light">Tu comentario</label>
+                        <textarea class="form-control" id="reviewText" rows="3" placeholder="Cuéntanos tu experiencia con este producto"></textarea>
+                    </div>
+
+                    <!-- Botón de envío -->
+                    <button type="submit" class="btn boton-fondo-morado poppins-light">Publicar comentario</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+
+                <!-- Reseñas existentes -->
+                <div class="mb-4">
+                    <!-- Reseña 1 -->
+                    <div class="card mb-3 fondo">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <h5 class="card-title poppins-light">Laura Martínez</h5>
+                                <div>
+                                    <span class="text-warning">★★★★★</span>
+                                    <small class="text-muted ms-2">15/04/2025</small>
+                                </div>
+                            </div>
+                            <p class="card-text poppins-light">¡Me encantaron los pines! La calidad es excelente y los diseños son hermosos. Definitivamente volveré a comprar más productos.</p>
+                        </div>
+                    </div>
+
+                    <!-- Reseña 2 -->
+                    <div class="card mb-3 fondo">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <h5 class="card-title poppins-light">Carlos Ramírez</h5>
+                                <div>
+                                    <span class="text-warning">★★★★☆</span>
+                                    <small class="text-muted ms-2">02/04/2025</small>
+                                </div>
+                            </div>
+                            <p class="card-text poppins-light">Buen producto, los colores son vibrantes y el acabado es de calidad. Solo le quito una estrella porque uno de los pines venía con un pequeño defecto en el broche.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">

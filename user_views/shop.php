@@ -152,16 +152,18 @@
     </div>
     <!--Aqui termina el modal-->
 
-    <!-- Header -->
-    <header class="sticky-top">
-        <!-- Top bar -->
-        <div class="container-fluid top-bar">
-            <div class="row py-2">
-                <div class="col-md-6 text-center text-md-start">
-                    <small>Envío gratuito en pedidos superiores a $150.000</small>
-                </div>
+
+    <!-- Top bar -->
+    <div class="container-fluid top-bar">
+        <div class="row py-2">
+            <div class="col-md-6 text-center text-md-start">
+                <small>Envío gratuito en pedidos superiores a $150.000</small>
             </div>
         </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky-top">
 
         <!-- Navbar -->
         <nav id="navbar" class="navbar navbar-expand-lg fondo">
@@ -237,7 +239,7 @@
                     <!-- Botón para abrir el filtro en desktop -->
                     <div class="container mt-4 d-none d-md-block">
                         <button class="btn btn-filter poppins-light" id="btn-filter" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
-                            <i class="bi bi-funnel" ></i>
+                            <i class="bi bi-funnel"></i>
                             Filtrar productos
                         </button>
                     </div>
