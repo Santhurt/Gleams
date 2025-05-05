@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Administración</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
 </head>
 
@@ -32,73 +32,34 @@
                 <span>Dashboard</span>
             </div>
 
-            <!--Inicio de opciones de productos-->
 
-            <a class="sidebar-item" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
+            <a class="sidebar-item" href="./listado.php">
                 <i class="fas fa-th"></i>
                 <span>Productos</span>
-                <i class="fas fa-chevron-right ms-auto"></i>
             </a>
 
-            <div class="collapse" id="productos-options">
-                <div class="d-flex ms-3 sidebar-item align-items-center">
-                    <i class="fa fa-list"></i>
-                    <a href="./listado.php">Listar productos</a>
-                </div>
-                <div class="d-flex ms-3 sidebar-item align-items-center">
-                    <i class="fas fa-plus"></i>
-                    <a href="./forms/crear_producto.php">Nuevo producto</a>
-                </div>
-            </div>
 
-            <!--Inicio de opciones de usuarios-->
-
-            <a class="sidebar-item" data-bs-toggle="collapse" href="#usuarios-options" aria-expanded="false" aria-controls="usuarios-options">
+            <a class="sidebar-item">
                 <i class="fas fa-users"></i>
                 <span>Usuarios</span>
-                <i class="fas fa-chevron-right ms-auto"></i>
             </a>
 
-            <div class="collapse" id="usuarios-options">
-                <div class="d-flex ms-3 sidebar-item align-items-center">
-                    <i class="fas fa-list"></i>
-                    <a href="">Listar usuarios</a>
-                </div>
-                <div class="d-flex ms-3 sidebar-item align-items-center">
-                    <i class="fas fa-plus"></i>
-                    <a href="">Nuevo usuario</a>
-                </div>
-            </div>
 
-            <!--Inicio de opciones de pedidos-->
-
-            <a class="sidebar-item" data-bs-toggle="collapse" href="#pedidos-options" aria-expanded="false" aria-controls="pedidos-options">
+            <a class="sidebar-item">
                 <i class="fas fa-receipt"></i>
                 <span>Pedidos</span>
-                <i class="fas fa-chevron-right ms-auto"></i>
             </a>
 
-            <div class="collapse" id="pedidos-options">
-                <div class="d-flex ms-3 sidebar-item align-items-center">
-                    <i class="fas fa-list"></i>
-                    <a href="">Listar pedidos</a>
-                </div>
-            </div>
 
-            <!--Inicio de opciones de reseñas-->
-
-            <a class="sidebar-item" data-bs-toggle="collapse" href="#resenas-options" aria-expanded="false" aria-controls="resenas-options">
+            <a class="sidebar-item">
                 <i class="fas fa-star"></i>
                 <span>Reseñas</span>
-                <i class="fas fa-chevron-right ms-auto"></i>
             </a>
 
-            <!--Inicio de opciones de reseñas-->
 
-            <a class="sidebar-item" data-bs-toggle="collapse" href="#consultas-options" aria-expanded="false" aria-controls="consultas-options">
+            <a class="sidebar-item">
                 <i class="fas fa-search"></i>
                 <span>Consultas</span>
-                <i class="fas fa-chevron-right ms-auto"></i>
             </a>
         </div>
     </div>
@@ -115,10 +76,22 @@
                 <div class="d-flex align-items-center ms-auto">
                     <div class="d-flex align-items-center">
                         <div class="dropdown me-3">
-                            <button class="btn dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
+
+                            <button class="btn dropdown-toggle d-flex align-items-center" aria-expanded="false" type="button" id="userDropdown" data-bs-toggle="dropdown">
                                 <img src="./img/user.jpg" alt="Profile picture" class="profile-pic me-2">
                                 <span>David Greymaax</span>
                             </button>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#" class="dropdown-item">Ver perfil</a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="dropdown-item">Cambiar de cuenta</a>
+                                </li>
+                            </ul>
+
                         </div>
 
                         <button class="btn">
@@ -216,6 +189,7 @@
         </div>
     </div>
 
+    <script src="./js/main.js" type="module"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 
