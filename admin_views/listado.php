@@ -132,8 +132,8 @@
                                     data-bs-target="#multiCollapseExample2"
                                     aria-expanded="false"
                                     aria-controls="multiCollapseExample2">
-                                    Crear usuario
-                                </button>
+                                    Crear producto
+                                    </button>
 
                                 <button type="button" class="btn btn-success">Generar reporte</button>
                             </div>
