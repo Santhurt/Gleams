@@ -33,7 +33,7 @@
             </div>
 
 
-            <a class="sidebar-item" href="./listado.php">
+            <a class="sidebar-item" href="./productos.php">
                 <i class="fas fa-th"></i>
                 <span>Productos</span>
             </a>
