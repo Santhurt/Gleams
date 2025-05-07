@@ -132,8 +132,8 @@
                                     data-bs-target="#multiCollapseExample2"
                                     aria-expanded="false"
                                     aria-controls="multiCollapseExample2">
-                                    Crear producto
-                                    </button>
+                                    Nuevo producto
+                                </button>
 
                                 <button type="button" class="btn btn-success">Generar reporte</button>
                             </div>
@@ -141,16 +141,29 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="collapse multi-collapse" id="multiCollapseExample2">
-                                        <form>
+                                        <form id="formulario">
                                             <div class="mt-3">
                                                 <label for="" class="label-form">Nombre</label>
-                                                <input type="text" name="" class="form-control">
+                                                <input type="text" name="nombre" class="form-control">
                                             </div>
 
                                             <div class="mt-3">
-                                                <label for="" class="label-form">Precio</label>
-                                                <input type="number" name="" class="form-control">
+                                                <label for="" class="label-form">Descripcion</label>
+                                                <textarea class="form-control" name="descripcion" placeholder="Descripcion del producto"></textarea>
                                             </div>
+
+
+                                            <div class="mt-3">
+                                                <label for="" class="label-form">Precio</label>
+                                                <input type="number" name="precio" class="form-control">
+                                            </div>
+
+                                            <div class="mt-3">
+                                                <label for="" class="label-form">Stock</label>
+                                                <input type="number" name="stock" class="form-control">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary mt-3">Crear nuevo producto</button>
                                         </form>
                                     </div>
                                 </div>
