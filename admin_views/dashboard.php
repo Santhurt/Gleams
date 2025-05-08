@@ -30,13 +30,27 @@
             <div class="sidebar-item active">
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span>
+                <i class="fas fa-chevron-right ms-auto"></i>
             </div>
 
 
-            <a class="sidebar-item" href="./productos.php">
+            <a class="sidebar-item" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
                 <i class="fas fa-th"></i>
                 <span>Productos</span>
+                <i class="fas fa-chevron-right ms-auto"></i>
             </a>
+
+            <div class="collapse" id="productos-options">
+                <a class="d-flex ms-3 sidebar-item align-items-center" href="./listado.php">
+                    <i class="fa fa-list"></i>
+                    Listar
+                </a>
+
+                <a class="d-flex ms-3 sidebar-item align-items-center" href="./productos.php">
+                    <i class="fas fa-plus"></i>
+                    Gestionar
+                </a>
+            </div>
 
 
             <a class="sidebar-item">

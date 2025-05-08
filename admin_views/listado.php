@@ -134,55 +134,57 @@
             </div>
         </div>
 
-        <div class="row g-4">
+        <!-- Charts -->
+        <div class="row g-4 mt-3">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        <div class="d-flex justify-content-between mb-4">
+                            <h5 class="card-title">Lista de productos</h5>
+                        </div>
                         <div class="chart-container">
-                            <div class="gap-3 d-flex">
-                                <button
-                                    class="btn btn-primary"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#multiCollapseExample2"
-                                    aria-expanded="false"
-                                    aria-controls="multiCollapseExample2">
-                                    Nuevo producto
-                                </button>
+                            <table id="example" class="table align-middle table-hover table-borderless table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>2011-04-25</td>
+                                    </tr>
 
-                                <button type="button" class="btn btn-success">Generar reporte</button>
-                            </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="collapse multi-collapse" id="multiCollapseExample2">
-                                        <form id="formulario">
-                                            <div class="mt-3">
-                                                <label for="" class="label-form">Nombre</label>
-                                                <input type="text" name="nombre" class="form-control">
-                                            </div>
-
-                                            <div class="mt-3">
-                                                <label for="" class="label-form">Descripcion</label>
-                                                <textarea class="form-control" name="descripcion" placeholder="Descripcion del producto"></textarea>
-                                            </div>
-
-
-                                            <div class="mt-3">
-                                                <label for="" class="label-form">Precio</label>
-                                                <input type="number" name="precio" class="form-control">
-                                            </div>
-
-                                            <div class="mt-3">
-                                                <label for="" class="label-form">Stock</label>
-                                                <input type="number" name="stock" class="form-control">
-                                            </div>
-
-                                            <button type="submit" class="btn btn-primary mt-3">Crear nuevo producto</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                                    <tr>
+                                        <td>Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td>2009-01-12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cedric Kelly</td>
+                                        <td>Senior Javascript Developer</td>
+                                        <td>Edinburgh</td>
+                                        <td>22</td>
+                                        <td>2012-03-29</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>33</td>
+                                        <td>2008-11-28</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

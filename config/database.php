@@ -5,7 +5,7 @@ namespace config;
 use mysqli;
 use Exception;
 
-class Database 
+class Database
 {
     private $conn;
     private static $instancia;
@@ -36,7 +36,7 @@ class Database
 
     public static function get_instancia()
     {
-        if(self::$instancia == null) {
+        if (self::$instancia == null) {
             self::$instancia = new Database();
         }
 
@@ -61,4 +61,3 @@ class Database
         $this->close_conexion();
     }
 }
-
