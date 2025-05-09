@@ -27,7 +27,7 @@ CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +36,10 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES
+(1,'aretes'),
+(2,'anillos'),
+(3,'pulseras');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +148,7 @@ CREATE TABLE `imagenes_prod` (
   PRIMARY KEY (`id_imagen`),
   KEY `fk_imagenes_productos` (`id_producto`),
   CONSTRAINT `fk_imagenes_productos` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,6 +157,9 @@ CREATE TABLE `imagenes_prod` (
 
 LOCK TABLES `imagenes_prod` WRITE;
 /*!40000 ALTER TABLE `imagenes_prod` DISABLE KEYS */;
+INSERT INTO `imagenes_prod` VALUES
+(5,'assets/fotos/imagen_20250509_060716000.jpg',13),
+(8,'assets/fotos/imagen_20250509_062551000.jpg',16);
 /*!40000 ALTER TABLE `imagenes_prod` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +210,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id_producto`),
   KEY `fk_productos_categorias` (`id_categoria`),
   CONSTRAINT `fk_productos_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +223,17 @@ INSERT INTO `productos` VALUES
 (1,'papas','papas buenas',20000,10,1,0,NULL),
 (2,'papas','papas buenas',20000,10,1,0,NULL),
 (3,'Hamburguesa','hamburguesa de carne',10000,5,1,0,NULL),
-(4,'Papaya','Pallaya naranja',15000,20,1,0,NULL);
+(4,'Papaya','Pallaya naranja',15000,20,1,0,NULL),
+(5,'fideos','ahauihiu',288099,222,1,0,NULL),
+(6,'fideos','ahauihiu',288099,222,1,0,1),
+(9,'fideos','ahauihiu',288099,222,1,0,1),
+(10,'carambolas','ahauihiu',288099,222,1,0,1),
+(11,'papu','ahauihiu',288099,222,1,0,1),
+(12,'papu','ahauihiu',288099,222,1,0,1),
+(13,'papu','ahauihiu',288099,222,1,0,1),
+(14,'papu','ahauihiu',288099,222,1,0,1),
+(15,'papu','ahauihiu',288099,222,1,0,1),
+(16,'hola mundo','ahauihiu',288099,222,1,0,1);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -229,4 +246,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-08 17:33:50
+-- Dump completed on 2025-05-09  3:17:31

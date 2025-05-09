@@ -134,10 +134,11 @@
             </div>
         </div>
 
-        <div class="row g-4">
+        <div class="row gap-4">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+
                         <div class="chart-container">
                             <div class="gap-3 d-flex">
                                 <button
@@ -178,17 +179,81 @@
                                                 <input type="number" name="stock" class="form-control">
                                             </div>
 
+                                            <label for="" class="label-form mt-3">Categorias</label>
+                                            <select class="form-select mt-3" name="categoria" id="select-categoria" aria-label="Default select example">
+                                                <!--Opciones-->
+                                            </select>
+
+                                            <div class="mt-3">
+                                                <label for="" class="label-form">Stock</label>
+                                                <input type="file" name="imagen" class="form-control">
+                                            </div>
+
+
                                             <button type="submit" class="btn btn-primary mt-3">Crear nuevo producto</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="row gap-4 mt-4">
+            <div class="col-md-3">
+                <div class="card p-2" style="width: 18rem;">
+                    <div class="position-relative">
+                        <img src="../assets/fotos/imagen_20250509_060716000.jpg" class="card-img-top" alt="Imagen del producto">
+                        <span class="position-absolute top-0 start-0 badge bg-primary rounded-pill m-2">$199.99</span>
+
+                        <!-- Dropdown en la esquina superior derecha -->
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-light rounded-circle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-heart"></i> Añadir a favoritos</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-share-alt"></i> Compartir producto</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-box"></i> Ver disponibilidad</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-flag"></i> Reportar problema</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre del producto</h5>
+                        <p class="card-text">Descripción breve del producto que estás cargando.</p>
+                        <small class="text-muted mb-3 d-block">Precio: $199.99</small>
+
+                        <div class="d-flex gap-2 mt-3 justify-content-center">
+                            <button class="btn btn-sm btn-primary" type="button">
+                                <i class="fas fa-info-circle"></i>
+                                Info
+                            </button>
+                            <button class="btn btn-sm btn-warning" type="button">
+                                <i class="fas fa-pencil-alt"></i> 
+                                Editar
+                            </button>
+                            <button class="btn btn-sm btn-danger" type="button">
+                                <i class="fas fa-trash-alt"></i> 
+                                Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>

@@ -1,7 +1,17 @@
-import { data } from "../data.js";
+import { data } from "../ajax/data-productos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
+import { dom } from "../componentes/productos_componentes.js";
 
 export async function renderProductos() {
+    const selectCategoria = document.querySelector("#select-categoria");
+    const datos = await data.traerCategorias();
+
+    const opciones = datos.categorias.map((categoria) => {
+        return dom.crearOpcionCategoria(categoria.id_categoria, categoria.nombre);
+    });
+
+    selectCategoria.replaceChildren(...opciones);
+
     const formulario = document.querySelector("#formulario");
 
     formulario.addEventListener("submit", async (e) => {
@@ -25,6 +35,18 @@ export async function renderProductos() {
                 icon: "error",
             });
         } else if (respuesta.numerosInvalidos) {
+            swal.fire({
+                title: "Error",
+                text: respuesta.mensaje,
+                icon: "error",
+            });
+        } else if(respuesta.imagenInvalida){
+            swal.fire({
+                title: "Error",
+                text: respuesta.mensaje,
+                icon: "error",
+            });
+        } else if (respuesta.status == 500) {
             swal.fire({
                 title: "Error",
                 text: respuesta.mensaje,

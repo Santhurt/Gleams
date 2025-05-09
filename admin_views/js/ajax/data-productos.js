@@ -1,4 +1,4 @@
-const url = "../../controllers/";
+const url = "../../controllers/productos/";
 export const data = {
     insertarProducto: async (empleado) => {
         try {
@@ -17,4 +17,19 @@ export const data = {
             return error;
         }
     },
+
+    traerCategorias: async () => {
+        try {
+            const respuesta = await fetch(url + "traer_categorias.php");
+
+            if(!respuesta.ok) {
+                const error = await respuesta.json();
+                throw error;
+            }
+
+            return respuesta.json();
+        } catch (error) {
+            return error;
+        }
+    }
 };

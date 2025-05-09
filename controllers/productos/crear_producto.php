@@ -1,6 +1,7 @@
 <?php
-include_once "../model/productos.php";
-include_once "./lib/validaciones.php";
+require_once __DIR__ . "/../../model/productos.php";
+require_once __DIR__ . "/../lib/validaciones.php";
+require_once __DIR__ . "/../lib/crear_imagen.php";
 
 use modelos\Producto;
 use lib\Validar;
@@ -14,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         "nombre",
         "descripcion",
         "precio",
-        "stock"
+        "stock",
+        "categoria"
     );
 
     if (count($vacios) > 0) {
@@ -24,23 +26,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "camposVacios" => true,
             "mensaje" => $vacios
         ]);
-
         exit;
     }
 
-    if (!$validar->numeros("precio", "stock")) {
+    if (!$validar->numeros("precio", "stock", "descuento")) {
         http_response_code(400);
         echo json_encode([
             "status" => 400,
             "numerosInvalidos" => true,
             "mensaje" => "Error al validar los numeros"
         ]);
-
         exit;
     }
 
+    $img_ruta = insertar_imagen("imagen");
+
+    if (empty($img_ruta["ruta"])) {
+        http_response_code(400);
+
+        echo json_encode([
+            "status" => 400,
+            "imagenInvalida" => true,
+            "mensaje" => "Error al cargar la imagen: " . $img_ruta["error"]
+        ]);
+        exit;
+    }
+
+
     $producto = new Producto();
-    $resultado = $producto->insertar_producto($_POST);
+    $resultado = $producto->insertar_producto($_POST, $img_ruta["ruta"]);
 
     if ($resultado) {
         http_response_code(200);
@@ -48,11 +62,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "status" => 200,
             "mensaje" => "Producto creado con exito"
         ]);
+        exit;
     } else {
         http_response_code(500);
+
+        unlink($img_ruta["absoluta"]);
         echo json_encode([
             "status" => 500,
             "mensaje" => "Error en el servidor: " . $producto->get_error()
         ]);
+        exit;
     }
 }
