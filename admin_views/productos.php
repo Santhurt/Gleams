@@ -203,7 +203,7 @@
             </div>
         </div>
 
-        <div class="row gap-4 mt-4">
+        <div class="row gap-4 mt-4" id="contenedor-productos">
             <div class="col-md-3">
                 <div class="card p-2" style="width: 18rem;">
                     <div class="position-relative">

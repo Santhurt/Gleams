@@ -23,8 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         http_response_code(400);
         echo json_encode([
             "status" => 400,
-            "camposVacios" => true,
-            "mensaje" => $vacios
+            "mensaje" => "Hacen falta los siguientes campos: " . implode(", ", $vacios)
         ]);
         exit;
     }
@@ -33,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         http_response_code(400);
         echo json_encode([
             "status" => 400,
-            "numerosInvalidos" => true,
             "mensaje" => "Error al validar los numeros"
         ]);
         exit;
@@ -46,7 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         echo json_encode([
             "status" => 400,
-            "imagenInvalida" => true,
             "mensaje" => "Error al cargar la imagen: " . $img_ruta["error"]
         ]);
         exit;

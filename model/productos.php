@@ -22,6 +22,44 @@ class Producto
         return $this->error;
     }
 
+    public function traer_productos()
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos:");
+            }
+
+            $consulta = "select
+                id_producto,
+                productos.nombre as producto,
+                descripcion,
+                precio,
+                stock,
+                estado,
+                descuento,
+                categorias.nombre as categoria
+            from productos
+            join categorias 
+            on categorias.id_categoria = productos.id_categoria
+            ";
+
+            $consulta_imagenes = "select ruta, id_producto from imagenes_prod";
+
+            $resultado = mysqli_execute_query($this->conn, $consulta);
+            $imagenes = mysqli_execute_query($this->conn, $consulta_imagenes);
+
+            return [
+                "productos" => $resultado,
+                "imagenes" => $imagenes
+            ];
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
     public function insertar_producto($productos = [], string $ruta_imagen)
     {
         $estado = 1; #activo
@@ -52,7 +90,7 @@ class Producto
 
             $max_categoria = $this->max_categoria();
 
-            if($productos["categoria"] <= 0 || $productos > $max_categoria ) {
+            if ($productos["categoria"] <= 0 || $productos["categoria"] > $max_categoria) {
                 throw new Exception("La categoria seleccionada no fue encontrada");
             }
 
