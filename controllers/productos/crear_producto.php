@@ -57,7 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         http_response_code(200);
         echo json_encode([
             "status" => 200,
-            "mensaje" => "Producto creado con exito"
+            "mensaje" => "Producto creado con exito",
+            "imagen_producto" => $img_ruta["ruta"]
         ]);
         exit;
     } else {

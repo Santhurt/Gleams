@@ -38,6 +38,7 @@ export async function renderProductos() {
             producto.precio,
             producto.producto,
             producto.descripcion,
+            producto.id_producto,
         );
     });
 
@@ -63,9 +64,8 @@ export async function renderProductos() {
                 icon: "success",
             }).then((resultado) => {
                 if (resultado.isConfirmed) {
-                    const imagen = producto.get("imagen");
                     const nuevoProducto = dom.cardProducto(
-                        `../assets/fotos/${imagen.name}`,
+                        respuesta.imagen_producto,
                         producto.get("precio"),
                         producto.get("nombre"),
                         producto.get("descripcion"),
@@ -81,5 +81,47 @@ export async function renderProductos() {
                 icon: "error",
             });
         }
+    });
+
+    const botonesEliminar = document.querySelectorAll(".eliminar");
+
+    botonesEliminar.forEach((boton) => {
+        boton.addEventListener("click", (e) => {
+            const boton = e.target;
+            const idProducto = boton.getAttribute("id-producto");
+
+            swal.fire({
+                title: "Aviso",
+                text: "¿Esta seguro de que quiere eliminar el producto?",
+                icon: "warning",
+            })
+                .then(async (resultado) => {
+                    if (resultado.isConfirmed) {
+                        const respuesta =
+                            await data.eliminarProducto(idProducto);
+
+                        if (respuesta.status == 200) {
+                            return swal.fire({
+                                title: "Tarea completa",
+                                text: respuesta.mensaje,
+                                icon: "success",
+                            });
+                        } else {
+                            return swal.fire({
+                                title: "Error",
+                                text: respuesta.mensaje,
+                                icon: "error",
+                            });
+                        }
+                    }
+                })
+                .then((respuesta) => {
+                    if (respuesta.isConfirmed) {
+                        //para eliminar el producto de la pagina
+                        const cardProducto = document.getElementById(`${idProducto}`);
+                        cardProducto.parentNode.removeChild(cardProducto);
+                    }
+                });
+        });
     });
 }

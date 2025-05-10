@@ -7,9 +7,10 @@ export const dom = {
         return opt;
     },
 
-    cardProducto: (imagen, precio, titulo, descripcion) => {
+    cardProducto: (imagen, precio, titulo, descripcion, id) => {
         const divCol = document.createElement("div");
         divCol.className = "col-md-3";
+        divCol.id = id;
 
         divCol.innerHTML = `
         <div class="card p-2" style="width: 18rem;">
@@ -37,13 +38,13 @@ export const dom = {
                 <p class="card-text">${descripcion}</p>
                 <small class="text-muted mb-3 d-block">Precio: $${precio}</small>
                 <div class="d-flex gap-2 mt-3 justify-content-center">
-                    <button class="btn btn-sm btn-primary" type="button">
+                    <button class="btn btn-sm btn-primary" type="button" id-producto="${id}">
                         <i class="fas fa-info-circle"></i> Info
                     </button>
-                    <button class="btn btn-sm btn-warning" type="button">
+                    <button class="btn btn-sm btn-warning" type="button" id-producto="${id}" >
                         <i class="fas fa-pencil-alt"></i> Editar
                     </button>
-                    <button class="btn btn-sm btn-danger" type="button">
+                    <button class="btn btn-sm btn-danger eliminar" type="button" id-producto="${id}">
                         <i class="fas fa-trash-alt"></i> Eliminar
                     </button>
                 </div>

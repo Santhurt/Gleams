@@ -22,6 +22,83 @@ class Producto
         return $this->error;
     }
 
+    public function traer_productoPorId($id)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos:");
+            }
+
+            $consulta = "select
+                productos.id_producto,
+                productos.nombre as producto,
+                descripcion,
+                precio,
+                stock,
+                estado,
+                descuento,
+                categorias.nombre as categoria,
+                ruta
+            from productos
+            join categorias 
+            on categorias.id_categoria = productos.id_categoria
+            join imagenes_prod on imagenes_prod.id_producto = productos.id_producto
+            where productos.id_producto = ?
+            ";
+
+            $resultado = mysqli_execute_query($this->conn, $consulta, [$id]);
+
+            $fila = $resultado->fetch_assoc();
+            return $fila;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function eliminar_producto($id)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos:");
+            }
+
+            mysqli_begin_transaction($this->conn);
+
+            $imagen_delete = "delete from imagenes_prod where id_producto = ?";
+
+            $resultado = mysqli_execute_query($this->conn, $imagen_delete, [$id]);
+
+            if (!$resultado) {
+                throw new Exception("Error al eliminar la imagen");
+            }
+
+            $producto_delete = "update productos 
+                set estado = 0
+                where id_producto = ?
+            ";
+
+            $resultado_producto = mysqli_execute_query($this->conn, $producto_delete, [$id]);
+
+            if (!$resultado_producto) {
+                throw new Exception("Error al eliminar el producto");
+            }
+
+            mysqli_commit($this->conn);
+
+            return true;
+        } catch (Exception $e) {
+            mysqli_rollback($this->conn);
+
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
     public function traer_productos()
     {
         try {
@@ -41,6 +118,7 @@ class Producto
             from productos
             join categorias 
             on categorias.id_categoria = productos.id_categoria
+            where estado = 1
             ";
 
             $consulta_imagenes = "select ruta, id_producto from imagenes_prod";
