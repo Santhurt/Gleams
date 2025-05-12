@@ -44,7 +44,7 @@ export async function renderProductos() {
 
     contenedorProductos.replaceChildren(...cardsProductos);
 
-    // -----------------formulario-----------------------
+    // -----------------evento del formulario-----------------------
 
     const formulario = document.querySelector("#formulario");
 
@@ -55,6 +55,9 @@ export async function renderProductos() {
         console.log(producto);
 
         const respuesta = await data.insertarProducto(producto);
+        //nota: seria mejor idea que el metodo post devuelva
+        //directamente toda la imagen
+        //asi nos evitamos problemas al eliminar
 
         if (respuesta.status == 200) {
             // no me sirve por que necesito la imagen xd
@@ -83,11 +86,13 @@ export async function renderProductos() {
         }
     });
 
-    const botonesEliminar = document.querySelectorAll(".eliminar");
+    //eventos de los botones
 
-    botonesEliminar.forEach((boton) => {
-        boton.addEventListener("click", (e) => {
-            const boton = e.target;
+    contenedorProductos.addEventListener("click", (e) => {
+        console.log(e.target);
+        const boton = e.target;
+
+        if (boton.classList.contains("eliminar")) {
             const idProducto = boton.getAttribute("id-producto");
 
             swal.fire({
@@ -118,10 +123,13 @@ export async function renderProductos() {
                 .then((respuesta) => {
                     if (respuesta.isConfirmed) {
                         //para eliminar el producto de la pagina
-                        const cardProducto = document.getElementById(`${idProducto}`);
+                        const cardProducto = document.getElementById(
+                            `${idProducto}`,
+                        );
+
                         cardProducto.parentNode.removeChild(cardProducto);
                     }
                 });
-        });
+        }
     });
 }

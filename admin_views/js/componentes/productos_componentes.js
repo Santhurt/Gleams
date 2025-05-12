@@ -41,7 +41,7 @@ export const dom = {
                     <button class="btn btn-sm btn-primary" type="button" id-producto="${id}">
                         <i class="fas fa-info-circle"></i> Info
                     </button>
-                    <button class="btn btn-sm btn-warning" type="button" id-producto="${id}" >
+                    <button class="btn btn-sm btn-warning editar" type="button" id-producto="${id}" >
                         <i class="fas fa-pencil-alt"></i> Editar
                     </button>
                     <button class="btn btn-sm btn-danger eliminar" type="button" id-producto="${id}">
