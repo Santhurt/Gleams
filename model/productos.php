@@ -22,6 +22,66 @@ class Producto
         return $this->error;
     }
 
+    public function editar_producto($producto = [], string $nueva_ruta) {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos:");
+            }
+
+            mysqli_begin_transaction($this->conn);
+
+            $consulta = "update productos set
+                nombre = ?,
+                descripcion = ?,
+                precio = ?,
+                stock = ?,
+                id_categoria = ?
+            where id_producto = ?";
+
+            $max_categoria = $this->max_categoria();
+
+            if ($producto["categoria"] <= 0 || $producto["categoria"] > $max_categoria) {
+                throw new Exception("La categoria seleccionada no fue encontrada");
+            }
+
+            $resultado = mysqli_execute_query($this->conn, $consulta, [
+                $producto["nombre"],
+                $producto["descripcion"],
+                $producto["precio"],
+                $producto["stock"],
+                $producto["categoria"],
+                $producto["id"]
+            ]);
+
+            if(!$resultado) {
+                throw new Exception("No se actualizar el producto");
+            }
+
+            $imagen_consulta = "update imagenes_prod
+                set ruta = ?
+                where id_producto = ?
+            ";
+
+            $imagen_resultado = mysqli_execute_query($this->conn, $imagen_consulta, [$nueva_ruta, $producto["id"]]);
+
+            if(!$imagen_resultado) {
+                throw new Exception("Error al actualizar la imagen");
+            }
+
+            mysqli_commit($this->conn);
+
+            return $resultado;
+
+        } catch (Exception $e) {
+            mysqli_rollback($this->conn);
+
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
     public function traer_productoPorId($id)
     {
         try {
@@ -37,7 +97,7 @@ class Producto
                 stock,
                 estado,
                 descuento,
-                categorias.nombre as categoria,
+                categorias.id_categoria as categoria,
                 ruta
             from productos
             join categorias 
@@ -138,7 +198,7 @@ class Producto
         }
     }
 
-    public function insertar_producto($productos = [], string $ruta_imagen)
+    public function insertar_producto($producto = [], string $ruta_imagen)
     {
         $estado = 1; #activo
         $descuento = 0;
@@ -168,13 +228,13 @@ class Producto
 
             $max_categoria = $this->max_categoria();
 
-            if ($productos["categoria"] <= 0 || $productos["categoria"] > $max_categoria) {
+            if ($producto["categoria"] <= 0 || $producto["categoria"] > $max_categoria) {
                 throw new Exception("La categoria seleccionada no fue encontrada");
             }
 
 
             # aqui se guardan los valores de formulario
-            foreach ($productos as $valor) {
+            foreach ($producto as $valor) {
                 $valores[] = trim($valor);
             }
 
@@ -207,7 +267,11 @@ class Producto
             }
 
             mysqli_commit($this->conn);
-            return $resultado;
+
+            return [
+                "producto_insertado" => $resultado,
+                "nueva_id" => $nueva_id
+            ];
         } catch (Exception $e) {
             mysqli_rollback($this->conn);
 

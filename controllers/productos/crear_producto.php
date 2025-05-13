@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         echo json_encode([
             "status" => 400,
-            "mensaje" => "Error al cargar la imagen: " . $img_ruta["error"]
+            "mensaje" => $img_ruta["error"]
         ]);
         exit;
     }
@@ -53,13 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $producto = new Producto();
     $resultado = $producto->insertar_producto($_POST, $img_ruta["ruta"]);
 
-    if ($resultado) {
+    if ($resultado["producto_insertado"]) {
         http_response_code(200);
-        echo json_encode([
-            "status" => 200,
-            "mensaje" => "Producto creado con exito",
-            "imagen_producto" => $img_ruta["ruta"]
-        ]);
+
+        $_POST["imagen"] = $img_ruta["ruta"];
+        $_POST["id"] = $resultado["nueva_id"];
+        $_POST["ok"] = true;
+
+        echo json_encode($_POST);
         exit;
     } else {
         http_response_code(500);

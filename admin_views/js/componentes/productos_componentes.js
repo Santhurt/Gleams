@@ -7,7 +7,7 @@ export const dom = {
         return opt;
     },
 
-    cardProducto: (imagen, precio, titulo, descripcion, id) => {
+    cardProducto: (id, nombre, descripcion, precio, imagen) => {
         const divCol = document.createElement("div");
         divCol.className = "col-md-3";
         divCol.id = id;
@@ -34,14 +34,14 @@ export const dom = {
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">${titulo}</h5>
+                <h5 class="card-title">${nombre}</h5>
                 <p class="card-text">${descripcion}</p>
                 <small class="text-muted mb-3 d-block">Precio: $${precio}</small>
                 <div class="d-flex gap-2 mt-3 justify-content-center">
                     <button class="btn btn-sm btn-primary" type="button" id-producto="${id}">
                         <i class="fas fa-info-circle"></i> Info
                     </button>
-                    <button class="btn btn-sm btn-warning editar" type="button" id-producto="${id}" >
+                    <button class="btn btn-sm btn-warning editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-editar" id-producto="${id}" >
                         <i class="fas fa-pencil-alt"></i> Editar
                     </button>
                     <button class="btn btn-sm btn-danger eliminar" type="button" id-producto="${id}">

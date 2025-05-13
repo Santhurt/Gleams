@@ -1,5 +1,32 @@
 const url = "../../controllers/productos/";
 export const data = {
+    traerProductoPorId: async (id) => {
+        const controlador = new AbortController();
+        const timeOut = setTimeout(() => controlador.abort(), 10000);
+
+        try {
+            const respuesta = await fetch(`${url}traer_producto.php?id=${id}`, {
+                signal: controlador.signal,
+            });
+
+            if (!respuesta.ok) {
+                const error = await respuesta.json();
+                throw error;
+            }
+
+            return respuesta.json();
+        } catch (error) {
+            if (error.name == "AbortError") {
+                return {
+                    status: 500,
+                    mensaje: "Tiempo de respuesta agotado",
+                };
+            }
+            return error;
+        } finally {
+            clearTimeout(timeOut);
+        }
+    },
     insertarProducto: async (empleado) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);
@@ -24,7 +51,10 @@ export const data = {
                     mensaje: "Tiempo de respuesta agotado",
                 };
             }
-            return error;
+            return {
+                ok: false,
+                error: error,
+            };
         } finally {
             clearTimeout(timeOut);
         }
@@ -83,6 +113,38 @@ export const data = {
             }
 
             return error;
+        } finally {
+            clearTimeout(timeOut);
+        }
+    },
+
+    editarProducto: async (producto) => {
+        const controlador = new AbortController();
+        const timeOut = setTimeout(() => controlador.abort(), 10000);
+
+        try {
+            const respuesta = await fetch(url + "editar_producto.php", {
+                method: "POST",
+                body: producto
+            });
+
+            if (!respuesta.ok) {
+                const error = await respuesta.json();
+                throw error;
+            }
+            return respuesta.json();
+        } catch (error) {
+            if (error.name == "AbortError") {
+                return {ok: false,  mensaje: "Tiempo de espera agotado" };
+            }
+
+            console.log("errrrrrr");
+            console.log(error);
+
+            return {
+                ok: false,
+                mensaje: error.mensaje
+            };
         } finally {
             clearTimeout(timeOut);
         }

@@ -5,6 +5,8 @@ import { dom } from "../componentes/productos_componentes.js";
 export async function renderProductos() {
     // -------------------- carga de categorias ---------------------------
     const selectCategoria = document.querySelector("#select-categoria");
+    const selectCategoriaModal = document.querySelector("#select-modal");
+
     const datos = await data.traerCategorias();
 
     if (datos.status == 500) {
@@ -24,7 +26,15 @@ export async function renderProductos() {
         );
     });
 
+    const opcionesModal = datos.categorias.map((categoria) => {
+        return dom.crearOpcionCategoria(
+            categoria.id_categoria,
+            categoria.nombre,
+        );
+    });
+
     selectCategoria.replaceChildren(...opciones);
+    selectCategoriaModal.replaceChildren(...opcionesModal);
 
     // --------------  carga de productos --------------------------
 
@@ -34,11 +44,11 @@ export async function renderProductos() {
 
     const cardsProductos = productos.map((producto) => {
         return dom.cardProducto(
-            producto.imagen.ruta,
-            producto.precio,
+            producto.id_producto,
             producto.producto,
             producto.descripcion,
-            producto.id_producto,
+            producto.precio,
+            producto.imagen.ruta,
         );
     });
 
@@ -52,15 +62,9 @@ export async function renderProductos() {
         e.preventDefault();
         const producto = new FormData(formulario);
 
-        console.log(producto);
+        const productoInsertado = await data.insertarProducto(producto);
 
-        const respuesta = await data.insertarProducto(producto);
-        //nota: seria mejor idea que el metodo post devuelva
-        //directamente toda la imagen
-        //asi nos evitamos problemas al eliminar
-
-        if (respuesta.status == 200) {
-            // no me sirve por que necesito la imagen xd
+        if (productoInsertado.ok) {
             swal.fire({
                 title: "Tarea exitosa",
                 text: "El empleado fue creado con exito",
@@ -68,10 +72,11 @@ export async function renderProductos() {
             }).then((resultado) => {
                 if (resultado.isConfirmed) {
                     const nuevoProducto = dom.cardProducto(
-                        respuesta.imagen_producto,
-                        producto.get("precio"),
-                        producto.get("nombre"),
-                        producto.get("descripcion"),
+                        productoInsertado.id,
+                        productoInsertado.nombre,
+                        productoInsertado.descripcion,
+                        productoInsertado.precio,
+                        productoInsertado.imagen,
                     );
 
                     contenedorProductos.appendChild(nuevoProducto);
@@ -80,16 +85,15 @@ export async function renderProductos() {
         } else {
             swal.fire({
                 title: "Error",
-                text: respuesta.mensaje,
+                text: productoInsertado.error.mensaje,
                 icon: "error",
             });
         }
     });
 
-    //eventos de los botones
+    //----------eventos de los botones-------------------------
 
     contenedorProductos.addEventListener("click", (e) => {
-        console.log(e.target);
         const boton = e.target;
 
         if (boton.classList.contains("eliminar")) {
@@ -131,5 +135,98 @@ export async function renderProductos() {
                     }
                 });
         }
+    });
+
+    //--------------evento del modal de edicion----------------------
+    //
+    const modalEdicion = document.querySelector("#modal-editar");
+    const modalInstancia = new bootstrap.Modal(modalEdicion);
+
+    const formEditar = document.querySelector("#form-editar");
+
+    modalEdicion.addEventListener("show.bs.modal", async (e) => {
+        const boton = e.relatedTarget;
+        const id = boton.getAttribute("id-producto");
+        formEditar.setAttribute("id-producto", id);
+        //const formEditar = document.querySelector("#form-editar");
+
+        const campos = [
+            "nombre",
+            "descripcion",
+            "precio",
+            "stock",
+            "categoria",
+            "imagen",
+        ];
+        const inputs = {};
+
+        campos.forEach((name) => {
+            inputs[name] = formEditar.querySelector(`[name="${name}"]`);
+        });
+
+        const producto = await data.traerProductoPorId(id);
+
+        console.log(producto);
+
+        inputs.nombre.value = producto.producto;
+        inputs.descripcion.value = producto.descripcion;
+        inputs.precio.value = producto.precio;
+        inputs.stock.value = producto.stock;
+
+        inputs.categoria.childNodes.forEach((opcion) => {
+            if (opcion.value == producto.categoria) {
+                opcion.selected = true;
+            }
+        });
+    });
+
+    formEditar.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const nuevoProducto = new FormData(formEditar);
+        nuevoProducto.append("id", e.target.getAttribute("id-producto"));
+
+        swal.fire({
+            title: "Aviso",
+            text: "¿Esta seguro de que quiere editar el producto?",
+            icon: "warning",
+        }).then(async (respuesta) => {
+            if (respuesta.isConfirmed) {
+                const productoEditado =
+                    await data.editarProducto(nuevoProducto);
+                console.log(productoEditado);
+
+                if (productoEditado.ok) {
+                    swal.fire({
+                        title: "Tarea exitosa",
+                        text: "El producto fue actualizado con exito",
+                        icon: "success",
+                    }).then((resultado) => {
+                        modalInstancia.hide();
+
+                        const cardAntiguo = document.getElementById(
+                            productoEditado.id,
+                        );
+                        const cardNueva = dom.cardProducto(
+                            productoEditado.id,
+                            productoEditado.nombre,
+                            productoEditado.descripcion,
+                            productoEditado.precio,
+                            productoEditado.imagen,
+                        );
+
+                        contenedorProductos.replaceChild(
+                            cardNueva,
+                            cardAntiguo,
+                        );
+                    });
+                } else {
+                    swal.fire({
+                        title: "Error",
+                        text: productoEditado.mensaje,
+                        icon: "error",
+                    });
+                }
+            }
+        });
     });
 }

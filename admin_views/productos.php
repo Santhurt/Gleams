@@ -8,6 +8,7 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/modal.css" rel="stylesheet">
     <link href="../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
 </head>
@@ -185,7 +186,7 @@
                                             </select>
 
                                             <div class="mt-3">
-                                                <label for="" class="label-form">Stock</label>
+                                                <label for="" class="label-form">Imagen</label>
                                                 <input type="file" name="imagen" class="form-control">
                                             </div>
 
@@ -198,6 +199,72 @@
                         </div>
 
 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de edicion-->
+        <div class="modal fade" id="modal-editar" tabindex="-1" aria-labelledby="minimalModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar empleado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-editar">
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Nombre:</label>
+                                <input type="text" name="nombre" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Descripcion:</label>
+                                <textarea class="form-control" name="descripcion"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Precio:</label>
+                                <input type="number" class="form-control" name="precio">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Stock:</label>
+                                <input type="number" class="form-control" name="stock">
+                            </div>
+
+                            <label for="" class="label-form">Categorias</label>
+                            <select class="form-select mb-3" aria-label="Default select example" id="select-modal" name="categoria">
+                                <!--Opciones-->
+                                <option value="">hola mundo</option>
+                            </select>
+
+                            <!-- <label for="" class="label-form">Estado: </label> -->
+                            <!-- <div class="form-check"> -->
+                            <!--     <input class="form-check-input" value="1" type="radio" name="estado" checked> -->
+                            <!--     <label class="form-check-label" for="radioDefault1"> -->
+                            <!--         Disponible -->
+                            <!--     </label> -->
+                            <!-- </div> -->
+                            <!-- <div class="form-check"> -->
+                            <!--     <input class="form-check-input" value="0" type="radio" name="estado"> -->
+                            <!--     <label class="form-check-label" for="radioDefault2"> -->
+                            <!--         No disponible -->
+                            <!--     </label> -->
+                            <!-- </div> -->
+
+                            <div class="mt-3">
+                                <label for="" class="label-form">Nueva imagen</label>
+                                <input type="file" class="form-control" name="imagen">
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="form-editar" class="btn btn-primary">Editar producto</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -239,11 +306,11 @@
                                 Info
                             </button>
                             <button class="btn btn-sm btn-warning" type="button">
-                                <i class="fas fa-pencil-alt"></i> 
+                                <i class="fas fa-pencil-alt"></i>
                                 Editar
                             </button>
                             <button class="btn btn-sm btn-danger" type="button">
-                                <i class="fas fa-trash-alt"></i> 
+                                <i class="fas fa-trash-alt"></i>
                                 Eliminar
                             </button>
                         </div>

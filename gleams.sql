@@ -148,7 +148,7 @@ CREATE TABLE `imagenes_prod` (
   PRIMARY KEY (`id_imagen`),
   KEY `fk_imagenes_productos` (`id_producto`),
   CONSTRAINT `fk_imagenes_productos` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,8 +158,14 @@ CREATE TABLE `imagenes_prod` (
 LOCK TABLES `imagenes_prod` WRITE;
 /*!40000 ALTER TABLE `imagenes_prod` DISABLE KEYS */;
 INSERT INTO `imagenes_prod` VALUES
-(5,'assets/fotos/imagen_20250509_060716000.jpg',13),
-(8,'assets/fotos/imagen_20250509_062551000.jpg',16);
+(24,'assets/fotos/imagen_20250513_055936000.png',33),
+(25,'assets/fotos/imagen_20250513_045447000.png',34),
+(26,'assets/fotos/imagen_20250513_075004000.png',35),
+(27,'assets/fotos/imagen_20250513_060045000.png',36),
+(30,'assets/fotos/imagen_20250513_051001000.png',39),
+(31,'assets/fotos/imagen_20250513_061812000.jpg',40),
+(32,'assets/fotos/imagen_20250513_055822000.png',41),
+(33,'assets/fotos/imagen_20250512_233624000.png',42);
 /*!40000 ALTER TABLE `imagenes_prod` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +216,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id_producto`),
   KEY `fk_productos_categorias` (`id_categoria`),
   CONSTRAINT `fk_productos_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,20 +226,26 @@ CREATE TABLE `productos` (
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES
-(1,'papas','papas buenas',20000,10,1,0,NULL),
-(2,'papas','papas buenas',20000,10,1,0,NULL),
-(3,'Hamburguesa','hamburguesa de carne',10000,5,1,0,NULL),
-(4,'Papaya','Pallaya naranja',15000,20,1,0,NULL),
-(5,'fideos','ahauihiu',288099,222,1,0,NULL),
-(6,'fideos','ahauihiu',288099,222,1,0,1),
-(9,'fideos','ahauihiu',288099,222,1,0,1),
-(10,'carambolas','ahauihiu',288099,222,1,0,1),
-(11,'papu','ahauihiu',288099,222,1,0,1),
-(12,'papu','ahauihiu',288099,222,1,0,1),
-(13,'papu','ahauihiu',288099,222,1,0,1),
-(14,'papu','ahauihiu',288099,222,1,0,1),
-(15,'papu','ahauihiu',288099,222,1,0,1),
-(16,'hola mundo','ahauihiu',288099,222,1,0,1);
+(24,'manzana','ahiuahahui',85885,10,0,0,1),
+(25,'manzana','ahiuahahui',85885,10,0,0,1),
+(26,'cocacola','hola',10000,25,0,0,3),
+(27,'arroz','arroz blando',28800,20,0,0,2),
+(28,'esta es la prueba','definitiva',2829,20,0,0,1),
+(29,'esta es la prueba','definitiva',2829,20,0,0,1),
+(30,'papas fritas','papas de buen sabor',20,40,0,0,2),
+(31,'papas fritas','papas de buen sabor',20,40,0,0,1),
+(32,'papas fritas','papas de buen sabor',20,40,0,0,1),
+(33,'todas van a ser pepsis','pepsi pa',840,20,1,0,2),
+(34,'se editooooooooo','editadooooooooooooo',2000,20,1,0,2),
+(35,'calabaza','calabaza naranja',3000,30,1,0,2),
+(36,'no quiere editarse','ayudaaaaa',500,20,1,0,3),
+(37,'ayuda a otra vez','demasiadas imagenes en la base de datos',12500,20,0,0,2),
+(38,'prueba definitiva','no lo se',50000,10,0,0,1),
+(39,'vamos a probar si hay problemas','ajajioajiojio',2993,8939,1,0,1),
+(40,'que paso ahoraaaaa','ajajioajiojio',2993,8939,1,0,1),
+(41,'esto es una pepsi','ajajioajiojio',1000,8939,1,0,1),
+(42,'prueba desde el ajaz','ajajioajiojio',2993,8939,1,0,1),
+(43,'ya deberia estar bien','ahuahiuhiua',20000,199,0,0,3);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -246,4 +258,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-09  3:17:31
+-- Dump completed on 2025-05-13  2:54:06

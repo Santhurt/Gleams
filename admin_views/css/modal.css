@@ -1,0 +1,20 @@
+.modal-content {
+    background-color: #f8f5fa;
+    border-radius: 10px;
+    border: none;
+    padding: 20px;
+}
+.modal-header {
+    border-bottom: none;
+    font-weight: bold;
+}
+.modal-footer {
+    border-top: none;
+}
+.btn-send {
+    background-color: #1cc5b7;
+    color: white;
+}
+.btn-send:hover {
+    background-color: #17b2a6;
+}
