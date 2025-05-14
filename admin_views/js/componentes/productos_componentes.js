@@ -6,24 +6,35 @@ export const dom = {
 
         return opt;
     },
+    crearTablaProducto: (campo, valor) => {
+        const tr = document.createElement("tr");
+        
+        const th = document.createElement("th");
+        th.textContent = campo;
 
+        const td = document.createElement("td");
+        td.textContent = valor;
+
+        tr.replaceChildren(th, td);
+
+        return tr;
+    },
     cardProducto: (id, nombre, descripcion, precio, imagen) => {
         const divCol = document.createElement("div");
-        divCol.className = "col-md-3";
+        // Uso de clases Bootstrap para responsividad
+        divCol.className = "col-6 col-md-4 col-lg-3 mb-4";
         divCol.id = id;
-
         divCol.innerHTML = `
-        <div class="card p-2" style="width: 18rem;">
+        <div class="card h-100 shadow-sm">
             <div class="position-relative">
-                <img src="../${imagen}" class="card-img-top" alt="Imagen del producto">
-                <span class="position-absolute top-0 start-0 badge bg-primary rounded-pill m-2">$${precio}</span>
-
+                <img src="../${imagen}" class="card-img-top w-100 object-fit-cover" alt="Imagen del producto ${nombre}">
+                <span class="position-absolute top-0 start-0 badge bg-primary rounded-pill m-2">${precio}</span>
                 <div class="position-absolute top-0 end-0 m-2">
                     <div class="dropdown">
-                        <button class="btn btn-sm btn-light rounded-circle" type="button" id="dropdownMenuButton-${Date.now()}" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-sm btn-light rounded-circle" type="button" id="dropdownMenuButton-${id}" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-ellipsis-v"></i>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton-${Date.now()}">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton-${id}">
                             <li><a class="dropdown-item" href="#"><i class="fas fa-heart"></i> Añadir a favoritos</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-share-alt"></i> Compartir producto</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-box"></i> Ver disponibilidad</a></li>
@@ -33,25 +44,23 @@ export const dom = {
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">${nombre}</h5>
-                <p class="card-text">${descripcion}</p>
-                <small class="text-muted mb-3 d-block">Precio: $${precio}</small>
-                <div class="d-flex gap-2 mt-3 justify-content-center">
-                    <button class="btn btn-sm btn-primary" type="button" id-producto="${id}">
+            <div class="card-body d-flex flex-column p-3">
+                <h5 class="card-title text-truncate">${nombre}</h5>
+                <small class="text-muted mb-2 d-block">Precio: ${precio}</small>
+                <div class="d-flex  gap-1 justify-content-between mt-auto">
+                    <button class="btn btn-ssm btn-primary" type="button" id-producto="${id}" data-bs-toggle="modal" data-bs-target="#modal-info" >
                         <i class="fas fa-info-circle"></i> Info
                     </button>
-                    <button class="btn btn-sm btn-warning editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-editar" id-producto="${id}" >
+                    <button class="btn btn-ssm btn-warning editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-editar" id-producto="${id}">
                         <i class="fas fa-pencil-alt"></i> Editar
                     </button>
-                    <button class="btn btn-sm btn-danger eliminar" type="button" id-producto="${id}">
+                    <button class="btn btn-ssm btn-danger eliminar" type="button" id-producto="${id}">
                         <i class="fas fa-trash-alt"></i> Eliminar
                     </button>
                 </div>
             </div>
         </div>
     `;
-
         return divCol;
     },
 };

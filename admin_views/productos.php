@@ -241,20 +241,6 @@
                                 <option value="">hola mundo</option>
                             </select>
 
-                            <!-- <label for="" class="label-form">Estado: </label> -->
-                            <!-- <div class="form-check"> -->
-                            <!--     <input class="form-check-input" value="1" type="radio" name="estado" checked> -->
-                            <!--     <label class="form-check-label" for="radioDefault1"> -->
-                            <!--         Disponible -->
-                            <!--     </label> -->
-                            <!-- </div> -->
-                            <!-- <div class="form-check"> -->
-                            <!--     <input class="form-check-input" value="0" type="radio" name="estado"> -->
-                            <!--     <label class="form-check-label" for="radioDefault2"> -->
-                            <!--         No disponible -->
-                            <!--     </label> -->
-                            <!-- </div> -->
-
                             <div class="mt-3">
                                 <label for="" class="label-form">Nueva imagen</label>
                                 <input type="file" class="form-control" name="imagen">
@@ -270,52 +256,32 @@
             </div>
         </div>
 
-        <div class="row gap-4 mt-4" id="contenedor-productos">
-            <div class="col-md-3">
-                <div class="card p-2" style="width: 18rem;">
-                    <div class="position-relative">
-                        <img src="../assets/fotos/imagen_20250509_060716000.jpg" class="card-img-top" alt="Imagen del producto">
-                        <span class="position-absolute top-0 start-0 badge bg-primary rounded-pill m-2">$199.99</span>
-
-                        <!-- Dropdown en la esquina superior derecha -->
-                        <div class="position-absolute top-0 end-0 m-2">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-light rounded-circle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-heart"></i> Añadir a favoritos</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-share-alt"></i> Compartir producto</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-box"></i> Ver disponibilidad</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-flag"></i> Reportar problema</a></li>
-                                </ul>
-                            </div>
-                        </div>
+        <!-- Modal de informacion-->
+        <div class="modal fade" id="modal-info" tabindex="-1" aria-labelledby="minimalModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">Informacion del producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Nombre del producto</h5>
-                        <p class="card-text">Descripción breve del producto que estás cargando.</p>
-                        <small class="text-muted mb-3 d-block">Precio: $199.99</small>
-
-                        <div class="d-flex gap-2 mt-3 justify-content-center">
-                            <button class="btn btn-sm btn-primary" type="button">
-                                <i class="fas fa-info-circle"></i>
-                                Info
-                            </button>
-                            <button class="btn btn-sm btn-warning" type="button">
-                                <i class="fas fa-pencil-alt"></i>
-                                Editar
-                            </button>
-                            <button class="btn btn-sm btn-danger" type="button">
-                                <i class="fas fa-trash-alt"></i>
-                                Eliminar
-                            </button>
-                        </div>
+                    <div class="modal-body">
+                        <table class="table table-striped table-hover table-borderless align-middle">
+                            <tbody id="tb-info">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="submit" form="form-editar" class="btn btn-primary">Editar producto</button> -->
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="container w-100 ms-0">
+            <div class="row mt-4" id="contenedor-productos">
+
             </div>
         </div>
 

@@ -14,6 +14,10 @@ export async function renderProductos() {
             title: "Error",
             text: datos.mensaje,
             icon: "error",
+            confirmButtonText: "Continuar",
+            customClass: {
+                confirmButton: "btn btn-info",
+            },
         });
 
         return;
@@ -66,9 +70,13 @@ export async function renderProductos() {
 
         if (productoInsertado.ok) {
             swal.fire({
-                title: "Tarea exitosa",
-                text: "El empleado fue creado con exito",
+                title: "Tarea completa",
+                text: "El producto fue creado con exito",
                 icon: "success",
+                confirmButtonText: "Continuar",
+                customClass: {
+                    confirmButton: "btn btn-info",
+                },
             }).then((resultado) => {
                 if (resultado.isConfirmed) {
                     const nuevoProducto = dom.cardProducto(
@@ -87,6 +95,10 @@ export async function renderProductos() {
                 title: "Error",
                 text: productoInsertado.error.mensaje,
                 icon: "error",
+                confirmButtonText: "Continuar",
+                customClass: {
+                    confirmButton: "btn btn-info",
+                },
             });
         }
     });
@@ -103,6 +115,13 @@ export async function renderProductos() {
                 title: "Aviso",
                 text: "¿Esta seguro de que quiere eliminar el producto?",
                 icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: "Cancelar",
+                confirmButtonText: "Aceptar",
+                customClass: {
+                    confirmButton: "btn btn-info",
+                    cancelButton: "btn btn-danger",
+                },
             })
                 .then(async (resultado) => {
                     if (resultado.isConfirmed) {
@@ -123,9 +142,11 @@ export async function renderProductos() {
                             });
                         }
                     }
+
+                    return null;
                 })
                 .then((respuesta) => {
-                    if (respuesta.isConfirmed) {
+                    if (respuesta && respuesta.isConfirmed) {
                         //para eliminar el producto de la pagina
                         const cardProducto = document.getElementById(
                             `${idProducto}`,
@@ -189,6 +210,13 @@ export async function renderProductos() {
             title: "Aviso",
             text: "¿Esta seguro de que quiere editar el producto?",
             icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Aceptar",
+            customClass: {
+                confirmButton: "btn btn-info",
+                cancelButton: "btn btn-danger",
+            },
         }).then(async (respuesta) => {
             if (respuesta.isConfirmed) {
                 const productoEditado =
@@ -200,6 +228,10 @@ export async function renderProductos() {
                         title: "Tarea exitosa",
                         text: "El producto fue actualizado con exito",
                         icon: "success",
+                        confirmButtonText: "Continuar",
+                        customClass: {
+                            confirmButton: "btn btn-info",
+                        },
                     }).then((resultado) => {
                         modalInstancia.hide();
 
@@ -224,9 +256,46 @@ export async function renderProductos() {
                         title: "Error",
                         text: productoEditado.mensaje,
                         icon: "error",
+                        confirmButtonText: "Continuar",
+                        customClass: {
+                            confirmButton: "btn btn-info",
+                        },
                     });
                 }
             }
         });
+    });
+
+    const modalInfo = document.querySelector("#modal-info");
+
+    modalInfo.addEventListener("show.bs.modal", async (e) => {
+        const boton = e.relatedTarget;
+        const id = boton.getAttribute("id-producto");
+        const tbody = document.querySelector("#tb-info");
+
+        const producto = await data.traerProductoPorId(id);
+
+        const respuestaCategorias = await data.traerCategorias();
+        const categorias = respuestaCategorias.categorias;
+
+        console.log(categorias);
+
+        const rows = Object.keys(producto).map((campo) => {
+            if (campo == "categoria") {
+                categorias.forEach((categoria) => {
+                    if (categoria.id_categoria == producto[campo]) {
+                        producto[campo] = categoria.nombre;
+                    }
+                });
+            }
+
+            if(campo == "estado") {
+                producto[campo] = (producto[campo] == 1) ? "Disponible" : "No disponible";
+            }
+
+            return dom.crearTablaProducto(campo, producto[campo]);
+        });
+
+        tbody.replaceChildren(...rows);
     });
 }

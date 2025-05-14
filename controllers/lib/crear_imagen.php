@@ -6,10 +6,10 @@ function insertar_imagen($nombre, $existe_imagen = false, $ruta_antigua = "")
         error_log(ini_get('upload_max_filesize'));
         error_log(ini_get('post_max_size'));
 
-        $tamanoExcedido = ($_FILES[$nombre]["error"] == 1) ? "Tamaño de imagen excede el limite" : null;
+        $tamano_excedido = ($_FILES[$nombre]["error"] == 1) ? "Tamaño de imagen excede el limite" : null;
 
 
-        $error = "Fallo en el archivo: " . $tamanoExcedido;
+        $error = "Fallo en el archivo: " . $tamano_excedido;
 
 
         return [
@@ -20,7 +20,8 @@ function insertar_imagen($nombre, $existe_imagen = false, $ruta_antigua = "")
 
     $permitidos = [
         "image/png" => ".png",
-        "image/jpeg" => ".jpg"
+        "image/jpeg" => ".jpg",
+        "image/webp" => ".webp"
     ];
 
     $tipo_imagen = mime_content_type($_FILES[$nombre]["tmp_name"]);
@@ -51,7 +52,7 @@ function insertar_imagen($nombre, $existe_imagen = false, $ruta_antigua = "")
 
     # esto es para eliminar la imagen
     if ($existe_imagen) {
-        unlink(__DIR__ . "/../../" . $ruta_antigua); 
+        unlink(__DIR__ . "/../../" . $ruta_antigua);
     }
 
     return [
