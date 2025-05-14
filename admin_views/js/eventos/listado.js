@@ -1,5 +1,18 @@
+import { data } from "../ajax/data-productos.js";
+import { dom } from "../componentes/productos_componentes.js";
+
 export async function renderListado() {
-    new DataTable("#example", {
+    //----- carga de productos ------------
+
+    const contenedorProductos = document.querySelector("#contenedor-productos");
+
+    const productos = await data.traerProductos();
+    console.log(productos);
+
+    const tabla = dom.crearTabla(productos);
+    contenedorProductos.appendChild(tabla);
+
+    new DataTable("#productos", {
         responsive: true,
         language: {
             search: "Buscar",
@@ -10,13 +23,5 @@ export async function renderListado() {
             zeroRecords: "No se encontraron resultados",
             emptyTable: "No hay datos disponibles en la tabla",
         },
-    });
-
-    let tooltipTriggerList = [].slice.call(
-        document.querySelectorAll('[data-bs-toggle="tooltip"]'),
-    );
-
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 }

@@ -8,7 +8,7 @@ export const dom = {
     },
     crearTablaProducto: (campo, valor) => {
         const tr = document.createElement("tr");
-        
+
         const th = document.createElement("th");
         th.textContent = campo;
 
@@ -18,6 +18,65 @@ export const dom = {
         tr.replaceChildren(th, td);
 
         return tr;
+    },
+    crearTabla: (productos) => {
+        const table = document.createElement("table");
+        table.id = "productos";
+        table.classList.add(
+            "table",
+            "align-middle",
+            "table-hover",
+            "table-borderless",
+            "table-striped",
+        );
+
+        const tbody = document.createElement("tbody");
+        const campos = [];
+
+        const rows = productos.map((producto) => {
+            const tr = document.createElement("tr");
+
+            const tds = Object.keys(producto).map((campo) => {
+                const td = document.createElement("td");
+                td.textContent = producto[campo];
+
+                if (!campos.includes(campo)) {
+                    campos.push(campo);
+                }
+
+                if (campo == "imagen") {
+                    const td = document.createElement("td");
+                    td.textContent = producto[campo].ruta;
+                    return td;
+                }
+
+                return td;
+            });
+
+            tr.replaceChildren(...tds);
+
+            return tr;
+        });
+
+        tbody.replaceChildren(...rows);
+
+        const thead = document.createElement("thead");
+        const trHead = document.createElement("tr");
+
+        const ths = campos.map((campo) => {
+            const th = document.createElement("th");
+            th.textContent = campo;
+
+            return th;
+        });
+
+        trHead.replaceChildren(...ths);
+        thead.appendChild(trHead);
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+
+        return table;
     },
     cardProducto: (id, nombre, descripcion, precio, imagen) => {
         const divCol = document.createElement("div");
