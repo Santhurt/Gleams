@@ -6,7 +6,7 @@ require_once "../lib/crear_imagen.php";
 use modelos\Producto;
 use lib\Validar;
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Content-Type: application/json");
     $validar = new Validar($_POST);
 
@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         "stock",
     );
 
-    if(count($vacios) > 0) {
+    if (count($vacios) > 0) {
         http_response_code(400);
 
         echo json_encode([
@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if(!$validar->numeros("id", "precio", "stock", "categoria")) {
+    if (!$validar->numeros("id", "precio", "stock", "categoria")) {
         http_response_code(400);
 
         echo json_encode([
@@ -42,21 +42,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $producto = new Producto();
     $producto_antiguo = $producto->traer_productoPorId($_POST["id"]);
 
-    $img_nueva = insertar_imagen("imagen", true, $producto_antiguo["ruta"]);
+    $imagen_nueva_subida = is_uploaded_file($_FILES["imagen"]["tmp_name"]);
+    $img_nueva = [];
 
-    if(empty($img_nueva["ruta"])) {
-        http_response_code(400);
+    if ($imagen_nueva_subida) {
+        error_log("holaaaa");
+        error_log(implode(", ", $_FILES["imagen"]));
+        $img_nueva = insertar_imagen("imagen", true, $producto_antiguo["ruta"]);
 
-        echo json_encode([
-            "status" => 400,
-            "mensaje" => "Error al subir la imagen: " . $img_nueva["error"]
-        ]);
-        exit;
+        if (empty($img_nueva["ruta"])) {
+            http_response_code(400);
+
+            echo json_encode([
+                "status" => 400,
+                "mensaje" => "Error al subir la imagen: " . $img_nueva["error"]
+            ]);
+            exit;
+        }
+    } else {
+        $img_nueva["ruta"] = $producto_antiguo["ruta"];
     }
+
 
     $resultado = $producto->editar_producto($_POST, $img_nueva["ruta"]);
 
-    if($resultado) {
+    if ($resultado) {
         http_response_code(200);
         $_POST["ok"] = true;
         $_POST["imagen"] = $img_nueva["ruta"];
@@ -73,8 +83,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
         exit;
     }
-
-    
 }
-
-?>

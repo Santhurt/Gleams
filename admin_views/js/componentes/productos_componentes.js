@@ -34,6 +34,7 @@ export const dom = {
         const campos = [];
 
         const rows = productos.map((producto) => {
+            delete producto.imagen;
             const tr = document.createElement("tr");
 
             const tds = Object.keys(producto).map((campo) => {
@@ -42,12 +43,6 @@ export const dom = {
 
                 if (!campos.includes(campo)) {
                     campos.push(campo);
-                }
-
-                if (campo == "imagen") {
-                    const td = document.createElement("td");
-                    td.textContent = producto[campo].ruta;
-                    return td;
                 }
 
                 return td;

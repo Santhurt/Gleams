@@ -9,6 +9,7 @@ export async function renderListado() {
     const productos = await data.traerProductos();
     console.log(productos);
 
+
     const tabla = dom.crearTabla(productos);
     contenedorProductos.appendChild(tabla);
 

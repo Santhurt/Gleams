@@ -15,38 +15,50 @@
     <div class="container-fluid poppins-light">
         <div class="login-container fade-in">
             <div class="login-header">
-                <h2 class="playfair-title">Iniciar Sesión</h2>
-                <p class="text-muted">Ingresa a tu cuenta de GLEAMS</p>
+                <h2 class="playfair-title">Registro</h2>
+                <p class="text-muted">Registra tu cuenta</p>
             </div>
             
-            <form>
+            <form id="form-registro">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombre">
+                </div>
+
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" id="email" required>
+                    <input type="email" class="form-control" name="correo">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Telefono</label>
+                    <input type="text" class="form-control" name="telefono">
                 </div>
                 
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password"  required>
+                    <input type="password" class="form-control" name="password">
                 </div>
-                
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="rememberMe">
-                    <label class="form-check-label" for="rememberMe">Recordarme</label>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Confirmar contraseña</label>
+                    <input type="password" class="form-control" name="confirm-password">
                 </div>
-                
-                <div class="forgot-password">
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Direccion completa</label>
+                    <input type="text" class="form-control" name="direccion">
                 </div>
                 
                 <div class="d-grid">
-                    <button type="submit" class="btn boton-fondo-morado">Ingresar</button>
+                    <button type="submit" class="btn boton-fondo-morado">Crear cuenta</button>
                 </div>
                 
                 <div class="register-link">
-                    <p>¿No tienes una cuenta? <a href="./registro.php">Regístrate aquí</a></p>
+                    <p>¿Ya tienes una cuenta? <a href="./login.php">Iniciar sesion</a></p>
                 </div>
             </form>
+
         </div>
     </div>
 
