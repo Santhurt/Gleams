@@ -147,8 +147,28 @@
                             <div class="mb-3">
                                 <label for="" class="label-form">Nombre</label>
                                 <input class="form-control" type="text" name="nombre">
-
                             </div>
+
+                            <div class="mb-3">
+                                <label for="" class="label-form">Telefono</label>
+                                <input class="form-control" type="text" name="nombre">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="" class="label-form">Fecha</label>
+                                <input class="form-control" type="date" name="nombre">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="" class="label-form">Correo</label>
+                                <input class="form-control" type="email" name="nombre">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="" class="label-form">Direccion</label>
+                                <input class="form-control" type="text" name="nombre">
+                            </div>
+
                         </form>
                     </div>
                     <div class="modal-footer">

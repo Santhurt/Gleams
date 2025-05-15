@@ -1,11 +1,12 @@
 <?php
+
 namespace lib;
+
 use DateTime;
 
 class Validar
 {
     private $sanitized = [];
-    private $invalidos = [];
 
     public function __construct($data)
     {
@@ -17,7 +18,7 @@ class Validar
         $campos_vacios = [];
 
         foreach ($campos as $campo) {
-            if (empty($_POST[$campo]) || !isset($_POST[$campo])) {
+            if (empty(trim($_POST[$campo])) || !isset($_POST[$campo])) {
                 $campos_vacios[] = $campo;
             }
         }
@@ -31,20 +32,32 @@ class Validar
             $numero = $_POST[$campo];
 
             if (!is_numeric($numero) || $numero < 0) {
-                $this->invalidos[] = $campo;
                 return false;
             }
-
-            return true;
         }
+
+        return true;
     }
 
     public function email($correo)
     {
         $patron = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
 
-        if(!preg_match($patron, $_POST[$correo])){
+        if (!preg_match($patron, $_POST[$correo])) {
             return false;
+        }
+
+        return true;
+    }
+
+    public function text(...$campos)
+    {
+        $patron = "/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s,.;:¡!¿?-]+$/u";
+
+        foreach ($campos as $campo) {
+            if (!preg_match($patron, $_POST[$campo])) {
+                return false;
+            }
         }
 
         return true;
