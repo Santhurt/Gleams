@@ -59,7 +59,7 @@
 
             <!--Inicio de opciones de usuarios-->
 
-            <a class="sidebar-item">
+            <a class="sidebar-item" href="./usuarios.php">
                 <i class="fas fa-users"></i>
                 <span>Usuarios</span>
             </a>
@@ -267,7 +267,7 @@
                     <div class="modal-body">
                         <table class="table table-striped table-hover table-borderless align-middle">
                             <tbody id="tb-info">
-                                
+
                             </tbody>
                         </table>
                     </div>

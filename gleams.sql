@@ -61,7 +61,7 @@ CREATE TABLE `clientes` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id_cliente`),
   UNIQUE KEY `correo` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,8 +84,44 @@ INSERT INTO `clientes` VALUES
 (13,'papua','1','2025-05-15','help@gmail.com','ahahio',1,'$2y$12$aUMfdvQ.WBXl6QjSP.EhH.jttSCbv0KsL0406C/.av6aYU/3QH5Na'),
 (14,'por favor','3205504030','2025-05-15','me@gmail.com','aaijio',1,'$2y$12$Oh4b3xR.X10pioe9QHaUJOqxSv7mk1DT4dtpO.r/FxzCS01vFdVSO'),
 (15,'ioajio','62688378','2025-05-15','ahora@gmail.com','nose',1,'$2y$12$nWmLAmxihNibP5qPkAasLONaf9uB/KYAua0XPVtGQ7VQYqhMnN4DS'),
-(16,'que paso mijo','123438839','2025-05-15','ccc@gmail.com','aajio',1,'$2y$12$YwbQ3W1xG/FeGcO68EOHiOj/LmpYcYizWvpQS84GEtEIeqOpeuILy');
+(16,'que paso mijo','123438839','2025-05-15','ccc@gmail.com','aajio',1,'$2y$12$YwbQ3W1xG/FeGcO68EOHiOj/LmpYcYizWvpQS84GEtEIeqOpeuILy'),
+(17,'otro usuario','3205502890','2025-05-15','usuario@gmail.com','ajaijiojiojioio',1,'$2y$12$MHBS07p7SwPI9vkyCtS0f.NLUpNRo/evR6MpWqywlr2nrq6BKYVSe'),
+(18,'prueba de rol','3205503040','2025-05-15','rol@gmail.com','dir',0,'$2y$12$hx/u/6qTFATj8zfkHg3jxuVAXuykOD4E11zrMd8GdCRgBWeD6Jtdm'),
+(19,'otro usuario','3205504030','2025-05-15','usuario@hotmail.com','direccion',0,'$2y$12$91xUXAqLUAO1l7qab8z7netGSIwSLnGr.1zuq58O0oe2Z2ZGc8Co.'),
+(20,'pedro','3205052040','2025-05-15','pedro@gmail.com','direccion',1,'$2y$12$hVwCnSxNJnN/.4y0tohLGOdnhveGqtHafPiGfs58Zj86an1m730RS'),
+(21,'caspacho','3205502030','2025-05-15','caspacho@gmail.com','direccion',0,'$2y$12$7M83mzERmXmBR0IhBs9RUOFBiWm/aa9edrVob9qasOfbkY4j92Im2');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clientes_rol`
+--
+
+DROP TABLE IF EXISTS `clientes_rol`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `clientes_rol` (
+  `id_cliente` int(11) NOT NULL,
+  `id_rol` int(11) NOT NULL,
+  PRIMARY KEY (`id_cliente`,`id_rol`),
+  KEY `id_rol` (`id_rol`),
+  CONSTRAINT `clientes_rol_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
+  CONSTRAINT `clientes_rol_ibfk_2` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clientes_rol`
+--
+
+LOCK TABLES `clientes_rol` WRITE;
+/*!40000 ALTER TABLE `clientes_rol` DISABLE KEYS */;
+INSERT INTO `clientes_rol` VALUES
+(18,2),
+(19,2),
+(20,2),
+(21,2);
+/*!40000 ALTER TABLE `clientes_rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -163,7 +199,7 @@ CREATE TABLE `imagenes_prod` (
   PRIMARY KEY (`id_imagen`),
   KEY `fk_imagenes_productos` (`id_producto`),
   CONSTRAINT `fk_imagenes_productos` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +209,8 @@ CREATE TABLE `imagenes_prod` (
 LOCK TABLES `imagenes_prod` WRITE;
 /*!40000 ALTER TABLE `imagenes_prod` DISABLE KEYS */;
 INSERT INTO `imagenes_prod` VALUES
-(43,'assets/fotos/imagen_20250515_020407000.png',52);
+(43,'assets/fotos/imagen_20250515_020407000.png',52),
+(44,'assets/fotos/imagen_20250515_210222000.png',53);
 /*!40000 ALTER TABLE `imagenes_prod` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +261,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id_producto`),
   KEY `fk_productos_categorias` (`id_categoria`),
   CONSTRAINT `fk_productos_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,8 +299,35 @@ INSERT INTO `productos` VALUES
 (49,'ya se edito','ya tengo demasiados productos',20000,25,0,0,2),
 (50,'creemos mas','holaaa',40555,15,0,0,3),
 (51,'fanta','gaseosa',28773,30,0,0,3),
-(52,'ediciooon','ya tengo demasiados productos',2000,20,1,0,2);
+(52,'ediciooon','ya tengo demasiados productos',2000,20,1,0,2),
+(53,'fanta','fanta de gaseosa',4000,20,1,0,3);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `roles` (
+  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
+  `rol` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_rol`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES
+(1,'admin'),
+(2,'cliente');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -275,4 +339,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-15  1:48:11
+-- Dump completed on 2025-05-15 16:23:05

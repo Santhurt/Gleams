@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Administración</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+    <link href="../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -27,12 +29,14 @@
         </div>
 
         <div class="mt-3">
-            <div class="sidebar-item active">
+            <a href="./dashboard.php" class="sidebar-item">
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span>
                 <i class="fas fa-chevron-right ms-auto"></i>
-            </div>
+            </a>
 
+
+            <!--Inicio de opciones de productos-->
 
             <a class="sidebar-item" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
                 <i class="fas fa-th"></i>
@@ -52,12 +56,14 @@
                 </a>
             </div>
 
+            <!--Inicio de opciones de usuarios-->
 
-            <a class="sidebar-item" href="./usuarios.php">
+            <a class="sidebar-item active">
                 <i class="fas fa-users"></i>
                 <span>Usuarios</span>
             </a>
 
+            <!--Inicio de opciones de pedidos-->
 
             <a class="sidebar-item">
                 <i class="fas fa-receipt"></i>
@@ -65,16 +71,20 @@
             </a>
 
 
+            <!--Inicio de opciones de reseñas-->
+
             <a class="sidebar-item">
                 <i class="fas fa-star"></i>
                 <span>Reseñas</span>
             </a>
 
+            <!--Inicio de opciones de reseñas-->
 
             <a class="sidebar-item">
                 <i class="fas fa-search"></i>
                 <span>Consultas</span>
             </a>
+
         </div>
     </div>
 
@@ -90,8 +100,7 @@
                 <div class="d-flex align-items-center ms-auto">
                     <div class="d-flex align-items-center">
                         <div class="dropdown me-3">
-
-                            <button class="btn dropdown-toggle d-flex align-items-center" aria-expanded="false" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            <button class="btn dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
                                 <img src="./img/user.jpg" alt="Profile picture" class="profile-pic me-2">
                                 <span>David Greymaax</span>
                             </button>
@@ -107,7 +116,6 @@
                             </ul>
 
                         </div>
-
                         <button class="btn">
                             <i class="fas fa-power-off"></i>
                         </button>
@@ -126,76 +134,40 @@
             </div>
         </div>
 
-        <!-- Widgets -->
-        <div class="row mb-4 g-4">
-            <div class="col-md-4">
-                <div class="widget-card sales-card">
-                    <div class="mb-3">Usuarios registrados</div>
-                    <h2 class="mb-3">300</h2>
-                    <div>10 usuarios nuevos este mes</div>
-                    <div class="text-end">
-                        <i class="fas fa-chart-line fa-2x opacity-50"></i>
+        <!-- Modal de edicion-->
+        <div class="modal fade" id="modal-editar" tabindex="-1" aria-labelledby="minimalModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-            </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="" class="label-form">Nombre</label>
+                                <input class="form-control" type="text" name="nombre">
 
-            <div class="col-md-4">
-                <div class="widget-card orders-card">
-                    <div class="mb-3">Ventas del mes</div>
-                    <h2 class="mb-3">500</h2>
-                    <div>5 Nuevas este mes</div>
-                    <div class="text-end">
-                        <i class="fas fa-bookmark fa-2x opacity-50"></i>
+                            </div>
+                        </form>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="widget-card visitors-card">
-                    <div class="mb-3">Tota en ventas esta semana</div>
-                    <h2 class="mb-3">$1200000</h2>
-                    <div>Aumento del 5%</div>
-                    <div class="text-end">
-                        <i class="fas fa-heart fa-2x opacity-50"></i>
+                    <div class="modal-footer">
+                        <button type="submit" form="form-editar" class="btn btn-primary">Editar usuario</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Charts -->
-        <div class="row g-4">
-            <div class="col-md-8">
+        <div class="row g-4 mt-3">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-4">
-                            <h5 class="card-title">Pedidos pendientes</h5>
-                            <div>
-                                <span class="badge rounded-pill bg-light text-secondary me-1">
-                                    <span class="me-1" style="color: #A976F8;">●</span> CHN
-                                </span>
-                                <span class="badge rounded-pill bg-light text-secondary me-1">
-                                    <span class="me-1" style="color: #38BFED;">●</span> USA
-                                </span>
-                                <span class="badge rounded-pill bg-light text-secondary">
-                                    <span class="me-1" style="color: #FF9E8A;">●</span> UK
-                                </span>
-                            </div>
+                            <h5 class="card-title">Lista de usuarios</h5>
                         </div>
-                        <div class="chart-container">
-                            <!-- Aquí iría el gráfico -->
-                            <img src="/api/placeholder/700/300" alt="Chart placeholder" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card position-relative">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4">Ventas recientes</h5>
-                        <div class="chart-container">
-                            <!-- Aquí iría el gráfico de pastel -->
-                            <img src="/api/placeholder/300/300" alt="Pie chart placeholder" class="img-fluid">
+                        <div class="chart-container" id="contenedor-usuarios">
                         </div>
                     </div>
                 </div>
@@ -203,8 +175,17 @@
         </div>
     </div>
 
-    <script src="./js/main.js" type="module"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
+    <script src="../node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+
+    <script src="./js/main.js" type="module"></script>
+
+
+
+
+
 </body>
 
 </html>

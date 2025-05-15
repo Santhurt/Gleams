@@ -1,5 +1,7 @@
 <?php
-namespace modelos; 
+
+namespace modelos;
+
 require_once __DIR__ . "/../config/database.php";
 
 use config\Database;
@@ -20,9 +22,103 @@ class Usuario
         return $this->error;
     }
 
-    public function correo_existe($correo) {
+    public function traer_usuarioPorId($id)
+    {
         try {
-            if(!$this->conn) {
+            $usuario_consulta = "select
+                nombre,
+                telefono,
+                rol,
+                fecha_registro as 'fecha de registro',
+                correo,
+                direccion,
+                estado
+            from clientes
+            join clientes_rol on clientes.id_cliente = clientes_rol.id_cliente
+            join roles on clientes_rol.id_rol = roles.id_rol
+            where id_cliente = ?
+            ";
+
+            $resultado = mysqli_execute_query($this->conn, $usuario_consulta, [$id]);
+
+            if (!$resultado) {
+                throw new Exception("Error al traer el usuario");
+            }
+
+            return $resultado->fetch_assoc();
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function eliminar_usuario($id)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $eliminar_consulta = "update clientes set estado = 0 where id_cliente = ?";
+
+            $resultado = mysqli_execute_query($this->conn, $eliminar_consulta, [$id]);
+
+            if (!$resultado) {
+                throw new Exception("Error al deshabilitar el usuario");
+            }
+
+            return $resultado;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function traer_usuarios()
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $usuarios_consulta = "select
+                clientes.id_cliente as 'ID Usuario',
+                nombre,
+                telefono,
+                rol,
+                fecha_registro as 'fecha de registro',
+                correo,
+                direccion,
+                estado
+            from clientes
+            join clientes_rol on clientes.id_cliente = clientes_rol.id_cliente
+            join roles on clientes_rol.id_rol = roles.id_rol
+            where estado = 1
+            ";
+
+            $resultado = mysqli_execute_query($this->conn, $usuarios_consulta);
+
+            if (!$resultado) {
+                throw new Exception("Error al traer los usuarios");
+            }
+
+            return $resultado;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function correo_existe($correo)
+    {
+        try {
+            if (!$this->conn) {
                 throw new Exception("No hay conexion con la base de datos");
             }
 
@@ -30,7 +126,7 @@ class Usuario
 
             $resultado = mysqli_execute_query($this->conn, $consulta, [$correo]);
 
-            if($resultado->fetch_assoc()) {
+            if ($resultado->fetch_assoc()) {
                 return true;
             }
 
@@ -49,6 +145,8 @@ class Usuario
         $fecha = date("Y-m-d");
 
         try {
+            mysqli_begin_transaction($this->conn);
+
             if (!$this->conn) {
                 throw new Exception("No hay conexion con la base de datos");
             }
@@ -75,18 +173,29 @@ class Usuario
                 $fecha
             ]);
 
-            $nueva_id = mysqli_insert_id($this->conn);
-
-            if(!$resultado) {
+            if (!$resultado) {
                 throw new Exception("No se puedo insertar el producto");
             }
+
+            $nueva_id = mysqli_insert_id($this->conn);
+
+            $rol_consulta = "insert into clientes_rol(id_cliente, id_rol) values (?, ?)";
+            $rol_resultado = mysqli_execute_query($this->conn, $rol_consulta, [$nueva_id, 2]);
+
+            if (!$rol_resultado) {
+                throw new Exception("No se pudo asignar el rol");
+            }
+
+
+
+            mysqli_commit($this->conn);
 
             return [
                 "usuario" => $resultado,
                 "nueva_id" => $nueva_id
             ];
-
         } catch (Exception $e) {
+            mysqli_rollback($this->conn);
             error_log($e->getMessage());
             $this->error = $e->getMessage();
 

@@ -1,5 +1,6 @@
 import { data } from "../ajax/data-productos.js";
 import { dom } from "../componentes/productos_componentes.js";
+import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 
 export async function renderListado() {
     //----- carga de productos ------------
@@ -9,7 +10,16 @@ export async function renderListado() {
     const productos = await data.traerProductos();
     console.log(productos);
 
+    if (productos.status == 500) {
+        swal.fire({
+            title: "Error",
+            text: productos.mensaje,
+            icon: "error",
+            confirmButtonText: "Continuar",
+        });
 
+        return;
+    }
     const tabla = dom.crearTabla(productos);
     contenedorProductos.appendChild(tabla);
 

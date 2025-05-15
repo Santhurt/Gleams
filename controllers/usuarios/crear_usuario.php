@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
+
     if (!$validar->email("correo")) {
         http_response_code(400);
 
@@ -64,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if($_POST["password"] < 8) {
+    if (strlen($_POST["password"]) < 8) {
         http_response_code(400);
         echo json_encode([
             "mensaje" => "La contraseña debe ser minimo de 8 caracteres"
@@ -76,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = new Usuario();
     $_POST["password"] = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    if($usuario->correo_existe($_POST["correo"])){
+    if ($usuario->correo_existe($_POST["correo"])) {
         http_response_code(400);
 
         echo json_encode([

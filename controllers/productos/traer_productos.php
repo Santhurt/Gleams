@@ -11,15 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $imagen = [];
 
     if ($resultado) {
-        while($fila = $resultado["imagenes"]->fetch_assoc()) {
+        while ($fila = $resultado["imagenes"]->fetch_assoc()) {
             $id_producto = $fila["id_producto"];
             $imagen[$id_producto] = $fila;
+        }
 
-        } 
-
-        while($fila = $resultado["productos"]->fetch_assoc()) {
+        while ($fila = $resultado["productos"]->fetch_assoc()) {
             $id_producto = $fila["id_producto"];
-            $fila["imagen"] = $imagen[$id_producto]?? "";
+            $fila["imagen"] = $imagen[$id_producto] ?? "";
             $productos[] = $fila;
         }
 
@@ -31,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         http_response_code(500);
         echo json_encode([
             "status" => 500,
-            "mensaje" => "Error al traer los productos" . $producto->get_error()
+            "mensaje" => "Error al traer los productos: " . $producto->get_error()
         ]);
         exit;
     }

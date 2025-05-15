@@ -73,6 +73,7 @@ export const dom = {
 
         return table;
     },
+
     cardProducto: (id, nombre, descripcion, precio, imagen) => {
         const divCol = document.createElement("div");
         // Uso de clases Bootstrap para responsividad

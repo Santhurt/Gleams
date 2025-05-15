@@ -133,12 +133,20 @@ export async function renderProductos() {
                                 title: "Tarea completa",
                                 text: respuesta.mensaje,
                                 icon: "success",
+                                confirmButtonText: "Continuar",
+                                customClass: {
+                                    confirmButton: "btn btn-info",
+                                },
                             });
                         } else {
                             return swal.fire({
                                 title: "Error",
                                 text: respuesta.mensaje,
                                 icon: "error",
+                                confirmButtonText: "Continuar",
+                                customClass: {
+                                    confirmButton: "btn btn-info",
+                                },
                             });
                         }
                     }
@@ -289,8 +297,9 @@ export async function renderProductos() {
                 });
             }
 
-            if(campo == "estado") {
-                producto[campo] = (producto[campo] == 1) ? "Disponible" : "No disponible";
+            if (campo == "estado") {
+                producto[campo] =
+                    producto[campo] == 1 ? "Disponible" : "No disponible";
             }
 
             return dom.crearTablaProducto(campo, producto[campo]);
