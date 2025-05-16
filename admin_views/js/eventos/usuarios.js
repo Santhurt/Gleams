@@ -157,12 +157,14 @@ export async function renderUsuarios() {
                         customClass: {
                             confirmButton: "btn btn-info",
                         },
-                    }).then(()=>{
+                    }).then(() => {
                         modalInstancia.hide();
-                        const usuario = respuesta.usuarioEditado
+                        const usuario = respuesta.usuarioEditado;
                         console.log(usuario);
 
-                        const tr = document.querySelector(`#usuario-${usuario.id}`);
+                        const tr = document.querySelector(
+                            `#usuario-${usuario.id}`,
+                        );
                         const nuevaTr = dom.crearRow(usuario);
 
                         tbodyUsuarios.replaceChild(nuevaTr, tr);

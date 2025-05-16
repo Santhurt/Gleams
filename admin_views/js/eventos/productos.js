@@ -244,7 +244,7 @@ export async function renderProductos() {
                         customClass: {
                             confirmButton: "btn btn-info",
                         },
-                    }).then((resultado) => {
+                    }).then(() => {
                         modalInstancia.hide();
 
                         const cardAntiguo = document.getElementById(

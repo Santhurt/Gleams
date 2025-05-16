@@ -22,6 +22,44 @@ class Usuario
         return $this->error;
     }
 
+    public function verificar_usuario($correo, $password)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            if (!$this->correo_existe($correo)) {
+                throw new Exception("El correo no esta registrado");
+            }
+
+            $traer_pass = "select password from clientes where correo = ?";
+
+            $resultado_traer_pass = mysqli_execute_query($this->conn, $traer_pass, [$correo]);
+
+            if (!$resultado_traer_pass) {
+                throw new Exception("Error al procesar la solicitud");
+            }
+
+            $password_hash = $resultado_traer_pass->fetch_assoc();
+
+            if (!$password_hash) {
+                throw new Exception("Usuario no encontrado");
+            }
+
+            if (!password_verify($password, $password_hash["password"])) {
+                throw new Exception("Datos incorrectos");
+            }
+
+            return true;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
     public function editar_usuario($usuario = [])
     {
         try {
@@ -62,10 +100,10 @@ class Usuario
                 $usuario["id"]
             ]);
 
-            if(!$rol_resultado) {
+            if (!$rol_resultado) {
                 throw new Exception("Error al actualizar el rol");
             }
-            
+
 
             mysqli_commit($this->conn);
 
@@ -96,6 +134,43 @@ class Usuario
             }
 
             return $resultado;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function traer_usuarioPorCorreo($correo)
+    {
+        try {
+
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $usuario_consulta = "select
+                nombre,
+                telefono,
+                rol,
+                fecha_registro as 'fecha de registro',
+                correo,
+                direccion,
+                estado
+            from clientes
+            join clientes_rol on clientes.id_cliente = clientes_rol.id_cliente
+            join roles on clientes_rol.id_rol = roles.id_rol
+            where clientes.id_cliente = ?
+            ";
+
+            $resultado = mysqli_execute_query($this->conn, $usuario_consulta, [$correo]);
+
+            if (!$resultado) {
+                throw new Exception("Error al traer el usuario");
+            }
+
+            return $resultado->fetch_assoc();
         } catch (Exception $e) {
             error_log($e->getMessage());
             $this->error = $e->getMessage();

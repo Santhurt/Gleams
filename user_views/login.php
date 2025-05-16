@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +15,7 @@
     <link rel="stylesheet" href="./css/transiciones.css">
     <link rel="stylesheet" href="./css/fonts.css">
 </head>
+
 <body>
     <div class="container-fluid poppins-light">
         <div class="login-container fade-in">
@@ -18,31 +23,39 @@
                 <h2 class="playfair-title">Iniciar Sesión</h2>
                 <p class="text-muted">Ingresa a tu cuenta de GLEAMS</p>
             </div>
-            
-            <form>
+
+            <form method="POST" action="../controllers/auth/login.php">
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" id="email" required>
+                    <input type="email" name="correo" class="form-control" id="email" required>
                 </div>
-                
+
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password"  required>
+                    <input type="password" name="password" class="form-control" id="password">
                 </div>
-                
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="rememberMe">
-                    <label class="form-check-label" for="rememberMe">Recordarme</label>
-                </div>
-                
+
+                <!-- <div class="mb-3 form-check"> -->
+                <!--     <input type="checkbox" class="form-check-input" id="rememberMe"> -->
+                <!--     <label class="form-check-label" for="rememberMe">Recordarme</label> -->
+                <!-- </div> -->
+
+                <?php if (!empty($_SESSION["err_login"]) && isset($_SESSION["err_login"])): ?>
+                    <div class="alert alert-danger" role="alert">
+                        Error: <?php echo $_SESSION["err_login"]; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php session_unset(); ?>
+
                 <div class="forgot-password">
                     <a href="#">¿Olvidaste tu contraseña?</a>
                 </div>
-                
+
                 <div class="d-grid">
                     <button type="submit" class="btn boton-fondo-morado">Ingresar</button>
                 </div>
-                
+
                 <div class="register-link">
                     <p>¿No tienes una cuenta? <a href="./registro.php">Regístrate aquí</a></p>
                 </div>
@@ -53,4 +66,5 @@
     <script src="./js/main.js" type="module"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
