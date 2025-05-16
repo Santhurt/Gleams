@@ -28,11 +28,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    if (!$validar->numeros("precio", "stock", "descuento")) {
+    if (!$validar->numeros("precio", "stock")) {
         http_response_code(400);
         echo json_encode([
             "status" => 400,
             "mensaje" => "Error al validar los numeros"
+        ]);
+        exit;
+    }
+
+    if(!$validar->text("nombre", "descripcion")) {
+        http_response_code(400);
+
+        echo json_encode([
+            "status" => 400,
+            "mensaje" => "No se pueden ingresar caracteres especiales"
         ]);
         exit;
     }

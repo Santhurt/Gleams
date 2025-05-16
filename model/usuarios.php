@@ -22,9 +22,96 @@ class Usuario
         return $this->error;
     }
 
+    public function editar_usuario($usuario = [])
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            mysqli_begin_transaction($this->conn);
+
+            $usuario_editar = "UPDATE clientes
+                SET nombre = ?,
+                    telefono = ?,
+                    fecha_registro = ?,
+                    correo = ?,
+                    direccion = ?
+                WHERE id_cliente = ?";
+
+            $resultado = mysqli_execute_query($this->conn, $usuario_editar, [
+                $usuario["nombre"],
+                $usuario["telefono"],
+                $usuario["fecha"],
+                $usuario["correo"],
+                $usuario["direccion"],
+                $usuario["id"]
+            ]);
+
+            if (!$resultado) {
+                throw new Exception("Error al actualizar el usuario");
+            }
+
+            $actualizar_rol = "UPDATE clientes_rol
+                SET id_rol = ?
+                WHERE id_cliente = ?";
+
+
+            $rol_resultado = mysqli_execute_query($this->conn, $actualizar_rol, [
+                $usuario["roles"],
+                $usuario["id"]
+            ]);
+
+            if(!$rol_resultado) {
+                throw new Exception("Error al actualizar el rol");
+            }
+            
+
+            mysqli_commit($this->conn);
+
+            return $resultado;
+        } catch (Exception $e) {
+            mysqli_rollback($this->conn);
+
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function traer_roles()
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $roles_consulta = "select * from roles";
+
+            $resultado = mysqli_execute_query($this->conn, $roles_consulta);
+
+            if (!$resultado) {
+                throw new Exception("Error al traer las roles");
+            }
+
+            return $resultado;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
     public function traer_usuarioPorId($id)
     {
         try {
+
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
             $usuario_consulta = "select
                 nombre,
                 telefono,
@@ -36,7 +123,7 @@ class Usuario
             from clientes
             join clientes_rol on clientes.id_cliente = clientes_rol.id_cliente
             join roles on clientes_rol.id_rol = roles.id_rol
-            where id_cliente = ?
+            where clientes.id_cliente = ?
             ";
 
             $resultado = mysqli_execute_query($this->conn, $usuario_consulta, [$id]);

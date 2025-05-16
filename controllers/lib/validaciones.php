@@ -31,7 +31,7 @@ class Validar
         foreach ($campos as $campo) {
             $numero = $_POST[$campo];
 
-            if (!is_numeric($numero) || $numero < 0) {
+            if (!is_numeric($numero) || $numero <= 0) {
                 return false;
             }
         }
@@ -52,7 +52,7 @@ class Validar
 
     public function text(...$campos)
     {
-        $patron = "/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s,.;:¡!¿?-]+$/u";
+        $patron = "/^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s,.;:¡!¿?-]+$/u";
 
         foreach ($campos as $campo) {
             if (!preg_match($patron, $_POST[$campo])) {
@@ -70,11 +70,4 @@ class Validar
         return ($d && $d->format('Y-m-d') === $date) ? $date : false;
     }
 
-
-    public function sanitize_strings(...$campos)
-    {
-        foreach ($campos as $campo) {
-            $this->sanitized[$campo] = htmlspecialchars(trim($_POST[$campo]));
-        }
-    }
 }

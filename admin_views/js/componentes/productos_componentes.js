@@ -102,15 +102,15 @@ export const dom = {
             <div class="card-body d-flex flex-column p-3">
                 <h5 class="card-title text-truncate">${nombre}</h5>
                 <small class="text-muted mb-2 d-block">Precio: ${precio}</small>
-                <div class="d-flex  gap-1 justify-content-between mt-auto">
-                    <button class="btn btn-ssm btn-primary" type="button" id-producto="${id}" data-bs-toggle="modal" data-bs-target="#modal-info" >
-                        <i class="fas fa-info-circle"></i> Info
+                <div class="btn-group mt-auto">
+                    <button class="btn btn-sm btn-primary" type="button" id-producto="${id}" data-bs-toggle="modal" data-bs-target="#modal-info" >
+                        <i class="fas fa-info-circle"></i> 
                     </button>
-                    <button class="btn btn-ssm btn-warning editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-editar" id-producto="${id}">
-                        <i class="fas fa-pencil-alt"></i> Editar
+                    <button class="btn btn-sm btn-warning editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-editar" id-producto="${id}">
+                        <i class="fas fa-pencil-alt" ></i> 
                     </button>
-                    <button class="btn btn-ssm btn-danger eliminar" type="button" id-producto="${id}">
-                        <i class="fas fa-trash-alt"></i> Eliminar
+                    <button class="btn btn-sm btn-danger eliminar" type="button" id-producto="${id}">
+                        <i class="fas fa-trash-alt eliminar" id-producto="${id}"></i> 
                     </button>
                 </div>
             </div>

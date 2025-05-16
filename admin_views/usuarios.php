@@ -143,7 +143,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="form-editar">
                             <div class="mb-3">
                                 <label for="" class="label-form">Nombre</label>
                                 <input class="form-control" type="text" name="nombre">
@@ -151,29 +151,35 @@
 
                             <div class="mb-3">
                                 <label for="" class="label-form">Telefono</label>
-                                <input class="form-control" type="text" name="nombre">
+                                <input class="form-control" type="text" name="telefono">
                             </div>
+
+
+                            <select class="form-select mb-3" name="roles" id="select-roles" aria-label="Default select example">
+                                <!--Opciones-->
+                            </select>
 
                             <div class="mb-3">
                                 <label for="" class="label-form">Fecha</label>
-                                <input class="form-control" type="date" name="nombre">
+                                <input class="form-control" type="date" name="fecha">
                             </div>
+
 
                             <div class="mb-3">
                                 <label for="" class="label-form">Correo</label>
-                                <input class="form-control" type="email" name="nombre">
+                                <input class="form-control" type="email" name="correo">
                             </div>
 
                             <div class="mb-3">
                                 <label for="" class="label-form">Direccion</label>
-                                <input class="form-control" type="text" name="nombre">
+                                <input class="form-control" type="text" name="direccion">
                             </div>
 
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" form="form-editar" class="btn btn-primary">Editar usuario</button>
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>

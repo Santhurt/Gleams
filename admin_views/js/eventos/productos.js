@@ -107,6 +107,8 @@ export async function renderProductos() {
 
     contenedorProductos.addEventListener("click", (e) => {
         const boton = e.target;
+        console.log("click activado")
+        console.log(e.target);
 
         if (boton.classList.contains("eliminar")) {
             const idProducto = boton.getAttribute("id-producto");
@@ -130,8 +132,7 @@ export async function renderProductos() {
 
                         if (respuesta.status == 200) {
                             return swal.fire({
-                                title: "Tarea completa",
-                                text: respuesta.mensaje,
+                                title: "Producto eliminado",
                                 icon: "success",
                                 confirmButtonText: "Continuar",
                                 customClass: {
@@ -179,6 +180,7 @@ export async function renderProductos() {
         formEditar.setAttribute("id-producto", id);
         //const formEditar = document.querySelector("#form-editar");
 
+        //para cargar los inputs
         const campos = [
             "nombre",
             "descripcion",
@@ -189,8 +191,8 @@ export async function renderProductos() {
         ];
         const inputs = {};
 
-        campos.forEach((name) => {
-            inputs[name] = formEditar.querySelector(`[name="${name}"]`);
+        campos.forEach((campo) => {
+            inputs[campo] = formEditar.querySelector(`[name="${campo}"]`);
         });
 
         const producto = await data.traerProductoPorId(id);
@@ -208,6 +210,9 @@ export async function renderProductos() {
             }
         });
     });
+
+
+    // form de editar
 
     formEditar.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -233,8 +238,7 @@ export async function renderProductos() {
 
                 if (productoEditado.ok) {
                     swal.fire({
-                        title: "Tarea exitosa",
-                        text: "El producto fue actualizado con exito",
+                        title: "Producto editado",
                         icon: "success",
                         confirmButtonText: "Continuar",
                         customClass: {
@@ -273,6 +277,8 @@ export async function renderProductos() {
             }
         });
     });
+
+    // modal de informacion
 
     const modalInfo = document.querySelector("#modal-info");
 
