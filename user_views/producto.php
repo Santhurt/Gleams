@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +11,8 @@
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/transiciones.css" rel="stylesheet">
     <link href="./css/fonts.css" rel="stylesheet">
+
+    <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
     <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
@@ -42,7 +45,7 @@
                     <!-- Menú de navegación -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Inicio</a>
+                            <a class="nav-link poppins-light" href="./shop.php">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="#">Colecciones</a>
@@ -59,12 +62,21 @@
                     </ul>
 
                     <!-- Botones de autenticación y carrito -->
-                    <div class="d-flex align-items-center justify-content-center">
-                        <a href="#" class="text-dark position-relative me-4" data-bs-toggle="modal" data-bs-target="#rightModal">
+                    <div class="d-flex align-items-center gap-3 justify-content-center">
+                        <a href="#" class="text-dark position-relative" data-bs-toggle="modal" data-bs-target="#rightModal">
                             <i class="fas fa-shopping-bag"></i>
                         </a>
-                        <button type="button" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</button>
-                        <button type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</button>
+
+                        <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
+                            <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesion</a>
+                            <span class="me-2">
+                                <i class="fas fa-user"></i>
+                                <?php echo htmlspecialchars($_SESSION["usuario"] ?? 'Usuario'); ?>
+                            </span>
+                        <?php else: ?>
+                            <a href="./login.php" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</a>
+                            <a href="./registro.php" type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -127,18 +139,19 @@
         </div>
     </div>
     <main class="fondo">
+        <p hidden id="producto-hidden" id-producto="<?php echo $_GET['id'] ?? 0; ?>"></p>
         <div class="container mb-5">
             <div class="row">
                 <div class="col-lg-6 fade-in">
                     <div class="img-crop-card">
-                        <img src="./img/accesorio.webp" class="img-fluid" alt="Set de 3 Pines Fauna Tropical">
+                        <img src="" id="imagen" class="img-fluid" alt="Set de 3 Pines Fauna Tropical">
                     </div>
                 </div>
                 <div class="col-lg-6 fade-in">
-                    <h2 class="mb-3 mt-3 playfair-title">Set de 3 Pines Fauna Tropical</h2>
+                    <h2 class="mb-3 mt-3 playfair-title" id="titulo">Set de 3 Pines Fauna Tropical</h2>
 
                     <div class="price-container mb-3">
-                        <h3 class="poppins-light">$49.900</h3>
+                        <h3 class="poppins-light" id="precio">$49.900</h3>
                         <p class="text-muted small">Impuesto incluido. Los gastos de envío se calculan en la pantalla de pagos.</p>
                     </div>
 
@@ -169,7 +182,7 @@
                             </h2>
                             <div id="descripcion" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    <p class="text-secondary poppins-light">Descripción detallada del producto.</p>
+                                    <p class="text-secondary poppins-light" id="descripcion-texto">Descripción detallada del producto.</p>
                                 </div>
                             </div>
                         </div>
