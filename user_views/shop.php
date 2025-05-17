@@ -266,120 +266,15 @@
 
         <!-- Products Grid -->
         <div class="container mb-5">
-            <div class="row">
+            <div class="row" id="contenedor-productos">
                 <!-- Product 1 -->
                 <div class="col-6 col-md-4 col-lg-3 fade-in">
                     <div class="product-card">
                         <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Anillos</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Anillos</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Anillos</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Anillos</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
+                                <h4 class="product-title playfair-title">Aretes Luna</h4>
+                                <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>

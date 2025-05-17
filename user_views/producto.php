@@ -175,19 +175,6 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#materiales">
-                                    MATERIALES
-                                </button>
-                            </h2>
-                            <div id="materiales" class="accordion-collapse collapse">
-                                <div class="accordion-body">
-                                    <p class="text-secondary poppins-light">Información sobre los materiales utilizados.</p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
                                 <button class="accordion-button collapsed poppins-light text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#cuidado">
                                     CUIDADO Y GARANTÍA
                                 </button>
