@@ -1,4 +1,15 @@
 <?php
+session_start();
+
+if(!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] !== "admin") {
+    http_response_code(401);
+    echo json_encode([
+        "status" => 401,
+        "mensaje" => "Acceso denegado"
+    ]);
+    exit;
+}
+
 require_once __DIR__ . "/../../model/usuarios.php";
 require_once  __DIR__ . "/../lib/validaciones.php";
 
@@ -70,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correos_iguales = true;
 
     if ($_POST["correo"] != $resultado_usuario["correo"]) {
-        if ($usuario->correo_existe($_POST["correo"])) {
+        if ($usuario->verificar_correo($_POST["correo"])) {
             http_response_code(400);
 
             echo json_encode([

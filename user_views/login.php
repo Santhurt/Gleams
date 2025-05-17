@@ -46,7 +46,7 @@ session_start();
                     </div>
                 <?php endif; ?>
 
-                <?php session_unset(); ?>
+                <?php  unset($_SESSION["err_login"]); ?>
 
                 <div class="forgot-password">
                     <a href="#">¿Olvidaste tu contraseña?</a>

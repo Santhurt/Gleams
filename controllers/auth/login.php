@@ -9,6 +9,25 @@ require_once __DIR__ . "/../../model/usuarios.php";
 use modelos\Usuario;
 use lib\Validar;
 
+if (!isset($_SESSION["intentos_login"])) {
+    $_SESSION["intentos_login"] = 0;
+    $_SESSION["tiempo_ultimo_intento"] = time();
+} else {
+    $min_5 = 300;
+
+    if ((time() - $_SESSION["tiempo_ultimo_intento"]) > $min_5) {
+        $_SESSION["intentos_login"] = 0;
+        $_SESSION["tiempo_ultimo_intento"] = time();
+    }
+
+    if($_SESSION["intentos_login"] > 5) {
+        $_SESSION["err_login"] = "Demasiados intentos, intentelo mas tarde";
+        header("Location: {$ruta}");
+
+        exit;
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $validar = new Validar($_POST);
     $vacios = $validar->requeridos("correo", "password");
@@ -44,23 +63,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST["password"]);
 
     $usuario = new Usuario();
+    $_SESSION["intentos_login"]++;
+    $_SESSION["tiempo_ultimo_intento"] = time();
 
     if ($usuario->verificar_usuario($correo, $password)) {
+        $_SESSION["intentos_login"] = 0;
         $res_usuario = $usuario->traer_usuarioPorCorreo($correo);
-        error_log("entro condicional");
 
-        if ($res_usuario["rol"] = "cliente") {
-            $ruta_shop = "/user_views/shop.php";
+        session_regenerate_id(true);
 
-            $_SESSION["correo"] = $correo;
-            $_SESSION["password"] = $password;
+        $_SESSION["usuario"] = $res_usuario["nombre"];
+        $_SESSION["correo"] = $correo;
+        $_SESSION["rol"] = $res_usuario["rol"];
 
-            header("Location: {$ruta_shop}");
-            exit;
-        }
+        $ruta_destino = ($res_usuario["rol"] == "admin") ? "/admin_views/dashboard.php" : "/user_views/shop.php";
+
+        header("Location: {$ruta_destino}");
+        exit;
     } else {
         $_SESSION["err_login"] = $usuario->get_error();
-        error_log("entro else");
         header("Location: {$ruta}");
         exit;
     }

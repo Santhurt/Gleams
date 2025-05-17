@@ -8,7 +8,7 @@ export async function renderUsuarios() {
     const usuarios = await data.traerUsuarios();
     console.log(usuarios);
 
-    if (usuarios.status == 500) {
+    if (usuarios.status == 500 || usuarios.status == 401) {
         swal.fire({
             title: "Error",
             text: usuarios.mensaje,

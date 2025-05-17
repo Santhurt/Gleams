@@ -29,7 +29,7 @@ class Usuario
                 throw new Exception("No hay conexion con la base de datos");
             }
 
-            if (!$this->correo_existe($correo)) {
+            if (!$this->verificar_correo($correo)) {
                 throw new Exception("El correo no esta registrado");
             }
 
@@ -161,7 +161,7 @@ class Usuario
             from clientes
             join clientes_rol on clientes.id_cliente = clientes_rol.id_cliente
             join roles on clientes_rol.id_rol = roles.id_rol
-            where clientes.id_cliente = ?
+            where clientes.correo = ?
             ";
 
             $resultado = mysqli_execute_query($this->conn, $usuario_consulta, [$correo]);
@@ -277,7 +277,7 @@ class Usuario
         }
     }
 
-    public function correo_existe($correo)
+    public function verificar_correo($correo)
     {
         try {
             if (!$this->conn) {
@@ -297,7 +297,9 @@ class Usuario
             error_log($e->getMessage());
             $this->error = $e->getMessage();
 
-            return true;
+            return [
+                "error_consulta" => true,
+            ];
         }
     }
 

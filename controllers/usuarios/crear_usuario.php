@@ -88,11 +88,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = new Usuario();
     $_POST["password"] = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    if ($usuario->correo_existe($_POST["correo"])) {
+    $validacion_correo = $usuario->verificar_correo($_POST["correo"]);
+    if ($validacion_correo && !isset($validacion_correo["error_consulta"])) {
         http_response_code(400);
 
         echo json_encode([
             "mensaje" => "El correo electronico ya esta en uso"
+        ]);
+        exit;
+        # Cuanto desearia que el hp inteliphense tuviera pa renombrar
+    } else if(isset($validacion_correo["error_consulta"])) {
+        http_response_code(400);
+
+        echo json_encode([
+            "mensaje" => "Error: " . $usuario->get_error()
         ]);
         exit;
     }

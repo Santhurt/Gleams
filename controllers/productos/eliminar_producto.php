@@ -1,4 +1,15 @@
 <?php
+session_start();
+
+if(!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] !== "admin") {
+    http_response_code(401);
+    echo json_encode([
+        "status" => 401,
+        "mensaje" => "Acceso denegado"
+    ]);
+    exit;
+}
+
 require_once __DIR__ . "/../../model/productos.php";
 
 use modelos\Producto;
