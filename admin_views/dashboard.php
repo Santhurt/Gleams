@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] !== "admin") {
+    header("Location: /user_views/login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,8 +29,10 @@
         <div class="user-info d-flex align-items-center p-3 border-bottom">
             <img src="./img/user.jpg" alt="Profile picture" class="profile-pic me-3">
             <div>
-                <div class="fw-bold">David Grey</div>
-                <div class="text-muted small">Administrador</div>
+                <?php if (isset($_SESSION["usuario"])): ?>
+                    <div class="fw-bold"><?php echo htmlspecialchars($_SESSION["usuario"] ?? "usuario"); ?></div>
+                    <div class="text-muted small">Administrador</div>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -30,16 +40,30 @@
             <div class="sidebar-item active">
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span>
+                <i class="fas fa-chevron-right ms-auto"></i>
             </div>
 
 
-            <a class="sidebar-item" href="./listado.php">
+            <a class="sidebar-item" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
                 <i class="fas fa-th"></i>
                 <span>Productos</span>
+                <i class="fas fa-chevron-right ms-auto"></i>
             </a>
 
+            <div class="collapse" id="productos-options">
+                <a class="d-flex ms-3 sidebar-item align-items-center" href="./listado.php">
+                    <i class="fa fa-list"></i>
+                    Listar
+                </a>
 
-            <a class="sidebar-item">
+                <a class="d-flex ms-3 sidebar-item align-items-center" href="./productos.php">
+                    <i class="fas fa-plus"></i>
+                    Gestionar
+                </a>
+            </div>
+
+
+            <a class="sidebar-item" href="./usuarios.php">
                 <i class="fas fa-users"></i>
                 <span>Usuarios</span>
             </a>
@@ -79,7 +103,9 @@
 
                             <button class="btn dropdown-toggle d-flex align-items-center" aria-expanded="false" type="button" id="userDropdown" data-bs-toggle="dropdown">
                                 <img src="./img/user.jpg" alt="Profile picture" class="profile-pic me-2">
-                                <span>David Greymaax</span>
+                                <?php if (isset($_SESSION["usuario"])): ?>
+                                    <span><?php echo htmlspecialchars($_SESSION["usuario"] ?? "usuario") ?></span>
+                                <?php endif; ?>
                             </button>
 
                             <ul class="dropdown-menu">
@@ -89,6 +115,12 @@
 
                                 <li>
                                     <a href="#" class="dropdown-item">Cambiar de cuenta</a>
+                                </li>
+
+                                <li class="dropdown-divider"></li>
+
+                                <li>
+                                    <a href="../controllers/auth/logout.php" class="dropdown-item text-danger">Cerrar sesion</a>
                                 </li>
                             </ul>
 

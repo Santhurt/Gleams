@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,6 +11,7 @@
     <link href="./css/style.css" rel="stylesheet">
     <!-- Font Bootstrap -->
     <link href="../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
 
     <link href="./css/transiciones.css" rel="stylesheet">
     <link href="./css/modal.css" rel="stylesheet">
@@ -198,12 +200,20 @@
                     </ul>
 
                     <!-- Botones de autenticación y carrito -->
-                    <div class="d-flex align-items-center justify-content-center">
-                        <a href="#" class="text-dark position-relative me-4" data-bs-toggle="modal" data-bs-target="#rightModal">
+                    <div class="d-flex align-items-center gap-3 justify-content-center">
+                        <a href="#" class="text-dark position-relative" data-bs-toggle="modal" data-bs-target="#rightModal">
                             <i class="bi bi-bag-fill"></i>
                         </a>
-                        <a href="./login.php" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</a>
-                        <a type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</a>
+                        <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
+                            <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesion</a>
+                            <span class="me-2">
+                                <i class="fas fa-user"></i>
+                                <?php echo htmlspecialchars($_SESSION["usuario"] ?? 'Usuario'); ?>
+                            </span>
+                        <?php else: ?>
+                            <a href="./login.php" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</a>
+                            <a href="./registro.php" type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

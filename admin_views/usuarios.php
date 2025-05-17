@@ -6,6 +6,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -48,7 +49,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
             <!--Inicio de opciones de productos-->
 
-            <a class="sidebar-item active" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
+            <a class="sidebar-item" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
                 <i class="fas fa-th"></i>
                 <span>Productos</span>
                 <i class="fas fa-chevron-right ms-auto"></i>
@@ -68,7 +69,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
             <!--Inicio de opciones de usuarios-->
 
-            <a class="sidebar-item" href="./usuarios.php">
+            <a class="sidebar-item active">
                 <i class="fas fa-users"></i>
                 <span>Usuarios</span>
             </a>
@@ -153,15 +154,66 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </div>
         </div>
 
+        <!-- Modal de edicion-->
+        <div class="modal fade" id="modal-editar" tabindex="-1" aria-labelledby="minimalModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-editar">
+                            <div class="mb-3">
+                                <label for="" class="label-form">Nombre</label>
+                                <input class="form-control" type="text" name="nombre">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="" class="label-form">Telefono</label>
+                                <input class="form-control" type="text" name="telefono">
+                            </div>
+
+
+                            <select class="form-select mb-3" name="roles" id="select-roles" aria-label="Default select example">
+                                <!--Opciones-->
+                            </select>
+
+                            <div class="mb-3">
+                                <label for="" class="label-form">Fecha</label>
+                                <input class="form-control" type="date" name="fecha">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="" class="label-form">Correo</label>
+                                <input class="form-control" type="email" name="correo">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="" class="label-form">Direccion</label>
+                                <input class="form-control" type="text" name="direccion">
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="form-editar" class="btn btn-primary">Editar usuario</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Charts -->
         <div class="row g-4 mt-3">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-4">
-                            <h5 class="card-title">Lista de productos</h5>
+                            <h5 class="card-title">Lista de usuarios</h5>
                         </div>
-                        <div class="chart-container" id="contenedor-productos">
+                        <div class="chart-container" id="contenedor-usuarios">
                         </div>
                     </div>
                 </div>
