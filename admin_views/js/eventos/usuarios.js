@@ -78,9 +78,11 @@ export async function renderUsuarios() {
                         }
                     }
                 })
-                .then(() => {
-                    const tr = boton.closest("tr");
-                    tr.parentElement.removeChild(tr);
+                .then((respuesta) => {
+                    if (respuesta.isConfirmed) {
+                        const tr = boton.closest("tr");
+                        tr.parentElement.removeChild(tr);
+                    }
                 });
         }
     });

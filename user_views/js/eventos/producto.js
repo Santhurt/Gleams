@@ -1,5 +1,7 @@
 import { dataProductos } from "../ajax/data_productos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
+import {renderCarrito} from "./carrito.js";
+
 
 export async function renderizarProducto() {
     const elementosTransicion = document.querySelectorAll(".fade-in");
@@ -28,12 +30,30 @@ export async function renderizarProducto() {
         titulo: document.querySelector("#titulo"),
         precio: document.querySelector("#precio"),
         descripcion: document.querySelector("#descripcion-texto"),
+        cantidad: document.querySelector("#input-cantidad"),
     };
 
-    const idLabel = document.querySelector("#producto-hidden");
-    const id = idLabel.getAttribute("id-producto");
+    const botonesCantidad = document.querySelectorAll(".btn-cantidad");
 
-    const respuesta = await dataProductos.traerProducto(id);
+    botonesCantidad.forEach((boton) => {
+        boton.addEventListener("click", (e) => {
+            if (e.target.dataset.op == "agregar") {
+                infoProducto.cantidad.value++;
+                //el prettier piensa que esto se ve bien ...
+            } else if (
+                e.target.dataset.op == "restar" &&
+                infoProducto.cantidad.value > 1
+            ) {
+                infoProducto.cantidad.value--;
+            }
+        });
+    });
+
+    //renderizar el contenido del producto en la pagina
+    const idLabel = document.querySelector("#producto-hidden");
+    const idProducto = idLabel.getAttribute("id-producto");
+
+    const respuesta = await dataProductos.traerProducto(idProducto);
 
     if (respuesta.status != 200) {
         swal.fire({
@@ -48,11 +68,38 @@ export async function renderizarProducto() {
 
         return;
     }
+
     const producto = respuesta.datos;
-    console.log(producto);
 
     infoProducto.imagen.src = "../" + producto.ruta;
     infoProducto.titulo.textContent = producto.producto;
-    infoProducto.precio.textContent = `${producto.precio}`;
+    infoProducto.precio.textContent = `$${producto.precio}`;
     infoProducto.descripcion.textContent = producto.descripcion;
+
+    // ----------------cargar en el local stotage------------------------
+    const contenedorBotones = document.querySelector("#contenedor-botones");
+
+    contenedorBotones.addEventListener("click", (e) => {
+        if (e.target.classList.contains("agregar")) {
+            const pedido = {
+                id: idProducto,
+                nombre: producto.producto,
+                precio: producto.precio,
+                cantidad: infoProducto.cantidad.value,
+            };
+
+            localStorage.setItem(idProducto, JSON.stringify(pedido));
+
+            swal.fire({
+                title: "Producto agregado al carrito",
+                icon: "success",
+                confirmButtonText: "Continuar",
+            });
+        }
+    });
+
+    // ---------------- renderizar en el carrito----------------------------
+
+    renderCarrito();
+
 }

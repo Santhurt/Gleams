@@ -1,4 +1,34 @@
 export const dom = {
+    crearItemCarrito: (pedido) => {
+        const li = document.createElement("li");
+        li.classList.add(
+            "list-group-item",
+            "d-flex",
+            "justify-content-between",
+            "align-items-center",
+            "px-0",
+            "py-2",
+        );
+
+        const div = document.createElement("div");
+
+        const h6 = document.createElement("h6");
+        h6.classList.add("mb-1");
+        h6.textContent = pedido.nombre;
+
+        const small = document.createElement("small");
+        small.classList.add("text-muted");
+        small.textContent = `${pedido.cantidad} Unidades`
+
+        const span = document.createElement("span");
+        span.classList.add("fw-semibold");
+        span.textContent = `$${pedido.precio}`;
+
+        div.replaceChildren(h6, small);
+        li.replaceChildren(div, span);
+
+        return li;
+    },
     crearCardProducto: (producto) => {
         const divCol = document.createElement("div");
         divCol.classList.add("col-6", "col-md-4", "col-lg-3", "fade-in");

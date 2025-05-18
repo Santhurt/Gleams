@@ -102,7 +102,7 @@
                 </div>
                 <div class="modal-body p-4">
                     <!-- Lista de productos -->
-                    <ul class="list-group list-group-flush mb-4">
+                    <ul class="list-group list-group-flush mb-4" id="lista-pedidos">
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
                             <div>
                                 <h6 class="mb-1">Camisa Casual</h6>
@@ -129,11 +129,11 @@
                     <!-- Total -->
                     <div class="d-flex justify-content-between align-items-center border-top pt-3">
                         <h5 class="fw-bold mb-0">Total</h5>
-                        <h5 class="fw-bold mb-0">$244.89</h5>
+                        <h5 class="fw-bold mb-0" id="total">$244.89</h5>
                     </div>
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between">
-                    <button type="button" class="btn boton-fondo-morado w-100">Finalizar Compra</button>
+                    <button type="button" id="confirmar-compra" class="btn boton-fondo-morado w-100">Finalizar Compra</button>
                 </div>
             </div>
         </div>
@@ -158,9 +158,9 @@
                     <div class="mb-4">
                         <p class="mb-2 poppins-light">Cantidad</p>
                         <div class="input-group mb-3" style="width: 120px;">
-                            <button class="btn boton-fondo-blanco" type="button">−</button>
-                            <input type="text" class="form-control text-center" value="1">
-                            <button class="btn boton-fondo-blanco" type="button">+</button>
+                            <button class="btn boton-fondo-blanco btn-cantidad" data-op="restar" type="button">−</button>
+                            <input id="input-cantidad" type="text" class="form-control text-center" value="1">
+                            <button class="btn boton-fondo-blanco btn-cantidad" data-op="agregar" type="button">+</button>
                         </div>
                         <div class="d-flex align-items-center">
                             <span class="text-success me-2">●</span>
@@ -168,8 +168,8 @@
                         </div>
                     </div>
 
-                    <div class="d-grid gap-2 mb-4">
-                        <button class="btn boton-fondo-blanco poppins-light py-2">AGREGAR AL CARRITO</button>
+                    <div class="d-grid gap-2 mb-4" id="contenedor-botones">
+                        <button class="btn boton-fondo-blanco agregar poppins-light py-2">AGREGAR AL CARRITO</button>
                         <button class="btn boton-fondo-morado poppins-light py-2">COMPRAR AHORA</button>
                     </div>
 
