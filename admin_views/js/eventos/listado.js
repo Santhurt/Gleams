@@ -24,7 +24,19 @@ export async function renderListado() {
     contenedorProductos.appendChild(tabla);
 
     new DataTable("#productos", {
-        responsive: true,
+        responsive: {
+            details: {
+                type: "column",
+                target: "tr",
+            },
+        },
+        columnDefs: [
+            {
+                className: "dt-control",
+                orderable: false,
+                targets: 0,
+            },
+        ],
         language: {
             search: "Buscar",
             lengthMenu: "_MENU_ registros",

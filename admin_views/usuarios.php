@@ -18,6 +18,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
     <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="../node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet">
 
 </head>
 
@@ -76,7 +77,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
             <!--Inicio de opciones de pedidos-->
 
-            <a class="sidebar-item">
+            <a class="sidebar-item" href="./pedidos.php">
                 <i class="fas fa-receipt"></i>
                 <span>Pedidos</span>
             </a>
@@ -225,6 +226,8 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
     <script src="../node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../node_modules/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../node_modules/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
 
     <script src="./js/main.js" type="module"></script>
 

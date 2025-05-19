@@ -69,7 +69,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </a>
 
 
-            <a class="sidebar-item">
+            <a class="sidebar-item" href="./pedidos.php">
                 <i class="fas fa-receipt"></i>
                 <span>Pedidos</span>
             </a>

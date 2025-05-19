@@ -23,7 +23,19 @@ export async function renderUsuarios() {
     contenedorUsuarios.appendChild(tabla);
 
     new DataTable("#usuarios", {
-        responsive: true,
+        responsive: {
+            details: {
+                type: "column",
+                target: "tr",
+            },
+        },
+        columnDefs: [
+            {
+                className: "dt-control",
+                orderable: false,
+                targets: 0,
+            },
+        ],
         language: {
             search: "Buscar",
             lengthMenu: "_MENU_ registros",
