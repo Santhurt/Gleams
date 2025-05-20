@@ -1,8 +1,10 @@
 import { data } from "../ajax/data-productos.js";
 import { dom } from "../componentes/productos_componentes.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
+import { responsive } from "./responsive.js";
 
 export async function renderListado() {
+    responsive();
     //----- carga de productos ------------
 
     const contenedorProductos = document.querySelector("#contenedor-productos");

@@ -1,8 +1,11 @@
 import { data } from "../ajax/data_usuarios.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/usuarios_componentes.js"; //enrealidad solo es para traer la funcion de tabla
+import { responsive } from "./responsive.js";
 
 export async function renderUsuarios() {
+    responsive();
+
     const contenedorUsuarios = document.querySelector("#contenedor-usuarios");
 
     const usuarios = await data.traerUsuarios();

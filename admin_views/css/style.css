@@ -43,10 +43,17 @@ body {
     z-index: 1030;
     padding: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
 }
 
 .sidebar-collapsed {
+    width: var(--sidebar-width-collapsed);
+    z-index: 1050; /* Mayor que el z-index del sidebar */
+    margin-right: 15px; /* Agregar espacio */
+}
+/* Asegurar que el logo no interfiera */
+.sidebar-collapsed .logo {
+    overflow: hidden;
     width: var(--sidebar-width-collapsed);
 }
 
@@ -149,6 +156,7 @@ body {
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+    z-index: 1000;
 }
 
 a {
@@ -284,8 +292,4 @@ a {
         font-size: 20px;
     }
 
-    .profile-pic {
-        width: 30px;
-        height: 30px;
-    }
 }

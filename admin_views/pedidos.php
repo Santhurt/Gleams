@@ -49,7 +49,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </a>
 
             <!--Inicio de opciones de productos-->
-            <a class="sidebar-item active" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
+            <a class="sidebar-item" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
                 <i class="fas fa-th"></i>
                 <span class="sidebar-text">Productos</span>
                 <i class="fas fa-chevron-right ms-auto"></i>
@@ -74,7 +74,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </a>
 
             <!--Inicio de opciones de pedidos-->
-            <a class="sidebar-item" href="./pedidos.php">
+            <a class="sidebar-item active" href="./pedidos.php">
                 <i class="fas fa-receipt"></i>
                 <span class="sidebar-text">Pedidos</span>
             </a>
@@ -98,7 +98,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
         <!-- Top Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 px-3 mb-4 rounded">
             <div class="container-fluid">
-                <button class="btn btn-sm border-0" id="sidebar-toggle">
+                <button class="btn border-0" id="sidebar-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
 
@@ -106,9 +106,9 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                     <div class="d-flex align-items-center">
                         <div class="dropdown me-3">
                             <button class="btn dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                                <img src="./img/user.jpg" alt="Profile picture" class="profile-pic me-2 d-none d-sm-block">
+                                <img src="./img/user.jpg" alt="Profile picture" class="profile-pic me-2  d-sm-block">
                                 <?php if (isset($_SESSION["usuario"])): ?>
-                                    <span class="d-none d-md-block"><?php echo htmlspecialchars($_SESSION["usuario"] ?? "usuario") ?></span>
+                                    <span class="d-md-block"><?php echo htmlspecialchars($_SESSION["usuario"] ?? "usuario") ?></span>
                                 <?php endif; ?>
                             </button>
 

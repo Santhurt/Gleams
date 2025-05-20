@@ -1,4 +1,21 @@
 export function responsive() {
+    setTimeout(() => {
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("main-content");
+        const sidebarTexts = document.querySelectorAll(".sidebar-text");
+
+        // Si estamos en una pantalla grande, aplicar el estado colapsado
+        if (window.innerWidth >= 992) {
+            sidebar.classList.add("sidebar-collapsed");
+            mainContent.classList.add("main-content-expanded");
+
+            // Ocultar los textos del sidebar
+            sidebarTexts.forEach((text) => {
+                text.style.opacity = "0";
+            });
+        }
+    }, 1000);
+
     // Toggle sidebar on mobile
     document
         .getElementById("sidebar-toggle")
@@ -24,7 +41,7 @@ export function responsive() {
                         sidebarTexts.forEach((text) => {
                             text.style.opacity = "1";
                         });
-                    }, 300);
+                    }, 100);
                 }
             }
         });

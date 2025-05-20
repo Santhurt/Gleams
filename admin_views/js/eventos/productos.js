@@ -1,8 +1,10 @@
 import { data } from "../ajax/data-productos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/productos_componentes.js";
+import { responsive } from "./responsive.js";
 
 export async function renderProductos() {
+    responsive();
     // -------------------- carga de categorias ---------------------------
     const selectCategoria = document.querySelector("#select-categoria");
     const selectCategoriaModal = document.querySelector("#select-modal");
