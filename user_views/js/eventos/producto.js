@@ -1,10 +1,11 @@
 import { dataProductos } from "../ajax/data_productos.js";
 import { dataPedido } from "../ajax/data_pedidos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
-import {renderCarrito} from "./carrito.js";
-
+import { renderCarrito } from "./carrito.js";
+import { cargarProductos } from "./cargar_productos.js";
 
 export async function renderizarProducto() {
+    cargarProductos();
     const elementosTransicion = document.querySelectorAll(".fade-in");
 
     const observer = new IntersectionObserver(
@@ -91,9 +92,6 @@ export async function renderizarProducto() {
 
             localStorage.setItem(idProducto, JSON.stringify(pedido));
 
-            const respuesta = await dataPedido.agregarAlCarrito(idProducto, pedido.cantidad);
-            console.log(respuesta);
-
             swal.fire({
                 title: "Producto agregado al carrito",
                 icon: "success",
@@ -105,5 +103,4 @@ export async function renderizarProducto() {
     // ---------------- renderizar en el carrito----------------------------
 
     renderCarrito();
-
 }

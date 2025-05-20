@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const pagina = window.location.pathname;
-    console.log(window.location);
 
     console.log(pagina);
     if (pagina.includes("/user_views/shop.php")) {

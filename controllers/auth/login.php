@@ -20,7 +20,7 @@ if (!isset($_SESSION["intentos_login"])) {
         $_SESSION["tiempo_ultimo_intento"] = time();
     }
 
-    if($_SESSION["intentos_login"] > 5) {
+    if ($_SESSION["intentos_login"] > 5) {
         $_SESSION["err_login"] = "Demasiados intentos, intentelo mas tarde";
         header("Location: {$ruta}");
 
@@ -75,6 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["usuario"] = $res_usuario["nombre"];
         $_SESSION["correo"] = $correo;
         $_SESSION["rol"] = $res_usuario["rol"];
+        $_SESSION["direccion"] = $res_usuario["direccion"];
+        $_SESSION["telefono"] = $res_usuario["telefono"];
 
         $ruta_destino = ($res_usuario["rol"] == "admin") ? "/admin_views/dashboard.php" : "/user_views/shop.php";
 

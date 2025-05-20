@@ -20,12 +20,21 @@ export const dom = {
         small.classList.add("text-muted");
         small.textContent = `${pedido.cantidad} Unidades`;
 
+        const divPrecioSpan = document.createElement("div");
+        divPrecioSpan.classList.add("d-flex", "align-items-center", "gap-2");
+
         const span = document.createElement("span");
         span.classList.add("fw-semibold");
         span.textContent = `$${pedido.precio}`;
 
+        const icon = document.createElement("i");
+        icon.classList.add("quitar-item", "fa-solid", "fa-xmark", "ms-0");
+        icon.id = pedido.id;
+
+        divPrecioSpan.replaceChildren(span, icon);
+
         div.replaceChildren(h6, small);
-        li.replaceChildren(div, span);
+        li.replaceChildren(div, divPrecioSpan);
 
         return li;
     },

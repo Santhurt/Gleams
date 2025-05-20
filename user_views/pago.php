@@ -16,7 +16,7 @@
     <link href="./css/modal_carrito.css" rel="stylesheet">
     <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="./css/pago.css" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -106,12 +106,12 @@
                         <form id="checkout-form">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo electrónico</label>
-                                <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com" required>
+                                <input type="email" class="form-control" value="<?php echo htmlspecialchars($_SESSION['correo']) ?? 'Sin correo' ?>" id="email" placeholder="tucorreo@ejemplo.com" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" required>
+                                <input type="text" class="form-control" id="nombre" value="<?php echo htmlspecialchars($_SESSION['usuario']) ?? 'Sin usuario' ?>" required>
                             </div>
 
                             <!-- <div class="mb-3"> -->
@@ -121,12 +121,12 @@
 
                             <div class="mb-3">
                                 <label for="direccion" class="form-label">Dirección</label>
-                                <input type="text" class="form-control" id="direccion" placeholder="Calle, número, barrio" required>
+                                <input type="text" class="form-control" value="<?php echo htmlspecialchars($_SESSION['direccion']) ?? 'Sin direcccion' ?>" id="direccion" placeholder="Calle, número, barrio" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" required>
+                                <input type="tel" class="form-control" id="telefono" value="<?php echo htmlspecialchars($_SESSION['telefono']) ?? 'Sin telefono' ?>" required>
                             </div>
 
                             <div class="shipping-info">
@@ -142,16 +142,31 @@
                     <div class="checkout-card">
                         <h3 class="checkout-subtitle">Resumen de Compra</h3>
 
-                        <!-- Producto 1 -->
-                        <div class="product-item d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <h5 class="product-name">Pendientes Tiburón</h5>
-                                <p class="product-details">Cantidad: 1</p>
+                        <div id="contenedor-pedidos">
+
+                            <div class="product-item d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <h5 class="product-name">Pendientes Tiburón</h5>
+                                    <p class="product-details">Cantidad: 1</p>
+                                </div>
+                                <div class="ms-3 text-end">
+                                    <span class="fw-bold">$79.900,00</span>
+                                </div>
                             </div>
-                            <div class="ms-3 text-end">
-                                <span class="fw-bold">$79.900,00</span>
+
+                            <div class="product-item d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <h5 class="product-name">Pendientes Tiburón</h5>
+                                    <p class="product-details">Cantidad: 1</p>
+                                </div>
+                                <div class="ms-3 text-end">
+                                    <span class="fw-bold">$79.900,00</span>
+                                </div>
                             </div>
+
                         </div>
+                        <!-- Producto 1 -->
+
 
                         <!-- Resumen precios -->
                         <div class="price-summary">

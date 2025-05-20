@@ -1,3 +1,5 @@
+import { dataPedido } from "../ajax/data_pedidos.js";
+
 export async function renderPago() {
     const elementosTransicion = document.querySelectorAll(".fade-in");
 
@@ -19,4 +21,9 @@ export async function renderPago() {
     elementosTransicion.forEach((elemento) => {
         observer.observe(elemento);
     });
+
+    const contenedorPedidos = document.querySelector("#contenedor-productos");
+
+    const respuesta = await dataPedido.traerPedidos();
+    console.log(respuesta);
 }
