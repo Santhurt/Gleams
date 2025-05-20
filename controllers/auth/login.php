@@ -77,6 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["rol"] = $res_usuario["rol"];
         $_SESSION["direccion"] = $res_usuario["direccion"];
         $_SESSION["telefono"] = $res_usuario["telefono"];
+        $_SESSION["id_cliente"] = $res_usuario["id"];
 
         $ruta_destino = ($res_usuario["rol"] == "admin") ? "/admin_views/dashboard.php" : "/user_views/shop.php";
 

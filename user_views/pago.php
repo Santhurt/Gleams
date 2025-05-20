@@ -106,12 +106,12 @@
                         <form id="checkout-form">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo electrónico</label>
-                                <input type="email" class="form-control" value="<?php echo htmlspecialchars($_SESSION['correo']) ?? 'Sin correo' ?>" id="email" placeholder="tucorreo@ejemplo.com" required>
+                                <input disabled type="email" name="correo" class="form-control" value="<?php echo htmlspecialchars($_SESSION['correo']) ?? 'Sin correo' ?>" id="email" placeholder="tucorreo@ejemplo.com" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" value="<?php echo htmlspecialchars($_SESSION['usuario']) ?? 'Sin usuario' ?>" required>
+                                <input type="text" name="nombre" disabled class="form-control" id="nombre" value="<?php echo htmlspecialchars($_SESSION['usuario']) ?? 'Sin usuario' ?>" required>
                             </div>
 
                             <!-- <div class="mb-3"> -->
@@ -121,12 +121,12 @@
 
                             <div class="mb-3">
                                 <label for="direccion" class="form-label">Dirección</label>
-                                <input type="text" class="form-control" value="<?php echo htmlspecialchars($_SESSION['direccion']) ?? 'Sin direcccion' ?>" id="direccion" placeholder="Calle, número, barrio" required>
+                                <input type="text" name="direccion" disabled class="form-control" value="<?php echo htmlspecialchars($_SESSION['direccion']) ?? 'Sin direcccion' ?>" id="direccion" placeholder="Calle, número, barrio" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" value="<?php echo htmlspecialchars($_SESSION['telefono']) ?? 'Sin telefono' ?>" required>
+                                <input type="tel" disabled name="telefono" class="form-control" id="telefono" value="<?php echo htmlspecialchars($_SESSION['telefono']) ?? 'Sin telefono' ?>" required>
                             </div>
 
                             <div class="shipping-info">
@@ -172,15 +172,17 @@
                         <div class="price-summary">
                             <div class="price-row">
                                 <span>Subtotal</span>
-                                <span>$79.900,00</span>
+                                <span id="subtotal">$79.900,00</span>
                             </div>
                             <div class="price-row">
                                 <span>Envío</span>
-                                <span>$15.000,00</span>
+                                <span>$5000</span>
                             </div>
+
+                            <!--TODO: Agreagar el envio-->
                             <div class="price-row total-row">
                                 <span>Total</span>
-                                <span>$94.900,00</span>
+                                <span id="total">$94.900,00</span>
                             </div>
                             <!-- <div class="info-text mt-2"> -->
                             <!--     <small>Incluye $15.152,10 de impuestos</small> -->
@@ -188,7 +190,7 @@
                         </div>
 
                         <!-- Botón confirmar pedido -->
-                        <button type="submit" form="checkout-form" class="btn btn-confirmar">
+                        <button type="button" id="btn-confirmar" class="btn btn-confirmar">
                             Confirmar Pedido
                         </button>
                     </div>

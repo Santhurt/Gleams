@@ -96,22 +96,25 @@ export const dom = {
         return divCol;
     },
 
-    crearItemPago: (producto) => {
+    crearItemPago: (pedido) => {
         const productItem = document.createElement("div");
         productItem.classList.add(
             "product-item",
             "d-flex",
             "align-items-center",
+            "mb-2",
         );
 
         const divInfo = document.createElement("div");
-        divInfo.classList.add("flex-glow-1");
+        divInfo.classList.add("flex-grow-1");
 
         const h5 = document.createElement("h5");
-        h5.classList.add("product-name");
+        h5.classList.add("product-name", "mb-1");
+        h5.textContent = pedido.producto;
 
         const p = document.createElement("p");
-        p.classList.add("product-details");
+        p.classList.add("product-details", "mb-0", "text-muted");
+        p.textContent = `Cantidad: ${pedido.cantidad}`;
 
         divInfo.replaceChildren(h5, p);
 
@@ -120,6 +123,7 @@ export const dom = {
 
         const span = document.createElement("span");
         span.classList.add("fw-bold");
+        span.textContent = `$${pedido.cantidad * pedido.precio}`;
 
         divTotal.appendChild(span);
 

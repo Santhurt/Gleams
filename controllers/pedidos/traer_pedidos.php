@@ -15,8 +15,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if (isset($_SESSION["pedido"])) {
         http_response_code(200);
+        $pedidos = [];
 
-        echo json_encode($_SESSION["pedido"]);
+        foreach ($_SESSION["pedido"] as $pedido) {
+            $pedidos[] = $pedido;
+        }
+
+        echo json_encode([
+            "status" => 200,
+            "datos" => $pedidos
+        ]);
         exit;
     } else {
         http_response_code(404);

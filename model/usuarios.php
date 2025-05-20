@@ -151,6 +151,7 @@ class Usuario
             }
 
             $usuario_consulta = "select
+                clientes.id_cliente as id,
                 nombre,
                 telefono,
                 rol,

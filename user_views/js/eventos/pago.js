@@ -1,4 +1,6 @@
+import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dataPedido } from "../ajax/data_pedidos.js";
+import { dom } from "../componentes/shop_componentes.js";
 
 export async function renderPago() {
     const elementosTransicion = document.querySelectorAll(".fade-in");
@@ -22,8 +24,41 @@ export async function renderPago() {
         observer.observe(elemento);
     });
 
-    const contenedorPedidos = document.querySelector("#contenedor-productos");
+    const contenedorPedidos = document.querySelector("#contenedor-pedidos");
 
     const respuesta = await dataPedido.traerPedidos();
-    console.log(respuesta);
+
+    if (respuesta.status != 200) {
+        swal.fire({
+            title: "Error",
+            text: respuesta.mensaje,
+            icon: "error",
+        });
+        return;
+    }
+
+    const pedidos = respuesta.datos;
+    console.log(pedidos);
+
+    const items = pedidos.map((pedido) => {
+        return dom.crearItemPago(pedido);
+    });
+
+    contenedorPedidos.replaceChildren(...items);
+
+    const subtotalLabel = document.querySelector("#subtotal");
+    const totalLabel = document.querySelector("#total");
+
+    const subtotal = pedidos.reduce((acumulador, pedido) => {
+        return acumulador + pedido.precio * pedido.cantidad;
+    }, 0);
+
+    subtotalLabel.textContent = `$${subtotal}`;
+    totalLabel.textContent = `$${subtotal + 5000}`;
+
+    // logica de pago
+
+    const btnConfirmarPago = document.querySelector("#btn-confirmar");
+
+    btnConfirmarPago.addEventListener("click", () => {});
 }
