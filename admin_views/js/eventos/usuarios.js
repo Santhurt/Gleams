@@ -1,8 +1,11 @@
 import { data } from "../ajax/data_usuarios.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/usuarios_componentes.js"; //enrealidad solo es para traer la funcion de tabla
+import { responsive } from "./responsive.js";
 
 export async function renderUsuarios() {
+    responsive();
+
     const contenedorUsuarios = document.querySelector("#contenedor-usuarios");
 
     const usuarios = await data.traerUsuarios();
@@ -23,7 +26,19 @@ export async function renderUsuarios() {
     contenedorUsuarios.appendChild(tabla);
 
     new DataTable("#usuarios", {
-        responsive: true,
+        responsive: {
+            details: {
+                type: "column",
+                target: "tr",
+            },
+        },
+        columnDefs: [
+            {
+                className: "dt-control",
+                orderable: false,
+                targets: 0,
+            },
+        ],
         language: {
             search: "Buscar",
             lengthMenu: "_MENU_ registros",

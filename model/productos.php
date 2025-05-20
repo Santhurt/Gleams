@@ -108,6 +108,10 @@ class Producto
 
             $resultado = mysqli_execute_query($this->conn, $consulta, [$id]);
 
+            if(!$resultado) {
+                throw new Exception("Error al trear el producto");
+            }
+
             $fila = $resultado->fetch_assoc();
             return $fila;
         } catch (Exception $e) {

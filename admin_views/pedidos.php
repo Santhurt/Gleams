@@ -17,15 +17,13 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
     <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="../node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet">
 
 
 </head>
-
 <body>
     <!-- Overlay for mobile -->
     <div class="overlay" id="sidebar-overlay"></div>
-
+    
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="logo d-flex align-items-center">
@@ -70,13 +68,13 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </div>
 
             <!--Inicio de opciones de usuarios-->
-            <a class="sidebar-item active" href="./usuarios.php">
+            <a class="sidebar-item" href="./usuarios.php">
                 <i class="fas fa-users"></i>
                 <span class="sidebar-text">Usuarios</span>
             </a>
 
             <!--Inicio de opciones de pedidos-->
-            <a class="sidebar-item" href="./pedidos.php">
+            <a class="sidebar-item active" href="./pedidos.php">
                 <i class="fas fa-receipt"></i>
                 <span class="sidebar-text">Pedidos</span>
             </a>
@@ -100,7 +98,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
         <!-- Top Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 px-3 mb-4 rounded">
             <div class="container-fluid">
-                <button class="btn btn-sm border-0" id="sidebar-toggle">
+                <button class="btn border-0" id="sidebar-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
 
@@ -108,7 +106,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                     <div class="d-flex align-items-center">
                         <div class="dropdown me-3">
                             <button class="btn dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                                <img src="./img/user.jpg" alt="Profile picture" class="profile-pic me-2 d-sm-block">
+                                <img src="./img/user.jpg" alt="Profile picture" class="profile-pic me-2  d-sm-block">
                                 <?php if (isset($_SESSION["usuario"])): ?>
                                     <span class="d-md-block"><?php echo htmlspecialchars($_SESSION["usuario"] ?? "usuario") ?></span>
                                 <?php endif; ?>
@@ -148,54 +146,46 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </div>
         </div>
 
-
-        <!-- Modal de edicion-->
-        <div class="modal fade" id="modal-editar" tabindex="-1" aria-labelledby="minimalModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Editar usuario</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- Stats Cards - Added for better visualization -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                <div class="widget-card sales-card">
+                    <h6 class="text-white-50">Total Ventas</h6>
+                    <h3 class="mt-2">$12,450</h3>
+                    <div class="progress mt-3" style="height: 5px;">
+                        <div class="progress-bar bg-white" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <div class="modal-body">
-                        <form id="form-editar">
-                            <div class="mb-3">
-                                <label for="" class="label-form">Nombre</label>
-                                <input class="form-control" type="text" name="nombre">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="" class="label-form">Telefono</label>
-                                <input class="form-control" type="text" name="telefono">
-                            </div>
-
-
-                            <select class="form-select mb-3" name="roles" id="select-roles" aria-label="Default select example">
-                                <!--Opciones-->
-                            </select>
-
-                            <div class="mb-3">
-                                <label for="" class="label-form">Fecha</label>
-                                <input class="form-control" type="date" name="fecha">
-                            </div>
-
-
-                            <div class="mb-3">
-                                <label for="" class="label-form">Correo</label>
-                                <input class="form-control" type="email" name="correo">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="" class="label-form">Direccion</label>
-                                <input class="form-control" type="text" name="direccion">
-                            </div>
-
-                        </form>
+                    <small class="text-white-50 mt-2 d-block">+15% desde el mes pasado</small>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                <div class="widget-card orders-card">
+                    <h6 class="text-white-50">Pedidos</h6>
+                    <h3 class="mt-2">248</h3>
+                    <div class="progress mt-3" style="height: 5px;">
+                        <div class="progress-bar bg-white" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" form="form-editar" class="btn btn-primary">Editar usuario</button>
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <small class="text-white-50 mt-2 d-block">+8% desde el mes pasado</small>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                <div class="widget-card visitors-card">
+                    <h6 class="text-white-50">Usuarios</h6>
+                    <h3 class="mt-2">1,250</h3>
+                    <div class="progress mt-3" style="height: 5px;">
+                        <div class="progress-bar bg-white" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
+                    <small class="text-white-50 mt-2 d-block">+12% desde el mes pasado</small>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                <div class="widget-card dashboard-title">
+                    <h6 class="text-white-50">Productos</h6>
+                    <h3 class="mt-2">85</h3>
+                    <div class="progress mt-3" style="height: 5px;">
+                        <div class="progress-bar bg-white" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small class="text-white-50 mt-2 d-block">+5% desde el mes pasado</small>
                 </div>
             </div>
         </div>
@@ -205,11 +195,21 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between mb-4">
-                            <h5 class="card-title">Lista de usuarios</h5>
+                        <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+                            <h5 class="card-title">Lista de productos</h5>
+                            <div class="d-flex mt-2 mt-md-0">
+                                <button class="btn btn-sm btn-primary me-2">
+                                    <i class="fas fa-plus me-1"></i>
+                                    <span class="d-none d-sm-inline">Añadir</span>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="fas fa-filter me-1"></i>
+                                    <span class="d-none d-sm-inline">Filtrar</span>
+                                </button>
+                            </div>
                         </div>
-                        <div class="chart-container" id="contenedor-usuarios">
-                        </div>
+                        <div class="table-responsive">
+                       </div>
                     </div>
                 </div>
             </div>

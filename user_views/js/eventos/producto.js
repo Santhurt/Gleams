@@ -1,4 +1,5 @@
 import { dataProductos } from "../ajax/data_productos.js";
+import { dataPedido } from "../ajax/data_pedidos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import {renderCarrito} from "./carrito.js";
 
@@ -79,7 +80,7 @@ export async function renderizarProducto() {
     // ----------------cargar en el local stotage------------------------
     const contenedorBotones = document.querySelector("#contenedor-botones");
 
-    contenedorBotones.addEventListener("click", (e) => {
+    contenedorBotones.addEventListener("click", async (e) => {
         if (e.target.classList.contains("agregar")) {
             const pedido = {
                 id: idProducto,
@@ -89,6 +90,9 @@ export async function renderizarProducto() {
             };
 
             localStorage.setItem(idProducto, JSON.stringify(pedido));
+
+            const respuesta = await dataPedido.agregarAlCarrito(idProducto, pedido.cantidad);
+            console.log(respuesta);
 
             swal.fire({
                 title: "Producto agregado al carrito",

@@ -1,0 +1,112 @@
+.checkout-container {
+    background-color: #f8f9fa;
+    padding: 30px 0;
+}
+
+.checkout-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.checkout-title {
+    font-family: "Playfair Display", serif;
+    margin-bottom: 20px;
+}
+
+.checkout-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.product-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.product-item:last-child {
+    border-bottom: none;
+}
+
+.product-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.product-details {
+    color: #666;
+    font-size: 14px;
+}
+
+.price-summary {
+    margin-top: 15px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.total-row {
+    font-size: 18px;
+    font-weight: 600;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.info-text {
+    font-size: 13px;
+    color: #666;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.btn-confirmar {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-confirmar:hover {
+    background-color: #5a52d5;
+    color: white;
+}
+
+.shipping-info {
+    background-color: #f8f4ff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    border-left: 4px solid #6c63ff;
+}
+
+.shipping-info-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+}

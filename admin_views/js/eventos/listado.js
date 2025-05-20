@@ -1,8 +1,10 @@
 import { data } from "../ajax/data-productos.js";
 import { dom } from "../componentes/productos_componentes.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
+import { responsive } from "./responsive.js";
 
 export async function renderListado() {
+    responsive();
     //----- carga de productos ------------
 
     const contenedorProductos = document.querySelector("#contenedor-productos");
@@ -24,7 +26,19 @@ export async function renderListado() {
     contenedorProductos.appendChild(tabla);
 
     new DataTable("#productos", {
-        responsive: true,
+        responsive: {
+            details: {
+                type: "column",
+                target: "tr",
+            },
+        },
+        columnDefs: [
+            {
+                className: "dt-control",
+                orderable: false,
+                targets: 0,
+            },
+        ],
         language: {
             search: "Buscar",
             lengthMenu: "_MENU_ registros",

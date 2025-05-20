@@ -2,7 +2,7 @@
     --color-base: #d894f0;
     --color-fondo: #faf4fb;
     --color-fuerte: #f095e6;
-    --color-texto: #2c2c2c;
+    --color-texto: #4A0E1B;
     --bs-btn-active-bg: #f095e6 !important;
 }
 
@@ -31,7 +31,6 @@
     }
 }
 
-
 .accordion {
     --bs-accordion-active-bg: #fff; /* o el color que quieras */
 }
@@ -41,26 +40,25 @@
 }
 
 .boton-fondo-morado {
-    background-color: var(--color-base);
-    border-color: var(--color-base);
-    color: var(--color-fondo);
+    background-color: #A55A6C;
+    color: white;
     letter-spacing: 1px;
 }
 
 .boton-fondo-morado:hover {
     background-color: var(--color-fondo);
-    border-color: var(--color-fuerte);
-    color: var(--color-fuerte);
+    border-color: #A55A6C;
+    color: #A55A6C;
 }
 
 .boton-fondo-blanco {
-    border-color: var(--color-fuerte);
-    color: var(--color-fuerte);
+    border-color: #A55A6C;
+    color: #A55A6C;
     letter-spacing: 1px;
 }
 
 .boton-fondo-blanco:hover {
-    background-color: var(--color-fuerte);
+    background-color: #c98d9e;
     color: var(--color-fondo);
 }
 
@@ -84,11 +82,7 @@
 }
 
 .top-bar {
-    background-image: linear-gradient(
-        to right,
-        var(--color-base),
-        var(--color-fuerte)
-    );
+    background-image: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
 }
 
 .fondo {
@@ -96,11 +90,7 @@
 }
 
 .color-base {
-    background-image: linear-gradient(
-        to right,
-        var(--color-base),
-        var(--color-fuerte)
-    );
+    background-image: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
 }
 
 .color-fuerte {
@@ -119,7 +109,7 @@
 }
 
 .nav-link {
-    color: #333 !important;
+    color: var(--color-texto) !important;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -229,14 +219,14 @@
     color: #333;
 }
 .form-check-input:checked {
-  background-color: var(--color-base);
-  border-color: var(--color-fuerte);
+    background-color: var(--color-base);
+    border-color: var(--color-fuerte);
 }
 
 .form-control:focus {
-  color: var(--bs-body-color);
-  background-color: var(--bs-body-bg);
-  border-color: var(--color-base);
-  outline: 0;
-  box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: var(--color-base);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }

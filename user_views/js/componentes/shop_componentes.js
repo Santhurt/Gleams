@@ -18,7 +18,7 @@ export const dom = {
 
         const small = document.createElement("small");
         small.classList.add("text-muted");
-        small.textContent = `${pedido.cantidad} Unidades`
+        small.textContent = `${pedido.cantidad} Unidades`;
 
         const span = document.createElement("span");
         span.classList.add("fw-semibold");
@@ -85,5 +85,37 @@ export const dom = {
         divCol.appendChild(divProductoCard);
 
         return divCol;
+    },
+
+    crearItemPago: (producto) => {
+        const productItem = document.createElement("div");
+        productItem.classList.add(
+            "product-item",
+            "d-flex",
+            "align-items-center",
+        );
+
+        const divInfo = document.createElement("div");
+        divInfo.classList.add("flex-glow-1");
+
+        const h5 = document.createElement("h5");
+        h5.classList.add("product-name");
+
+        const p = document.createElement("p");
+        p.classList.add("product-details");
+
+        divInfo.replaceChildren(h5, p);
+
+        const divTotal = document.createElement("div");
+        divTotal.classList.add("ms-3", "text-end");
+
+        const span = document.createElement("span");
+        span.classList.add("fw-bold");
+
+        divTotal.appendChild(span);
+
+        productItem.replaceChildren(divInfo, divTotal);
+
+        return productItem;
     },
 };

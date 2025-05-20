@@ -28,6 +28,7 @@ export const dom = {
             "table-hover",
             "table-borderless",
             "table-striped",
+            "nowrap",
         );
 
         const tbody = document.createElement("tbody");
@@ -64,6 +65,8 @@ export const dom = {
 
             return th;
         });
+
+        //probando lo de que sea responsive
 
         trHead.replaceChildren(...ths);
         thead.appendChild(trHead);
