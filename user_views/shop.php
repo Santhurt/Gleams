@@ -164,6 +164,14 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <img src="./img/logoo.png" alt="">
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="sticky-top">
 
@@ -171,7 +179,6 @@
         <nav id="navbar" class="navbar navbar-expand-lg fondo">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand playfair-title" href="#">GLEAMS</a>
 
                 <!-- Botón hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -183,19 +190,19 @@
                     <!-- Menú de navegación -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Inicio</a>
+                            <a class="nav-link" href="#">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Colecciones</a>
+                            <a class="nav-link" href="#">Colecciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Accesorios</a>
+                            <a class="nav-link" href="#">Accesorios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Nosotros</a>
+                            <a class="nav-link" href="#">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Contacto</a>
+                            <a class="nav-link" href="#">Contacto</a>
                         </li>
                     </ul>
 
@@ -237,7 +244,7 @@
         <!-- Hero Section -->
         <section class="hero-section fade-opacity color-base" id="hero-section">
             <div class="container">
-                <h1 class="hero-title playfair-title">NUEVA COLECCIÓN ACCESORIOS</h1>
+                <h1 class="hero-title color-texto playfair-title">NUEVA COLECCIÓN ACCESORIOS</h1>
                 <p class="text-muted poppins-light">Descubre nuestra nueva selección de accesorios artesanales</p>
             </div>
         </section>

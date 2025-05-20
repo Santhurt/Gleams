@@ -27,6 +27,14 @@
             </div>
         </div>
     </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <img src="./img/logoo.png" alt="">
+            </div>
+        </div>
+    </div>
     <header class="sticky-top">
 
         <!-- Navbar -->
@@ -83,14 +91,14 @@
         </nav>
     </header>
 
-    <div class="row justify-content-center">
-        <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 p-3">
-            <div class="d-flex align-items-center">
-                <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
-                <i class="fas fa-search"></i>
-            </div>
-        </div>
-    </div>
+    <!-- <div class="row justify-content-center"> -->
+    <!--     <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 p-3"> -->
+    <!--         <div class="d-flex align-items-center"> -->
+    <!--             <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search"> -->
+    <!--             <i class="fas fa-search"></i> -->
+    <!--         </div> -->
+    <!--     </div> -->
+    <!-- </div> -->
 
     <!-- Aquí inicia el modal derecho -->
     <div class="modal right fade" id="rightModal" tabindex="-1" aria-labelledby="rightModalLabel" aria-hidden="true">
@@ -133,7 +141,7 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between">
-                    <button type="button" id="confirmar-compra" class="btn boton-fondo-morado w-100">Finalizar Compra</button>
+                    <a type="button" href="./pago.php" id="confirmar-compra" class="btn boton-fondo-morado w-100">Finalizar Compra</a>
                 </div>
             </div>
         </div>

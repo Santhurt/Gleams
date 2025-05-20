@@ -1,5 +1,4 @@
 import {dom} from "../componentes/shop_componentes.js";
-import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 
 export function renderCarrito() {
     const modalCarrito = document.querySelector("#rightModal");
@@ -9,7 +8,7 @@ export function renderCarrito() {
     const modalInstancia = new bootstrap.Modal(modalCarrito);
 
     let total = 0;
-    modalCarrito.addEventListener("show.bs.modal", (e) => {
+    modalCarrito.addEventListener("show.bs.modal", () => {
         const itemsCarrito = Object.keys(localStorage).map((key) => {
             const pedido = JSON.parse(localStorage.getItem(key));
             total += pedido.precio;
@@ -20,14 +19,5 @@ export function renderCarrito() {
         listaPedidos.replaceChildren(...itemsCarrito);
         totalLabel.textContent = `$${total}`;
     });
-
-    const confirmarCompra = document.querySelector("#confirmar-compra");
-    confirmarCompra.addEventListener("click", ()=>{
-        swal.fire({
-            title: "Confirma compra",
-            text: `Total de la compra: ${total}`,
-            icon: "question"
-        })
-    })
 
 }

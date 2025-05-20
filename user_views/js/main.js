@@ -19,5 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/registro.js").then((modulo) => {
             modulo.renderRegitro();
         });
+    } else if (pagina.includes("/user_views/pago.php")) {
+        import("./eventos/pago.js").then((modulo) => {
+            modulo.renderPago();
+        });
     }
 });
