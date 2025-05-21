@@ -1,8 +1,10 @@
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dataPedido } from "../ajax/data_pedidos.js";
 import { dom } from "../componentes/shop_componentes.js";
+import { cargarProductos } from "./cargar_productos.js";
 
 export async function renderPago() {
+    cargarProductos(); 
     const elementosTransicion = document.querySelectorAll(".fade-in");
 
     const observer = new IntersectionObserver(
@@ -60,5 +62,24 @@ export async function renderPago() {
 
     const btnConfirmarPago = document.querySelector("#btn-confirmar");
 
-    btnConfirmarPago.addEventListener("click", () => {});
+    btnConfirmarPago.addEventListener("click", async (e) => {
+        const respuesta = await dataPedido.confirmarPedido();
+
+        if (respuesta.status == 200) {
+            swal.fire({
+                title: "Compra realizada",
+                text: "Revisa tu seccion de pedidos para hacer seguimiento de tus compras",
+                icon: "success",
+            }).then((respuesta) => {
+                e.target.disabled;
+                if (respuesta.isConfirmed) {
+                    localStorage.clear();
+
+                    setTimeout(() => {
+                        window.location.replace("shop.php");
+                    }, 1000);
+                }
+            });
+        }
+    });
 }

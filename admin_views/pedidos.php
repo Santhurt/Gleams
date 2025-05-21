@@ -190,25 +190,38 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </div>
         </div>
 
+        <!-- Modal de informacion-->
+        <div class="modal fade" id="modal-info" tabindex="-1" aria-labelledby="minimalModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">Informacion del pedido</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped table-hover table-borderless align-middle">
+                            <tbody id="tb-info">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="submit" form="form-editar" class="btn btn-primary">Editar producto</button> -->
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Charts -->
         <div class="row g-4 mt-3">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
-                            <h5 class="card-title">Lista de productos</h5>
-                            <div class="d-flex mt-2 mt-md-0">
-                                <button class="btn btn-sm btn-primary me-2">
-                                    <i class="fas fa-plus me-1"></i>
-                                    <span class="d-none d-sm-inline">Añadir</span>
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary">
-                                    <i class="fas fa-filter me-1"></i>
-                                    <span class="d-none d-sm-inline">Filtrar</span>
-                                </button>
-                            </div>
+                            <h5 class="card-title">Lista de pedidos</h5>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive" id="contenedor-pedidos">
                        </div>
                     </div>
                 </div>

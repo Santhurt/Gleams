@@ -67,8 +67,8 @@ export async function renderUsuarios() {
                     cancelButton: "btn btn-danger",
                 },
             })
-                .then(async (respuesta) => {
-                    if (respuesta.isConfirmed) {
+                .then(async (respuestaAlert) => {
+                    if (respuestaAlert.isConfirmed) {
                         const respuesta = await data.eliminarUsuario(idUsuario);
 
                         if (respuesta.status == 200) {
