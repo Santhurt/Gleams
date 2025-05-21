@@ -41,9 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             "status" => 200,
             "mensaje" => "Compra realizada con exito"
         ]);
+        unset($_SESSION["pedido"]);
+
         exit;
 
-        unset($_SESSION["pedido"]);
     } else {
         http_response_code(500);
 

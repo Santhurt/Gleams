@@ -5,7 +5,6 @@ namespace modelos;
 require_once __DIR__ . "/../config/database.php";
 
 use config\Database;
-use Error;
 use Exception;
 
 class Pedido
@@ -33,21 +32,20 @@ class Pedido
             $consulta_detalles = "select
                 productos.nombre,
                 detalle_pedidos.cantidad,
-                detalle_pedidos.precio_unitario
+                detalle_pedidos.precio_unitario as precio
             from detalle_pedidos
             join productos on detalle_pedidos.id_producto = productos.id_producto
             where detalle_pedidos.id_pedido = ?
             ";
 
-            // TODO: Traer la informacion para mostrar en el modal de los pedidos
 
             $resultado = mysqli_execute_query($this->conn, $consulta_detalles, [$id_pedido]);
 
-            if(!$resultado) {
+            if (!$resultado) {
                 throw new Exception("No se pudierton traer los detalles");
             }
 
-            $resultado;
+            return $resultado;
         } catch (Exception $e) {
             error_log($e->getMessage());
             $this->error = $e->getMessage();
@@ -92,7 +90,7 @@ class Pedido
         }
     }
 
-    public function eliminar_pedido($id_pedido)
+    public function cambiar_estado_pedido($id_pedido, $estado)
     {
         try {
 
@@ -100,15 +98,15 @@ class Pedido
                 throw new Exception("No hay conexion con la base de datos");
             }
 
-            $cancelar_pedido = "update pedidos set
-                estado = 'cancelado'
+            $cambiar_estado = "update pedidos set
+                estado = ?
             where id_pedido = ?
             ";
 
-            $resultado = mysqli_execute_query($this->conn, $cancelar_pedido, [$id_pedido]);
+            $resultado = mysqli_execute_query($this->conn, $cambiar_estado, [$estado, $id_pedido]);
 
             if (!$resultado) {
-                throw new Exception("Error al cancelar el pedido");
+                throw new Exception("Error al cambiar el estado del pedido");
             }
 
             return $resultado;

@@ -294,8 +294,6 @@ export async function renderProductos() {
         const respuestaCategorias = await data.traerCategorias();
         const categorias = respuestaCategorias.categorias;
 
-        console.log(categorias);
-
         const rows = Object.keys(producto).map((campo) => {
             if (campo == "categoria") {
                 categorias.forEach((categoria) => {

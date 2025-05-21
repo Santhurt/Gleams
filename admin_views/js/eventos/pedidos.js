@@ -54,13 +54,30 @@ export async function renderPedidos() {
 
     contenedorPedidos.addEventListener("click", (e) => {
         const boton = e.target;
+        let accion = "";
+        let mensaje = "";
+        let titulo = "";
 
         if (boton.classList.contains("eliminar")) {
+            accion = "cancelado";
+            mensaje = "Esta seguro de que quiere cancelar el pedido?";
+            titulo = "Pedido cancelado";
+        } else if (boton.classList.contains("confirmar")) {
+            accion = "entregado";
+            mensaje =
+                "Esta seguro de que quiere marcar como entregado el pedido?";
+            titulo = "Entrega del pedido confirmada";
+        }
+
+        if (
+            boton.classList.contains("eliminar") ||
+            boton.classList.contains("confirmar")
+        ) {
             const idPedido = boton.id;
 
             swal.fire({
                 title: "Aviso",
-                text: "¿Esta seguro de que quiere eliminar el producto?",
+                text: mensaje,
                 icon: "warning",
                 showCancelButton: true,
                 cancelButtonText: "Cancelar",
@@ -71,20 +88,23 @@ export async function renderPedidos() {
                 },
             }).then(async (respuestaAlert) => {
                 if (respuestaAlert.isConfirmed) {
-                    const respuesta = await data.cancelarPedido(idPedido);
+                    const respuesta = await data.cambiarEstado(
+                        idPedido,
+                        accion,
+                    );
                     if (respuesta.status == 200) {
                         swal.fire({
-                            title: "Pedido cancelado",
+                            title: titulo,
                             icon: "success",
                             confirmButtonText: "Continuar",
                             customClass: {
                                 confirmButton: "btn btn-info",
                             },
-                        }).then(()=>{
-                            const tr = boton.closest("li");
-                            const pedidoCancelado = respuesta.datos;
+                        }).then(() => {
+                            const tr = boton.closest("tr");
+                            const pedidoActualizado = respuesta.datos;
 
-                            const nuevaTr = dom.crearRow(pedidoCancelado);
+                            const nuevaTr = dom.crearRow(pedidoActualizado);
                             tr.parentElement.replaceChild(nuevaTr, tr);
                         });
                     } else {
@@ -101,5 +121,25 @@ export async function renderPedidos() {
                 }
             });
         }
+    });
+
+    // modal de informacion ----------------------------------------
+
+    const modalInfo = document.querySelector("#modal-info");
+    const itemsInfo = document.querySelector("#items-info");
+
+    modalInfo.addEventListener("show.bs.modal", async (e) => {
+        const boton = e.relatedTarget;
+        const idPedido = boton.id;
+
+        const respuesta = await data.traerDetallesPedidos(idPedido);
+        const pedidos = respuesta.status == 200 ? respuesta.datos : [];
+        console.log(pedidos);
+
+        const rows = pedidos.map((pedido) => {
+            return dom.crearItemModal(pedido);
+        });
+
+        itemsInfo.replaceChildren(...rows);
     });
 }

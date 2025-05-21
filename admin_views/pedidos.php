@@ -17,13 +17,15 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
     <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="../node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet">
 
 
 </head>
+
 <body>
     <!-- Overlay for mobile -->
     <div class="overlay" id="sidebar-overlay"></div>
-    
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="logo d-flex align-items-center">
@@ -199,11 +201,9 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <table class="table table-striped table-hover table-borderless align-middle">
-                            <tbody id="tb-info">
-
-                            </tbody>
-                        </table>
+                        <ul id="items-info" class="list-group list-group-flush mb-4">
+                            <!--Aqui irian los items del carrito-->
+                        </ul>
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="submit" form="form-editar" class="btn btn-primary">Editar producto</button> -->
@@ -222,7 +222,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                             <h5 class="card-title">Lista de pedidos</h5>
                         </div>
                         <div class="table-responsive" id="contenedor-pedidos">
-                       </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ export const data = {
         const timeOut = setTimeout(() => controlador.abort(), 10000);
 
         try {
-            const respuesta = await fetch(`${url}traer_pedido.php?id=${id}`, {
+            const respuesta = await fetch(`${url}traer_detalles.php?id=${id}`, {
                 signal: controlador.signal,
             });
 
@@ -54,13 +54,13 @@ export const data = {
         }
     },
 
-    cancelarPedido: async (id) => {
+    cambiarEstado: async (id, estado) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);
 
         try {
             const respuesta = await fetch(
-                `${url}cancelar_pedido.php?id=${id}`,
+                `${url}cambiar_estado.php?id=${id}&estado=${estado}`,
                 {
                     signal: controlador.signal,
                 },
