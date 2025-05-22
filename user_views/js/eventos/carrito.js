@@ -39,6 +39,7 @@ export function renderCarrito() {
                 } else {
                     const li = e.target.closest("li");
                     li.parentElement.removeChild(li);
+                    dom.actualizarContadorCarrito();
                 }
             });
         });

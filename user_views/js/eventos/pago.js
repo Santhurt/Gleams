@@ -58,7 +58,7 @@ export async function renderPago() {
     subtotalLabel.textContent = `$${subtotal}`;
     totalLabel.textContent = `$${subtotal + 5000}`;
 
-    // logica de pago
+    //--------------- logica de pago
 
     const btnConfirmarPago = document.querySelector("#btn-confirmar");
 

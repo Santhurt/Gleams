@@ -1,11 +1,26 @@
 import { dataProductos } from "../ajax/data_productos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/shop_componentes.js";
+import { renderCarrito } from "./carrito.js";
+import { cargarProductos } from "./cargar_productos.js";
 
 //Aqui se añaden los eventos y logica dela pagina en el DOM
 export async function renderizarIndex() {
-    // Codigo para aplicar las transiciones al cargar la pagina
-    // Animación para las flechas de los acordeones
+    cargarProductos();
+
+    // configuracion pal toast
+    const Toast = swal.mixin({
+        toast: true,
+        position: "top-end",
+        iconColor: "white",
+        customClass: {
+            popup: "colored-toast",
+        },
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+    });
+
     const filterHeaders = document.querySelectorAll(".filter-header");
     filterHeaders.forEach((header) => {
         header.addEventListener("click", function () {
@@ -21,14 +36,9 @@ export async function renderizarIndex() {
     const respuesta = await dataProductos.traerProductos();
 
     if (respuesta.status !== 200) {
-        swal.fire({
-            title: "Error",
-            text: respuesta.mensaje,
-            icon: "error",
-            confirmButtonText: "Continuar",
-            // customClass: {
-            //     confirmButton: "btn btn-info",
-            // },
+        Toast.fire({
+            title: respuesta.mensaje,
+            icon: "error"
         });
 
         return;
@@ -70,4 +80,17 @@ export async function renderizarIndex() {
     });
 
     contenedorProductos.replaceChildren(...cardProductos);
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        dom.actualizarContadorCarrito();
+    });
+
+    // También actualizar cuando se carga la página si ya hay items
+    dom.actualizarContadorCarrito();
+
+    // ---------------- renderizar en el carrito----------------------------
+
+    renderCarrito();
+
 }

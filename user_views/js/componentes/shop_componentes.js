@@ -1,4 +1,83 @@
 export const dom = {
+    contarItemsCarrito: function () {
+        let totalItems = 0;
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            // Verificar que la key sea un número (ID del producto)
+            if (!isNaN(key) && key !== null) {
+                const item = JSON.parse(localStorage.getItem(key));
+                if (item && item.cantidad) {
+                    totalItems += parseInt(item.cantidad);
+                }
+            }
+        }
+        return totalItems;
+    },
+
+    actualizarContadorCarrito: function () {
+        const iconoCarrito = document.querySelector(
+            ".fas.fa-shopping-bag",
+        ).parentElement;
+        let contador = iconoCarrito.querySelector(".badge");
+
+        const totalItems = this.contarItemsCarrito();
+
+        if (totalItems > 0) {
+            if (!contador) {
+                // Crear el contador si no existe
+                contador = document.createElement("span");
+                contador.className =
+                    "badge bg-danger rounded-pill position-absolute";
+                contador.style.cssText = `
+                top: -8px;
+                right: -8px;
+                font-size: 0.75rem;
+                min-width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
+                iconoCarrito.appendChild(contador);
+            }
+            contador.textContent = totalItems;
+            contador.style.display = "flex";
+        } else {
+            if (contador) {
+                contador.style.display = "none";
+            }
+        }
+    },
+    mostrarAlertaExito: () => {
+        // Crear el elemento de alerta
+        const alerta = document.createElement("div");
+        alerta.className =
+            "alert alert-success alert-dismissible fade show position-fixed";
+        alerta.style.cssText = `
+        top: 20px;
+        right: 20px;
+        z-index: 1050;
+        min-width: 300px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    `;
+
+        alerta.innerHTML = `
+        <i class="fas fa-check-circle me-2"></i>
+        <strong>¡Producto agregado al carrito!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+
+        // Agregar la alerta al body
+        document.body.appendChild(alerta);
+
+        // Remover automáticamente después de 3 segundos
+        setTimeout(() => {
+            if (alerta && alerta.parentNode) {
+                alerta.remove();
+            }
+        }, 3000);
+    },
+
     crearItemCarrito: (pedido) => {
         const li = document.createElement("li");
         li.classList.add(
@@ -27,17 +106,24 @@ export const dom = {
         span.classList.add("fw-semibold");
         span.textContent = `$${pedido.precio}`;
 
+
         const icon = document.createElement("i");
         icon.classList.add("quitar-item", "fa-solid", "fa-xmark", "ms-0");
         icon.id = pedido.id;
 
-        divPrecioSpan.replaceChildren(span, icon);
+        const botonIcon = document.createElement("button");
+        botonIcon.classList.add("btn", "boton-fondo-morado", "poppins-light", "py-2", "quitar-item");
+        botonIcon.id = pedido.id;
+        botonIcon.appendChild(icon);
+
+        divPrecioSpan.replaceChildren(span, botonIcon);
 
         div.replaceChildren(h6, small);
         li.replaceChildren(div, divPrecioSpan);
 
         return li;
     },
+
     crearCardProducto: (producto) => {
         const divCol = document.createElement("div");
         divCol.classList.add("col-6", "col-md-4", "col-lg-3", "fade-in");

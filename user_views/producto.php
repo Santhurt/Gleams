@@ -11,6 +11,7 @@
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/transiciones.css" rel="stylesheet">
     <link href="./css/fonts.css" rel="stylesheet">
+    <link href="./css/toast.css" rel="stylesheet">
 
     <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
@@ -73,8 +74,8 @@
                     <div class="d-flex align-items-center gap-3 justify-content-center">
                         <a href="#" class="text-dark position-relative" data-bs-toggle="modal" data-bs-target="#rightModal">
                             <i class="fas fa-shopping-bag"></i>
+                            <!-- El contador se agregará dinámicamente aquí -->
                         </a>
-
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
                             <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesion</a>
                             <span class="me-2">
@@ -165,12 +166,12 @@
 
                     <div class="mb-4">
                         <p class="mb-2 poppins-light">Cantidad</p>
-                        <div class="input-group mb-3" style="width: 120px;">
+                        <div class="contador-producto d-flex align-items-center gap-2">
                             <button class="btn boton-fondo-blanco btn-cantidad" data-op="restar" type="button">−</button>
-                            <input id="input-cantidad" type="text" class="form-control text-center" value="1">
+                            <input id="input-cantidad" type="text" class="cantidad-input text-center" value="1">
                             <button class="btn boton-fondo-blanco btn-cantidad" data-op="agregar" type="button">+</button>
                         </div>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center mt-3">
                             <span class="text-success me-2">●</span>
                             <span class="poppins-light">En stock</span>
                         </div>
@@ -178,7 +179,7 @@
 
                     <div class="d-grid gap-2 mb-4" id="contenedor-botones">
                         <button class="btn boton-fondo-blanco agregar poppins-light py-2">AGREGAR AL CARRITO</button>
-                        <button class="btn boton-fondo-morado poppins-light py-2">COMPRAR AHORA</button>
+                        <button class="btn boton-fondo-morado comprar poppins-light py-2">COMPRAR AHORA</button>
                     </div>
 
                     <div class="accordion mb-3">

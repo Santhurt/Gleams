@@ -5,7 +5,6 @@ export async function cargarProductos() {
         const resultados = await Promise.all(
             Object.keys(localStorage).map(async (key) => {
                 const pedido = JSON.parse(localStorage.getItem(key));
-                console.log(pedido);
 
                 return dataPedido.agregarAlCarrito(key, pedido.cantidad);
             }),
