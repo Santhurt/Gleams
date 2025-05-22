@@ -2,10 +2,10 @@
 session_start();
 
 if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
-    http_response_code(400);
+    http_response_code(401);
 
     echo json_encode([
-        "status" => 400,
+        "status" => 401,
         "mensaje" => "Debe de ingresar sesion"
     ]);
     exit;
@@ -17,7 +17,12 @@ require_once __DIR__ . "/../../model/productos.php";
 use modelos\Producto;
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (!isset($_GET["id"]) || empty($_GET["id"]) || !is_numeric($_GET["id"])) {
+    $id_producto = trim($_GET["id"]);
+    if (
+        !isset($id_producto)
+        || empty($id_producto)
+        || !is_numeric($id_producto) || $id_producto <= 0 
+    ) {
         http_response_code(400);
 
         echo json_encode([
@@ -27,8 +32,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         exit;
     }
 
+    $cantidad = trim($_GET["cantidad"]) ?? 0;
+
+    if(
+        !isset($cantidad)
+        || empty($cantidad)
+        || $cantidad <= 0 || !is_numeric($cantidad)
+    ) {
+        http_response_code(400);
+
+        echo json_encode([
+            "status" => 400,
+            "mensaje" => "La cantidad enviada es invalida"
+        ]);
+        exit;
+
+    }
+
     $producto = new Producto();
-    $respuesta = $producto->traer_productoPorId($_GET["id"]);
+    $respuesta = $producto->traer_productoPorId($id_producto);
     $respuesta["cantidad"] = isset($_GET["cantidad"]) ? intval($_GET["cantidad"]) : 1;
 
     if ($respuesta) {

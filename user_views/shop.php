@@ -15,6 +15,7 @@
 
     <link href="./css/transiciones.css" rel="stylesheet">
     <link href="./css/modal.css" rel="stylesheet">
+    <link href="./css/toast.css" rel="stylesheet">
 
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
@@ -33,18 +34,38 @@
                 </div>
                 <div class="modal-body p-4">
                     <!-- Lista de productos -->
-                    <ul class="list-group list-group-flush mb-4">
-                        <!--Aqui irian los items del carrito-->
+                    <ul class="list-group list-group-flush mb-4" id="lista-pedidos">
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                            <div>
+                                <h6 class="mb-1">Camisa Casual</h6>
+                                <small class="text-muted">2 unidades</small>
+                            </div>
+                            <span class="fw-semibold">$59.98</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                            <div>
+                                <h6 class="mb-1">Pantalón Slim Fit</h6>
+                                <small class="text-muted">1 unidad</small>
+                            </div>
+                            <span class="fw-semibold">$49.99</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
+                            <div>
+                                <h6 class="mb-1">Zapatillas Deportivas</h6>
+                                <small class="text-muted">1 unidad</small>
+                            </div>
+                            <span class="fw-semibold">$89.95</span>
+                        </li>
                     </ul>
 
                     <!-- Total -->
                     <div class="d-flex justify-content-between align-items-center border-top pt-3">
                         <h5 class="fw-bold mb-0">Total</h5>
-                        <h5 class="fw-bold mb-0">$244.89</h5>
+                        <h5 class="fw-bold mb-0" id="total">$244.89</h5>
                     </div>
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between">
-                    <button type="button" class="btn boton-fondo-morado w-100">Finalizar Compra</button>
+                    <a type="button" href="./pago.php" id="confirmar-compra" class="btn boton-fondo-morado w-100">Finalizar Compra</a>
                 </div>
             </div>
         </div>
@@ -189,7 +210,8 @@
                     <!-- Botones de autenticación y carrito -->
                     <div class="d-flex align-items-center gap-3 justify-content-center">
                         <a href="#" class="text-dark position-relative" data-bs-toggle="modal" data-bs-target="#rightModal">
-                            <i class="bi bi-bag-fill"></i>
+                            <i class="fas fa-shopping-bag"></i>
+                            <!-- El contador se agregará dinámicamente aquí -->
                         </a>
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
                             <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesion</a>

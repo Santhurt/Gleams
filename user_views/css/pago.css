@@ -81,18 +81,6 @@
     padding: 10px 15px;
 }
 
-.btn-confirmar {
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.3s;
-    width: 100%;
-    margin-top: 20px;
-}
-
 .btn-confirmar:hover {
     background-color: #5a52d5;
     color: white;

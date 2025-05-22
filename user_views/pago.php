@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start();
+if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
+    header("Location: /user_views/login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -73,10 +78,6 @@
 
                     <!-- Botones de autenticación y carrito -->
                     <div class="d-flex align-items-center gap-3 justify-content-center">
-                        <a href="#" class="text-dark position-relative">
-                            <i class="fas fa-shopping-bag"></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
-                        </a>
 
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
                             <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesión</a>
@@ -190,7 +191,7 @@
                         </div>
 
                         <!-- Botón confirmar pedido -->
-                        <button type="button" id="btn-confirmar" class="btn btn-confirmar">
+                        <button type="button" id="btn-confirmar" style="width: 100%" class="btn boton-fondo-morado mt-3 poppins-light py-2">
                             Confirmar Pedido
                         </button>
                     </div>
