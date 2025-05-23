@@ -222,10 +222,12 @@
         <!-- Formulario para dejar una reseña -->
         <div class="card fondo">
             <div class="card-body">
-                <form>
+                <form id="form-comentario">
                     <!-- Calificación -->
                     <div class="mb-3">
                         <div class="rating">
+                            <input type="hidden" name="id-producto" value="<?php echo $_GET['id'] ?? 0; ?>">
+
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="rating" id="rating5" value="5" checked>
                                 <label class="form-check-label" for="rating5">5★</label>
@@ -252,7 +254,7 @@
                     <!-- Comentario -->
                     <div class="mb-3">
                         <label for="reviewText" class="form-label poppins-light">Tu comentario</label>
-                        <textarea class="form-control" id="reviewText" rows="3" placeholder="Cuéntanos tu experiencia con este producto"></textarea>
+                        <textarea class="form-control" name="comentario" id="comentario" rows="3" placeholder="Cuéntanos tu experiencia con este producto"></textarea>
                     </div>
 
                     <!-- Botón de envío -->
@@ -265,7 +267,7 @@
             <div class="col-12">
 
                 <!-- Reseñas existentes -->
-                <div class="mb-4">
+                <div class="mb-4" id="comentarios">
                     <!-- Reseña 1 -->
                     <div class="card mb-3 fondo">
                         <div class="card-body">

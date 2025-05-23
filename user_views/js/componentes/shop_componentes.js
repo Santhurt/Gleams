@@ -1,4 +1,43 @@
 export const dom = {
+    crearComentario: ({ cliente, estrellas, fecha, comentario }) => {
+        const divCard = document.createElement("div");
+        divCard.classList.add("card", "mb-3", "fondo");
+
+        const cardBody = document.createElement("div");
+        cardBody.classList.add("card-body");
+
+        const divCont = document.createElement("div");
+        divCont.classList.add("d-flex", "justify-content-between", "mb-2");
+
+        const h5 = document.createElement("h5");
+        h5.classList.add("card-title", "poppins-light");
+        h5.textContent = cliente;
+
+        const div = document.createElement("div");
+
+        const span = document.createElement("span");
+        span.classList.add("text-warning");
+        const estrellasLlenas = "★".repeat(estrellas);
+        const estrellasVacias = "☆".repeat(5 - estrellas);
+        span.textContent = `${estrellasLlenas}${estrellasVacias}`
+
+        const small = document.createElement("small");
+        small.textContent = fecha;
+
+        const pComentario = document.createElement("p");
+        pComentario.classList.add("card-text", "poppins-light");
+        pComentario.textContent = comentario;
+
+
+        div.replaceChildren(span, small);
+        divCont.replaceChildren(h5, div);
+
+        cardBody.replaceChildren(divCont, pComentario);
+        divCard.appendChild(cardBody)
+
+        return divCard;
+    },
+
     contarItemsCarrito: function () {
         let totalItems = 0;
         for (let i = 0; i < localStorage.length; i++) {
@@ -106,13 +145,18 @@ export const dom = {
         span.classList.add("fw-semibold");
         span.textContent = `$${pedido.precio}`;
 
-
         const icon = document.createElement("i");
         icon.classList.add("quitar-item", "fa-solid", "fa-xmark", "ms-0");
         icon.id = pedido.id;
 
         const botonIcon = document.createElement("button");
-        botonIcon.classList.add("btn", "boton-fondo-morado", "poppins-light", "py-2", "quitar-item");
+        botonIcon.classList.add(
+            "btn",
+            "boton-fondo-morado",
+            "poppins-light",
+            "py-2",
+            "quitar-item",
+        );
         botonIcon.id = pedido.id;
         botonIcon.appendChild(icon);
 

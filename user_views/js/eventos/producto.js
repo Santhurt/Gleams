@@ -74,6 +74,30 @@ export async function renderizarProducto() {
         return;
     }
 
+    //------------renderizado de comentarios
+
+    const respuestaComentarios =
+        await dataProductos.traerComentarioProducto(idProducto);
+
+    console.log(respuestaComentarios);
+
+    if (respuestaComentarios.status != 200) {
+        Toast.fire({
+            title: respuesta.mensaje,
+            icon: "error",
+        });
+        return;
+    }
+
+    const comentariosContenedor = document.querySelector("#comentarios");
+    const comentarios = respuestaComentarios.datos
+
+    const cardsComentarios = comentarios.map((comentario) => {
+        return dom.crearComentario(comentario);
+    });
+
+    comentariosContenedor.replaceChildren(...cardsComentarios);
+
     const producto = respuesta.datos;
     infoProducto.imagen.src = "../" + producto.ruta;
     infoProducto.titulo.textContent = producto.producto;
@@ -152,15 +176,37 @@ export async function renderizarProducto() {
         }
     });
 
-    // Inicializar el contador al cargar la página
-    document.addEventListener("DOMContentLoaded", () => {
-        dom.actualizarContadorCarrito();
-    });
-
     // También actualizar cuando se carga la página si ya hay items
     dom.actualizarContadorCarrito();
 
     // ---------------- renderizar en el carrito----------------------------
 
     renderCarrito();
+
+    // ................ logica de los comentarios
+    const comentario = document.querySelector("#form-comentario");
+
+    comentario.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const comentarioData = new FormData(comentario);
+        const respuesta = await dataProductos.crearComentario(comentarioData);
+
+        if (respuesta.status == 200) {
+            Toast.fire({
+                title: "Comentario creado con exito",
+                icon: "success",
+            });
+
+            // TODO: Mostrar el comentario una vez creado
+        } else {
+            Toast.fire({
+                title: respuesta.mensaje,
+                icon: "error",
+            });
+        }
+
+        const comentarioInput = document.querySelector("#comentario");
+        comentarioInput.value = "";
+    });
 }
