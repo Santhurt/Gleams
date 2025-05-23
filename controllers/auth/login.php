@@ -73,10 +73,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_regenerate_id(true);
 
         $_SESSION["usuario"] = $res_usuario["nombre"];
-        $_SESSION["correo"] = $correo;
-        $_SESSION["rol"] = $res_usuario["rol"];
         $_SESSION["direccion"] = $res_usuario["direccion"];
         $_SESSION["telefono"] = $res_usuario["telefono"];
+        $_SESSION["correo"] = $correo;
+        $_SESSION["rol"] = $res_usuario["rol"];
         $_SESSION["id_cliente"] = $res_usuario["id"];
 
         $ruta_destino = ($res_usuario["rol"] == "admin") ? "/admin_views/dashboard.php" : "/user_views/shop.php";

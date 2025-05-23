@@ -54,7 +54,7 @@
                     <!-- Menú de navegación -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="./shop.php">Inicio</a>
+                            <a class="nav-link poppins-light" href="./shop.php">Tienda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="#">Colecciones</a>
@@ -77,13 +77,13 @@
                             <!-- El contador se agregará dinámicamente aquí -->
                         </a>
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
-                            <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesion</a>
-                            <span class="me-2">
+                            <a href="perfil.php" class="btn boton-fondo-morado poppins-light ms-3">
                                 <i class="fas fa-user"></i>
                                 <?php echo htmlspecialchars($_SESSION["usuario"] ?? 'Usuario'); ?>
-                            </span>
+                            </a>
+                            <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesion</a>
                         <?php else: ?>
-                            <a href="./login.php" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</a>
+                            <a href="./login.php" class="btn boton-fondo-morado ms-3 poppins-light">Ingresar</a>
                             <a href="./registro.php" type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</a>
                         <?php endif; ?>
                     </div>
@@ -91,15 +91,6 @@
             </div>
         </nav>
     </header>
-
-    <!-- <div class="row justify-content-center"> -->
-    <!--     <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 p-3"> -->
-    <!--         <div class="d-flex align-items-center"> -->
-    <!--             <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search"> -->
-    <!--             <i class="fas fa-search"></i> -->
-    <!--         </div> -->
-    <!--     </div> -->
-    <!-- </div> -->
 
     <!-- Aquí inicia el modal derecho -->
     <div class="modal right fade" id="rightModal" tabindex="-1" aria-labelledby="rightModalLabel" aria-hidden="true">
@@ -314,7 +305,7 @@
             <div class="row">
                 <!-- About Column -->
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="footer-title">ENTRELAZOS</h5>
+                    <h5 class="footer-title">gleamns</h5>
                     <p class="text-muted">Somos una marca colombiana de accesorios artesanales creados con amor y dedicación, apoyando el talento local.</p>
                     <div class="mt-3">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -349,7 +340,7 @@
             <!-- Copyright -->
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <p class="text-muted small">© 2025 Entrelazos. Todos los derechos reservados.</p>
+                    <p class="text-muted small">© 2025 gleamns. Todos los derechos reservados.</p>
                 </div>
             </div>
         </div>

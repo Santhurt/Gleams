@@ -22,5 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/pago.js").then((modulo) => {
             modulo.renderPago();
         });
+    } else if (pagina.includes("/user_views/perfil.php")) {
+        import("./eventos/perfil.js").then((modulo) => {
+            modulo.renderPerfil();
+        });
     }
 });

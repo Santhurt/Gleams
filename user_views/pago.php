@@ -60,7 +60,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                     <!-- Menú de navegación -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="./shop.php">Inicio</a>
+                            <a class="nav-link poppins-light" href="./shop.php">Tienda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="#">Colecciones</a>
@@ -80,13 +80,13 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                     <div class="d-flex align-items-center gap-3 justify-content-center">
 
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
-                            <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesión</a>
-                            <span class="me-2">
+                            <a href="perfil.php" class="btn boton-fondo-morado poppins-light ms-3">
                                 <i class="fas fa-user"></i>
                                 <?php echo htmlspecialchars($_SESSION["usuario"] ?? 'Usuario'); ?>
-                            </span>
+                            </a>
+                            <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesión</a>
                         <?php else: ?>
-                            <a href="./login.php" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</a>
+                            <a href="./login.php" class="btn boton-fondo-morado ms-3 poppins-light">Ingresar</a>
                             <a href="./registro.php" type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</a>
                         <?php endif; ?>
                     </div>
