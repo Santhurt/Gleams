@@ -69,7 +69,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                             <a class="nav-link poppins-light" href="#">Accesorios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Nosotros</a>
+                            <a class="nav-link poppins-light" href="./pedidos.php">Pedidos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="#">Contacto</a>

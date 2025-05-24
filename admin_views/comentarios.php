@@ -17,13 +17,15 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
     <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="../node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet">
 
 
 </head>
+
 <body>
     <!-- Overlay for mobile -->
     <div class="overlay" id="sidebar-overlay"></div>
-    
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="logo d-flex align-items-center">
@@ -42,13 +44,14 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
         </div>
 
         <div class="mt-3">
-            <a href="./dashboard.php" class="sidebar-item active">
+            <a href="./dashboard.php" class="sidebar-item">
                 <i class="fas fa-home"></i>
                 <span class="sidebar-text">Dashboard</span>
+                <i class="fas fa-chevron-right ms-auto"></i>
             </a>
 
             <!--Inicio de opciones de productos-->
-            <a class="sidebar-item" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
+            <a class="sidebar-item active" data-bs-toggle="collapse" href="#productos-options" aria-expanded="false" aria-controls="productos-options">
                 <i class="fas fa-th"></i>
                 <span class="sidebar-text">Productos</span>
                 <i class="fas fa-chevron-right ms-auto"></i>
@@ -79,7 +82,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </a>
 
             <!--Inicio de opciones de reseñas-->
-            <a class="sidebar-item" href="./comentarios.php">
+            <a href="./comentarios.php" class="sidebar-item">
                 <i class="fas fa-star"></i>
                 <span class="sidebar-text">Reseñas</span>
             </a>
@@ -145,82 +148,26 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </div>
         </div>
 
-        <!-- Widgets -->
-        <div class="row mb-4 g-4">
-            <div class="col-md-4">
-                <div class="widget-card sales-card">
-                    <div class="mb-3">Usuarios registrados</div>
-                    <h2 class="mb-3">300</h2>
-                    <div>10 usuarios nuevos este mes</div>
-                    <div class="text-end">
-                        <i class="fas fa-chart-line fa-2x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="widget-card orders-card">
-                    <div class="mb-3">Ventas del mes</div>
-                    <h2 class="mb-3">500</h2>
-                    <div>5 Nuevas este mes</div>
-                    <div class="text-end">
-                        <i class="fas fa-bookmark fa-2x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="widget-card visitors-card">
-                    <div class="mb-3">Tota en ventas esta semana</div>
-                    <h2 class="mb-3">$1200000</h2>
-                    <div>Aumento del 5%</div>
-                    <div class="text-end">
-                        <i class="fas fa-heart fa-2x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Charts -->
-        <div class="row g-4">
-            <div class="col-md-8">
+        <div class="row g-4 mt-3">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between mb-4">
-                            <h5 class="card-title">Pedidos pendientes</h5>
-                            <div>
-                                <span class="badge rounded-pill bg-light text-secondary me-1">
-                                    <span class="me-1" style="color: #A976F8;">●</span> CHN
-                                </span>
-                                <span class="badge rounded-pill bg-light text-secondary me-1">
-                                    <span class="me-1" style="color: #38BFED;">●</span> USA
-                                </span>
-                                <span class="badge rounded-pill bg-light text-secondary">
-                                    <span class="me-1" style="color: #FF9E8A;">●</span> UK
-                                </span>
+                        <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+                            <h5 class="card-title">Lista de productos</h5>
+                            <div class="d-flex mt-2 mt-md-0">
+                                <button class="btn btn-sm btn-primary me-2">
+                                    <i class="fas fa-plus me-1"></i>
+                                    <span class="d-none d-sm-inline">Añadir</span>
+                                </button>
                             </div>
                         </div>
-                        <div class="chart-container">
-                            <!-- Aquí iría el gráfico -->
-                            <img src="/api/placeholder/700/300" alt="Chart placeholder" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card position-relative">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4">Ventas recientes</h5>
-                        <div class="chart-container">
-                            <!-- Aquí iría el gráfico de pastel -->
-                            <img src="/api/placeholder/300/300" alt="Pie chart placeholder" class="img-fluid">
+                        <div class="chart-container" id="contenedor-productos">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>

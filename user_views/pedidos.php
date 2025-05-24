@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start();
+if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
+    header("Location: /user_views/shop.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,6 +14,7 @@
     <!-- Bootstrap CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/pedidos.css" rel="stylesheet">
     <!-- Font Bootstrap -->
     <link href="../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
@@ -19,6 +25,9 @@
 
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
+
+    <style>
+    </style>
 
 </head>
 
@@ -71,12 +80,6 @@
         </div>
     </div>
 
-    <!--Aqui inicia el modal izquierdo-->
-
-    <!-- Botón para abrir el filtro en móviles -->
-    <button class="filter-toggle-btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
-        <i class="bi bi-funnel" style="font-size: 24px;"></i>
-    </button>
 
     <!-- Top bar -->
     <div class="container-fluid top-bar">
@@ -152,74 +155,87 @@
             </div>
         </nav>
 
-
     </header>
 
-
-    <!-- Main Content -->
-    <main class="fondo">
-
-        <!-- Hero Section -->
-        <section class="hero-section fade-opacity color-base" id="hero-section">
-            <div class="container">
-                <h1 class="hero-title color-texto playfair-title">NUEVA COLECCIÓN ACCESORIOS</h1>
-                <p class="text-muted poppins-light">Descubre nuestra nueva selección de accesorios artesanales</p>
-            </div>
-        </section>
-
-        <!-- Filter Bar -->
-        <div class="container mt-4 fade-opacity" id="filter-bar">
-            <div class="row justify-content-center filter-bar align-items-center">
-                <div class="col-md-6">
-
-                    <div class="d-flex align-items-center">
-                        <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
-                        <i class="fas fa-search"></i>
-                    </div>
-
+    <div class="modal fade" id="mostrarDetalle" tabindex="-1" aria-labelledby="cancelarPedidoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header color-base">
+                    <h5 class="modal-title poppins-bold text-white" id="cancelarPedidoModalLabel">Detalles del pedido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="contenedor-detalles">
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Products Grid -->
-        <div class="container mb-5">
-            <div class="row" id="contenedor-productos">
-                <!-- Product 1 -->
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h4>
-                                <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
+    <!-- Main Content -->
+    <main class="fondo">
+        <!--Aqui iria la seccion de pedidos-->
+        <div class="container pedidos-section">
+            <!-- Título de la sección -->
+            <div class="row mb-4">
+                <div class="col-12 text-center fade-in">
+                    <h2 class="color-texto mb-3" style="letter-spacing: 2px;">MIS PEDIDOS</h2>
+                    <p class="text-muted">Aquí puedes ver el estado de todos tus pedidos</p>
+                </div>
+            </div>
+
+            <!-- Pestañas de navegación -->
+            <ul class="nav nav-tabs justify-content-center mb-4" id="pedidosTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link poppins-light active" id="pendientes-tab" data-bs-toggle="tab" data-bs-target="#pendientes" type="button" role="tab">
+                        <i class="fas fa-clock me-2"></i>Pendientes
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link poppins-light" id="entregados-tab" data-bs-toggle="tab" data-bs-target="#entregados" type="button" role="tab">
+                        <i class="fas fa-check-circle me-2"></i>Entregados
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Contenido de las pestañas -->
+            <div class="tab-content" id="pedidosTabContent">
+                <!-- Pedidos Pendientes -->
+                <div class="tab-pane active" id="pendientes" role="tabpanel">
+                    <div class="row fade-in" id="contenedor-pendientes">
+
+                        <div class="fade-in empty-state" id="mensaje-pendientes" style="display: none;">
+                            <i class="fas fa-shopping-bag"></i>
+                            <h4 class="poppins-light">No hay pedidos pendientes</h4>
+                            <p class="poppins-light">Visita la tienda para realizar una nueva compra.</p>
+                            <a href="./shop.php" class="btn boton-fondo-morado">
+                                Ir a la tienda
                             </a>
                         </div>
+
+                    </div>
+                </div>
+
+                <!-- Pedidos Entregados -->
+                <div class="tab-pane" id="entregados" role="tabpanel">
+                    <div class="row fade-in" id="contenedor-entregados">
+
+                        <div class="fade-in empty-state" id="mensaje-entregados" style="display: none;">
+                            <i class="fas fa-shopping-bag"></i>
+                            <h4 class="poppins-light">Sin pedidos para mostrar</h4>
+                            <p class="poppins-light">Aqui aparecerán tus pedidos una vez sean entregados.</p>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-5">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                <i class="bi bi-chevron-left"></i>
-                            </a>
-                        </li>
-                        <li class="page-item active .color-paginacion"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="bi bi-chevron-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+            <!-- Estado vacío (ejemplo para cuando no hay pedidos) -->
+            <div class="fade-in empty-state" id="mensaje" style="display: block;">
+                <i class="fas fa-shopping-bag"></i>
+                <h4>No tienes pedidos aún</h4>
+                <p>Cuando realices tu primera compra, aparecerá aquí</p>
+                <a href="./shop.php" class="btn boton-fondo-morado">
+                    Ir a la tienda
+                </a>
             </div>
         </div>
     </main>

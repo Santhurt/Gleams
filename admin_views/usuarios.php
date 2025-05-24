@@ -82,7 +82,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </a>
 
             <!--Inicio de opciones de reseñas-->
-            <a class="sidebar-item">
+            <a class="sidebar-item" href="./comentarios.php">
                 <i class="fas fa-star"></i>
                 <span class="sidebar-text">Reseñas</span>
             </a>

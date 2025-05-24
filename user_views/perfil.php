@@ -234,7 +234,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                             <a class="nav-link" href="#">Accesorios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nosotros</a>
+                            <a class="nav-link" href="./pedidos.php">Pedidos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>

@@ -62,9 +62,11 @@
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="#">Accesorios</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Nosotros</a>
-                        </li>
+                        <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pedidos.php">Pedidos</a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="#">Contacto</a>
                         </li>

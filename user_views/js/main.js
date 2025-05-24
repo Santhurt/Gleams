@@ -26,5 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/perfil.js").then((modulo) => {
             modulo.renderPerfil();
         });
+    } else if (pagina.includes("/user_views/pedidos.php")) {
+        import("./eventos/pedidos.js").then((modulo) => {
+            modulo.renderPedidos();
+        });
     }
+
 });

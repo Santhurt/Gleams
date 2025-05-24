@@ -22,6 +22,104 @@ class Pedido
         return $this->error;
     }
 
+    public function cancelar_pedido_cliente($id_cliente, $id_pedido)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $cancelar_pedido = "update pedidos set
+                estado = 'cancelado'
+                where id_cliente = ? and id_pedido = ?
+            ";
+
+            $resultado = mysqli_execute_query($this->conn, $cancelar_pedido, [$id_cliente, $id_pedido]);
+
+            if(mysqli_affected_rows($this->conn) === 0) {
+                return false;
+            }
+
+            return $resultado;
+        } catch(Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function traer_detalle_si_existe($id_cliente, $id_pedido)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $traer_detalles = "select
+                detalle_pedidos.id_detalle,
+                productos.nombre,
+                detalle_pedidos.cantidad,
+                detalle_pedidos.precio_unitario
+            from pedidos
+            join detalle_pedidos on pedidos.id_pedido = detalle_pedidos.id_pedido
+            join productos on detalle_pedidos.id_producto = productos.id_producto
+            where pedidos.id_pedido = ? and pedidos.id_cliente = ?
+            ";
+
+            $resultado = mysqli_execute_query($this->conn, $traer_detalles, [$id_pedido, $id_cliente]);
+
+            if ($resultado->num_rows == 0) {
+                return false;
+            }
+
+            $detalles = [];
+            while ($fila = $resultado->fetch_assoc()) {
+                foreach ($fila as $campo => $valor) {
+                    $fila[$campo] = htmlspecialchars($valor);
+                }
+
+                $detalles[] = $fila;
+            }
+
+            return $detalles;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function traer_pedidos_por_cliente($id_cliente)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $traer_pedidos = "select
+                id_pedido as idPedido,
+                fecha_pedido as fecha,
+                clientes.direccion,
+                total,
+                pedidos.estado
+            from pedidos
+            join clientes on clientes.id_cliente = pedidos.id_cliente
+            where clientes.id_cliente = ?
+            ";
+
+            $resultado = mysqli_execute_query($this->conn, $traer_pedidos, [$id_cliente]);
+
+            return $resultado;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
     public function traer_detalles($id_pedido)
     {
         try {
@@ -151,21 +249,6 @@ class Pedido
         }
     }
 
-    public function insertar_pedido_detalle($id_cliente, $total, $pedidos)
-    {
-        try {
-
-            if (!$this->conn) {
-                throw new Exception("No hay conexion con la base de datos");
-            }
-        } catch (Exception $e) {
-            error_log($e->getMessage());
-            $this->error = $e->getMessage();
-
-            return false;
-        }
-    }
-
     public function insertar_pedido($id_cliente, $total, $pedidos = [])
     {
         try {
@@ -218,8 +301,6 @@ class Pedido
             mysqli_commit($this->conn);
 
             return true;
-
-            // TODO: Terminar de insertar los pedidos
         } catch (Exception $e) {
             mysqli_rollback($this->conn);
             error_log($e->getMessage());
