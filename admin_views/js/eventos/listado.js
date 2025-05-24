@@ -18,6 +18,9 @@ export async function renderListado() {
             text: productos.mensaje,
             icon: "error",
             confirmButtonText: "Continuar",
+            customClass: {
+                confirmButton: "btn btn-primary",
+            },
         });
 
         return;

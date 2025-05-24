@@ -18,6 +18,30 @@ class Comentario {
         return $this->error;
     }
 
+    public function eliminar_comentario($id_comentario)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $eliminar_comentario = "update comentarios set
+                estado = 0
+            where id_comentario = ?
+            ";
+
+            $respuesta = mysqli_execute_query($this->conn, $eliminar_comentario, [$id_comentario]);
+
+            return $respuesta;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+
+        }
+    }
+
     public function traer_comentarios_por_producto($id_producto)
     {
         try {
@@ -58,15 +82,16 @@ class Comentario {
             }
 
             $traer_comentarios = "select
+                id_comentario as 'ID comentario',
                 clientes.nombre as cliente,
-                producto.nombre as producto,
+                productos.nombre as producto,
                 comentario,
                 estrellas,
                 fecha
             from comentarios 
             join clientes on clientes.id_cliente = comentarios.id_cliente
             join productos on productos.id_producto = comentarios.id_producto
-            where estado = 1
+            where comentarios.estado = 1
             ";
 
             $resultado = mysqli_execute_query($this->conn, $traer_comentarios);

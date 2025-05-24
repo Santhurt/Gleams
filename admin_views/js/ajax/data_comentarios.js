@@ -1,11 +1,12 @@
-const url = "../../../controllers/pedidos/";
+const url = "../../../controllers/comentarios/";
+
 export const data = {
-    traerDetallesPedidos: async (id) => {
+    eliminarComentario: async (id) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);
 
         try {
-            const respuesta = await fetch(`${url}traer_detalles.php?id=${id}`, {
+            const respuesta = await fetch(url + `eliminar_comentario.php?id=${id}`, {
                 signal: controlador.signal,
             });
 
@@ -14,7 +15,7 @@ export const data = {
                 throw error;
             }
 
-            return await respuesta.json();
+            return respuesta.json();
         } catch (error) {
             if (error.name == "AbortError") {
                 return {
@@ -28,12 +29,12 @@ export const data = {
             clearTimeout(timeOut);
         }
     },
-    traerPedidos: async () => {
+    traerComentarios: async () => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);
 
         try {
-            const respuesta = await fetch(url + "traer_pedidos_db.php", {
+            const respuesta = await fetch(url + "traer_comentarios_db.php", {
                 signal: controlador.signal,
             });
 
@@ -42,7 +43,7 @@ export const data = {
                 throw error;
             }
 
-            return await respuesta.json();
+            return respuesta.json();
         } catch (error) {
             if (error.name == "AbortError") {
                 return {
@@ -50,37 +51,7 @@ export const data = {
                     mensaje: "Tiempo de respuesta agotado",
                 };
             }
-            return error;
-        } finally {
-            clearTimeout(timeOut);
-        }
-    },
 
-    cambiarEstado: async (id, estado) => {
-        const controlador = new AbortController();
-        const timeOut = setTimeout(() => controlador.abort(), 10000);
-
-        try {
-            const respuesta = await fetch(
-                `${url}cambiar_estado.php?id=${id}&estado=${estado}`,
-                {
-                    signal: controlador.signal,
-                },
-            );
-
-            if (!respuesta.ok) {
-                const error = await respuesta.json();
-                throw error;
-            }
-
-            return await respuesta.json();
-        } catch (error) {
-            if (error.name == "AbortError") {
-                return {
-                    status: 500,
-                    mensaje: "Tiempo de respuesta agotado",
-                };
-            }
             return error;
         } finally {
             clearTimeout(timeOut);

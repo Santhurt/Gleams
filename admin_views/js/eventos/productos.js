@@ -18,7 +18,7 @@ export async function renderProductos() {
             icon: "error",
             confirmButtonText: "Continuar",
             customClass: {
-                confirmButton: "btn btn-info",
+                confirmButton: "btn btn-primary",
             },
         });
 

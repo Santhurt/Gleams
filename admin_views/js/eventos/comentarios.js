@@ -1,12 +1,16 @@
 import { responsive } from "./responsive.js";
-import { dom } from "../componentes/pedidos_componentes.js";
-import { data } from "../ajax/data_pedidos.js";
+import { data } from "../ajax/data_comentarios.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
+import { dom } from "../componentes/comentarios_componentes.js";
 
-export async function renderPedidos() {
+export async function renderComentarios() {
     responsive();
 
-    const respuesta = await data.traerPedidos();
+    const contenedorComentarios = document.querySelector(
+        "#contenedor-comentarios",
+    );
+
+    const respuesta = await data.traerComentarios();
     console.log(respuesta);
 
     if (respuesta.status != 200) {
@@ -18,18 +22,17 @@ export async function renderPedidos() {
             customClass: {
                 confirmButton: "btn btn-primary",
             },
-
         });
 
         return;
     }
 
-    const contenedorPedidos = document.querySelector("#contenedor-pedidos");
-    const tabla = dom.crearTabla(respuesta.datos);
+    const comentarios = respuesta.datos;
+    const tabla = dom.crearTabla(comentarios);
 
-    contenedorPedidos.appendChild(tabla);
+    contenedorComentarios.appendChild(tabla);
 
-    new DataTable("#pedidos", {
+    new DataTable("#comentarios", {
         responsive: {
             details: {
                 type: "column",
@@ -54,34 +57,15 @@ export async function renderPedidos() {
         },
     });
 
-    //cancelacion de pedidos--------------------------------------------
-
-    contenedorPedidos.addEventListener("click", (e) => {
+    contenedorComentarios.addEventListener("click", (e) => {
         const boton = e.target;
-        let accion = "";
-        let mensaje = "";
-        let titulo = "";
 
         if (boton.classList.contains("eliminar")) {
-            accion = "cancelado";
-            mensaje = "Esta seguro de que quiere cancelar el pedido?";
-            titulo = "Pedido cancelado";
-        } else if (boton.classList.contains("confirmar")) {
-            accion = "entregado";
-            mensaje =
-                "Esta seguro de que quiere marcar como entregado el pedido?";
-            titulo = "Entrega del pedido confirmada";
-        }
-
-        if (
-            boton.classList.contains("eliminar") ||
-            boton.classList.contains("confirmar")
-        ) {
-            const idPedido = boton.id;
+            const idComentario = boton.id;
 
             swal.fire({
                 title: "Aviso",
-                text: mensaje,
+                text: "¿Eliminar comentario?",
                 icon: "warning",
                 showCancelButton: true,
                 cancelButtonText: "Cancelar",
@@ -90,26 +74,22 @@ export async function renderPedidos() {
                     confirmButton: "btn btn-info",
                     cancelButton: "btn btn-danger",
                 },
-            }).then(async (respuestaAlert) => {
-                if (respuestaAlert.isConfirmed) {
-                    const respuesta = await data.cambiarEstado(
-                        idPedido,
-                        accion,
-                    );
+            }).then(async (res) => {
+                if (res.isConfirmed) {
+                    const respuesta =
+                        await data.eliminarComentario(idComentario);
+
                     if (respuesta.status == 200) {
                         swal.fire({
-                            title: titulo,
+                            title: respuesta.mensaje,
                             icon: "success",
                             confirmButtonText: "Continuar",
                             customClass: {
                                 confirmButton: "btn btn-info",
                             },
-                        }).then(() => {
+                        }).then(()=>{
                             const tr = boton.closest("tr");
-                            const pedidoActualizado = respuesta.datos;
-
-                            const nuevaTr = dom.crearRow(pedidoActualizado);
-                            tr.parentElement.replaceChild(nuevaTr, tr);
+                            tr.parentElement.removeChild(tr);
                         });
                     } else {
                         swal.fire({
@@ -125,25 +105,5 @@ export async function renderPedidos() {
                 }
             });
         }
-    });
-
-    // modal de informacion ----------------------------------------
-
-    const modalInfo = document.querySelector("#modal-info");
-    const itemsInfo = document.querySelector("#items-info");
-
-    modalInfo.addEventListener("show.bs.modal", async (e) => {
-        const boton = e.relatedTarget;
-        const idPedido = boton.id;
-
-        const respuesta = await data.traerDetallesPedidos(idPedido);
-        const pedidos = respuesta.status == 200 ? respuesta.datos : [];
-        console.log(pedidos);
-
-        const rows = pedidos.map((pedido) => {
-            return dom.crearItemModal(pedido);
-        });
-
-        itemsInfo.replaceChildren(...rows);
     });
 }

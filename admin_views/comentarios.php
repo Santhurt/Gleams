@@ -154,15 +154,9 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
-                            <h5 class="card-title">Lista de productos</h5>
-                            <div class="d-flex mt-2 mt-md-0">
-                                <button class="btn btn-sm btn-primary me-2">
-                                    <i class="fas fa-plus me-1"></i>
-                                    <span class="d-none d-sm-inline">Añadir</span>
-                                </button>
-                            </div>
+                            <h5 class="card-title">Lista de comentarios</h5>
                         </div>
-                        <div class="chart-container" id="contenedor-productos">
+                        <div class="chart-container" id="contenedor-comentarios">
                         </div>
                     </div>
                 </div>
