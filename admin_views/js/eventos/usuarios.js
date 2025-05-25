@@ -1,12 +1,14 @@
-import { data } from "../ajax/data_usuarios.js";
+import { dataUsuarios } from "../ajax/data_usuarios.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/usuarios_componentes.js"; //enrealidad solo es para traer la funcion de tabla
+import { responsive } from "./responsive.js";
 
 export async function renderUsuarios() {
+    responsive();
+
     const contenedorUsuarios = document.querySelector("#contenedor-usuarios");
 
-    const usuarios = await data.traerUsuarios();
-    console.log(usuarios);
+    const usuarios = await dataUsuarios.traerUsuarios();
 
     if (usuarios.status == 500 || usuarios.status == 401) {
         swal.fire({
@@ -14,6 +16,9 @@ export async function renderUsuarios() {
             text: usuarios.mensaje,
             icon: "error",
             confirmButtonText: "Continuar",
+            customClass: {
+                confirmButton: "btn btn-primary",
+            },
         });
 
         return;
@@ -23,7 +28,19 @@ export async function renderUsuarios() {
     contenedorUsuarios.appendChild(tabla);
 
     new DataTable("#usuarios", {
-        responsive: true,
+        responsive: {
+            details: {
+                type: "column",
+                target: "tr",
+            },
+        },
+        columnDefs: [
+            {
+                className: "dt-control",
+                orderable: false,
+                targets: 0,
+            },
+        ],
         language: {
             search: "Buscar",
             lengthMenu: "_MENU_ registros",
@@ -42,7 +59,7 @@ export async function renderUsuarios() {
             const idUsuario = boton.id;
             swal.fire({
                 title: "Aviso",
-                text: "¿Esta seguro de que quiere eliminar el producto?",
+                text: "¿Esta seguro de que quiere eliminar el usuario?",
                 icon: "warning",
                 showCancelButton: true,
                 cancelButtonText: "Cancelar",
@@ -51,37 +68,36 @@ export async function renderUsuarios() {
                     confirmButton: "btn btn-info",
                     cancelButton: "btn btn-danger",
                 },
-            })
-                .then(async (respuesta) => {
-                    if (respuesta.isConfirmed) {
-                        const respuesta = await data.eliminarUsuario(idUsuario);
+            }).then(async (respuestaAlert) => {
+                if (respuestaAlert.isConfirmed) {
+                    const respuesta =
+                        await dataUsuarios.eliminarUsuario(idUsuario);
 
-                        if (respuesta.status == 200) {
-                            swal.fire({
-                                title: "Usuario eliminado",
-                                icon: "success",
-                                confirmButtonText: "Continuar",
-                                customClass: {
-                                    confirmButton: "btn btn-info",
-                                },
-                            });
-                        } else {
-                            swal.fire({
-                                title: "Error",
-                                text: respuesta.mensaje,
-                                icon: "error",
-                                confirmButtonText: "Continuar",
-                                customClass: {
-                                    confirmButton: "btn btn-info",
-                                },
-                            });
-                        }
+                    if (respuesta.status == 200) {
+                        swal.fire({
+                            title: "Usuario eliminado",
+                            icon: "success",
+                            confirmButtonText: "Continuar",
+                            customClass: {
+                                confirmButton: "btn btn-info",
+                            },
+                        }).then(() => {
+                            const tr = boton.closest("tr");
+                            tr.parentElement.removeChild(tr);
+                        });
+                    } else {
+                        swal.fire({
+                            title: "Error",
+                            text: respuesta.mensaje,
+                            icon: "error",
+                            confirmButtonText: "Continuar",
+                            customClass: {
+                                confirmButton: "btn btn-info",
+                            },
+                        });
                     }
-                })
-                .then(() => {
-                    const tr = boton.closest("tr");
-                    tr.parentElement.removeChild(tr);
-                });
+                }
+            });
         }
     });
 
@@ -114,8 +130,7 @@ export async function renderUsuarios() {
             inputs[campo] = document.querySelector(`[name="${campo}"]`);
         });
 
-        const producto = await data.traerProductoPorId(idUsuario);
-        console.log(producto);
+        const producto = await dataUsuarios.traerProductoPorId(idUsuario);
 
         inputs.nombre.value = producto.nombre;
         inputs.telefono.value = producto.telefono;
@@ -123,7 +138,7 @@ export async function renderUsuarios() {
         inputs.correo.value = producto.correo;
         inputs.direccion.value = producto.direccion;
 
-        const roles = await data.traerRoles();
+        const roles = await dataUsuarios.traerRoles();
         const optionsRoles = dom.crearOpcionRoles(roles);
 
         inputs.roles.replaceChildren(...optionsRoles);
@@ -147,7 +162,8 @@ export async function renderUsuarios() {
             },
         }).then(async (resultado) => {
             if (resultado.isConfirmed) {
-                const respuesta = await data.editarUsuario(nuevoUsuario);
+                const respuesta =
+                    await dataUsuarios.editarUsuario(nuevoUsuario);
 
                 if (respuesta.status == 200) {
                     swal.fire({
@@ -160,7 +176,6 @@ export async function renderUsuarios() {
                     }).then(() => {
                         modalInstancia.hide();
                         const usuario = respuesta.usuarioEditado;
-                        console.log(usuario);
 
                         const tr = document.querySelector(
                             `#usuario-${usuario.id}`,

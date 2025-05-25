@@ -1,5 +1,5 @@
 const url = "../../controllers/productos/";
-export const data = {
+export const dataProductos = {
     traerProductoPorId: async (id) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);

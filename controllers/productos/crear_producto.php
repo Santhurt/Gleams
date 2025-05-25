@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    $img_ruta = insertar_imagen("imagen");
+    $img_ruta = insertar_imagen("imagen", false, "", true, 800, 600, 85);
 
     if (empty($img_ruta["ruta"])) {
         http_response_code(400);

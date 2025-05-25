@@ -61,7 +61,7 @@ CREATE TABLE `clientes` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id_cliente`),
   UNIQUE KEY `correo` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,8 +88,19 @@ INSERT INTO `clientes` VALUES
 (17,'otro usuario','3205502890','2025-05-15','usuario@gmail.com','ajaijiojiojioio',1,'$2y$12$MHBS07p7SwPI9vkyCtS0f.NLUpNRo/evR6MpWqywlr2nrq6BKYVSe'),
 (18,'prueba de rol','3205503040','2025-05-15','rol@gmail.com','dir',0,'$2y$12$hx/u/6qTFATj8zfkHg3jxuVAXuykOD4E11zrMd8GdCRgBWeD6Jtdm'),
 (19,'otro usuario','3205504030','2025-05-15','usuario@hotmail.com','direccion',0,'$2y$12$91xUXAqLUAO1l7qab8z7netGSIwSLnGr.1zuq58O0oe2Z2ZGc8Co.'),
-(20,'pedro','3205052040','2025-05-15','pedro@gmail.com','direccion',1,'$2y$12$hVwCnSxNJnN/.4y0tohLGOdnhveGqtHafPiGfs58Zj86an1m730RS'),
-(21,'caspacho','3205502030','2025-05-15','caspacho@gmail.com','direccion',0,'$2y$12$7M83mzERmXmBR0IhBs9RUOFBiWm/aa9edrVob9qasOfbkY4j92Im2');
+(20,'pedro','3205052040','2025-05-15','pedro@gmail.com','direccion',0,'$2y$12$hVwCnSxNJnN/.4y0tohLGOdnhveGqtHafPiGfs58Zj86an1m730RS'),
+(21,'caspacho','3205502030','2025-05-15','caspacho@gmail.com','direccion',0,'$2y$12$7M83mzERmXmBR0IhBs9RUOFBiWm/aa9edrVob9qasOfbkY4j92Im2'),
+(22,'Jhon pecueco','1234567890','2025-05-16','doe@gmail.com','aijaio',0,'$2y$12$rXX2TkcBQq59Zu8l5yAQ9OX/kbcrMWfLfUbnIwSRg4xAxct/Ev/ZO'),
+(23,'aver aver','1234567890','2025-05-22','hash@gmail.com','holaaaaaaaaaaaaaa',0,'$2y$12$aXZHEQyrPhC.cSTr26cMzOc1Om0Ir1AhQMoDg88Vyph6MjU.HmwJS'),
+(24,'ahora si?','3115504030','2025-05-16','santiruizhurt@gmail.com','un segyguyguy',0,'$2y$12$/Bo2U80gza.qe5udTO1YseWnwHY9I26C6YiukAYyziOW/CM87u.kS'),
+(25,'elpaco','3205504020','2025-05-17','elpaco@gmail.com','Holaaa',1,'$2y$12$WymwD2nZ6jTZEM16x89Pqey4.9GDpH1b0TNxcUKaiK3UtNlnacvwa'),
+(26,'olo','1234567898','2025-05-17','olo@gmail.com','aaioajiaioa',1,'$2y$12$VFNASF3Sd1mGQ327cxx4AO2kql2j7SMrpmxeHiyEr9oRLXl0TFPei'),
+(27,'admin','1234567898','2025-05-17','admin@gmail.com','direccion',1,'$2y$12$OAOyCzqs.8a24xxwuCyi2uxZNV9C7/t8sZD4WkyjEnOkjrlz1Rgx2'),
+(28,'user','1234567','2025-05-21','user@gmail.com','Calle 400',1,'$2y$12$7eUfBYLQE9NsstTeFCT3BeT5kTrVOE8QRKIJL.vr3mK4izjxJqqci'),
+(29,'facu','1234567898','2025-05-23','facu@gmail.com','Direccion random',0,'$2y$12$ZAbbe/IrbVi76ahxiaZl8OqT0oZ6MJNzFwE9Fw3e287K9aX2fRRI2'),
+(30,'mano','3205504030','2025-05-23','mano@gmail.com','Avenida la callampa',1,'$2y$12$DJ4/ke5VBgUfuK/kkrusFehOdvQs8Nt2ZBM/BmsiiyvXU0zHnvv5W'),
+(31,'nose','1234567897','2025-05-25','ahiuahiu@gmail.com','cll 20 5 20 ',0,'$2y$12$uzzX2oX6/bahsBTPggM9dOu21L3WfiRPW.8Pw6D/0oF9boobrxBWS'),
+(32,'basik','1234567898','2025-05-25','basik@gmail.com','calle 20 #5 - 30 emaus',1,'$2y$12$xoO1bynwZMvvcWA8iKLo4ejaDfSAtj9/Q476FwLFrHBjc70tJErsq');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +131,18 @@ INSERT INTO `clientes_rol` VALUES
 (18,2),
 (19,2),
 (20,2),
-(21,2);
+(21,2),
+(22,1),
+(23,1),
+(24,2),
+(25,1),
+(26,2),
+(27,1),
+(28,1),
+(29,2),
+(30,2),
+(31,2),
+(32,2);
 /*!40000 ALTER TABLE `clientes_rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,12 +160,13 @@ CREATE TABLE `comentarios` (
   `comentario` text NOT NULL,
   `estrellas` int(10) NOT NULL,
   `estado` tinyint(1) NOT NULL,
+  `fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`id_comentario`),
   KEY `fk_cliente_has_comentarios` (`id_cliente`),
   KEY `fk_productos_has_comentarios` (`id_producto`),
   CONSTRAINT `fk_cliente_has_comentarios` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
   CONSTRAINT `fk_productos_has_comentarios` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,6 +175,18 @@ CREATE TABLE `comentarios` (
 
 LOCK TABLES `comentarios` WRITE;
 /*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
+INSERT INTO `comentarios` VALUES
+(1,29,56,'aaaaaaaaaa',5,0,'2025-05-23 02:17:37'),
+(2,29,56,'Si me gisto',3,0,'2025-05-23 02:21:20'),
+(3,29,56,'Bueno ya esta bien',4,1,'2025-05-23 02:22:00'),
+(4,29,56,'aaaaaaaaaaaa',4,1,'2025-05-23 02:22:06'),
+(5,29,56,'vamosssss',1,1,'2025-05-23 02:22:39'),
+(6,29,56,'aaaaaaaaaaaaaaaaaaaaaaaaaaaa',3,1,'2025-05-23 02:22:57'),
+(7,29,56,'yaaaaaaaaa',5,1,'2025-05-23 02:23:18'),
+(8,29,56,'aver si funciona',1,1,'2025-05-23 02:26:45'),
+(9,29,56,'ahora ?',2,0,'2025-05-23 02:27:40'),
+(10,30,56,'Esta fea esta madre',4,0,'2025-05-23 22:40:19'),
+(11,30,56,'Ta bueno',4,1,'2025-05-24 18:38:55');
 /*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +208,7 @@ CREATE TABLE `detalle_pedidos` (
   KEY `fk_detalle_producto` (`id_producto`),
   CONSTRAINT `fk_detalle_has_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
   CONSTRAINT `fk_detalle_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,6 +217,47 @@ CREATE TABLE `detalle_pedidos` (
 
 LOCK TABLES `detalle_pedidos` WRITE;
 /*!40000 ALTER TABLE `detalle_pedidos` DISABLE KEYS */;
+INSERT INTO `detalle_pedidos` VALUES
+(17,10,56,3,25000),
+(18,11,56,3,25000),
+(19,11,55,2,123456),
+(20,12,56,4,25000),
+(21,12,58,3,25000),
+(22,13,56,4,25000),
+(23,13,58,3,25000),
+(24,13,55,2,123456),
+(25,14,56,4,25000),
+(26,14,58,3,25000),
+(27,14,55,1,123456),
+(28,15,56,4,25000),
+(29,15,58,3,25000),
+(30,15,55,2,123456),
+(31,16,56,4,25000),
+(32,16,58,3,25000),
+(33,16,55,2,123456),
+(34,17,56,4,25000),
+(35,17,58,4,25000),
+(36,17,55,2,123456),
+(37,18,56,4,25000),
+(38,18,58,4,25000),
+(39,18,55,2,123456),
+(40,18,57,2,10000),
+(41,19,59,3,20000),
+(42,20,59,1,20000),
+(43,21,55,2,123456),
+(44,21,56,1,25000),
+(45,21,59,1,20000),
+(46,22,59,2,20000),
+(47,22,55,1,123456),
+(48,23,55,2,123456),
+(49,24,58,2,25000),
+(50,25,55,2,123456),
+(51,26,56,2,25000),
+(52,27,59,2,20000),
+(53,27,56,1,25000),
+(54,28,59,2,20000),
+(55,29,56,2,25000),
+(56,30,59,2,20000);
 /*!40000 ALTER TABLE `detalle_pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +275,7 @@ CREATE TABLE `imagenes_prod` (
   PRIMARY KEY (`id_imagen`),
   KEY `fk_imagenes_productos` (`id_producto`),
   CONSTRAINT `fk_imagenes_productos` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,8 +285,10 @@ CREATE TABLE `imagenes_prod` (
 LOCK TABLES `imagenes_prod` WRITE;
 /*!40000 ALTER TABLE `imagenes_prod` DISABLE KEYS */;
 INSERT INTO `imagenes_prod` VALUES
-(43,'assets/fotos/imagen_20250515_020407000.png',52),
-(44,'assets/fotos/imagen_20250515_210222000.png',53);
+(46,'assets/fotos/imagen_20250517_034432000.jpg',55),
+(47,'assets/fotos/imagen_20250518_043713000.png',56),
+(48,'assets/fotos/imagen_20250519_235927000.png',57),
+(50,'assets/fotos/imagen_20250521_232847000.jpg',59);
 /*!40000 ALTER TABLE `imagenes_prod` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,14 +301,14 @@ DROP TABLE IF EXISTS `pedidos`;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pedidos` (
   `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_pedido` date NOT NULL,
+  `fecha_pedido` datetime DEFAULT NULL,
   `id_cliente` int(11) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedidos_clientes` (`id_cliente`),
   CONSTRAINT `fk_pedidos_clientes` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,8 +317,90 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
+INSERT INTO `pedidos` VALUES
+(10,'2025-05-21 00:00:00',28,75000,'entregado'),
+(11,'2025-05-21 00:00:00',27,321912,'cancelado'),
+(12,'2025-05-21 00:00:00',27,175000,'cancelado'),
+(13,'2025-05-21 00:00:00',27,421912,'cancelado'),
+(14,'2025-05-21 00:00:00',27,298456,'cancelado'),
+(15,'2025-05-21 00:00:00',27,421912,'cancelado'),
+(16,'2025-05-21 00:00:00',27,421912,'entregado'),
+(17,'2025-05-21 00:00:00',27,446912,'entregado'),
+(18,'2025-05-21 00:00:00',27,466912,'cancelado'),
+(19,'2025-05-21 00:00:00',27,60000,'cancelado'),
+(20,'2025-05-22 00:00:00',28,20000,'entregado'),
+(21,'2025-05-22 00:00:00',28,291912,'pendiente'),
+(22,'2025-05-22 00:00:00',28,163456,'pendiente'),
+(23,'2025-05-23 00:00:00',29,246912,'entregado'),
+(24,'2025-05-23 00:00:00',29,50000,'pendiente'),
+(25,'2025-05-23 00:00:00',30,246912,'cancelado'),
+(26,'2025-05-24 00:00:00',30,50000,'cancelado'),
+(27,'2025-05-24 00:00:00',30,65000,'entregado'),
+(28,'2025-05-24 00:00:00',30,40000,'cancelado'),
+(29,'2025-05-25 00:00:00',30,50000,'pendiente'),
+(30,'2025-05-24 19:47:57',32,40000,'entregado');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER pedidos_bu
+BEFORE UPDATE ON pedidos
+FOR EACH ROW
+BEGIN
+    DECLARE faltante INT;
+
+    IF NEW.estado = 'entregado' AND OLD.estado <> 'entregado' THEN
+        
+        SELECT COUNT(*) INTO faltante
+        FROM detalle_pedidos dp
+        JOIN productos p ON dp.id_producto = p.id_producto
+        WHERE dp.id_pedido = NEW.id_pedido
+          AND dp.cantidad > p.stock;
+
+        IF faltante > 0 THEN
+            SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'No hay suficiente stock para uno o más productos del pedido';
+        END IF;
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb3 */ ;
+/*!50003 SET character_set_results = utf8mb3 */ ;
+/*!50003 SET collation_connection  = utf8mb3_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER pedidos_au AFTER UPDATE ON pedidos
+FOR EACH ROW
+BEGIN
+
+    IF new.estado = 'entregado' AND old.estado <> 'entregado' THEN
+        UPDATE productos
+        JOIN detalle_pedidos ON detalle_pedidos.id_producto = productos.id_producto
+        SET productos.stock = productos.stock - detalle_pedidos.cantidad
+        WHERE detalle_pedidos.id_pedido = new.id_pedido;
+    END IF;
+
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `productos`
@@ -261,7 +421,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id_producto`),
   KEY `fk_productos_categorias` (`id_categoria`),
   CONSTRAINT `fk_productos_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,8 +459,14 @@ INSERT INTO `productos` VALUES
 (49,'ya se edito','ya tengo demasiados productos',20000,25,0,0,2),
 (50,'creemos mas','holaaa',40555,15,0,0,3),
 (51,'fanta','gaseosa',28773,30,0,0,3),
-(52,'ediciooon','ya tengo demasiados productos',2000,20,1,0,2),
-(53,'fanta','fanta de gaseosa',4000,20,1,0,3);
+(52,'ediciooon','ya tengo demasiados productos',2000,20,0,0,1),
+(53,'fanta','fanta de gaseosa',0,0,0,0,3),
+(54,'despues pruebo','hsushiushui',2020,2,0,0,1),
+(55,'producto de prueba','ahaoihaiohio',123456,8,1,0,2),
+(56,'cocacolaa','Cocacola de buen sabor',25000,26,1,0,2),
+(57,'papas con nuevo sabor','habia una vez',10000,15,1,0,3),
+(58,'papue ginea','no se que es eso',25000,46,0,0,3),
+(59,'salchichon','salchichon maduro',20000,6,1,0,2);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,4 +505,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-15 16:23:05
+-- Dump completed on 2025-05-24 21:52:41

@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const pagina = window.location.pathname;
-    console.log(window.location);
 
     console.log(pagina);
     if (pagina.includes("/user_views/shop.php")) {
@@ -19,5 +18,18 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/registro.js").then((modulo) => {
             modulo.renderRegitro();
         });
+    } else if (pagina.includes("/user_views/pago.php")) {
+        import("./eventos/pago.js").then((modulo) => {
+            modulo.renderPago();
+        });
+    } else if (pagina.includes("/user_views/perfil.php")) {
+        import("./eventos/perfil.js").then((modulo) => {
+            modulo.renderPerfil();
+        });
+    } else if (pagina.includes("/user_views/pedidos.php")) {
+        import("./eventos/pedidos.js").then((modulo) => {
+            modulo.renderPedidos();
+        });
     }
+
 });

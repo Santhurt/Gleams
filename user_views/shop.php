@@ -15,6 +15,7 @@
 
     <link href="./css/transiciones.css" rel="stylesheet">
     <link href="./css/modal.css" rel="stylesheet">
+    <link href="./css/toast.css" rel="stylesheet">
 
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
@@ -33,38 +34,18 @@
                 </div>
                 <div class="modal-body p-4">
                     <!-- Lista de productos -->
-                    <ul class="list-group list-group-flush mb-4">
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                            <div>
-                                <h6 class="mb-1">Camisa Casual</h6>
-                                <small class="text-muted">2 unidades</small>
-                            </div>
-                            <span class="fw-semibold">$59.98</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                            <div>
-                                <h6 class="mb-1">Pantalón Slim Fit</h6>
-                                <small class="text-muted">1 unidad</small>
-                            </div>
-                            <span class="fw-semibold">$49.99</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                            <div>
-                                <h6 class="mb-1">Zapatillas Deportivas</h6>
-                                <small class="text-muted">1 unidad</small>
-                            </div>
-                            <span class="fw-semibold">$89.95</span>
-                        </li>
+                    <ul class="list-group list-group-flush mb-4" id="lista-pedidos">
+                        <!--Aqui iria el mensaje-->
                     </ul>
 
                     <!-- Total -->
                     <div class="d-flex justify-content-between align-items-center border-top pt-3">
                         <h5 class="fw-bold mb-0">Total</h5>
-                        <h5 class="fw-bold mb-0">$244.89</h5>
+                        <h5 class="fw-bold mb-0" id="total">$244.89</h5>
                     </div>
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between">
-                    <button type="button" class="btn boton-fondo-morado w-100">Finalizar Compra</button>
+                    <a type="button" href="./pago.php" id="confirmar-compra" class="btn boton-fondo-morado w-100">Finalizar Compra</a>
                 </div>
             </div>
         </div>
@@ -77,89 +58,19 @@
         <i class="bi bi-funnel" style="font-size: 24px;"></i>
     </button>
 
-
-    <!-- Modal de filtros lateral (Offcanvas) -->
-    <div class="offcanvas offcanvas-start poppins-light" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
-        <div class="offcanvas-header d-flex align-items-center text-white">
-            <h5 class="offcanvas-title" id="filterOffcanvasLabel">Filtrar</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-
-            <!-- Filtro de Categorías -->
-            <div class="filter-section">
-                <div class="filter-header" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="true">
-                    <span>CATEGORIAS</span>
-                    <i class="bi bi-chevron-down" style="font-size: 16px;"></i>
-                </div>
-                <div class="collapse show filter-body" id="categoryCollapse">
-                    <div class="filter-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="catAnillos">
-                            <label class="form-check-label" for="catAnillos">
-                                Anillos
-                            </label>
-                        </div>
-                    </div>
-                    <div class="filter-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="catPendientes">
-                            <label class="form-check-label" for="catPendientes">
-                                Pendientes
-                            </label>
-                        </div>
-                    </div>
-                    <div class="filter-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="catCollares">
-                            <label class="form-check-label" for="catCollares">
-                                Collares
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Filtro de Precio -->
-            <div class="filter-section">
-                <div class="filter-header" data-bs-toggle="collapse" data-bs-target="#priceCollapse" aria-expanded="true">
-                    <span>PRECIO</span>
-                    <i class="bi bi-chevron-down" style="font-size: 16px;"></i>
-                </div>
-                <div class="collapse show filter-body" id="priceCollapse">
-                    <div class="filter-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="price1">
-                            <label class="form-check-label" for="price1">
-                                Menos de $25.000
-                            </label>
-                        </div>
-                    </div>
-                    <div class="filter-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="price2">
-                            <label class="form-check-label" for="price2">
-                                $25.000 - $50.000
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Botones de acción -->
-            <div class="d-flex gap-2 mt-4">
-                <button class="btn btn-filter flex-grow-1">Aplicar filtros</button>
-            </div>
-        </div>
-    </div>
-    <!--Aqui termina el modal-->
-
-
     <!-- Top bar -->
     <div class="container-fluid top-bar">
         <div class="row py-2">
             <div class="col-md-6 text-center text-md-start">
                 <small>Envío gratuito en pedidos superiores a $150.000</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <img src="./img/logoo.png" alt="">
             </div>
         </div>
     </div>
@@ -171,7 +82,6 @@
         <nav id="navbar" class="navbar navbar-expand-lg fondo">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand playfair-title" href="#">GLEAMS</a>
 
                 <!-- Botón hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -183,35 +93,38 @@
                     <!-- Menú de navegación -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Inicio</a>
+                            <a class="nav-link active" href="./shop.php">Tienda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Colecciones</a>
+                            <a class="nav-link" href="#">Colecciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Accesorios</a>
+                            <a class="nav-link" href="#">Accesorios</a>
                         </li>
+                        <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./pedidos.php">Pedidos</a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Contacto</a>
+                            <a class="nav-link" href="#">Contacto</a>
                         </li>
                     </ul>
 
                     <!-- Botones de autenticación y carrito -->
                     <div class="d-flex align-items-center gap-3 justify-content-center">
                         <a href="#" class="text-dark position-relative" data-bs-toggle="modal" data-bs-target="#rightModal">
-                            <i class="bi bi-bag-fill"></i>
+                            <i class="fas fa-shopping-bag"></i>
+                            <!-- El contador se agregará dinámicamente aquí -->
                         </a>
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
-                            <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesion</a>
-                            <span class="me-2">
+                            <a href="perfil.php" class="btn boton-fondo-morado poppins-light ms-3">
                                 <i class="fas fa-user"></i>
                                 <?php echo htmlspecialchars($_SESSION["usuario"] ?? 'Usuario'); ?>
-                            </span>
+                            </a>
+                            <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesion</a>
                         <?php else: ?>
-                            <a href="./login.php" class="btn boton-fondo-morado me-2 poppins-light">Ingresar</a>
+                            <a href="./login.php" class="btn boton-fondo-morado ms-3 poppins-light">Ingresar</a>
                             <a href="./registro.php" type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</a>
                         <?php endif; ?>
                     </div>
@@ -222,14 +135,6 @@
 
     </header>
 
-    <div class="row justify-content-center">
-        <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 p-3">
-            <div class="d-flex align-items-center">
-                <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
-                <i class="fas fa-search"></i>
-            </div>
-        </div>
-    </div>
 
     <!-- Main Content -->
     <main class="fondo">
@@ -237,149 +142,36 @@
         <!-- Hero Section -->
         <section class="hero-section fade-opacity color-base" id="hero-section">
             <div class="container">
-                <h1 class="hero-title playfair-title">NUEVA COLECCIÓN ACCESORIOS</h1>
+                <h1 class="hero-title color-texto playfair-title">NUEVA COLECCIÓN ACCESORIOS</h1>
                 <p class="text-muted poppins-light">Descubre nuestra nueva selección de accesorios artesanales</p>
             </div>
         </section>
 
         <!-- Filter Bar -->
         <div class="container mt-4 fade-opacity" id="filter-bar">
-            <div class="row filter-bar align-items-center">
+            <div class="row justify-content-center filter-bar align-items-center">
                 <div class="col-md-6">
-                    <!-- Botón para abrir el filtro en desktop -->
-                    <div class="container mt-4 d-none d-md-block">
-                        <button class="btn btn-filter poppins-light" id="btn-filter" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
-                            <i class="bi bi-funnel"></i>
-                            Filtrar productos
-                        </button>
+
+                    <div class="d-flex align-items-center">
+                        <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
+                        <i class="fas fa-search"></i>
                     </div>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <select class="filter-dropdown rounded-4 text-secondary">
-                        <option>12 por página</option>
-                        <option>24 por página</option>
-                        <option>36 por página</option>
-                    </select>
+
                 </div>
             </div>
         </div>
 
         <!-- Products Grid -->
         <div class="container mb-5">
-            <div class="row">
+            <div class="row" id="contenedor-productos">
                 <!-- Product 1 -->
                 <div class="col-6 col-md-4 col-lg-3 fade-in">
                     <div class="product-card">
                         <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
                         <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
                             <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Anillos</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Anillos</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Anillos</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Anillos</h5>
-                                    <p class="product-price poppins-light">$45.000</p>
+                                <h4 class="product-title playfair-title">Aretes Luna</h4>
+                                <p class="product-price poppins-light">$45.000</p>
                             </div>
                             <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
                                 <i class="bi bi-bag-plus"></i>
@@ -418,7 +210,7 @@
             <div class="row">
                 <!-- About Column -->
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="footer-title">ENTRELAZOS</h5>
+                    <h5 class="footer-title">gleamns</h5>
                     <p class="text-muted">Somos una marca colombiana de accesorios artesanales creados con amor y dedicación, apoyando el talento local.</p>
                     <div class="mt-3">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -453,7 +245,7 @@
             <!-- Copyright -->
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <p class="text-muted small">© 2025 Entrelazos. Todos los derechos reservados.</p>
+                    <p class="text-muted small">© 2025 gleamns. Todos los derechos reservados.</p>
                 </div>
             </div>
         </div>

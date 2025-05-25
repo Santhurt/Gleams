@@ -1,13 +1,15 @@
-import { data } from "../ajax/data-productos.js";
+import { dataProductos } from "../ajax/data-productos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/productos_componentes.js";
+import { responsive } from "./responsive.js";
 
 export async function renderProductos() {
+    responsive();
     // -------------------- carga de categorias ---------------------------
     const selectCategoria = document.querySelector("#select-categoria");
     const selectCategoriaModal = document.querySelector("#select-modal");
 
-    const datos = await data.traerCategorias();
+    const datos = await dataProductos.traerCategorias();
 
     if (datos.status == 500) {
         swal.fire({
@@ -16,7 +18,7 @@ export async function renderProductos() {
             icon: "error",
             confirmButtonText: "Continuar",
             customClass: {
-                confirmButton: "btn btn-info",
+                confirmButton: "btn btn-primary",
             },
         });
 
@@ -42,7 +44,7 @@ export async function renderProductos() {
 
     // --------------  carga de productos --------------------------
 
-    const productos = await data.traerProductos();
+    const productos = await dataProductos.traerProductos();
     const contenedorProductos = document.querySelector("#contenedor-productos");
     console.log(productos);
 
@@ -61,17 +63,32 @@ export async function renderProductos() {
     // -----------------evento del formulario-----------------------
 
     const formulario = document.querySelector("#formulario");
+    const collapse = document.querySelector("#multiCollapseExample2");
+    const collapseInstancia = bootstrap.Collapse.getOrCreateInstance(collapse);
 
     formulario.addEventListener("submit", async (e) => {
         e.preventDefault();
         const producto = new FormData(formulario);
 
-        const productoInsertado = await data.insertarProducto(producto);
+        const campos = [
+            "nombre",
+            "descripcion",
+            "precio",
+            "stock",
+        ];
+
+        const inputs = {};
+
+        campos.forEach((campo) => {
+            inputs[campo] = formulario.querySelector(`[name="${campo}"]`);
+        });
+
+        const productoInsertado =
+            await dataProductos.insertarProducto(producto);
 
         if (productoInsertado.ok) {
             swal.fire({
-                title: "Tarea completa",
-                text: "El producto fue creado con exito",
+                title: "Producto creado con exito",
                 icon: "success",
                 confirmButtonText: "Continuar",
                 customClass: {
@@ -88,6 +105,13 @@ export async function renderProductos() {
                     );
 
                     contenedorProductos.appendChild(nuevoProducto);
+
+                        inputs.nombre.value = "";
+                        inputs.descripcion.value = "";
+                        inputs.precio.value = "";
+                        inputs.stock.value = "";
+
+                    collapseInstancia.hide();
                 }
             });
         } else {
@@ -107,7 +131,7 @@ export async function renderProductos() {
 
     contenedorProductos.addEventListener("click", (e) => {
         const boton = e.target;
-        console.log("click activado")
+        console.log("click activado");
         console.log(e.target);
 
         if (boton.classList.contains("eliminar")) {
@@ -128,7 +152,7 @@ export async function renderProductos() {
                 .then(async (resultado) => {
                     if (resultado.isConfirmed) {
                         const respuesta =
-                            await data.eliminarProducto(idProducto);
+                            await dataProductos.eliminarProducto(idProducto);
 
                         if (respuesta.status == 200) {
                             return swal.fire({
@@ -195,7 +219,7 @@ export async function renderProductos() {
             inputs[campo] = formEditar.querySelector(`[name="${campo}"]`);
         });
 
-        const producto = await data.traerProductoPorId(id);
+        const producto = await dataProductos.traerProductoPorId(id);
 
         console.log(producto);
 
@@ -210,7 +234,6 @@ export async function renderProductos() {
             }
         });
     });
-
 
     // form de editar
 
@@ -233,7 +256,7 @@ export async function renderProductos() {
         }).then(async (respuesta) => {
             if (respuesta.isConfirmed) {
                 const productoEditado =
-                    await data.editarProducto(nuevoProducto);
+                    await dataProductos.editarProducto(nuevoProducto);
                 console.log(productoEditado);
 
                 if (productoEditado.ok) {
@@ -287,12 +310,10 @@ export async function renderProductos() {
         const id = boton.getAttribute("id-producto");
         const tbody = document.querySelector("#tb-info");
 
-        const producto = await data.traerProductoPorId(id);
+        const producto = await dataProductos.traerProductoPorId(id);
 
-        const respuestaCategorias = await data.traerCategorias();
+        const respuestaCategorias = await dataProductos.traerCategorias();
         const categorias = respuestaCategorias.categorias;
-
-        console.log(categorias);
 
         const rows = Object.keys(producto).map((campo) => {
             if (campo == "categoria") {

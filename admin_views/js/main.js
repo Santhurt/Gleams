@@ -18,5 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/usuarios.js").then((modulo) => {
             modulo.renderUsuarios();
         });
+    } else if (ruta.includes("/admin_views/pedidos.php")) {
+        import("./eventos/pedidos.js").then((modulo) => {
+            modulo.renderPedidos();
+        });
+    } else if (ruta.includes("/admin_views/comentarios.php")) {
+        import("./eventos/comentarios.js").then((modulo) => {
+            modulo.renderComentarios();
+        });
     }
 });

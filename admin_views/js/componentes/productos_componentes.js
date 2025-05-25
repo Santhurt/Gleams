@@ -28,6 +28,7 @@ export const dom = {
             "table-hover",
             "table-borderless",
             "table-striped",
+            "nowrap",
         );
 
         const tbody = document.createElement("tbody");
@@ -65,6 +66,8 @@ export const dom = {
             return th;
         });
 
+        //probando lo de que sea responsive
+
         trHead.replaceChildren(...ths);
         thead.appendChild(trHead);
 
@@ -82,7 +85,7 @@ export const dom = {
         divCol.innerHTML = `
         <div class="card h-100 shadow-sm">
             <div class="position-relative">
-                <img src="../${imagen}" class="card-img-top w-100 object-fit-cover" alt="Imagen del producto ${nombre}">
+                <img src="../${imagen}" style="height:300px" class="card-img-top img-fluid w-100 object-fit-cover" alt="Imagen del producto ${nombre}">
                 <span class="position-absolute top-0 start-0 badge bg-primary rounded-pill m-2">${precio}</span>
                 <div class="position-absolute top-0 end-0 m-2">
                     <div class="dropdown">
@@ -90,11 +93,8 @@ export const dom = {
                             <i class="fas fa-ellipsis-v"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton-${id}">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-heart"></i> Añadir a favoritos</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-share-alt"></i> Compartir producto</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-box"></i> Ver disponibilidad</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-flag"></i> Reportar problema</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-heart"></i> Crear descuento</a></li>
+                            <!-- <li><hr class="dropdown-divider"></li> -->
                         </ul>
                     </div>
                 </div>

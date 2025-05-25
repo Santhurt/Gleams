@@ -1,6 +1,6 @@
 const url = "../../controllers/usuarios/";
 
-export const data = {
+export const dataUsuarios = {
     traerRoles: async () => {
         const contr = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);

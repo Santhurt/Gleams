@@ -22,6 +22,37 @@ class Usuario
         return $this->error;
     }
 
+    public function actualizar_pass($correo, $nueva_pass)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            
+            $actualizar_pass = "update clientes set
+                password = ?
+                where correo = ?
+            ";
+
+            $nueva_pass = password_hash($nueva_pass, PASSWORD_DEFAULT);
+
+            $resultado = mysqli_execute_query($this->conn, $actualizar_pass, [
+                $nueva_pass,
+                $correo
+            ]);
+
+            return $resultado;
+
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+
+        }
+    }
+
     public function verificar_usuario($correo, $password)
     {
         try {
@@ -151,6 +182,7 @@ class Usuario
             }
 
             $usuario_consulta = "select
+                clientes.id_cliente as id,
                 nombre,
                 telefono,
                 rol,

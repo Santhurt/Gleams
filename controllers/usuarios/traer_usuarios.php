@@ -28,6 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 $fila[$campo] = htmlspecialchars($valor);
             }
 
+            $fila["estado"] = ($fila["estado"] == 1) ? "Activo" : "No activo";
+
             $usuarios[] = $fila;
         }
 

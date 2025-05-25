@@ -1,0 +1,107 @@
+/* Estilos específicos para la sección de pedidos */
+.pedidos-section {
+    min-height: 60vh;
+    padding: 40px 0;
+}
+
+.pedido-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.pedido-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pedido-header {
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    padding: 15px 20px;
+    color: var(--color-texto);
+}
+
+.status-badge {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.status-pendiente {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.status-entregado {
+    background-color: #d1edff;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.status-cancelado {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c2c7;
+}
+
+.producto-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.producto-item:last-child {
+    border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    color: var(--color-texto);
+    font-weight: 500;
+    padding: 12px 24px;
+    margin-right: 8px;
+    border-radius: 25px 25px 0 0;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: rgba(165, 90, 108, 0.1);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #6c757d;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.order-number {
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    color: #a55a6c;
+}
+
+.total-amount {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #a55a6c;
+}
+
+.fecha-pedido {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--color-texto);
+    border-bottom: 3px solid #a55a6c;
+}
