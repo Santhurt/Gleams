@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         while ($fila = $resultado["productos"]->fetch_assoc()) {
             $id_producto = $fila["id_producto"];
             $fila["imagen"] = $imagen[$id_producto] ?? "";
+            $fila["estado"] = ($fila["estado"] == 1) ? "Disponible": "No disponible";
             $productos[] = $fila;
         }
 

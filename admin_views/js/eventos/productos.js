@@ -63,17 +63,32 @@ export async function renderProductos() {
     // -----------------evento del formulario-----------------------
 
     const formulario = document.querySelector("#formulario");
+    const collapse = document.querySelector("#multiCollapseExample2");
+    const collapseInstancia = bootstrap.Collapse.getOrCreateInstance(collapse);
 
     formulario.addEventListener("submit", async (e) => {
         e.preventDefault();
         const producto = new FormData(formulario);
 
-        const productoInsertado = await dataProductos.insertarProducto(producto);
+        const campos = [
+            "nombre",
+            "descripcion",
+            "precio",
+            "stock",
+        ];
+
+        const inputs = {};
+
+        campos.forEach((campo) => {
+            inputs[campo] = formulario.querySelector(`[name="${campo}"]`);
+        });
+
+        const productoInsertado =
+            await dataProductos.insertarProducto(producto);
 
         if (productoInsertado.ok) {
             swal.fire({
-                title: "Tarea completa",
-                text: "El producto fue creado con exito",
+                title: "Producto creado con exito",
                 icon: "success",
                 confirmButtonText: "Continuar",
                 customClass: {
@@ -90,6 +105,13 @@ export async function renderProductos() {
                     );
 
                     contenedorProductos.appendChild(nuevoProducto);
+
+                        inputs.nombre.value = "";
+                        inputs.descripcion.value = "";
+                        inputs.precio.value = "";
+                        inputs.stock.value = "";
+
+                    collapseInstancia.hide();
                 }
             });
         } else {
@@ -109,7 +131,7 @@ export async function renderProductos() {
 
     contenedorProductos.addEventListener("click", (e) => {
         const boton = e.target;
-        console.log("click activado")
+        console.log("click activado");
         console.log(e.target);
 
         if (boton.classList.contains("eliminar")) {
@@ -212,7 +234,6 @@ export async function renderProductos() {
             }
         });
     });
-
 
     // form de editar
 

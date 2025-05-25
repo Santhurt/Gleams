@@ -31,6 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
         exit;
     }
 
+    if(trim($_SESSION["id_cliente"]) == $id) {
+        http_response_code(400);
+        echo json_encode([
+            "status" => 400,
+            "mensaje" => "No se puede eliminar el usuario activo"
+        ]);
+        exit;
+    }
+
     $usuario = new Usuario();
     $datos_usuario = $usuario->traer_usuarioPorId($id);
 

@@ -48,7 +48,7 @@ body {
 }
 
 .forgot-password a {
-    color: var(--secondary-color);
+    color: #a55a6c;
     text-decoration: none;
     font-size: 0.9rem;
 }
@@ -59,7 +59,7 @@ body {
 }
 
 .register-link a {
-    color: var(--secondary-color);
+    color: #a55a6c;
     text-decoration: none;
     font-weight: 500;
 }

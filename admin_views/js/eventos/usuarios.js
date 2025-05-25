@@ -59,7 +59,7 @@ export async function renderUsuarios() {
             const idUsuario = boton.id;
             swal.fire({
                 title: "Aviso",
-                text: "¿Esta seguro de que quiere eliminar el producto?",
+                text: "¿Esta seguro de que quiere eliminar el usuario?",
                 icon: "warning",
                 showCancelButton: true,
                 cancelButtonText: "Cancelar",

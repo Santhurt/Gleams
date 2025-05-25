@@ -39,11 +39,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if (!$validar->text("nombre", "direccion")) {
+    if (!$validar->text("nombre" )) {
         http_response_code(400);
 
         echo json_encode([
             "mensaje" => "No se pueden ingresar caracteres especiales"
+        ]);
+        exit;
+    }
+
+    if(!$validar->direccion(trim($_POST["direccion"]))) {
+        echo json_encode([
+            "mensaje" => "Direccion invalida"
         ]);
         exit;
     }

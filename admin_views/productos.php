@@ -291,7 +291,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </div>
         </div>
 
-        <div class="container w-100 ms-0">
+        <div class="container-fluid">
             <div class="row mt-4" id="contenedor-productos">
 
             </div>

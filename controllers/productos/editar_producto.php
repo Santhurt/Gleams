@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($imagen_nueva_subida) {
         error_log("holaaaa");
         error_log(implode(", ", $_FILES["imagen"]));
-        $img_nueva = insertar_imagen("imagen", true, $producto_antiguo["ruta"]);
+        $img_nueva = insertar_imagen("imagen", true, $producto_antiguo["ruta"], true, 800, 600, 85);
 
         if (empty($img_nueva["ruta"])) {
             http_response_code(400);
