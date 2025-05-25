@@ -1,12 +1,10 @@
 import { dataProductos } from "../ajax/data_productos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { renderCarrito } from "./carrito.js";
-import { cargarProductos } from "./cargar_productos.js";
 import { dom } from "../componentes/shop_componentes.js";
 import { dataPedido } from "../ajax/data_pedidos.js";
 
 export async function renderizarProducto() {
-    cargarProductos();
     const elementosTransicion = document.querySelectorAll(".fade-in");
     // configuracion pal toast
     const Toast = swal.mixin({
@@ -117,18 +115,18 @@ export async function renderizarProducto() {
                         : 0,
             };
 
-            const respuesta = await dataPedido.agregarAlCarrito(
-                pedido.id,
-                pedido.cantidad,
-            );
+            // const respuesta = await dataPedido.agregarAlCarrito(
+            //     pedido.id,
+            //     pedido.cantidad,
+            // );
 
-            if (respuesta.status != 200 && respuesta.status != 401) {
-                Toast.fire({
-                    title: respuesta.mensaje,
-                    icon: "error",
-                });
-                return;
-            }
+            // if (respuesta.status != 200 && respuesta.status != 401) {
+            //     Toast.fire({
+            //         title: respuesta.mensaje,
+            //         icon: "error",
+            //     });
+            //     return;
+            // }
 
             // Verificar si el producto ya existe en el carrito
             const productoExistente = localStorage.getItem(idProducto);

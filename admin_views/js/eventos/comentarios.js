@@ -1,5 +1,5 @@
 import { responsive } from "./responsive.js";
-import { data } from "../ajax/data_comentarios.js";
+import { dataComentarios } from "../ajax/data_comentarios.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/comentarios_componentes.js";
 
@@ -10,7 +10,7 @@ export async function renderComentarios() {
         "#contenedor-comentarios",
     );
 
-    const respuesta = await data.traerComentarios();
+    const respuesta = await dataComentarios.traerComentarios();
     console.log(respuesta);
 
     if (respuesta.status != 200) {
@@ -77,7 +77,7 @@ export async function renderComentarios() {
             }).then(async (res) => {
                 if (res.isConfirmed) {
                     const respuesta =
-                        await data.eliminarComentario(idComentario);
+                        await dataComentarios.eliminarComentario(idComentario);
 
                     if (respuesta.status == 200) {
                         swal.fire({

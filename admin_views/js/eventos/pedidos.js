@@ -1,12 +1,12 @@
 import { responsive } from "./responsive.js";
 import { dom } from "../componentes/pedidos_componentes.js";
-import { data } from "../ajax/data_pedidos.js";
+import { dataPedidos } from "../ajax/data_pedidos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 
 export async function renderPedidos() {
     responsive();
 
-    const respuesta = await data.traerPedidos();
+    const respuesta = await dataPedidos.traerPedidos();
     console.log(respuesta);
 
     if (respuesta.status != 200) {
@@ -92,7 +92,7 @@ export async function renderPedidos() {
                 },
             }).then(async (respuestaAlert) => {
                 if (respuestaAlert.isConfirmed) {
-                    const respuesta = await data.cambiarEstado(
+                    const respuesta = await dataPedidos.cambiarEstado(
                         idPedido,
                         accion,
                     );
@@ -136,7 +136,7 @@ export async function renderPedidos() {
         const boton = e.relatedTarget;
         const idPedido = boton.id;
 
-        const respuesta = await data.traerDetallesPedidos(idPedido);
+        const respuesta = await dataPedidos.traerDetallesPedidos(idPedido);
         const pedidos = respuesta.status == 200 ? respuesta.datos : [];
         console.log(pedidos);
 

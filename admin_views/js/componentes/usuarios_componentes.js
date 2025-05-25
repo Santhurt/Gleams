@@ -88,7 +88,7 @@ export const dom = {
             botonEditar.setAttribute("data-bs-target", "#modal-editar");
 
             const botonEliminar = document.createElement("button");
-            botonEliminar.innerHTML = `<i class="fas fa-trash-alt eliminar"></i>`;
+            botonEliminar.innerHTML = `<i id="${usuario['ID Usuario']}" class="fas fa-trash-alt eliminar"></i>`;
             botonEliminar.classList.add("btn", "btn-danger", "eliminar");
             botonEliminar.id = usuario["ID Usuario"];
 

@@ -35,27 +35,7 @@
                 <div class="modal-body p-4">
                     <!-- Lista de productos -->
                     <ul class="list-group list-group-flush mb-4" id="lista-pedidos">
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                            <div>
-                                <h6 class="mb-1">Camisa Casual</h6>
-                                <small class="text-muted">2 unidades</small>
-                            </div>
-                            <span class="fw-semibold">$59.98</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                            <div>
-                                <h6 class="mb-1">Pantalón Slim Fit</h6>
-                                <small class="text-muted">1 unidad</small>
-                            </div>
-                            <span class="fw-semibold">$49.99</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                            <div>
-                                <h6 class="mb-1">Zapatillas Deportivas</h6>
-                                <small class="text-muted">1 unidad</small>
-                            </div>
-                            <span class="fw-semibold">$89.95</span>
-                        </li>
+                        <!--Aqui iria el mensaje-->
                     </ul>
 
                     <!-- Total -->

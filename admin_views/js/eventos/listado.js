@@ -1,4 +1,4 @@
-import { data } from "../ajax/data-productos.js";
+import { dataProductos } from "../ajax/data-productos.js";
 import { dom } from "../componentes/productos_componentes.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { responsive } from "./responsive.js";
@@ -9,7 +9,7 @@ export async function renderListado() {
 
     const contenedorProductos = document.querySelector("#contenedor-productos");
 
-    const productos = await data.traerProductos();
+    const productos = await dataProductos.traerProductos();
     console.log(productos);
 
     if (productos.status == 500) {

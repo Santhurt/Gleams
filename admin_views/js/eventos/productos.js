@@ -1,4 +1,4 @@
-import { data } from "../ajax/data-productos.js";
+import { dataProductos } from "../ajax/data-productos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/productos_componentes.js";
 import { responsive } from "./responsive.js";
@@ -9,7 +9,7 @@ export async function renderProductos() {
     const selectCategoria = document.querySelector("#select-categoria");
     const selectCategoriaModal = document.querySelector("#select-modal");
 
-    const datos = await data.traerCategorias();
+    const datos = await dataProductos.traerCategorias();
 
     if (datos.status == 500) {
         swal.fire({
@@ -44,7 +44,7 @@ export async function renderProductos() {
 
     // --------------  carga de productos --------------------------
 
-    const productos = await data.traerProductos();
+    const productos = await dataProductos.traerProductos();
     const contenedorProductos = document.querySelector("#contenedor-productos");
     console.log(productos);
 
@@ -68,7 +68,7 @@ export async function renderProductos() {
         e.preventDefault();
         const producto = new FormData(formulario);
 
-        const productoInsertado = await data.insertarProducto(producto);
+        const productoInsertado = await dataProductos.insertarProducto(producto);
 
         if (productoInsertado.ok) {
             swal.fire({
@@ -130,7 +130,7 @@ export async function renderProductos() {
                 .then(async (resultado) => {
                     if (resultado.isConfirmed) {
                         const respuesta =
-                            await data.eliminarProducto(idProducto);
+                            await dataProductos.eliminarProducto(idProducto);
 
                         if (respuesta.status == 200) {
                             return swal.fire({
@@ -197,7 +197,7 @@ export async function renderProductos() {
             inputs[campo] = formEditar.querySelector(`[name="${campo}"]`);
         });
 
-        const producto = await data.traerProductoPorId(id);
+        const producto = await dataProductos.traerProductoPorId(id);
 
         console.log(producto);
 
@@ -235,7 +235,7 @@ export async function renderProductos() {
         }).then(async (respuesta) => {
             if (respuesta.isConfirmed) {
                 const productoEditado =
-                    await data.editarProducto(nuevoProducto);
+                    await dataProductos.editarProducto(nuevoProducto);
                 console.log(productoEditado);
 
                 if (productoEditado.ok) {
@@ -289,9 +289,9 @@ export async function renderProductos() {
         const id = boton.getAttribute("id-producto");
         const tbody = document.querySelector("#tb-info");
 
-        const producto = await data.traerProductoPorId(id);
+        const producto = await dataProductos.traerProductoPorId(id);
 
-        const respuestaCategorias = await data.traerCategorias();
+        const respuestaCategorias = await dataProductos.traerCategorias();
         const categorias = respuestaCategorias.categorias;
 
         const rows = Object.keys(producto).map((campo) => {

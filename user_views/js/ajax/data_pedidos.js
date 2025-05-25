@@ -179,6 +179,10 @@ export const dataPedido = {
                 const mensaje = await respuesta.json();
                 throw mensaje;
             }
+            //para cuando no haya sesion activa
+            if(respuesta.status = 203) {
+                return;
+            }
 
             return respuesta.json();
         } catch (error) {

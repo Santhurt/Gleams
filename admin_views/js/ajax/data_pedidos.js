@@ -1,5 +1,5 @@
 const url = "../../../controllers/pedidos/";
-export const data = {
+export const dataPedidos = {
     traerDetallesPedidos: async (id) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);

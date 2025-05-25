@@ -6,7 +6,6 @@ import { cargarProductos } from "./cargar_productos.js";
 import { dom } from "../componentes/shop_componentes.js";
 
 export async function renderPedidos() {
-    cargarProductos();
 
     const Toast = swal.mixin({
         toast: true,

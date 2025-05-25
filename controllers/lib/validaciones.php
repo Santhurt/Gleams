@@ -63,11 +63,21 @@ class Validar
         return true;
     }
 
+    public function direccion($direccion)
+    {
+
+        $patron = "/^([a-zA-Z0-9\s.áéíóúÁÉÍÓÚñÑ]+?)\s+#\s*(\d+[A-Za-z]*)(?:\s*-\s*(\d+[A-Za-z]*))?(?:\s+(.+))?$/";
+        if (!preg_match($patron, $direccion)) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function date($date)
     {
         $d = DateTime::createFromFormat('Y-m-d', $date);
 
         return ($d && $d->format('Y-m-d') === $date) ? $date : false;
     }
-
 }

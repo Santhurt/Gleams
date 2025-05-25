@@ -1,6 +1,6 @@
 const url = "../../../controllers/comentarios/";
 
-export const data = {
+export const dataComentarios = {
     eliminarComentario: async (id) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);

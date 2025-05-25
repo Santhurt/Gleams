@@ -3,6 +3,11 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
     header("Location: /user_views/login.php");
     exit;
 }
+
+if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
+    header("Location: /user_views/shop.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,6 +26,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
     <link href="./css/modal_carrito.css" rel="stylesheet">
     <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="./css/pago.css" rel="stylesheet">
+    <link href="./css/toast.css" rel="stylesheet">
 
 </head>
 

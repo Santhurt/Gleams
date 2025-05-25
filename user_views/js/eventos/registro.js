@@ -4,6 +4,18 @@ import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js"
 export async function renderRegitro() {
     const elementosTransicion = document.querySelectorAll(".fade-in");
 
+    const Toast = swal.mixin({
+        toast: true,
+        position: "top-end",
+        iconColor: "white",
+        customClass: {
+            popup: "colored-toast",
+        },
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+    });
+
     const observer = new IntersectionObserver(
         (observados) => {
             observados.forEach((observado, i) => {
@@ -32,24 +44,19 @@ export async function renderRegitro() {
 
         const usuario = new FormData(formRegistro);
         const respuesta = await data.crearUsuario(usuario);
-        console.log(respuesta)
 
         if (respuesta.status == 200) {
-            swal.fire({
-                title: "Registro completo",
-                text: "La cuenta fue creada con exito",
+            Toast.fire({
+                title: "Registro exitoso",
                 icon: "success",
-            }).then((respuesta) => {
-                if (respuesta.isConfirmed) {
-                    setTimeout(() => {
-                        window.location.replace("login.php");
-                    }, 1000);
-                }
+            }).then(() => {
+                setTimeout(() => {
+                    window.location.replace("login.php");
+                }, 500);
             });
         } else {
-            swal.fire({
-                title: "Error",
-                text: respuesta.mensaje,
+            Toast.fire({
+                title: respuesta.mensaje,
                 icon: "error"
             });
         }

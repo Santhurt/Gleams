@@ -4,7 +4,18 @@ import { dom } from "../componentes/shop_componentes.js";
 import { cargarProductos } from "./cargar_productos.js";
 
 export async function renderPago() {
-    cargarProductos(); 
+    const Toast = swal.mixin({
+        toast: true,
+        position: "top-end",
+        iconColor: "white",
+        customClass: {
+            popup: "colored-toast",
+        },
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+    });
+    cargarProductos();
     const elementosTransicion = document.querySelectorAll(".fade-in");
 
     const observer = new IntersectionObserver(
@@ -79,6 +90,11 @@ export async function renderPago() {
                         window.location.replace("shop.php");
                     }, 1000);
                 }
+            });
+        } else {
+            Toast.fire({
+                title: respuesta.mensaje,
+                icon: "error"
             });
         }
     });

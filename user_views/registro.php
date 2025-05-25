@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/transiciones.css">
     <link rel="stylesheet" href="./css/fonts.css">
+    <link href="./css/toast.css" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid poppins-light">

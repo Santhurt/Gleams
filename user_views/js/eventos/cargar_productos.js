@@ -9,5 +9,7 @@ export async function cargarProductos() {
                 return dataPedido.agregarAlCarrito(key, pedido.cantidad);
             }),
         );
+
+        return resultados;
     }
 }

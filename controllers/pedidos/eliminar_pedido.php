@@ -2,12 +2,8 @@
 session_start();
 
 if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
-    http_response_code(400);
+    http_response_code(204);
 
-    echo json_encode([
-        "status" => 400,
-        "mensaje" => "Debe de ingresar sesion"
-    ]);
     exit;
 }
 
@@ -22,9 +18,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         exit;
     }
 
+    if(!isset($_SESSION["pedido"][$idProducto])) {
+        http_response_code(204);
+        exit;
+
+    }
+ 
+
     $idProducto = $_GET["id"];
 
-    if (isset($_SESSION["pedido"]) && isset($_SESSION["pedido"][$idProducto])) {
+    if (isset($_SESSION["pedido"])) {
         unset($_SESSION["pedido"][$idProducto]);
 
         http_response_code(200);

@@ -1,4 +1,44 @@
 export const dom = {
+    verificarCarritoVacio: function () {
+        const listaPedidos = document.getElementById("lista-pedidos");
+        const productos = listaPedidos.querySelectorAll(
+            "li:not(.mensaje-vacio)",
+        );
+
+        if (productos.length === 0) {
+            this.mostrarCarritoVacio();
+        }
+    },
+
+    mostrarCarritoVacio: function () {
+        const listaPedidos = document.getElementById("lista-pedidos");
+        const total = document.getElementById("total");
+        const confirmarCompra = document.getElementById("confirmar-compra");
+
+        // Limpiar la lista
+        listaPedidos.innerHTML = "";
+
+        // Crear el mensaje de carrito vacío
+        const mensajeVacio = document.createElement("li");
+        mensajeVacio.className = "list-group-item text-center py-5 border-0";
+        mensajeVacio.innerHTML = `
+        <div class="text-muted">
+            <i class="fas fa-shopping-cart fa-3x mb-3 opacity-50"></i>
+            <h6 class="mb-2">No hay productos en el carrito</h6>
+            <p class="small mb-0">Agrega algunos productos para continuar con tu compra</p>
+        </div>
+    `;
+
+        // Agregar el mensaje a la lista
+        listaPedidos.appendChild(mensajeVacio);
+
+        // Ocultar o actualizar el total
+        total.textContent = "$0.00";
+
+        // Deshabilitar el botón de finalizar compra
+        confirmarCompra.classList.add("disabled");
+        confirmarCompra.setAttribute("aria-disabled", "true");
+    },
     crearComentario: ({ cliente, estrellas, fecha, comentario }) => {
         const divCard = document.createElement("div");
         divCard.classList.add("card", "mb-3", "fondo");
@@ -19,7 +59,7 @@ export const dom = {
         span.classList.add("text-warning");
         const estrellasLlenas = "★".repeat(estrellas);
         const estrellasVacias = "☆".repeat(5 - estrellas);
-        span.textContent = `${estrellasLlenas}${estrellasVacias}`
+        span.textContent = `${estrellasLlenas}${estrellasVacias}`;
 
         const small = document.createElement("small");
         small.textContent = fecha;
@@ -28,12 +68,11 @@ export const dom = {
         pComentario.classList.add("card-text", "poppins-light");
         pComentario.textContent = comentario;
 
-
         div.replaceChildren(span, small);
         divCont.replaceChildren(h5, div);
 
         cardBody.replaceChildren(divCont, pComentario);
-        divCard.appendChild(cardBody)
+        divCard.appendChild(cardBody);
 
         return divCard;
     },
@@ -68,8 +107,8 @@ export const dom = {
                 contador.className =
                     "badge bg-danger rounded-pill position-absolute";
                 contador.style.cssText = `
-                top: -8px;
-                right: -8px;
+                top: -15px;
+                right: -17px;
                 font-size: 0.75rem;
                 min-width: 20px;
                 height: 20px;

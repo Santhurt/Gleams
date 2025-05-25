@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if(
         !isset($cantidad)
         || empty($cantidad)
-        || $cantidad <= 0 || !is_numeric($cantidad)
+        || $cantidad <= 0 || !is_numeric($cantidad) || $cantidad > 50
     ) {
         http_response_code(400);
 

@@ -263,10 +263,9 @@ class Pedido
                 id_cliente,
                 total,
                 estado
-            ) values(?, ?, ?, ?)";
+            ) values(now(), ?, ?, ?)";
 
             $respuesta_insertar_pedido = mysqli_execute_query($this->conn, $insertar_pedido, [
-                date("Y-m-d"),
                 $id_cliente,
                 $total,
                 "pendiente"

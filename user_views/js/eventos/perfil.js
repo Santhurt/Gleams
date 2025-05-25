@@ -1,11 +1,9 @@
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dataPerfil } from "../ajax/data_perfil.js";
-import { cargarProductos } from "./cargar_productos.js";
 import { dom } from "../componentes/shop_componentes.js";
 import { renderCarrito } from "./carrito.js";
 
 export async function renderPerfil() {
-    cargarProductos();
     // configuracion pal toast
     const Toast = swal.mixin({
         toast: true,

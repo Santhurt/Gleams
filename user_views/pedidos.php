@@ -116,7 +116,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                     <!-- Menú de navegación -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="./shop.php">Tienda</a>
+                            <a class="nav-link" href="./shop.php">Tienda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Colecciones</a>
@@ -126,7 +126,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                         </li>
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="./pedidos.php">Pedidos</a>
+                                <a class="nav-link active" href="./pedidos.php">Pedidos</a>
                             </li>
                         <?php endif; ?>
                         <li class="nav-item">

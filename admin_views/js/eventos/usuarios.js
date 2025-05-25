@@ -1,4 +1,4 @@
-import { data } from "../ajax/data_usuarios.js";
+import { dataUsuarios } from "../ajax/data_usuarios.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/usuarios_componentes.js"; //enrealidad solo es para traer la funcion de tabla
 import { responsive } from "./responsive.js";
@@ -8,7 +8,7 @@ export async function renderUsuarios() {
 
     const contenedorUsuarios = document.querySelector("#contenedor-usuarios");
 
-    const usuarios = await data.traerUsuarios();
+    const usuarios = await dataUsuarios.traerUsuarios();
     console.log(usuarios);
 
     if (usuarios.status == 500 || usuarios.status == 401) {
@@ -69,39 +69,36 @@ export async function renderUsuarios() {
                     confirmButton: "btn btn-info",
                     cancelButton: "btn btn-danger",
                 },
-            })
-                .then(async (respuestaAlert) => {
-                    if (respuestaAlert.isConfirmed) {
-                        const respuesta = await data.eliminarUsuario(idUsuario);
+            }).then(async (respuestaAlert) => {
+                if (respuestaAlert.isConfirmed) {
+                    const respuesta =
+                        await dataUsuarios.eliminarUsuario(idUsuario);
 
-                        if (respuesta.status == 200) {
-                            swal.fire({
-                                title: "Usuario eliminado",
-                                icon: "success",
-                                confirmButtonText: "Continuar",
-                                customClass: {
-                                    confirmButton: "btn btn-info",
-                                },
-                            });
-                        } else {
-                            swal.fire({
-                                title: "Error",
-                                text: respuesta.mensaje,
-                                icon: "error",
-                                confirmButtonText: "Continuar",
-                                customClass: {
-                                    confirmButton: "btn btn-info",
-                                },
-                            });
-                        }
+                    if (respuesta.status == 200) {
+                        swal.fire({
+                            title: "Usuario eliminado",
+                            icon: "success",
+                            confirmButtonText: "Continuar",
+                            customClass: {
+                                confirmButton: "btn btn-info",
+                            },
+                        }).then(() => {
+                            const tr = boton.closest("tr");
+                            tr.parentElement.removeChild(tr);
+                        });
+                    } else {
+                        swal.fire({
+                            title: "Error",
+                            text: respuesta.mensaje,
+                            icon: "error",
+                            confirmButtonText: "Continuar",
+                            customClass: {
+                                confirmButton: "btn btn-info",
+                            },
+                        });
                     }
-                })
-                .then((respuesta) => {
-                    if (respuesta.isConfirmed) {
-                        const tr = boton.closest("tr");
-                        tr.parentElement.removeChild(tr);
-                    }
-                });
+                }
+            });
         }
     });
 
@@ -134,7 +131,7 @@ export async function renderUsuarios() {
             inputs[campo] = document.querySelector(`[name="${campo}"]`);
         });
 
-        const producto = await data.traerProductoPorId(idUsuario);
+        const producto = await dataUsuarios.traerProductoPorId(idUsuario);
         console.log(producto);
 
         inputs.nombre.value = producto.nombre;
@@ -143,7 +140,7 @@ export async function renderUsuarios() {
         inputs.correo.value = producto.correo;
         inputs.direccion.value = producto.direccion;
 
-        const roles = await data.traerRoles();
+        const roles = await dataUsuarios.traerRoles();
         const optionsRoles = dom.crearOpcionRoles(roles);
 
         inputs.roles.replaceChildren(...optionsRoles);
@@ -167,7 +164,8 @@ export async function renderUsuarios() {
             },
         }).then(async (resultado) => {
             if (resultado.isConfirmed) {
-                const respuesta = await data.editarUsuario(nuevoUsuario);
+                const respuesta =
+                    await dataUsuarios.editarUsuario(nuevoUsuario);
 
                 if (respuesta.status == 200) {
                     swal.fire({
