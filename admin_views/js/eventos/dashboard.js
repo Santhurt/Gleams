@@ -1,5 +1,15 @@
 import { responsive } from "./responsive.js";
-export function renderDashboard() {
+import { calcular } from "../lib/calculos.js";
+
+export async function renderDashboard() {
     responsive();
-    console.log("en el dashboard");
+    const cantidadLabel = document.querySelector("#cantidad-usuarios");
+    const totalVentasLabel = document.querySelector("#total-ventas");
+
+    cantidadLabel.innerHTML = await calcular.usuariosRegistrados();
+    totalVentasLabel.innerHTML = `$${await calcular.totalVentas() }`;
+    
+    
+
+
 }

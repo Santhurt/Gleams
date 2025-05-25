@@ -9,7 +9,6 @@ export async function renderUsuarios() {
     const contenedorUsuarios = document.querySelector("#contenedor-usuarios");
 
     const usuarios = await dataUsuarios.traerUsuarios();
-    console.log(usuarios);
 
     if (usuarios.status == 500 || usuarios.status == 401) {
         swal.fire({
@@ -132,7 +131,6 @@ export async function renderUsuarios() {
         });
 
         const producto = await dataUsuarios.traerProductoPorId(idUsuario);
-        console.log(producto);
 
         inputs.nombre.value = producto.nombre;
         inputs.telefono.value = producto.telefono;
@@ -178,7 +176,6 @@ export async function renderUsuarios() {
                     }).then(() => {
                         modalInstancia.hide();
                         const usuario = respuesta.usuarioEditado;
-                        console.log(usuario);
 
                         const tr = document.querySelector(
                             `#usuario-${usuario.id}`,

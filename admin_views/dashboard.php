@@ -150,19 +150,28 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             <div class="col-md-4">
                 <div class="widget-card sales-card">
                     <div class="mb-3">Usuarios registrados</div>
-                    <h2 class="mb-3">300</h2>
-                    <div>10 usuarios nuevos este mes</div>
+                    <h2 class="mb-3" id="cantidad-usuarios"></h2>
                     <div class="text-end">
                         <i class="fas fa-chart-line fa-2x opacity-50"></i>
                     </div>
                 </div>
             </div>
 
+            <!-- <div class="col-md-4"> -->
+            <!--     <div class="widget-card sales-card"> -->
+            <!--         <div class="mb-3">Usuarios registrados</div> -->
+            <!--         <h2 class="mb-3">300</h2> -->
+            <!--         <div>10 usuarios nuevos este mes</div> -->
+            <!--         <div class="text-end"> -->
+            <!--             <i class="fas fa-chart-line fa-2x opacity-50"></i> -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!-- </div> -->
+
             <div class="col-md-4">
                 <div class="widget-card orders-card">
                     <div class="mb-3">Ventas del mes</div>
-                    <h2 class="mb-3">500</h2>
-                    <div>5 Nuevas este mes</div>
+                    <h2 class="mb-3" id="total-ventas">500</h2>
                     <div class="text-end">
                         <i class="fas fa-bookmark fa-2x opacity-50"></i>
                     </div>
@@ -171,7 +180,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
             <div class="col-md-4">
                 <div class="widget-card visitors-card">
-                    <div class="mb-3">Tota en ventas esta semana</div>
+                    <div class="mb-3">Cantidad de pedidos del mes</div>
                     <h2 class="mb-3">$1200000</h2>
                     <div>Aumento del 5%</div>
                     <div class="text-end">
