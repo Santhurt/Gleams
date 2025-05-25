@@ -164,7 +164,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                                     Nuevo producto
                                 </button>
 
-                                <button type="button" class="btn btn-success">Generar reporte</button>
+                                <a href="../controllers/reportes/inventario.php" class="btn btn-success">Generar pdf inventario</a>
                             </div>
 
                             <div class="row">
