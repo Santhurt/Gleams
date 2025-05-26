@@ -217,6 +217,7 @@ export const dom = {
         const img = document.createElement("img");
         img.classList.add("card-img-top", "rounded-3", "img-fluid");
         img.src = `../${producto.imagen.ruta}`;
+        img.style.height = '300px';
 
         const cardBody = document.createElement("div");
         cardBody.classList.add(
