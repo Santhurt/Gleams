@@ -88,7 +88,7 @@ export async function renderizarProducto() {
     }
 
     const comentariosContenedor = document.querySelector("#comentarios");
-    const comentarios = respuestaComentarios.datos
+    const comentarios = respuestaComentarios.datos;
 
     const cardsComentarios = comentarios.map((comentario) => {
         return dom.crearComentario(comentario);
@@ -114,19 +114,6 @@ export async function renderizarProducto() {
                         ? infoProducto.cantidad.value
                         : 0,
             };
-
-            // const respuesta = await dataPedido.agregarAlCarrito(
-            //     pedido.id,
-            //     pedido.cantidad,
-            // );
-
-            // if (respuesta.status != 200 && respuesta.status != 401) {
-            //     Toast.fire({
-            //         title: respuesta.mensaje,
-            //         icon: "error",
-            //     });
-            //     return;
-            // }
 
             // Verificar si el producto ya existe en el carrito
             const productoExistente = localStorage.getItem(idProducto);

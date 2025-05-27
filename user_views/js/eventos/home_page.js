@@ -79,7 +79,26 @@ export async function renderizarIndex() {
 
     contenedorProductos.replaceChildren(...cardProductos);
 
-    // También actualizar cuando se carga la página si ya hay items
+    const inputBuscar = document.querySelector("#buscar");
+
+    inputBuscar.addEventListener("input", (e)=>{
+        const input = e.target.value;
+        const items = document.querySelectorAll(".item-producto");
+
+        items.forEach(item => {
+            const nombre = item.querySelector("#nombre-producto");
+
+            if(!nombre.textContent.includes(input.trim())) {
+                item.style.display = "none";
+            } else {
+                item.style.display = "block";
+
+            }
+
+        });
+
+    })
+
     dom.actualizarContadorCarrito();
 
     // ---------------- renderizar en el carrito----------------------------

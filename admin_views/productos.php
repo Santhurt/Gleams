@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -21,10 +20,11 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
 
 </head>
+
 <body>
     <!-- Overlay for mobile -->
     <div class="overlay" id="sidebar-overlay"></div>
-    
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="logo d-flex align-items-center">
@@ -115,23 +115,10 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a href="#" class="dropdown-item">Ver perfil</a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="dropdown-item">Cambiar de cuenta</a>
-                                </li>
-
-                                <li class="dropdown-divider"></li>
-
-                                <li>
                                     <a href="../controllers/auth/logout.php" class="dropdown-item text-danger">Cerrar sesion</a>
                                 </li>
                             </ul>
                         </div>
-                        <button class="btn d-none d-lg-block">
-                            <i class="fas fa-power-off"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -211,6 +198,37 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                         </div>
 
 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--modal de descuento -->
+
+        <div class="modal fade" id="modal-descuento" tabindex="-1" aria-labelledby="minimalModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">Añadir nuevo descuento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="" class="label-form">Descuento: <span id="val-descuento">0%</span></label>
+                                <input type="range" id="range-descuento" name="descuento" class="form-range" min="0" max="100">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="" class="label-form">Fecha de fin</label>
+                                <input type="date" class="form-control" name="fecha-descuento">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="submit" form="form-editar" class="btn btn-primary">Editar producto</button> -->
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aplicar descuento</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

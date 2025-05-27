@@ -55,27 +55,31 @@ export async function renderProductos() {
             producto.descripcion,
             producto.precio,
             producto.imagen.ruta,
+            producto.stock,
         );
     });
 
     contenedorProductos.replaceChildren(...cardsProductos);
 
+    //--------------evento del range descuento -------------------
+
+    const range = document.querySelector("#range-descuento");
+    range.addEventListener("input", (e)=>{
+        document.getElementById("val-descuento").textContent = `${e.target.value}%`;
+    })
     // -----------------evento del formulario-----------------------
 
     const formulario = document.querySelector("#formulario");
     const collapse = document.querySelector("#multiCollapseExample2");
-    const collapseInstancia = bootstrap.Collapse.getOrCreateInstance(collapse);
+    const collapseInstancia = bootstrap.Collapse.getOrCreateInstance(collapse, {
+        toggle: false,
+    });
 
     formulario.addEventListener("submit", async (e) => {
         e.preventDefault();
         const producto = new FormData(formulario);
 
-        const campos = [
-            "nombre",
-            "descripcion",
-            "precio",
-            "stock",
-        ];
+        const campos = ["nombre", "descripcion", "precio", "stock"];
 
         const inputs = {};
 
@@ -102,14 +106,15 @@ export async function renderProductos() {
                         productoInsertado.descripcion,
                         productoInsertado.precio,
                         productoInsertado.imagen,
+                        productoInsertado.stock,
                     );
 
                     contenedorProductos.appendChild(nuevoProducto);
 
-                        inputs.nombre.value = "";
-                        inputs.descripcion.value = "";
-                        inputs.precio.value = "";
-                        inputs.stock.value = "";
+                    inputs.nombre.value = "";
+                    inputs.descripcion.value = "";
+                    inputs.precio.value = "";
+                    inputs.stock.value = "";
 
                     collapseInstancia.hide();
                 }

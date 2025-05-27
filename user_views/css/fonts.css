@@ -22,3 +22,21 @@
   font-style: normal;
   letter-spacing: 1.5px;
 }
+
+input {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1px;
+
+} 
+
+
+

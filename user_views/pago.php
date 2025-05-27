@@ -53,13 +53,17 @@ if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg fondo">
             <div class="container">
-                <!-- Logo -->
-                <a class="navbar-brand playfair-title" href="#">GLEAMS</a>
 
                 <!-- Botón hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <div class="me-auto">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
 
                 <!-- Contenido colapsable (incluye menú y botones) -->
                 <div class="collapse navbar-collapse" id="navbarContent">
@@ -76,9 +80,6 @@ if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="./pedidos.php">Pedidos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Contacto</a>
                         </li>
                     </ul>
 
@@ -109,7 +110,7 @@ if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
                 <!-- Formulario de datos de envío -->
                 <div class="col-lg-7 mb-4 fade-in">
                     <div class="checkout-card">
-                        <h3 class="checkout-subtitle">Información de Contacto</h3>
+                        <h3 class="checkout-subtitle poppins-light fs-5">Información de Contacto</h3>
                         <form id="checkout-form">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo electrónico</label>
@@ -137,8 +138,8 @@ if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
                             </div>
 
                             <div class="shipping-info">
-                                <p class="shipping-info-title"><i class="fas fa-truck me-2"></i> Información de envío</p>
-                                <p class="info-text">Los envíos se realizan en un plazo de 3 a 5 días hábiles. Recibirás un correo electrónico con el número de seguimiento una vez que tu pedido esté en camino.</p>
+                                <p class="shipping-info-title poppins-light"><i class="fas fa-truck me-2"></i> Información de envío</p>
+                                <p class="info-text poppins-light">Los envíos se realizan en un plazo de 3 a 5 días hábiles. Recibirás un correo electrónico con el número de seguimiento una vez que tu pedido esté en camino.</p>
                             </div>
                         </form>
                     </div>
@@ -147,7 +148,7 @@ if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
                 <!-- Resumen de compra -->
                 <div class="col-lg-5 fade-in">
                     <div class="checkout-card">
-                        <h3 class="checkout-subtitle">Resumen de Compra</h3>
+                        <h3 class="checkout-subtitle fs-5 poppins-light">Resumen de Compra</h3>
 
                         <div id="contenedor-pedidos">
 
@@ -178,8 +179,8 @@ if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
                         <!-- Resumen precios -->
                         <div class="price-summary">
                             <div class="price-row">
-                                <span>Subtotal</span>
-                                <span id="subtotal">$79.900,00</span>
+                                <span class="poppins-light">Subtotal</span>
+                                <span id="subtotal" class="poppins-light">$79.900,00</span>
                             </div>
                             <div class="price-row">
                                 <span>Envío</span>

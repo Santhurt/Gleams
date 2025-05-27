@@ -82,6 +82,12 @@
         <nav id="navbar" class="navbar navbar-expand-lg fondo">
             <div class="container">
                 <!-- Logo -->
+                <div class="me-auto">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
 
                 <!-- Botón hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -106,10 +112,8 @@
                                 <a class="nav-link" href="./pedidos.php">Pedidos</a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
-                        </li>
                     </ul>
+
 
                     <!-- Botones de autenticación y carrito -->
                     <div class="d-flex align-items-center gap-3 justify-content-center">
@@ -153,7 +157,7 @@
                 <div class="col-md-6">
 
                     <div class="d-flex align-items-center">
-                        <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
+                        <input id="buscar" class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
                         <i class="fas fa-search"></i>
                     </div>
 
@@ -182,25 +186,25 @@
             </div>
 
             <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-5">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                <i class="bi bi-chevron-left"></i>
-                            </a>
-                        </li>
-                        <li class="page-item active .color-paginacion"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="bi bi-chevron-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <!-- <div class="d-flex justify-content-center mt-5"> -->
+            <!--     <nav aria-label="Page navigation"> -->
+            <!--         <ul class="pagination"> -->
+            <!--             <li class="page-item disabled"> -->
+            <!--                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true"> -->
+            <!--                     <i class="bi bi-chevron-left"></i> -->
+            <!--                 </a> -->
+            <!--             </li> -->
+            <!--             <li class="page-item active .color-paginacion"><a class="page-link" href="#">1</a></li> -->
+            <!--             <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+            <!--             <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+            <!--             <li class="page-item"> -->
+            <!--                 <a class="page-link" href="#"> -->
+            <!--                     <i class="bi bi-chevron-right"></i> -->
+            <!--                 </a> -->
+            <!--             </li> -->
+            <!--         </ul> -->
+            <!--     </nav> -->
+            <!-- </div> -->
         </div>
     </main>
 
@@ -212,12 +216,6 @@
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h5 class="footer-title">gleamns</h5>
                     <p class="text-muted">Somos una marca colombiana de accesorios artesanales creados con amor y dedicación, apoyando el talento local.</p>
-                    <div class="mt-3">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                    </div>
                 </div>
 
                 <!-- Links Column 1 -->

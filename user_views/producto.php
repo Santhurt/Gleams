@@ -42,7 +42,13 @@
         <nav class="navbar navbar-expand-lg fondo">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand playfair-title" href="#">GLEAMS</a>
+                <!-- <a class="navbar-brand playfair-title" href="#">GLEAMS</a> -->
+
+                <div class="me-auto">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
 
                 <!-- Botón hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -67,9 +73,6 @@
                                 <a class="nav-link" href="./pedidos.php">Pedidos</a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Contacto</a>
-                        </li>
                     </ul>
 
                     <!-- Botones de autenticación y carrito -->
@@ -161,7 +164,7 @@
                         <p class="mb-2 poppins-light">Cantidad</p>
                         <div class="contador-producto d-flex align-items-center gap-2">
                             <button class="btn boton-fondo-blanco btn-cantidad" data-op="restar" type="button">−</button>
-                            <input id="input-cantidad" type="text" class="cantidad-input text-center" value="1">
+                            <input id="input-cantidad" disabled type="text" class="cantidad-input text-center" value="1">
                             <button class="btn boton-fondo-blanco btn-cantidad" data-op="agregar" type="button">+</button>
                         </div>
                         <div class="d-flex align-items-center mt-3">
@@ -311,12 +314,6 @@
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h5 class="footer-title">gleamns</h5>
                     <p class="text-muted">Somos una marca colombiana de accesorios artesanales creados con amor y dedicación, apoyando el talento local.</p>
-                    <div class="mt-3">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                    </div>
                 </div>
 
                 <!-- Links Column 1 -->
@@ -326,7 +323,6 @@
                     <a href="#" class="footer-link">Colecciones</a>
                     <a href="#" class="footer-link">Accesorios</a>
                     <a href="#" class="footer-link">Nosotros</a>
-                    <a href="#" class="footer-link">Contacto</a>
                 </div>
 
                 <!-- Links Column 2 -->

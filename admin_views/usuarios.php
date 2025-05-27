@@ -116,23 +116,10 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a href="#" class="dropdown-item">Ver perfil</a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="dropdown-item">Cambiar de cuenta</a>
-                                </li>
-
-                                <li class="dropdown-divider"></li>
-
-                                <li>
                                     <a href="../controllers/auth/logout.php" class="dropdown-item text-danger">Cerrar sesion</a>
                                 </li>
                             </ul>
                         </div>
-                        <button class="btn d-none d-lg-block">
-                            <i class="fas fa-power-off"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -205,8 +192,18 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between mb-4">
-                            <h5 class="card-title">Lista de usuarios</h5>
+
+                        <div class="d-flex align-items-center flex-wrap gap-2 mb-4">
+                            <h5 class="card-title m-0">Lista de usuarios</h5>
+
+                            <!--Por si luego se quiere cambiar el estado del usuario-->
+
+                            <!-- <div style="min-width: 200px;"> -->
+                            <!--     <select class="form-select" aria-label="Filtrar productos"> -->
+                            <!--         <option value="1" selected>Activos</option> -->
+                            <!--         <option value="2">Inactivos</option> -->
+                            <!--     </select> -->
+                            <!-- </div> -->
                         </div>
                         <div class="chart-container" id="contenedor-usuarios">
                         </div>

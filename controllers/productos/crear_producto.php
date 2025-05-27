@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         unlink($img_ruta["absoluta"]);
         echo json_encode([
             "status" => 500,
-            "mensaje" => "Error en el servidor: " . $producto->get_error()
+            "mensaje" => "Error: " . $producto->get_error()
         ]);
         exit;
     }

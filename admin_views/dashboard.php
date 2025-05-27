@@ -113,23 +113,10 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a href="#" class="dropdown-item">Ver perfil</a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="dropdown-item">Cambiar de cuenta</a>
-                                </li>
-
-                                <li class="dropdown-divider"></li>
-
-                                <li>
                                     <a href="../controllers/auth/logout.php" class="dropdown-item text-danger">Cerrar sesion</a>
                                 </li>
                             </ul>
                         </div>
-                        <button class="btn d-none d-lg-block">
-                            <i class="fas fa-power-off"></i>
-                        </button>
                     </div>
                 </div>
             </div>

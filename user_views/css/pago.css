@@ -81,17 +81,12 @@
     padding: 10px 15px;
 }
 
-.btn-confirmar:hover {
-    background-color: #5a52d5;
-    color: white;
-}
-
 .shipping-info {
     background-color: #f8f4ff;
     border-radius: 8px;
     padding: 15px;
     margin-top: 20px;
-    border-left: 4px solid #6c63ff;
+    border-left: 4px solid #a55a6c;
 }
 
 .shipping-info-title {

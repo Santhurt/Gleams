@@ -220,6 +220,12 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <div class="me-auto">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
                 <!-- Contenido colapsable (incluye menú y botones) -->
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <!-- Menú de navegación -->
@@ -235,9 +241,6 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./pedidos.php">Pedidos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
                         </li>
                     </ul>
 
@@ -460,12 +463,6 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h5 class="footer-title">gleamns</h5>
                     <p class="text-muted">Somos una marca colombiana de accesorios artesanales creados con amor y dedicación, apoyando el talento local.</p>
-                    <div class="mt-3">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                    </div>
                 </div>
 
                 <!-- Links Column 1 -->
@@ -475,7 +472,6 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                     <a href="#" class="footer-link">Colecciones</a>
                     <a href="#" class="footer-link">Accesorios</a>
                     <a href="#" class="footer-link">Nosotros</a>
-                    <a href="#" class="footer-link">Contacto</a>
                 </div>
 
                 <!-- Links Column 2 -->
