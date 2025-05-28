@@ -10,6 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     if ($resultado) {
         http_response_code(200);
 
+        $resultado["descuento"] = $resultado["descuento"] ?? 0;
+
         echo json_encode($resultado);
         exit;
     } else {

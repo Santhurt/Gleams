@@ -127,11 +127,13 @@ class Producto
                 stock,
                 estado,
                 categorias.id_categoria as categoria,
-                ruta
+                ruta,
+                descuento
             from productos
             join categorias 
             on categorias.id_categoria = productos.id_categoria
             join imagenes_prod on imagenes_prod.id_producto = productos.id_producto
+            left join descuentos on descuentos.id_producto = productos.id_producto
             where productos.id_producto = ?
             ";
 

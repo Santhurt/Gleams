@@ -241,11 +241,14 @@ export const dom = {
         const h4 = document.createElement("h4");
         h4.classList.add("product-title", "playfair-title");
         h4.textContent = `${producto.producto}`;
-        h4.id = "nombre-producto"
+        h4.id = "nombre-producto";
 
         const p = document.createElement("p");
         p.classList.add("product-price", "poppins-light");
-        p.textContent = `${producto.precio}`;
+        p.textContent =
+            producto.descuento != 0
+                ? `$${producto.precio * (1 - (producto.descuento) / 100)}`
+                : `$${producto.precio}`;
 
         const a = document.createElement("a");
         a.classList.add(
@@ -290,7 +293,12 @@ export const dom = {
         h5.textContent = pedido.producto;
 
         const p = document.createElement("p");
-        p.classList.add("product-details", "mb-0", "text-muted", "poppins-light");
+        p.classList.add(
+            "product-details",
+            "mb-0",
+            "text-muted",
+            "poppins-light",
+        );
         p.textContent = `Cantidad: ${pedido.cantidad}`;
 
         divInfo.replaceChildren(h5, p);

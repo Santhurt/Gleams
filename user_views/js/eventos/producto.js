@@ -63,6 +63,7 @@ export async function renderizarProducto() {
     const idLabel = document.querySelector("#producto-hidden");
     const idProducto = idLabel.getAttribute("id-producto");
     const respuesta = await dataProductos.traerProducto(idProducto);
+    console.log(respuesta);
 
     if (respuesta.status != 200) {
         Toast.fire({
@@ -76,8 +77,6 @@ export async function renderizarProducto() {
 
     const respuestaComentarios =
         await dataProductos.traerComentarioProducto(idProducto);
-
-    console.log(respuestaComentarios);
 
     if (respuestaComentarios.status != 200) {
         Toast.fire({
@@ -99,7 +98,10 @@ export async function renderizarProducto() {
     const producto = respuesta.datos;
     infoProducto.imagen.src = "../" + producto.ruta;
     infoProducto.titulo.textContent = producto.producto;
-    infoProducto.precio.textContent = `$${producto.precio}`;
+    infoProducto.precio.textContent =
+        producto.descuento != 0
+            ? `$${producto.precio * (1 - producto.descuento / 100)}`
+            : `$${producto.precio}`;
     infoProducto.descripcion.textContent = producto.descripcion;
 
     const contenedorBotones = document.querySelector("#contenedor-botones");

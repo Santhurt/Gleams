@@ -48,15 +48,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hoy = date("Y-m-d H:i");
 
-    if(strtotime($fecha_fin) < strtotime($hoy)) {
-        http_response_code(400);
-
-        echo json_encode([
-            "status" => 400,
-            "mensaje" => "La fecha debe ser mayor a la actual"
-        ]);
-        exit;
-    }
+    /* if(strtotime($fecha_fin) < strtotime($hoy)) { */
+    /*     http_response_code(400); */
+    /**/
+    /*     echo json_encode([ */
+    /*         "status" => 400, */
+    /*         "mensaje" => "La fecha debe ser mayor a la actual" */
+    /*     ]); */
+    /*     exit; */
+    /* } */
 
     $producto = new Producto();
 
