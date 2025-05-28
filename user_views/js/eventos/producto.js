@@ -110,10 +110,10 @@ export async function renderizarProducto() {
             const pedido = {
                 id: idProducto,
                 nombre: producto.producto,
-                precio: producto.precio,
+                precio: producto.precio * (1 - (producto.descuento / 100)),
                 cantidad:
                     parseInt(infoProducto.cantidad.value) > 0
-                        ? infoProducto.cantidad.value
+                        ? parseInt(infoProducto.cantidad.value)
                         : 0,
             };
 

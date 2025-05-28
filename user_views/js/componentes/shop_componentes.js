@@ -247,7 +247,7 @@ export const dom = {
         p.classList.add("product-price", "poppins-light");
         p.textContent =
             producto.descuento != 0
-                ? `$${producto.precio * (1 - (producto.descuento) / 100)}`
+                ? `$${producto.precio * (1 - producto.descuento / 100)}`
                 : `$${producto.precio}`;
 
         const a = document.createElement("a");
