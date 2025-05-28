@@ -98,6 +98,12 @@ export const dom = {
                                     Crear descuento
                                 </button>
                             </li>
+
+                            <li>
+                                <button  id="${id}" class="dropdown-item eliminar-descuento" href="#"><i class="fas me-1 fa-trash"></i> 
+                                    Eliminar descuento
+                                </button>
+                            </li>
                             <!-- <li><hr class="dropdown-divider"></li> -->
                         </ul>
                     </div>

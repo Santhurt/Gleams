@@ -10,7 +10,7 @@ export async function renderProductos() {
     flatpickr("#fecha-descuento", {
         enableTime: true,
         time_24hr: true,
-        dateFormat: "Y-m-d H:i", 
+        dateFormat: "Y-m-d H:i",
         minDate: "today",
     });
     // -------------------- carga de categorias ---------------------------
@@ -96,6 +96,27 @@ export async function renderProductos() {
 
         const respuesta = await dataProductos.insertarDescuento(descuentoData);
         console.log(respuesta);
+
+        if (respuesta.status == 200) {
+            swal.fire({
+                title: "Descuento creado con exito",
+                icon: "success",
+                confirmButtonText: "Continuar",
+                customClass: {
+                    confirmButton: "btn btn-primary",
+                },
+            });
+        } else {
+            swal.fire({
+                title: "Error",
+                text: respuesta.mensaje,
+                icon: "error",
+                confirmButtonText: "Continuar",
+                customClass: {
+                    confirmButton: "btn btn-primary",
+                },
+            });
+        }
     });
     // -----------------evento del formulario-----------------------
 
@@ -164,7 +185,7 @@ export async function renderProductos() {
 
     //----------eventos de los botones-------------------------
 
-    contenedorProductos.addEventListener("click", (e) => {
+    contenedorProductos.addEventListener("click", async (e) => {
         const boton = e.target;
         console.log("click activado");
         console.log(e.target);
@@ -223,6 +244,32 @@ export async function renderProductos() {
                         cardProducto.parentNode.removeChild(cardProducto);
                     }
                 });
+        } else if (boton.classList.contains("eliminar-descuento")) {
+            const idProducto = boton.id;
+
+            const respuesta = await dataProductos.eliminarDescuento(idProducto);
+
+            if (respuesta.status != 200) {
+                swal.fire({
+                    title: "Error",
+                    text: respuesta.mensaje,
+                    icon: "error",
+                    confirmButtonText: "Continuar",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    },
+                });
+            } else {
+                swal.fire({
+                    title: "Descuento eliminado con exito",
+                    icon: "success",
+                    confirmButtonText: "Continuar",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    },
+                });
+
+            }
         }
     });
 

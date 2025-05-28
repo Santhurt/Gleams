@@ -22,11 +22,44 @@ class Producto
         return $this->error;
     }
 
+    public function eliminar_descuento($id_producto) {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos:");
+            }
+
+            $verificar_descuento = "select 1 from descuentos where id_producto = ?";
+            $resultado_verificacion = mysqli_execute_query($this->conn, $verificar_descuento, [$id_producto]);
+
+            if(!$resultado_verificacion->fetch_assoc()) {
+                throw new Exception("No hay descuento aplicado a este producto");
+            }
+
+            $eliminar_descuento = "delete from descuentos where id_producto = ?";
+            $resultado = mysqli_execute_query($this->conn, $eliminar_descuento, [$id_producto]);
+
+            return $resultado;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+ 
+        }
+    }
+
     public function insertar_descuento($id_producto, $descuento, $fecha_fin)
     {
         try {
             if (!$this->conn) {
                 throw new Exception("No hay conexion con la base de datos:");
+            }
+
+            $verificar_descuento = "select 1 from descuentos where id_producto = ?";
+            $resultado_verificacion = mysqli_execute_query($this->conn, $verificar_descuento, [$id_producto]);
+
+            if($resultado_verificacion->fetch_assoc()) {
+                throw new Exception("El producto ya tiene un descuento asignado");
             }
 
             $insertar_descuento = "insert into descuentos(
