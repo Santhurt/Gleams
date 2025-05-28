@@ -216,11 +216,11 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                         <form>
                             <div class="mb-3">
                                 <label for="" class="label-form">Descuento: <span id="val-descuento">0%</span></label>
-                                <input type="range" id="range-descuento" name="descuento" class="form-range" min="0" max="100">
+                                <input type="number" id="input-descuento" name="descuento" class="form-control" min="0" max="100">
                             </div>
 
                             <div class="mb-3">
-                                <label for="" class="label-form">Fecha de fin</label>
+                                <label for="" class="label-form">Fecha de finalizacion</label>
                                 <input type="date" class="form-control" name="fecha-descuento">
                             </div>
                         </form>

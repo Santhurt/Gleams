@@ -63,7 +63,7 @@ export async function renderProductos() {
 
     //--------------evento del range descuento -------------------
 
-    const range = document.querySelector("#range-descuento");
+    const range = document.querySelector("#input-descuento");
     range.addEventListener("input", (e)=>{
         document.getElementById("val-descuento").textContent = `${e.target.value}%`;
     })
