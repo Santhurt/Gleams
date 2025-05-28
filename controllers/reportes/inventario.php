@@ -22,10 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if ($resultado["productos"]) {
         while ($fila = $resultado["productos"]->fetch_assoc()) {
-            foreach ($fila as $key => $value) {
-                $fila[$key] = htmlspecialchars($value);
-            }
-
             unset($fila["estado"]);
             unset($fila["descripcion"]);
 

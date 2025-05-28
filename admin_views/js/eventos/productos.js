@@ -5,6 +5,14 @@ import { responsive } from "./responsive.js";
 
 export async function renderProductos() {
     responsive();
+
+    //configuracion del input de descuento
+    flatpickr("#fecha-descuento", {
+        enableTime: true,
+        time_24hr: true,
+        dateFormat: "Y-m-d H:i", 
+        minDate: "today",
+    });
     // -------------------- carga de categorias ---------------------------
     const selectCategoria = document.querySelector("#select-categoria");
     const selectCategoriaModal = document.querySelector("#select-modal");
@@ -64,9 +72,31 @@ export async function renderProductos() {
     //--------------evento del range descuento -------------------
 
     const range = document.querySelector("#input-descuento");
-    range.addEventListener("input", (e)=>{
-        document.getElementById("val-descuento").textContent = `${e.target.value}%`;
-    })
+    range.addEventListener("input", (e) => {
+        document.getElementById("val-descuento").textContent =
+            `${e.target.value}%`;
+    });
+
+    //------------------- logica de descuento ---------------------
+    const modalDescuento = document.querySelector("#modal-descuento");
+
+    modalDescuento.addEventListener("show.bs.modal", (e) => {
+        // para cargar el descuento en el hidden
+        const boton = e.relatedTarget;
+        const inputIdProducto = document.querySelector("#hidden-descuento");
+
+        inputIdProducto.value = boton.id;
+    });
+
+    const formDescuento = document.querySelector("#form-descuento");
+    formDescuento.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const descuentoData = new FormData(formDescuento);
+
+        const respuesta = await dataProductos.insertarDescuento(descuentoData);
+        console.log(respuesta);
+    });
     // -----------------evento del formulario-----------------------
 
     const formulario = document.querySelector("#formulario");
@@ -284,6 +314,7 @@ export async function renderProductos() {
                             productoEditado.descripcion,
                             productoEditado.precio,
                             productoEditado.imagen,
+                            productoEditado.stock,
                         );
 
                         contenedorProductos.replaceChild(

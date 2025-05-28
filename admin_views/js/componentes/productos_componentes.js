@@ -94,7 +94,7 @@ export const dom = {
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton-${id}">
                             <li>
-                                <button data-bs-toggle="modal" data-bs-target="#modal-descuento" class="dropdown-item" href="#"><i class="fas me-1 fa-solid fa-plus"></i> 
+                                <button data-bs-toggle="modal" id="${id}" data-bs-target="#modal-descuento" class="dropdown-item" href="#"><i class="fas me-1 fa-solid fa-plus"></i> 
                                     Crear descuento
                                 </button>
                             </li>

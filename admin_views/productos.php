@@ -17,6 +17,8 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
     <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="../node_modules/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    
 
 
 </head>
@@ -213,7 +215,8 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="form-descuento">
+                            <input type="hidden" id="hidden-descuento" name="id-producto">
                             <div class="mb-3">
                                 <label for="" class="label-form">Descuento: <span id="val-descuento">0%</span></label>
                                 <input type="number" id="input-descuento" name="descuento" class="form-control" min="0" max="100">
@@ -221,13 +224,13 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
                             <div class="mb-3">
                                 <label for="" class="label-form">Fecha de finalizacion</label>
-                                <input type="date" class="form-control" name="fecha-descuento">
+                                <input id="fecha-descuento" type="datetime-local" class="form-control" name="fecha-fin">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="submit" form="form-editar" class="btn btn-primary">Editar producto</button> -->
-                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aplicar descuento</button>
+                        <button type="submit" form="form-descuento" class="btn btn-success" data-bs-dismiss="modal">Aplicar descuento</button>
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -322,6 +325,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
     <script src="../node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
     <script src="../node_modules/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="../node_modules/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+    <script src="../node_modules/flatpickr/dist/flatpickr.min.js"></script>
 
     <script src="./js/main.js"></script>
 
