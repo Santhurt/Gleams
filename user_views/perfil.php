@@ -440,8 +440,13 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                                         recuperarla.
                                     </div>
 
+                                    <form id="form-eliminar" method="POST" action="../controllers/usuarios/eliminar_usuario_sesion.php">
+                                        <input id="input-eliminar" type="hidden" name="password">
+                                    </form>
+
+
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button type="button" class="btn boton-danger-custom poppins-medium" onclick="confirmarEliminacion()">
+                                        <button type="submit" form="form-eliminar" id="eliminar-cuenta" class="btn boton-danger-custom poppins-medium">
                                             <i class="fas fa-trash me-2"></i>Eliminar Cuenta
                                         </button>
                                     </div>
