@@ -26,9 +26,6 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
 
-    <style>
-    </style>
-
 </head>
 
 <body>

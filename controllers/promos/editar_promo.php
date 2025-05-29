@@ -10,24 +10,17 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
     exit;
 }
 
-require_once __DIR__ . "/../../model/productos.php";
+require_once __DIR__ . "/../../model/promos.php";
 require_once __DIR__ . "/../lib/validaciones.php";
 require_once __DIR__ . "/../lib/crear_imagen.php";
 
-use modelos\Producto;
+use modelos\Promo;
 use lib\Validar;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    header("Content-Type: application/json");
     $validar = new Validar($_POST);
 
-    $vacios  = $validar->requeridos(
-        "id",
-        "nombre",
-        "descripcion",
-        "precio",
-        "stock",
-    );
+    $vacios = $validar->requeridos("titulo", "descripcion");
 
     if (count($vacios) > 0) {
         http_response_code(400);
@@ -39,37 +32,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if (!$validar->text("nombre", "descripcion")) {
+    if (!$validar->text("titulo", "descripcion")) {
         http_response_code(400);
 
         echo json_encode([
             "status" => 400,
-            "mensaje" => "No se pueden ingresar caracteres especiales"
+            "mensaje" => "Carácteres no perimitidos"
         ]);
         exit;
     }
+    $promo = new Promo();
+    $id_promo = trim($_POST["id"]);
+    $titulo = trim($_POST["titulo"]);
+    $descripcion = trim($_POST["descripcion"]);
 
-    if (!$validar->numeros("id", "precio", "stock", "categoria")) {
-        http_response_code(400);
-
-        echo json_encode([
-            "status" => 400,
-            "mensaje" => "Los numeros ingresados son invalidos"
-        ]);
-        exit;
-    }
-
-
-    $producto = new Producto();
-    $producto_antiguo = $producto->traer_productoPorId($_POST["id"]);
+    $promo_anterior = $promo->traer_promo_por_id($id_promo);
 
     $imagen_nueva_subida = is_uploaded_file($_FILES["imagen"]["tmp_name"]);
-    $img_nueva = [];
 
     if ($imagen_nueva_subida) {
-        error_log("holaaaa");
-        error_log(implode(", ", $_FILES["imagen"]));
-        $img_nueva = insertar_imagen("imagen", true, $producto_antiguo["ruta"], true, 800, 600, 85);
+        $img_nueva = insertar_imagen("imagen", true, $promo_anterior["ruta"]);
 
         if (empty($img_nueva["ruta"])) {
             http_response_code(400);
@@ -81,27 +63,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
     } else {
-        $img_nueva["ruta"] = $producto_antiguo["ruta"];
+        $img_nueva["ruta"] = $promo_anterior["ruta"];
     }
 
+    $resultado = $promo->editar_promo($id_promo, $titulo, $descripcion, $img_nueva["ruta"]);
 
-    $resultado = $producto->editar_producto($_POST, $img_nueva["ruta"]);
-
-    if ($resultado) {
+    if($resultado) {
         http_response_code(200);
-        $_POST["ok"] = true;
-        $_POST["imagen"] = $img_nueva["ruta"];
 
-        echo json_encode($_POST);
+        echo json_encode([
+            "status" => 200,
+            "mensaje" => "Promoción actualizada"
+        ]);
         exit;
+
     } else {
         http_response_code(500);
 
-        unlink($img_nueva["ruta_absoluta"]);
         echo json_encode([
             "status" => 500,
-            "mensaje" => "Error al insertar el producto: " . $producto->get_error()
+            "mensaje" => "Error: " . $promo->get_error()
         ]);
         exit;
+
     }
 }

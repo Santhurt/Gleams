@@ -85,7 +85,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </a>
 
             <!--Inicio de opciones de consultas-->
-            <a class="sidebar-item">
+            <a class="sidebar-item" href="./promos.php">
                 <i class="fas fa-search"></i>
                 <span class="sidebar-text">Consultas</span>
             </a>

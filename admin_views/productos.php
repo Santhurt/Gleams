@@ -88,10 +88,9 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                 <span class="sidebar-text">Reseñas</span>
             </a>
 
-            <!--Inicio de opciones de consultas-->
-            <a class="sidebar-item">
+            <a class="sidebar-item" href="./promos.php">
                 <i class="fas fa-search"></i>
-                <span class="sidebar-text">Consultas</span>
+                <span class="sidebar-text">Promociones</span>
             </a>
         </div>
     </div>
@@ -229,7 +228,6 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <!-- <button type="submit" form="form-editar" class="btn btn-primary">Editar producto</button> -->
                         <button type="submit" form="form-descuento" class="btn btn-success" data-bs-dismiss="modal">Aplicar descuento</button>
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     </div>
