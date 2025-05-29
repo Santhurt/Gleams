@@ -22,7 +22,71 @@ class Producto
         return $this->error;
     }
 
-    public function editar_producto($producto = [], string $nueva_ruta) {
+    public function eliminar_descuento($id_producto) {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos:");
+            }
+
+            $verificar_descuento = "select 1 from descuentos where id_producto = ?";
+            $resultado_verificacion = mysqli_execute_query($this->conn, $verificar_descuento, [$id_producto]);
+
+            if(!$resultado_verificacion->fetch_assoc()) {
+                throw new Exception("No hay descuento aplicado a este producto");
+            }
+
+            $eliminar_descuento = "delete from descuentos where id_producto = ?";
+            $resultado = mysqli_execute_query($this->conn, $eliminar_descuento, [$id_producto]);
+
+            return $resultado;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+ 
+        }
+    }
+
+    public function insertar_descuento($id_producto, $descuento, $fecha_fin)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos:");
+            }
+
+            $verificar_descuento = "select 1 from descuentos where id_producto = ?";
+            $resultado_verificacion = mysqli_execute_query($this->conn, $verificar_descuento, [$id_producto]);
+
+            if($resultado_verificacion->fetch_assoc()) {
+                throw new Exception("El producto ya tiene un descuento asignado");
+            }
+
+            $insertar_descuento = "insert into descuentos(
+                id_producto,
+                descuento,
+                fecha_fin
+            ) values(?, ?, ?)
+            ";
+
+            $resultado = mysqli_execute_query($this->conn, $insertar_descuento, [
+                $id_producto,
+                $descuento,
+                $fecha_fin
+            ]);
+
+            return $resultado;
+        } catch (Exception $e) {
+
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function editar_producto($producto = [], string $nueva_ruta)
+    {
         try {
             if (!$this->conn) {
                 throw new Exception("No hay conexion con la base de datos:");
@@ -53,7 +117,7 @@ class Producto
                 $producto["id"]
             ]);
 
-            if(!$resultado) {
+            if (!$resultado) {
                 throw new Exception("No se actualizar el producto");
             }
 
@@ -64,14 +128,13 @@ class Producto
 
             $imagen_resultado = mysqli_execute_query($this->conn, $imagen_consulta, [$nueva_ruta, $producto["id"]]);
 
-            if(!$imagen_resultado) {
+            if (!$imagen_resultado) {
                 throw new Exception("Error al actualizar la imagen");
             }
 
             mysqli_commit($this->conn);
 
             return $resultado;
-
         } catch (Exception $e) {
             mysqli_rollback($this->conn);
 
@@ -96,19 +159,20 @@ class Producto
                 precio,
                 stock,
                 estado,
-                descuento,
                 categorias.id_categoria as categoria,
-                ruta
+                ruta,
+                descuento
             from productos
             join categorias 
             on categorias.id_categoria = productos.id_categoria
             join imagenes_prod on imagenes_prod.id_producto = productos.id_producto
+            left join descuentos on descuentos.id_producto = productos.id_producto
             where productos.id_producto = ?
             ";
 
             $resultado = mysqli_execute_query($this->conn, $consulta, [$id]);
 
-            if(!$resultado) {
+            if (!$resultado) {
                 throw new Exception("Error al trear el producto");
             }
 
@@ -171,7 +235,7 @@ class Producto
             }
 
             $consulta = "select
-                id_producto,
+                productos.id_producto,
                 productos.nombre as producto,
                 descripcion,
                 precio,
@@ -182,6 +246,8 @@ class Producto
             from productos
             join categorias 
             on categorias.id_categoria = productos.id_categoria
+            left join descuentos
+            on descuentos.id_producto = productos.id_producto
             where estado = 1
             ";
 
@@ -205,7 +271,6 @@ class Producto
     public function insertar_producto($producto = [], string $ruta_imagen)
     {
         $estado = 1; #activo
-        $descuento = 0;
 
 
         try {
@@ -222,13 +287,11 @@ class Producto
                 precio,
                 stock,
                 estado,
-                descuento,
                 id_categoria
             ) values (
-                ?, ?, ?, ?, {$estado}, {$descuento}, ?
+                ?, ?, ?, ?, {$estado}, ?
             )";
 
-            $valores = [];
 
             $max_categoria = $this->max_categoria();
 
@@ -237,16 +300,16 @@ class Producto
             }
 
 
-            # aqui se guardan los valores de formulario
-            foreach ($producto as $valor) {
-                $valores[] = trim($valor);
-            }
-
-
             $resultado = mysqli_execute_query(
                 $this->conn,
                 $producto_insertar,
-                $valores
+                [
+                    $producto["nombre"],
+                    $producto["descripcion"],
+                    $producto["precio"],
+                    $producto["stock"],
+                    $producto["categoria"]
+                ]
             );
 
             if (!$resultado) {

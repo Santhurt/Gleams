@@ -22,6 +22,91 @@ class Usuario
         return $this->error;
     }
 
+    public function verificar_recuperacion($correo, $codigo) {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $verificar_recuperacion = "select 1 from recuperacion where correo = ? and codigo = ?";
+
+            $resultado = mysqli_execute_query($this->conn, $verificar_recuperacion, [$correo, $codigo]);
+
+            if($resultado->num_rows == 0) {
+                throw new Exception("Error en la validación");
+            }
+
+            return true;
+
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function crear_recuperacion($correo, $codigo) {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $verificar_correo = "select 1 from clientes where correo = ?";
+
+            $resultado_verificacion = mysqli_execute_query($this->conn, $verificar_correo, [$correo]);
+
+            if($resultado_verificacion->fetch_assoc() == null) {
+                throw new Exception("El correo no está registrado");
+            }
+
+            $recuperacion = "insert into recuperacion(
+                correo,
+                codigo
+            ) values (?, ?)";
+
+            $resultado = mysqli_execute_query($this->conn, $recuperacion, [$correo, $codigo]);
+
+            return $resultado;
+
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function borrar_usuario($id_usuario)
+    {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $timestamp = date('YmdHis'); 
+            $correo_unico = "eliminado_$timestamp@example.com";
+
+            $borrar_usuario = "update clientes set
+                nombre = 'eliminado',
+                telefono = 'eliminado',
+                correo = ?,
+                direccion = 'eliminado',
+                estado = 0
+            where id_cliente = ?
+            ";
+
+            $resultado = mysqli_execute_query($this->conn, $borrar_usuario, [$correo_unico, $id_usuario]);
+
+            return $resultado;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
     public function actualizar_pass($correo, $nueva_pass)
     {
         try {
@@ -29,7 +114,7 @@ class Usuario
                 throw new Exception("No hay conexion con la base de datos");
             }
 
-            
+
             $actualizar_pass = "update clientes set
                 password = ?
                 where correo = ?
@@ -43,13 +128,11 @@ class Usuario
             ]);
 
             return $resultado;
-
         } catch (Exception $e) {
             error_log($e->getMessage());
             $this->error = $e->getMessage();
 
             return false;
-
         }
     }
 

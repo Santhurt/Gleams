@@ -26,9 +26,6 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
 
-    <style>
-    </style>
-
 </head>
 
 <body>
@@ -111,6 +108,13 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <div class="me-auto">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
+
                 <!-- Contenido colapsable (incluye menú y botones) -->
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <!-- Menú de navegación -->
@@ -129,9 +133,6 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                                 <a class="nav-link active" href="./pedidos.php">Pedidos</a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
-                        </li>
                     </ul>
 
                     <!-- Botones de autenticación y carrito -->

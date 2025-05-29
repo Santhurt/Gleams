@@ -77,7 +77,7 @@ export const dom = {
         return table;
     },
 
-    cardProducto: (id, nombre, descripcion, precio, imagen) => {
+    cardProducto: (id, nombre, descripcion, precio, imagen, stock) => {
         const divCol = document.createElement("div");
         // Uso de clases Bootstrap para responsividad
         divCol.className = "col-6 col-md-4 col-lg-3 mb-4";
@@ -93,7 +93,17 @@ export const dom = {
                             <i class="fas fa-ellipsis-v"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton-${id}">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-heart"></i> Crear descuento</a></li>
+                            <li>
+                                <button data-bs-toggle="modal" id="${id}" data-bs-target="#modal-descuento" class="dropdown-item" href="#"><i class="fas me-1 fa-solid fa-plus"></i> 
+                                    Crear descuento
+                                </button>
+                            </li>
+
+                            <li>
+                                <button  id="${id}" class="dropdown-item eliminar-descuento" href="#"><i class="fas me-1 fa-trash"></i> 
+                                    Eliminar descuento
+                                </button>
+                            </li>
                             <!-- <li><hr class="dropdown-divider"></li> -->
                         </ul>
                     </div>
@@ -101,7 +111,7 @@ export const dom = {
             </div>
             <div class="card-body d-flex flex-column p-3">
                 <h5 class="card-title text-truncate">${nombre}</h5>
-                <small class="text-muted mb-2 d-block">Precio: ${precio}</small>
+                <small class="text-muted mb-2 d-block">Stock: ${stock}</small>
                 <div class="btn-group mt-auto">
                     <button class="btn btn-sm btn-primary" type="button" id-producto="${id}" data-bs-toggle="modal" data-bs-target="#modal-info" >
                         <i class="fas fa-info-circle"></i> 

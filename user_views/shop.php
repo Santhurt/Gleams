@@ -19,6 +19,7 @@
 
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
+    <link href="./css/carrousel.css" rel="stylesheet">
 
 </head>
 
@@ -82,6 +83,12 @@
         <nav id="navbar" class="navbar navbar-expand-lg fondo">
             <div class="container">
                 <!-- Logo -->
+                <div class="me-auto">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
 
                 <!-- Botón hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -106,10 +113,8 @@
                                 <a class="nav-link" href="./pedidos.php">Pedidos</a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
-                        </li>
                     </ul>
+
 
                     <!-- Botones de autenticación y carrito -->
                     <div class="d-flex align-items-center gap-3 justify-content-center">
@@ -138,22 +143,61 @@
 
     <!-- Main Content -->
     <main class="fondo">
-
-        <!-- Hero Section -->
-        <section class="hero-section fade-opacity color-base" id="hero-section">
-            <div class="container">
-                <h1 class="hero-title color-texto playfair-title">NUEVA COLECCIÓN ACCESORIOS</h1>
-                <p class="text-muted poppins-light">Descubre nuestra nueva selección de accesorios artesanales</p>
+        <!-- Carrusel Promocional -->
+        <section class="promotional-carousel">
+            <div id="promotionalCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <!-- Indicadores -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                </div>
+                <!-- Slides -->
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="carousel-split-container">
+                            <div class="carousel-image-section fade-opacity">
+                                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Nueva Colección">
+                            </div>
+                            <div class="carousel-content-section fade-opacity">
+                                <h2 class="carousel-title">Nueva Colección</h2>
+                                <p class="carousel-subtitle">Descubre nuestra exclusiva línea de accesorios artesanales, creados con amor y dedicación para resaltar tu belleza única. Cada pieza cuenta una historia especial.</p>
+                                <a href="#" class="carousel-btn">Explorar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="carousel-split-container">
+                            <div class="carousel-image-section">
+                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Envío Gratis">
+                            </div>
+                            <div class="carousel-content-section">
+                                <h2 class="carousel-title">Envío Gratis</h2>
+                                <p class="carousel-subtitle">En compras superiores a $150.000. Recibe tus accesorios favoritos directamente en la comodidad de tu hogar, sin costos adicionales de envío.</p>
+                                <a href="#" class="carousel-btn">Comprar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Controles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#promotionalCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#promotionalCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
             </div>
         </section>
-
         <!-- Filter Bar -->
         <div class="container mt-4 fade-opacity" id="filter-bar">
             <div class="row justify-content-center filter-bar align-items-center">
                 <div class="col-md-6">
 
                     <div class="d-flex align-items-center">
-                        <input class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
+                        <input id="buscar" class="form-control me-2 poppins-light" type="search" placeholder="Buscar productos" aria-label="Search">
                         <i class="fas fa-search"></i>
                     </div>
 
@@ -182,25 +226,25 @@
             </div>
 
             <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-5">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                <i class="bi bi-chevron-left"></i>
-                            </a>
-                        </li>
-                        <li class="page-item active .color-paginacion"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="bi bi-chevron-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <!-- <div class="d-flex justify-content-center mt-5"> -->
+            <!--     <nav aria-label="Page navigation"> -->
+            <!--         <ul class="pagination"> -->
+            <!--             <li class="page-item disabled"> -->
+            <!--                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true"> -->
+            <!--                     <i class="bi bi-chevron-left"></i> -->
+            <!--                 </a> -->
+            <!--             </li> -->
+            <!--             <li class="page-item active .color-paginacion"><a class="page-link" href="#">1</a></li> -->
+            <!--             <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+            <!--             <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+            <!--             <li class="page-item"> -->
+            <!--                 <a class="page-link" href="#"> -->
+            <!--                     <i class="bi bi-chevron-right"></i> -->
+            <!--                 </a> -->
+            <!--             </li> -->
+            <!--         </ul> -->
+            <!--     </nav> -->
+            <!-- </div> -->
         </div>
     </main>
 
@@ -212,12 +256,6 @@
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h5 class="footer-title">gleamns</h5>
                     <p class="text-muted">Somos una marca colombiana de accesorios artesanales creados con amor y dedicación, apoyando el talento local.</p>
-                    <div class="mt-3">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                    </div>
                 </div>
 
                 <!-- Links Column 1 -->

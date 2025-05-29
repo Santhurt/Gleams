@@ -209,7 +209,13 @@ export const dom = {
 
     crearCardProducto: (producto) => {
         const divCol = document.createElement("div");
-        divCol.classList.add("col-6", "col-md-4", "col-lg-3", "fade-in");
+        divCol.classList.add(
+            "item-producto",
+            "col-6",
+            "col-md-4",
+            "col-lg-3",
+            "fade-in",
+        );
 
         const divProductoCard = document.createElement("div");
         divProductoCard.classList.add("product-card");
@@ -217,7 +223,7 @@ export const dom = {
         const img = document.createElement("img");
         img.classList.add("card-img-top", "rounded-3", "img-fluid");
         img.src = `../${producto.imagen.ruta}`;
-        img.style.height = '300px';
+        img.style.height = "300px";
 
         const cardBody = document.createElement("div");
         cardBody.classList.add(
@@ -235,10 +241,14 @@ export const dom = {
         const h4 = document.createElement("h4");
         h4.classList.add("product-title", "playfair-title");
         h4.textContent = `${producto.producto}`;
+        h4.id = "nombre-producto";
 
         const p = document.createElement("p");
         p.classList.add("product-price", "poppins-light");
-        p.textContent = `${producto.precio}`;
+        p.textContent =
+            producto.descuento != 0
+                ? `$${producto.precio * (1 - producto.descuento / 100)}`
+                : `$${producto.precio}`;
 
         const a = document.createElement("a");
         a.classList.add(
@@ -279,11 +289,16 @@ export const dom = {
         divInfo.classList.add("flex-grow-1");
 
         const h5 = document.createElement("h5");
-        h5.classList.add("product-name", "mb-1");
+        h5.classList.add("product-name", "mb-1", "poppins-light");
         h5.textContent = pedido.producto;
 
         const p = document.createElement("p");
-        p.classList.add("product-details", "mb-0", "text-muted");
+        p.classList.add(
+            "product-details",
+            "mb-0",
+            "text-muted",
+            "poppins-light",
+        );
         p.textContent = `Cantidad: ${pedido.cantidad}`;
 
         divInfo.replaceChildren(h5, p);

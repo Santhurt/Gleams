@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (
         !isset($id_producto)
         || empty($id_producto)
-        || !is_numeric($id_producto) || $id_producto <= 0 
+        || !is_numeric($id_producto) || $id_producto <= 0
     ) {
         http_response_code(400);
 
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $cantidad = trim($_GET["cantidad"]) ?? 0;
 
-    if(
+    if (
         !isset($cantidad)
         || empty($cantidad)
         || $cantidad <= 0 || !is_numeric($cantidad) || $cantidad > 50
@@ -46,12 +46,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             "mensaje" => "La cantidad enviada es invalida"
         ]);
         exit;
-
     }
 
     $producto = new Producto();
     $respuesta = $producto->traer_productoPorId($id_producto);
     $respuesta["cantidad"] = isset($_GET["cantidad"]) ? intval($_GET["cantidad"]) : 1;
+    $respuesta["descuento"] = $respuesta["descuento"] ?? 0;
+    $respuesta["precio"] = ($respuesta["descuento"] > 0) ? $respuesta["precio"] * (1 - $respuesta["descuento"] / 100) : $respuesta["precio"];
 
     if ($respuesta) {
 

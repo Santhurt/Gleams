@@ -4,7 +4,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["id_cliente"])) {
     http_response_code(401);
     echo json_encode([
         "status" => 401,
-        "mensaje" => "Acceso denegado"
+        "mensaje" => "Inicie sesion para comentar"
     ]);
     exit;
 }

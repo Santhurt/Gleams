@@ -40,6 +40,7 @@ export async function renderPago() {
     const contenedorPedidos = document.querySelector("#contenedor-pedidos");
 
     const respuesta = await dataPedido.traerPedidos();
+    console.log(respuesta);
 
     if (respuesta.status != 200) {
         swal.fire({
@@ -94,7 +95,7 @@ export async function renderPago() {
         } else {
             Toast.fire({
                 title: respuesta.mensaje,
-                icon: "error"
+                icon: "error",
             });
         }
     });

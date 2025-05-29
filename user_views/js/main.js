@@ -30,6 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/pedidos.js").then((modulo) => {
             modulo.renderPedidos();
         });
+    } else if (pagina.includes("/user_views/recuperacion.php")) {
+        import("./eventos/recuperacion.js").then((modulo) => {
+            modulo.renderRecuperacion();
+        });
+    } else if (pagina.includes("/user_views/recuperar.php")) {
+        import("./eventos/recuperacion.js").then((modulo) => {
+            modulo.renderRecuperacion();
+        });
     }
-
 });

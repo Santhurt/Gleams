@@ -87,10 +87,9 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                 <span class="sidebar-text">Reseñas</span>
             </a>
 
-            <!--Inicio de opciones de consultas-->
-            <a class="sidebar-item">
+            <a class="sidebar-item" href="./promos.php">
                 <i class="fas fa-search"></i>
-                <span class="sidebar-text">Consultas</span>
+                <span class="sidebar-text">Promociones</span>
             </a>
         </div>
     </div>
@@ -116,23 +115,10 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <a href="#" class="dropdown-item">Ver perfil</a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="dropdown-item">Cambiar de cuenta</a>
-                                </li>
-
-                                <li class="dropdown-divider"></li>
-
-                                <li>
                                     <a href="../controllers/auth/logout.php" class="dropdown-item text-danger">Cerrar sesion</a>
                                 </li>
                             </ul>
                         </div>
-                        <button class="btn d-none d-lg-block">
-                            <i class="fas fa-power-off"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -153,15 +139,10 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
-                            <h5 class="card-title">Lista de productos</h5>
-                            <div class="d-flex mt-2 mt-md-0">
-                                <button class="btn btn-sm btn-primary me-2">
-                                    <i class="fas fa-plus me-1"></i>
-                                    <span class="d-none d-sm-inline">Añadir</span>
-                                </button>
-                            </div>
+                        <div class="d-flex align-items-center flex-wrap gap-2 mb-4">
+                            <h5 class="card-title m-0">Lista de productos</h5>
                         </div>
+
                         <div class="chart-container" id="contenedor-productos">
                         </div>
                     </div>

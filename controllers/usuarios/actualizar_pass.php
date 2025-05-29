@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($resultado) {
 
-            require_once "../auth/logout_log.php";
+            require_once __DIR__ . "/../auth/logout_log.php";
         } else {
             $_SESSION["msg_edit"] = "Error al actualizar el usuario";
             header("Location: {$ruta}");

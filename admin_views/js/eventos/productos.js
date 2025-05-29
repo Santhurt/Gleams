@@ -5,6 +5,14 @@ import { responsive } from "./responsive.js";
 
 export async function renderProductos() {
     responsive();
+
+    //configuracion del input de descuento
+    flatpickr("#fecha-descuento", {
+        enableTime: true,
+        time_24hr: true,
+        dateFormat: "Y-m-d H:i",
+        minDate: "today",
+    });
     // -------------------- carga de categorias ---------------------------
     const selectCategoria = document.querySelector("#select-categoria");
     const selectCategoriaModal = document.querySelector("#select-modal");
@@ -55,27 +63,74 @@ export async function renderProductos() {
             producto.descripcion,
             producto.precio,
             producto.imagen.ruta,
+            producto.stock,
         );
     });
 
     contenedorProductos.replaceChildren(...cardsProductos);
 
+    //--------------evento del range descuento -------------------
+
+    const range = document.querySelector("#input-descuento");
+    range.addEventListener("input", (e) => {
+        document.getElementById("val-descuento").textContent =
+            `${e.target.value}%`;
+    });
+
+    //------------------- logica de descuento ---------------------
+    const modalDescuento = document.querySelector("#modal-descuento");
+
+    modalDescuento.addEventListener("show.bs.modal", (e) => {
+        // para cargar el descuento en el hidden
+        const boton = e.relatedTarget;
+        const inputIdProducto = document.querySelector("#hidden-descuento");
+
+        inputIdProducto.value = boton.id;
+    });
+
+    const formDescuento = document.querySelector("#form-descuento");
+    formDescuento.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const descuentoData = new FormData(formDescuento);
+
+        const respuesta = await dataProductos.insertarDescuento(descuentoData);
+        console.log(respuesta);
+
+        if (respuesta.status == 200) {
+            swal.fire({
+                title: "Descuento creado con exito",
+                icon: "success",
+                confirmButtonText: "Continuar",
+                customClass: {
+                    confirmButton: "btn btn-primary",
+                },
+            });
+        } else {
+            swal.fire({
+                title: "Error",
+                text: respuesta.mensaje,
+                icon: "error",
+                confirmButtonText: "Continuar",
+                customClass: {
+                    confirmButton: "btn btn-primary",
+                },
+            });
+        }
+    });
     // -----------------evento del formulario-----------------------
 
     const formulario = document.querySelector("#formulario");
     const collapse = document.querySelector("#multiCollapseExample2");
-    const collapseInstancia = bootstrap.Collapse.getOrCreateInstance(collapse);
+    const collapseInstancia = bootstrap.Collapse.getOrCreateInstance(collapse, {
+        toggle: false,
+    });
 
     formulario.addEventListener("submit", async (e) => {
         e.preventDefault();
         const producto = new FormData(formulario);
 
-        const campos = [
-            "nombre",
-            "descripcion",
-            "precio",
-            "stock",
-        ];
+        const campos = ["nombre", "descripcion", "precio", "stock"];
 
         const inputs = {};
 
@@ -102,14 +157,15 @@ export async function renderProductos() {
                         productoInsertado.descripcion,
                         productoInsertado.precio,
                         productoInsertado.imagen,
+                        productoInsertado.stock,
                     );
 
                     contenedorProductos.appendChild(nuevoProducto);
 
-                        inputs.nombre.value = "";
-                        inputs.descripcion.value = "";
-                        inputs.precio.value = "";
-                        inputs.stock.value = "";
+                    inputs.nombre.value = "";
+                    inputs.descripcion.value = "";
+                    inputs.precio.value = "";
+                    inputs.stock.value = "";
 
                     collapseInstancia.hide();
                 }
@@ -129,7 +185,7 @@ export async function renderProductos() {
 
     //----------eventos de los botones-------------------------
 
-    contenedorProductos.addEventListener("click", (e) => {
+    contenedorProductos.addEventListener("click", async (e) => {
         const boton = e.target;
         console.log("click activado");
         console.log(e.target);
@@ -188,6 +244,32 @@ export async function renderProductos() {
                         cardProducto.parentNode.removeChild(cardProducto);
                     }
                 });
+        } else if (boton.classList.contains("eliminar-descuento")) {
+            const idProducto = boton.id;
+
+            const respuesta = await dataProductos.eliminarDescuento(idProducto);
+
+            if (respuesta.status != 200) {
+                swal.fire({
+                    title: "Error",
+                    text: respuesta.mensaje,
+                    icon: "error",
+                    confirmButtonText: "Continuar",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    },
+                });
+            } else {
+                swal.fire({
+                    title: "Descuento eliminado con exito",
+                    icon: "success",
+                    confirmButtonText: "Continuar",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                    },
+                });
+
+            }
         }
     });
 
@@ -279,6 +361,7 @@ export async function renderProductos() {
                             productoEditado.descripcion,
                             productoEditado.precio,
                             productoEditado.imagen,
+                            productoEditado.stock,
                         );
 
                         contenedorProductos.replaceChild(

@@ -63,6 +63,7 @@ export async function renderizarProducto() {
     const idLabel = document.querySelector("#producto-hidden");
     const idProducto = idLabel.getAttribute("id-producto");
     const respuesta = await dataProductos.traerProducto(idProducto);
+    console.log(respuesta);
 
     if (respuesta.status != 200) {
         Toast.fire({
@@ -77,8 +78,6 @@ export async function renderizarProducto() {
     const respuestaComentarios =
         await dataProductos.traerComentarioProducto(idProducto);
 
-    console.log(respuestaComentarios);
-
     if (respuestaComentarios.status != 200) {
         Toast.fire({
             title: respuesta.mensaje,
@@ -88,7 +87,7 @@ export async function renderizarProducto() {
     }
 
     const comentariosContenedor = document.querySelector("#comentarios");
-    const comentarios = respuestaComentarios.datos
+    const comentarios = respuestaComentarios.datos;
 
     const cardsComentarios = comentarios.map((comentario) => {
         return dom.crearComentario(comentario);
@@ -99,7 +98,10 @@ export async function renderizarProducto() {
     const producto = respuesta.datos;
     infoProducto.imagen.src = "../" + producto.ruta;
     infoProducto.titulo.textContent = producto.producto;
-    infoProducto.precio.textContent = `$${producto.precio}`;
+    infoProducto.precio.textContent =
+        producto.descuento != 0
+            ? `$${producto.precio * (1 - producto.descuento / 100)}`
+            : `$${producto.precio}`;
     infoProducto.descripcion.textContent = producto.descripcion;
 
     const contenedorBotones = document.querySelector("#contenedor-botones");
@@ -108,25 +110,12 @@ export async function renderizarProducto() {
             const pedido = {
                 id: idProducto,
                 nombre: producto.producto,
-                precio: producto.precio,
+                precio: producto.precio * (1 - (producto.descuento / 100)),
                 cantidad:
                     parseInt(infoProducto.cantidad.value) > 0
-                        ? infoProducto.cantidad.value
+                        ? parseInt(infoProducto.cantidad.value)
                         : 0,
             };
-
-            // const respuesta = await dataPedido.agregarAlCarrito(
-            //     pedido.id,
-            //     pedido.cantidad,
-            // );
-
-            // if (respuesta.status != 200 && respuesta.status != 401) {
-            //     Toast.fire({
-            //         title: respuesta.mensaje,
-            //         icon: "error",
-            //     });
-            //     return;
-            // }
 
             // Verificar si el producto ya existe en el carrito
             const productoExistente = localStorage.getItem(idProducto);

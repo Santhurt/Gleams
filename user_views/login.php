@@ -48,8 +48,16 @@ session_start();
 
                 <?php  unset($_SESSION["err_login"]); ?>
 
+                <?php if (!empty($_SESSION["err_recuperacion"]) && isset($_SESSION["err_recuperacion"])): ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo $_SESSION["err_recuperacion"]; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php  unset($_SESSION["err_recuperacion"]); ?>
+
                 <div class="forgot-password">
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <a href="./recuperacion.php">¿Olvidaste tu contraseña?</a>
                 </div>
 
                 <div class="d-grid">

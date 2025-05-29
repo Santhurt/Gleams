@@ -26,5 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/comentarios.js").then((modulo) => {
             modulo.renderComentarios();
         });
+    } else if (ruta.includes("/admin_views/promos.php")) {
+        import("./eventos/promocion.js").then((modulo) => {
+            modulo.renderPromocion();
+        });
     }
 });

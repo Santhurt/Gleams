@@ -123,6 +123,44 @@ export async function renderPerfil() {
 
     dom.actualizarContadorCarrito();
 
+    const inputEliminar = document.querySelector("#input-eliminar");
+    const formEliminar = document.querySelector("#form-eliminar");
+
+    formEliminar.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const { value: password } = await swal.fire({
+            title: "Confirmar contraseña",
+            input: "password",
+            showCancelButton: true,
+            inputPlaceholder: "Ingresa tu contraseña",
+            confirmButtonText: "Guardar cambios",
+            cancelButtonText: "Cancelar",
+            inputAttributes: {
+                maxlength: "10",
+                autocapitalize: "off",
+                autocorrect: "off",
+            },
+            customClass: {
+                input: "modal-input",
+                validationMessage: "my-validation-message",
+                confirmButton: "boton-fondo-morado",
+                cancelButton: "boton-fondo-blanco",
+            },
+            preConfirm: (value) => {
+                if (!value) {
+                    swal.showValidationMessage(
+                        '<i class="fa fa-info-circle"></i> Ingresa la contraseña',
+                    );
+                }
+            },
+        });
+
+        if (!password) return;
+        inputEliminar.value = password;
+        formEliminar.submit();
+        
+    })
+
     // ---------------- renderizar en el carrito----------------------------
 
     renderCarrito();
