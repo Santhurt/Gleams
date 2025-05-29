@@ -22,6 +22,61 @@ class Usuario
         return $this->error;
     }
 
+    public function verificar_recuperacion($correo, $codigo) {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $verificar_recuperacion = "select 1 from recuperacion where correo = ? and codigo = ?";
+
+            $resultado = mysqli_execute_query($this->conn, $verificar_recuperacion, [$correo, $codigo]);
+
+            if($resultado->num_rows == 0) {
+                throw new Exception("Error en la validación");
+            }
+
+            return true;
+
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function crear_recuperacion($correo, $codigo) {
+        try {
+            if (!$this->conn) {
+                throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $verificar_correo = "select 1 from clientes where correo = ?";
+
+            $resultado_verificacion = mysqli_execute_query($this->conn, $verificar_correo, [$correo]);
+
+            if($resultado_verificacion->fetch_assoc() == null) {
+                throw new Exception("El correo no está registrado");
+            }
+
+            $recuperacion = "insert into recuperacion(
+                correo,
+                codigo
+            ) values (?, ?)";
+
+            $resultado = mysqli_execute_query($this->conn, $recuperacion, [$correo, $codigo]);
+
+            return $resultado;
+
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
     public function borrar_usuario($id_usuario)
     {
         try {
