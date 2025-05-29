@@ -85,6 +85,7 @@ export async function renderPago() {
             }).then((respuesta) => {
                 e.target.disabled;
                 if (respuesta.isConfirmed) {
+                    btnConfirmarPago.classList.add("disabled");
                     localStorage.clear();
 
                     setTimeout(() => {
