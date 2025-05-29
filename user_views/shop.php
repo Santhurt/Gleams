@@ -19,6 +19,7 @@
 
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
+    <link href="./css/carrousel.css" rel="stylesheet">
 
 </head>
 
@@ -142,15 +143,54 @@
 
     <!-- Main Content -->
     <main class="fondo">
-
-        <!-- Hero Section -->
-        <section class="hero-section fade-opacity color-base" id="hero-section">
-            <div class="container">
-                <h1 class="hero-title color-texto playfair-title">NUEVA COLECCIÓN ACCESORIOS</h1>
-                <p class="text-muted poppins-light">Descubre nuestra nueva selección de accesorios artesanales</p>
+        <!-- Carrusel Promocional -->
+        <section class="promotional-carousel">
+            <div id="promotionalCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <!-- Indicadores -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                </div>
+                <!-- Slides -->
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="carousel-split-container">
+                            <div class="carousel-image-section fade-opacity">
+                                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Nueva Colección">
+                            </div>
+                            <div class="carousel-content-section fade-opacity">
+                                <h2 class="carousel-title">Nueva Colección</h2>
+                                <p class="carousel-subtitle">Descubre nuestra exclusiva línea de accesorios artesanales, creados con amor y dedicación para resaltar tu belleza única. Cada pieza cuenta una historia especial.</p>
+                                <a href="#" class="carousel-btn">Explorar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="carousel-split-container">
+                            <div class="carousel-image-section">
+                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Envío Gratis">
+                            </div>
+                            <div class="carousel-content-section">
+                                <h2 class="carousel-title">Envío Gratis</h2>
+                                <p class="carousel-subtitle">En compras superiores a $150.000. Recibe tus accesorios favoritos directamente en la comodidad de tu hogar, sin costos adicionales de envío.</p>
+                                <a href="#" class="carousel-btn">Comprar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Controles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#promotionalCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#promotionalCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
             </div>
         </section>
-
         <!-- Filter Bar -->
         <div class="container mt-4 fade-opacity" id="filter-bar">
             <div class="row justify-content-center filter-bar align-items-center">

@@ -1,18 +1,18 @@
 :root {
-    --color-base: #d894f0;
+    --color-base: #a55a6c;
     --color-fondo: #faf4fb;
-    --color-fuerte: #f095e6;
+    --color-fuerte: #c98d9e;
     --color-texto: #4a0e1b;
     --bs-btn-active-bg: #f095e6 !important;
 }
 .my-validation-message::before {
-  display: none;
+    display: none;
 }
 
 .my-validation-message i {
-  margin: 0 0.4em;
-  color: #f27474;
-  font-size: 1.4em;
+    margin: 0 0.4em;
+    color: #f27474;
+    font-size: 1.4em;
 }
 
 .img-crop-card {
@@ -145,6 +145,14 @@
     color: #a55a6c;
 }
 
+/*Estilos del caroussel*/
+
+.hero-carousel {
+    padding: 60px 0;
+    position: relative;
+}
+
+
 .hero-section {
     padding: 60px 0;
     text-align: center;
@@ -268,7 +276,6 @@
     box-shadow: none;
     outline: none;
 }
-
 
 .cantidad-input {
     width: 50px;
@@ -413,15 +420,14 @@
     box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
 }
 
-.modal-input{
+.modal-input {
     border: 2px solid #e9ecef;
     border-radius: 8px;
     padding: 12px 15px;
     transition: border-color 0.3s ease;
-
 }
 
-.modal-input:focus{
+.modal-input:focus {
     border-color: #a55a6c;
     box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
 }
