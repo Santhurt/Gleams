@@ -44,6 +44,8 @@ export async function renderizarProducto() {
         precio: document.querySelector("#precio"),
         descripcion: document.querySelector("#descripcion-texto"),
         cantidad: document.querySelector("#input-cantidad"),
+        precioOriginal: document.querySelector("#precio-original"),
+        badgeDescuento: document.querySelector("#badge-descuento"),
     };
 
     const botonesCantidad = document.querySelectorAll(".btn-cantidad");
@@ -95,6 +97,8 @@ export async function renderizarProducto() {
 
     comentariosContenedor.replaceChildren(...cardsComentarios);
 
+    // --- renderizado de informacion
+
     const producto = respuesta.datos;
     infoProducto.imagen.src = "../" + producto.ruta;
     infoProducto.titulo.textContent = producto.producto;
@@ -104,13 +108,45 @@ export async function renderizarProducto() {
             : `$${producto.precio}`;
     infoProducto.descripcion.textContent = producto.descripcion;
 
+    // condicional para verificar el descuento --------------------------
+
+    if (producto.descuento != 0) {
+        // Hay descuento - mostrar precio original tachado y precio con descuento
+        const precioConDescuento =
+            producto.precio * (1 - producto.descuento / 100);
+
+        // Mostrar precio original tachado
+        infoProducto.precioOriginal.textContent = `$${producto.precio}`;
+        infoProducto.precioOriginal.style.display = "inline";
+
+        // Mostrar precio con descuento
+        infoProducto.precio.textContent = `$${precioConDescuento}`;
+        infoProducto.precio.classList.add("poppins-light");
+
+        // Mostrar badge de descuento
+        infoProducto.badgeDescuento.textContent = `-${producto.descuento}%`;
+        infoProducto.badgeDescuento.style.display = "inline";
+    } else {
+        // No hay descuento - mostrar solo precio normal
+        infoProducto.precio.textContent = `$${producto.precio}`;
+
+        // Ocultar elementos de descuento
+        infoProducto.precioOriginal.style.display = "none";
+        infoProducto.badgeDescuento.style.display = "none";
+
+        // Remover clases de descuento del precio
+        infoProducto.precio.classList.remove("text-success", "fw-bold");
+    }
+
+    // --------- logica de compra
+
     const contenedorBotones = document.querySelector("#contenedor-botones");
     contenedorBotones.addEventListener("click", async (e) => {
         if (e.target.classList.contains("agregar")) {
             const pedido = {
                 id: idProducto,
                 nombre: producto.producto,
-                precio: producto.precio * (1 - (producto.descuento / 100)),
+                precio: producto.precio * (1 - producto.descuento / 100),
                 cantidad:
                     parseInt(infoProducto.cantidad.value) > 0
                         ? parseInt(infoProducto.cantidad.value)

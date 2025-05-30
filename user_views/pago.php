@@ -72,12 +72,12 @@ if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="./shop.php">Tienda</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Colecciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Accesorios</a>
-                        </li>
+                        <!-- <li class="nav-item"> -->
+                        <!--     <a class="nav-link poppins-light" href="#">Colecciones</a> -->
+                        <!-- </li> -->
+                        <!-- <li class="nav-item"> -->
+                        <!--     <a class="nav-link poppins-light" href="#">Accesorios</a> -->
+                        <!-- </li> -->
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="./pedidos.php">Pedidos</a>
                         </li>

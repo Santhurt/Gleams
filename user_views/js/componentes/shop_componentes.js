@@ -216,15 +216,12 @@ export const dom = {
             "col-lg-3",
             "fade-in",
         );
-
         const divProductoCard = document.createElement("div");
         divProductoCard.classList.add("product-card");
-
         const img = document.createElement("img");
         img.classList.add("card-img-top", "rounded-3", "img-fluid");
         img.src = `../${producto.imagen.ruta}`;
         img.style.height = "300px";
-
         const cardBody = document.createElement("div");
         cardBody.classList.add(
             "card-body",
@@ -235,20 +232,52 @@ export const dom = {
             "align-items-md-center",
             "px-0",
         );
-
         const div = document.createElement("div");
-
         const h4 = document.createElement("h4");
         h4.classList.add("product-title", "playfair-title");
         h4.textContent = `${producto.producto}`;
         h4.id = "nombre-producto";
 
-        const p = document.createElement("p");
-        p.classList.add("product-price", "poppins-light");
-        p.textContent =
-            producto.descuento != 0
-                ? `$${producto.precio * (1 - producto.descuento / 100)}`
-                : `$${producto.precio}`;
+        // Contenedor para los precios
+        const preciosContainer = document.createElement("div");
+        preciosContainer.classList.add("precios-container");
+
+        if (producto.descuento != 0) {
+            // Precio original tachado
+            const precioOriginal = document.createElement("span");
+            precioOriginal.classList.add(
+                "precio-original",
+                "poppins-light",
+                "product-price",
+                "text-decoration-line-through",
+                "me-2",
+            );
+            precioOriginal.style.fontSize = "0.9em";
+            precioOriginal.textContent = `$${producto.precio}`;
+
+            // Precio con descuento
+            const precioDescuento = document.createElement("span");
+            precioDescuento.classList.add("precio-descuento", "poppins-light");
+            precioDescuento.textContent = `$${(producto.precio * (1 - producto.descuento / 100)).toFixed(2)}`;
+
+            // Badge de descuento
+            const badgeDescuento = document.createElement("span");
+            badgeDescuento.classList.add("badge", "bg-danger", "ms-2");
+            badgeDescuento.textContent = `-${producto.descuento}%`;
+
+            preciosContainer.replaceChildren(
+                precioOriginal,
+                precioDescuento,
+                badgeDescuento,
+            );
+        } else {
+            // Solo precio normal
+            const precio = document.createElement("span");
+            precio.classList.add("poppins-light");
+            precio.textContent = `$${producto.precio}`;
+
+            preciosContainer.appendChild(precio);
+        }
 
         const a = document.createElement("a");
         a.classList.add(
@@ -260,22 +289,16 @@ export const dom = {
             "boton-fondo-morado",
         );
         a.href = `./producto.php?id=${producto.id_producto}`;
-
         const icon = document.createElement("i");
         icon.classList.add("bi", "bi-bag-plus");
 
-        div.replaceChildren(h4, p);
+        div.replaceChildren(h4, preciosContainer);
         a.replaceChildren(icon);
-
         cardBody.replaceChildren(div, a);
-
         divProductoCard.replaceChildren(img, cardBody);
-
         divCol.appendChild(divProductoCard);
-
         return divCol;
     },
-
     crearItemPago: (pedido) => {
         const productItem = document.createElement("div");
         productItem.classList.add(

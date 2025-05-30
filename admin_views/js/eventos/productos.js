@@ -394,6 +394,7 @@ export async function renderProductos() {
         const tbody = document.querySelector("#tb-info");
 
         const producto = await dataProductos.traerProductoPorId(id);
+        console.log(producto);
 
         const respuestaCategorias = await dataProductos.traerCategorias();
         const categorias = respuestaCategorias.categorias;
@@ -410,6 +411,10 @@ export async function renderProductos() {
             if (campo == "estado") {
                 producto[campo] =
                     producto[campo] == 1 ? "Disponible" : "No disponible";
+            }
+
+            if(campo == "Fin del descuento") {
+                producto[campo] = (producto[campo] == null) ? "Sin descuento" : producto[campo];
             }
 
             return dom.crearTablaProducto(campo, producto[campo]);
