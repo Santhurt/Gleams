@@ -20,10 +20,11 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
 
 </head>
+
 <body>
     <!-- Overlay for mobile -->
     <div class="overlay" id="sidebar-overlay"></div>
-    
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="logo d-flex align-items-center">
@@ -178,44 +179,44 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
         </div>
 
         <!-- Charts -->
-        <div class="row g-4">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between mb-4">
-                            <h5 class="card-title">Pedidos pendientes</h5>
-                            <div>
-                                <span class="badge rounded-pill bg-light text-secondary me-1">
-                                    <span class="me-1" style="color: #A976F8;">●</span> CHN
-                                </span>
-                                <span class="badge rounded-pill bg-light text-secondary me-1">
-                                    <span class="me-1" style="color: #38BFED;">●</span> USA
-                                </span>
-                                <span class="badge rounded-pill bg-light text-secondary">
-                                    <span class="me-1" style="color: #FF9E8A;">●</span> UK
-                                </span>
-                            </div>
-                        </div>
-                        <div class="chart-container">
-                            <!-- Aquí iría el gráfico -->
-                            <img src="/api/placeholder/700/300" alt="Chart placeholder" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card position-relative">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4">Ventas recientes</h5>
-                        <div class="chart-container">
-                            <!-- Aquí iría el gráfico de pastel -->
-                            <img src="/api/placeholder/300/300" alt="Pie chart placeholder" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- <div class="row g-4"> -->
+        <!--     <div class="col-md-8"> -->
+        <!--         <div class="card"> -->
+        <!--             <div class="card-body"> -->
+        <!--                 <div class="d-flex justify-content-between mb-4"> -->
+        <!--                     <h5 class="card-title">Pedidos pendientes</h5> -->
+        <!--                     <div> -->
+        <!--                         <span class="badge rounded-pill bg-light text-secondary me-1"> -->
+        <!--                             <span class="me-1" style="color: #A976F8;">●</span> CHN -->
+        <!--                         </span> -->
+        <!--                         <span class="badge rounded-pill bg-light text-secondary me-1"> -->
+        <!--                             <span class="me-1" style="color: #38BFED;">●</span> USA -->
+        <!--                         </span> -->
+        <!--                         <span class="badge rounded-pill bg-light text-secondary"> -->
+        <!--                             <span class="me-1" style="color: #FF9E8A;">●</span> UK -->
+        <!--                         </span> -->
+        <!--                     </div> -->
+        <!--                 </div> -->
+        <!--                 <div class="chart-container"> -->
+        <!--                     <!-- Aquí iría el gráfico -->
+        <!--                     <img src="/api/placeholder/700/300" alt="Chart placeholder" class="img-fluid"> -->
+        <!--                 </div> -->
+        <!--             </div> -->
+        <!--         </div> -->
+        <!--     </div> -->
+        <!---->
+        <!--     <div class="col-md-4"> -->
+        <!--         <div class="card position-relative"> -->
+        <!--             <div class="card-body"> -->
+        <!--                 <h5 class="card-title mb-4">Ventas recientes</h5> -->
+        <!--                 <div class="chart-container"> -->
+        <!--                     <!-- Aquí iría el gráfico de pastel -->
+        <!--                     <img src="/api/placeholder/300/300" alt="Pie chart placeholder" class="img-fluid"> -->
+        <!--                 </div> -->
+        <!--             </div> -->
+        <!--         </div> -->
+        <!--     </div> -->
+        <!-- </div> -->
 
     </div>
 

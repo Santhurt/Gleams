@@ -162,7 +162,7 @@
                             <div class="carousel-content-section fade-opacity">
                                 <h2 id="titulo-cartel-1" class="carousel-title">Nueva Colección</h2>
                                 <p class="carousel-subtitle " id="texto-cartel-1">Descubre nuestra exclusiva línea de accesorios artesanales, creados con amor y dedicación para resaltar tu belleza única. Cada pieza cuenta una historia especial.</p>
-                                <a href="#" class="carousel-btn">Explorar Ahora</a>
+                                <a href="#filter-bar" class="carousel-btn">Explorar Ahora</a>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                             <div class="carousel-content-section">
                                 <h2 class="carousel-title " id="titulo-cartel-2">Envío Gratis</h2>
                                 <p class="carousel-subtitle" id="texto-cartel-2">En compras superiores a $150.000. Recibe tus accesorios favoritos directamente en la comodidad de tu hogar, sin costos adicionales de envío.</p>
-                                <a href="#" class="carousel-btn">Comprar Ahora</a>
+                                <a href="#filter-bar" class="carousel-btn">Comprar Ahora</a>
                             </div>
                         </div>
                     </div>

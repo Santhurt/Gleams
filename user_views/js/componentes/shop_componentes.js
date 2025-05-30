@@ -219,7 +219,7 @@ export const dom = {
         const divProductoCard = document.createElement("div");
         divProductoCard.classList.add("product-card");
         const img = document.createElement("img");
-        img.classList.add("card-img-top", "rounded-3", "img-fluid");
+        img.classList.add("card-img-top", "rounded-3", "imagen-producto");
         img.src = `../${producto.imagen.ruta}`;
         img.style.height = "300px";
         const cardBody = document.createElement("div");
