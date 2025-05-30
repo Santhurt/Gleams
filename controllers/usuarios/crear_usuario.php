@@ -38,11 +38,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if(!$validar->text("nombre", "password" )) {
+    if(!$validar->text("nombre" )) {
         http_response_code(400);
 
         echo json_encode([
-            "mensaje" => "No se pueden ingresar caracteres especiales"
+            "mensaje" => "Carácteres inválidos en el nombre"
+        ]);
+        exit;
+    }
+
+    if(!$validar->password($_POST["password"])) {
+        http_response_code(400);
+        
+        echo json_encode([
+            "mensaje" => "Contraseña inválida"
         ]);
         exit;
     }

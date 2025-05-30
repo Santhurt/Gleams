@@ -218,7 +218,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                             <input type="hidden" id="hidden-descuento" name="id-producto">
                             <div class="mb-3">
                                 <label for="" class="label-form">Descuento: <span id="val-descuento">0%</span></label>
-                                <input type="number" id="input-descuento" name="descuento" class="form-control" min="0" max="100">
+                                <input type="number" id="input-descuento" name="descuento" class="form-control">
                             </div>
 
                             <div class="mb-3">

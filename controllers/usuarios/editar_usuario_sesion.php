@@ -36,8 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if (!$validar->text("nombre", "direccion")) {
-        $_SESSION["msg_edit"] = "Caracteres no permitidos en nombre y direccion";
+    if (!$validar->text("nombre")) {
+        $_SESSION["msg_edit"] = "Caracteres no permitidos en el nombre";
+        header("Location: {$ruta}");
+
+        exit;
+    }
+
+    if (!$validar->direccion($_POST["direccion"])) {
+        $_SESSION["msg_edit"] = "Dirección invalida";
         header("Location: {$ruta}");
 
         exit;

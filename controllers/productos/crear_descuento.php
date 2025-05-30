@@ -35,6 +35,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $descuento = trim($_POST["descuento"]);
     $fecha_fin = trim($_POST["fecha-fin"]);
 
+    if(!is_numeric($descuento)) {
+        http_response_code(400);
+
+        echo json_encode([
+            "status" => 400,
+            "mensaje" => "El descuento debe ser un numero válido"
+        ]);
+        exit;
+
+    }
+
     if($descuento <= 0 || $descuento > 100) {
         http_response_code(400);
 

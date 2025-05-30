@@ -30,7 +30,7 @@ if (!$usuario->verificar_recuperacion($correo, $codigo)) {
         exit;
     }
 
-    if (!$validar->text("password")) {
+    if (!$validar->password("password")) {
         $_SESSION["err_recuperacion"] = "Contraseña invalida";
         header("Location: recuperar.php?codigo={$codigo}&correo=" . urlencode($correo));
         exit;

@@ -118,7 +118,6 @@ export async function renderUsuarios() {
         const campos = [
             "nombre",
             "telefono",
-            "fecha",
             "roles",
             "correo",
             "direccion",
@@ -134,7 +133,6 @@ export async function renderUsuarios() {
 
         inputs.nombre.value = producto.nombre;
         inputs.telefono.value = producto.telefono;
-        inputs.fecha.value = producto["fecha de registro"];
         inputs.correo.value = producto.correo;
         inputs.direccion.value = producto.direccion;
 

@@ -44,6 +44,8 @@ export const dom = {
 
                 if (!campos.includes(campo)) {
                     campos.push(campo);
+                } else if(campo == "descuento") {
+                    td.innerHTML = `${producto[campo]}%`;
                 }
 
                 return td;

@@ -31,6 +31,8 @@ export const dom = {
 
             if (campo == "acciones") {
                 td.appendChild(pedido[campo]);
+            } else if(campo == "total"){
+                td.innerHTML = `$${pedido[campo]}`;
             } else {
                 td.innerHTML = pedido[campo];
             }
@@ -99,6 +101,8 @@ export const dom = {
 
                 if (campo == "acciones") {
                     td.appendChild(pedido[campo]);
+                } else if(campo == "total") {
+                    td.innerHTML = `$${pedido[campo]}`
                 } else {
                     td.innerHTML = pedido[campo];
                 }

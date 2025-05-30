@@ -160,11 +160,6 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                                 <!--Opciones-->
                             </select>
 
-                            <div class="mb-3">
-                                <label for="" class="label-form">Fecha</label>
-                                <input class="form-control" type="date" name="fecha">
-                            </div>
-
 
                             <div class="mb-3">
                                 <label for="" class="label-form">Correo</label>

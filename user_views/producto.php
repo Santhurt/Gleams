@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,33 +109,12 @@
                 <div class="modal-body p-4">
                     <!-- Lista de productos -->
                     <ul class="list-group list-group-flush mb-4" id="lista-pedidos">
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                            <div>
-                                <h6 class="mb-1">Camisa Casual</h6>
-                                <small class="text-muted">2 unidades</small>
-                            </div>
-                            <span class="fw-semibold">$59.98</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                            <div>
-                                <h6 class="mb-1">Pantalón Slim Fit</h6>
-                                <small class="text-muted">1 unidad</small>
-                            </div>
-                            <span class="fw-semibold">$49.99</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                            <div>
-                                <h6 class="mb-1">Zapatillas Deportivas</h6>
-                                <small class="text-muted">1 unidad</small>
-                            </div>
-                            <span class="fw-semibold">$89.95</span>
-                        </li>
                     </ul>
 
                     <!-- Total -->
                     <div class="d-flex justify-content-between align-items-center border-top pt-3">
                         <h5 class="fw-bold mb-0">Total</h5>
-                        <h5 class="fw-bold mb-0" id="total">$244.89</h5>
+                        <h5 class="fw-bold mb-0" id="total"></h5>
                     </div>
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between">
@@ -153,10 +133,10 @@
                     </div>
                 </div>
                 <div class="col-lg-6 fade-in">
-                    <h2 class="mb-3 mt-3 playfair-title" id="titulo">Set de 3 Pines Fauna Tropical</h2>
+                    <h2 class="mb-3 mt-3 playfair-title" id="titulo"></h2>
 
                     <div class="price-container mb-3">
-                        <h3 class="poppins-light" id="precio">$49.900</h3>
+                        <h3 class="poppins-light" id="precio"></h3>
                         <p class="text-muted small">Impuesto incluido. Los gastos de envío se calculan en la pantalla de pagos.</p>
                     </div>
 
@@ -273,33 +253,7 @@
 
                 <!-- Reseñas existentes -->
                 <div class="mb-4" id="comentarios">
-                    <!-- Reseña 1 -->
-                    <div class="card mb-3 fondo">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between mb-2">
-                                <h5 class="card-title poppins-light">Laura Martínez</h5>
-                                <div>
-                                    <span class="text-warning">★★★★★</span>
-                                    <small class="text-muted ms-2">15/04/2025</small>
-                                </div>
-                            </div>
-                            <p class="card-text poppins-light">¡Me encantaron los pines! La calidad es excelente y los diseños son hermosos. Definitivamente volveré a comprar más productos.</p>
-                        </div>
-                    </div>
 
-                    <!-- Reseña 2 -->
-                    <div class="card mb-3 fondo">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between mb-2">
-                                <h5 class="card-title poppins-light">Carlos Ramírez</h5>
-                                <div>
-                                    <span class="text-warning">★★★★☆</span>
-                                    <small class="text-muted ms-2">02/04/2025</small>
-                                </div>
-                            </div>
-                            <p class="card-text poppins-light">Buen producto, los colores son vibrantes y el acabado es de calidad. Solo le quito una estrella porque uno de los pines venía con un pequeño defecto en el broche.</p>
-                        </div>
-                    </div>
                 </div>
 
             </div>

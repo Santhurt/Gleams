@@ -21,6 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if ($resultado) {
         while ($fila = $resultado->fetch_assoc()) {
             foreach ($fila as $key => $value) {
+                if($key == "estado") {
+                    $fila[$key] = ($fila[$key] == 1) ? "Activo" : "Eliminado";
+
+                    continue;
+                }
                 $fila[$key] = htmlspecialchars($value);
             }
 
