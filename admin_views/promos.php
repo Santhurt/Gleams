@@ -183,7 +183,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
                             <div class="mb-3">
                                 <label for="" class="form-label">Descripcion</label>
-                                <textarea class="form-control" id="descripcion" name="descripcion"  placeholder="Descripcion del producto"></textarea>
+                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion del producto"></textarea>
                             </div>
 
                             <div class="mb-3">
@@ -207,6 +207,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                     <div class="card-body">
                         <div class="chart-container">
                             <div class="gap-3 d-flex">
+                                <img id="imagen-1" src="" class="cartel" alt="">
 
                             </div>
                         </div>
@@ -220,6 +221,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
                         <div class="chart-container">
                             <div class="gap-3 d-flex">
+                                <img src="" alt="" id="imagen-2" class="cartel">
 
                             </div>
                         </div>

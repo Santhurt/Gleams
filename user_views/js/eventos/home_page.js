@@ -2,10 +2,10 @@ import { dataProductos } from "../ajax/data_productos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/shop_componentes.js";
 import { renderCarrito } from "./carrito.js";
+import { dataPromos } from "../ajax/data_promos.js";
 
 //Aqui se añaden los eventos y logica dela pagina en el DOM
 export async function renderizarIndex() {
-
     // configuracion pal toast
     const Toast = swal.mixin({
         toast: true,
@@ -31,18 +31,62 @@ export async function renderizarIndex() {
         });
     });
 
-    const respuesta = await dataProductos.traerProductos();
+    // -------------- renderizado del cartel -------------------------
+    const respuestaPromos = await dataPromos.traerPromos();
 
-    if (respuesta.status !== 200) {
+    if (respuestaPromos.status != 200) {
         Toast.fire({
-            title: respuesta.mensaje,
-            icon: "error"
+            title: respuestaPromos.mensaje,
+            icon: "error",
         });
 
         return;
     }
 
+    const promos = respuestaPromos.datos;
+
+    const cartel1 = document.querySelector("#cartel-1");
+    const tituloCartel1 = document.querySelector("#titulo-cartel-1");
+    const textoCartel1 = document.querySelector("#texto-cartel-1");
+
+    const cartel2 = document.querySelector("#cartel-2");
+    const tituloCartel2 = document.querySelector("#titulo-cartel-2");
+    const textoCartel2 = document.querySelector("#texto-cartel-2");
+
+    let rutaCartel1 = "";
+    let rutaCartel2 = "";
+
+    promos.forEach((promo) => {
+        if (promo.id_promocion == 1) {
+            rutaCartel1 = `../../../${promo.ruta}`;
+            tituloCartel1.innerHTML = promo.titulo;
+            textoCartel1.innerHTML = promo.descripcion;
+        } else if (promo.id_promocion == 2) {
+            rutaCartel2 = `../../../${promo.ruta}`;
+            tituloCartel2.innerHTML = promo.titulo;
+            textoCartel2.innerHTML = promo.descripcion;
+        }
+    });
+
+    if (rutaCartel1) {
+        cartel1.src = rutaCartel1;
+    }
+    if (rutaCartel2) {
+        cartel2.src = rutaCartel2;
+    }
+
     // --------------------renderizado de productos -----------------------------------
+
+    const respuesta = await dataProductos.traerProductos();
+
+    if (respuesta.status !== 200) {
+        Toast.fire({
+            title: respuesta.mensaje,
+            icon: "error",
+        });
+
+        return;
+    }
 
     const contenedorProductos = document.querySelector("#contenedor-productos");
     const productos = respuesta.datos;
@@ -81,28 +125,24 @@ export async function renderizarIndex() {
 
     const inputBuscar = document.querySelector("#buscar");
 
-    inputBuscar.addEventListener("input", (e)=>{
+    inputBuscar.addEventListener("input", (e) => {
         const input = e.target.value;
         const items = document.querySelectorAll(".item-producto");
 
-        items.forEach(item => {
+        items.forEach((item) => {
             const nombre = item.querySelector("#nombre-producto");
 
-            if(!nombre.textContent.includes(input.trim())) {
+            if (!nombre.textContent.includes(input.trim())) {
                 item.style.display = "none";
             } else {
                 item.style.display = "block";
-
             }
-
         });
-
-    })
+    });
 
     dom.actualizarContadorCarrito();
 
     // ---------------- renderizar en el carrito----------------------------
 
     renderCarrito();
-
 }

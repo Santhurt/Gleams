@@ -157,11 +157,11 @@
                     <div class="carousel-item active">
                         <div class="carousel-split-container">
                             <div class="carousel-image-section fade-opacity">
-                                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Nueva Colección">
+                                <img id="cartel-1" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Nueva Colección">
                             </div>
                             <div class="carousel-content-section fade-opacity">
-                                <h2 class="carousel-title">Nueva Colección</h2>
-                                <p class="carousel-subtitle">Descubre nuestra exclusiva línea de accesorios artesanales, creados con amor y dedicación para resaltar tu belleza única. Cada pieza cuenta una historia especial.</p>
+                                <h2 id="titulo-cartel-1" class="carousel-title">Nueva Colección</h2>
+                                <p class="carousel-subtitle " id="texto-cartel-1">Descubre nuestra exclusiva línea de accesorios artesanales, creados con amor y dedicación para resaltar tu belleza única. Cada pieza cuenta una historia especial.</p>
                                 <a href="#" class="carousel-btn">Explorar Ahora</a>
                             </div>
                         </div>
@@ -170,11 +170,11 @@
                     <div class="carousel-item">
                         <div class="carousel-split-container">
                             <div class="carousel-image-section">
-                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Envío Gratis">
+                                <img id="cartel-2" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Envío Gratis">
                             </div>
                             <div class="carousel-content-section">
-                                <h2 class="carousel-title">Envío Gratis</h2>
-                                <p class="carousel-subtitle">En compras superiores a $150.000. Recibe tus accesorios favoritos directamente en la comodidad de tu hogar, sin costos adicionales de envío.</p>
+                                <h2 class="carousel-title " id="titulo-cartel-2">Envío Gratis</h2>
+                                <p class="carousel-subtitle" id="texto-cartel-2">En compras superiores a $150.000. Recibe tus accesorios favoritos directamente en la comodidad de tu hogar, sin costos adicionales de envío.</p>
                                 <a href="#" class="carousel-btn">Comprar Ahora</a>
                             </div>
                         </div>

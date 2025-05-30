@@ -1,6 +1,5 @@
 <?php
 
-use modelos\Promo;
 
 session_start();
 
@@ -16,6 +15,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 require_once __DIR__ . "/../lib/validaciones.php";
 require_once __DIR__ . "/../../model/promos.php";
 
+use modelos\Promo;
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 

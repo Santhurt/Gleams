@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] !== "admin") {
+if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] !== "admin") {
     http_response_code(401);
     echo json_encode([
         "status" => 401,
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    if(!$validar->text("nombre", "descripcion")) {
+    if (!$validar->text("nombre", "descripcion")) {
         http_response_code(400);
 
         echo json_encode([
@@ -57,6 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ]);
         exit;
     }
+
+
+    $_POST["precio"] = floor($_POST["precio"]);
+    $_POST["stock"] = floor($_POST["stock"]);
 
     $img_ruta = insertar_imagen("imagen", false, "", true, 800, 600, 85);
 

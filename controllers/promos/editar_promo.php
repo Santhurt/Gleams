@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imagen_nueva_subida = is_uploaded_file($_FILES["imagen"]["tmp_name"]);
 
     if ($imagen_nueva_subida) {
-        $img_nueva = insertar_imagen("imagen", true, $promo_anterior["ruta"]);
+        $img_nueva = insertar_imagen("imagen", true, $promo_anterior["ruta"], true, 1200, 600, 85);
 
         if (empty($img_nueva["ruta"])) {
             http_response_code(400);
@@ -68,15 +68,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $resultado = $promo->editar_promo($id_promo, $titulo, $descripcion, $img_nueva["ruta"]);
 
-    if($resultado) {
+    if ($resultado) {
         http_response_code(200);
 
         echo json_encode([
             "status" => 200,
-            "mensaje" => "Promoción actualizada"
+            "datos" => $img_nueva["ruta"]
         ]);
         exit;
-
     } else {
         http_response_code(500);
 
@@ -85,6 +84,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "mensaje" => "Error: " . $promo->get_error()
         ]);
         exit;
-
     }
 }
