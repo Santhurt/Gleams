@@ -18,7 +18,6 @@ export async function renderPedidos() {
             customClass: {
                 confirmButton: "btn btn-primary",
             },
-
         });
 
         return;
@@ -36,6 +35,7 @@ export async function renderPedidos() {
                 target: "tr",
             },
         },
+        order: [[4, "desc"]],
         columnDefs: [
             {
                 className: "dt-control",

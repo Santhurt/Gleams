@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] !== "admin") {
+if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] !== "admin") {
     http_response_code(401);
     echo json_encode([
         "status" => 401,
@@ -19,13 +19,18 @@ use lib\Validar;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Content-Type: application/json");
 
+    if (!isset($_POST["id"])) {
+        http_response_code(400);
+        echo json_encode(["mensaje" => "Falta el campo 'id'"]);
+        exit;
+    }
+
     $validar = new Validar($_POST);
 
     $vacios = $validar->requeridos(
         "nombre",
         "telefono",
         "roles",
-        "fecha",
         "correo",
         "direccion"
     );
@@ -39,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if (!$validar->text("nombre" )) {
+    if (!$validar->text("nombre")) {
         http_response_code(400);
 
         echo json_encode([
@@ -48,7 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if(!$validar->direccion(trim($_POST["direccion"]))) {
+    if (!$validar->direccion(trim($_POST["direccion"]))) {
+        http_response_code(400);
+
         echo json_encode([
             "mensaje" => "Direccion invalida"
         ]);
@@ -69,16 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         echo json_encode([
             "mensaje" => "El correo es invalido"
-        ]);
-        exit;
-    }
-
-    if (!$validar->date($_POST["fecha"])) {
-        http_response_code(400);
-
-        echo json_encode([
-            "status" => 400,
-            "mensaje" => "La fecha ingresada es invalida"
         ]);
         exit;
     }
@@ -106,13 +103,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($resultado) {
         http_response_code(200);
-        $_POST["estado"] = 1;
+        $_POST["estado"] = "Activo";
+        $_POST["fecha"] = $resultado_usuario["fecha de registro"];
         $_POST["roles"] = ($_POST["roles"] == 1) ? "admin" : "cliente";
 
         echo json_encode($_POST);
         exit;
     } else {
-        json_encode([
+        echo json_encode([
             "status" => 500,
             "mensaje" => "Error: " . $usuario->get_error()
         ]);

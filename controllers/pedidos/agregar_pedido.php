@@ -11,7 +11,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
     exit;
 }
 
-require_once __DIR__ . " /../../model/pedidos.php";
+require_once __DIR__ . "/../../model/pedidos.php";
 require_once __DIR__ . "/../../model/productos.php";
 
 use modelos\Producto;

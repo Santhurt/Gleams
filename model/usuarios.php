@@ -186,7 +186,6 @@ class Usuario
             $usuario_editar = "UPDATE clientes
                 SET nombre = ?,
                     telefono = ?,
-                    fecha_registro = ?,
                     correo = ?,
                     direccion = ?
                 WHERE id_cliente = ?";
@@ -194,7 +193,6 @@ class Usuario
             $resultado = mysqli_execute_query($this->conn, $usuario_editar, [
                 $usuario["nombre"],
                 $usuario["telefono"],
-                $usuario["fecha"],
                 $usuario["correo"],
                 $usuario["direccion"],
                 $usuario["id"]

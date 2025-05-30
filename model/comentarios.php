@@ -87,6 +87,7 @@ class Comentario {
                 productos.nombre as producto,
                 comentario,
                 estrellas,
+                comentarios.estado,
                 fecha
             from comentarios 
             join clientes on clientes.id_cliente = comentarios.id_cliente
@@ -112,6 +113,14 @@ class Comentario {
         try{
             if (!$this->conn) {
                 throw new Exception("No hay conexion con la base de datos");
+            }
+
+            $comprobar_comentarios = "select * from comentarios where id_cliente = ?";
+
+            $resultado = mysqli_execute_query($this->conn, $comprobar_comentarios, [$comentario["id_cliente"]]);
+
+            if($resultado->num_rows > 2) {
+                throw new Exception("Limite de 3 comentarios superados");
             }
 
             $insertar_comentario = "insert into comentarios(

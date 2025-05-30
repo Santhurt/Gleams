@@ -25,8 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "id",
         "nombre",
         "descripcion",
-        "precio",
-        "stock",
+        "precio"
     );
 
     if (count($vacios) > 0) {

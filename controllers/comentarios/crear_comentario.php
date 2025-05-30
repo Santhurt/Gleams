@@ -72,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         http_response_code(500);
 
         echo json_encode([
-            "mensaje" => "Error al crear el comentario"
+            "mensaje" => $comentario->get_error()
         ]);
         exit;
     }

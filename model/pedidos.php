@@ -5,6 +5,7 @@ namespace modelos;
 require_once __DIR__ . "/../config/database.php";
 
 use config\Database;
+use Error;
 use Exception;
 
 class Pedido
@@ -232,7 +233,9 @@ class Pedido
                 total,
                 pedidos.estado
             from pedidos
-            join clientes on clientes.id_cliente = pedidos.id_cliente";
+            join clientes on clientes.id_cliente = pedidos.id_cliente
+            order by fecha_pedido desc
+            ";
 
             $resultado = mysqli_execute_query($this->conn, $consulta_pedidos);
 
@@ -258,6 +261,14 @@ class Pedido
 
             mysqli_begin_transaction($this->conn);
 
+            $verificar_pedidos = "select * from pedidos where id_cliente = ? and estado = 'pendiente'";
+
+            $resultado_verificacion = mysqli_execute_query($this->conn, $verificar_pedidos, [$id_cliente]);
+
+            if($resultado_verificacion->num_rows > 5) {
+                throw new Exception("Limite de pedidos pendientes superados");
+            }
+
             $insertar_pedido = "insert into pedidos(
                 fecha_pedido,
                 id_cliente,
@@ -272,7 +283,7 @@ class Pedido
             ]);
 
             if (!$respuesta_insertar_pedido) {
-                throw new Exception("Erro al insertar en pedidos");
+                throw new Exception("Error al insertar en pedidos");
             }
 
             $id_pedido = mysqli_insert_id($this->conn);

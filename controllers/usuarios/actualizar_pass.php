@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if (!$validar->text("pass-nueva", "confirm-pass-nueva")) {
-        $_SESSION["msg_edit"] = "Caracteres no permitidos en la contraseña";
+    if (!$validar->password("pass-nueva", "confirm-pass-nueva")) {
+        $_SESSION["msg_edit"] = "Contraseña inválida";
         header("Location: {$ruta}");
 
         exit;

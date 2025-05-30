@@ -26,14 +26,26 @@ class Validar
         return $campos_vacios;
     }
 
+
     public function numeros(...$campos)
     {
         foreach ($campos as $campo) {
             $numero = $_POST[$campo];
 
-            if (!is_numeric($numero) || $numero <= 0) {
+            if (!is_numeric($numero) || $numero < 0) {
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    public function password($password)
+    {
+        $patron = "/^(?!.*['\"-])[a-zA-Z0-9#$@!%^&*()_+={}\[\]:;<>,.?~`|\/\\\\]+$/";
+
+        if (!preg_match($patron, $password)) {
+            return false;
         }
 
         return true;
