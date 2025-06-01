@@ -146,11 +146,11 @@
         <!-- Carrusel Promocional -->
         <section class="promotional-carousel">
             <div id="promotionalCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-                <!-- Indicadores -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                </div>
+                <!-- <!-- Indicadores --> -->
+                <!-- <div class="carousel-indicators"> -->
+                <!--     <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button> -->
+                <!--     <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button> -->
+                <!-- </div> -->
                 <!-- Slides -->
                 <div class="carousel-inner">
                     <!-- Slide 1 -->
@@ -208,43 +208,9 @@
         <!-- Products Grid -->
         <div class="container mb-5">
             <div class="row" id="contenedor-productos">
-                <!-- Product 1 -->
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h4>
-                                <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <!-- Seccion de productos -->
             </div>
 
-            <!-- Pagination -->
-            <!-- <div class="d-flex justify-content-center mt-5"> -->
-            <!--     <nav aria-label="Page navigation"> -->
-            <!--         <ul class="pagination"> -->
-            <!--             <li class="page-item disabled"> -->
-            <!--                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true"> -->
-            <!--                     <i class="bi bi-chevron-left"></i> -->
-            <!--                 </a> -->
-            <!--             </li> -->
-            <!--             <li class="page-item active .color-paginacion"><a class="page-link" href="#">1</a></li> -->
-            <!--             <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-            <!--             <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-            <!--             <li class="page-item"> -->
-            <!--                 <a class="page-link" href="#"> -->
-            <!--                     <i class="bi bi-chevron-right"></i> -->
-            <!--                 </a> -->
-            <!--             </li> -->
-            <!--         </ul> -->
-            <!--     </nav> -->
-            <!-- </div> -->
         </div>
     </main>
 
