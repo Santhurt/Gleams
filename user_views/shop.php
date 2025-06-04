@@ -102,12 +102,12 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="./shop.php">Tienda</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Colecciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Accesorios</a>
-                        </li>
+                        <!-- <li class="nav-item"> -->
+                        <!--     <a class="nav-link" href="#">Colecciones</a> -->
+                        <!-- </li> -->
+                        <!-- <li class="nav-item"> -->
+                        <!--     <a class="nav-link" href="#">Accesorios</a> -->
+                        <!-- </li> -->
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="./pedidos.php">Pedidos</a>
@@ -146,23 +146,23 @@
         <!-- Carrusel Promocional -->
         <section class="promotional-carousel">
             <div id="promotionalCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-                <!-- Indicadores -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                </div>
+                <!-- <!-- Indicadores --> -->
+                <!-- <div class="carousel-indicators"> -->
+                <!--     <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button> -->
+                <!--     <button type="button" data-bs-target="#promotionalCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button> -->
+                <!-- </div> -->
                 <!-- Slides -->
                 <div class="carousel-inner">
                     <!-- Slide 1 -->
                     <div class="carousel-item active">
                         <div class="carousel-split-container">
                             <div class="carousel-image-section fade-opacity">
-                                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Nueva Colección">
+                                <img id="cartel-1" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Nueva Colección">
                             </div>
                             <div class="carousel-content-section fade-opacity">
-                                <h2 class="carousel-title">Nueva Colección</h2>
-                                <p class="carousel-subtitle">Descubre nuestra exclusiva línea de accesorios artesanales, creados con amor y dedicación para resaltar tu belleza única. Cada pieza cuenta una historia especial.</p>
-                                <a href="#" class="carousel-btn">Explorar Ahora</a>
+                                <h2 id="titulo-cartel-1" class="carousel-title">Nueva Colección</h2>
+                                <p class="carousel-subtitle " id="texto-cartel-1">Descubre nuestra exclusiva línea de accesorios artesanales, creados con amor y dedicación para resaltar tu belleza única. Cada pieza cuenta una historia especial.</p>
+                                <a href="#filter-bar" class="carousel-btn">Explorar Ahora</a>
                             </div>
                         </div>
                     </div>
@@ -170,12 +170,12 @@
                     <div class="carousel-item">
                         <div class="carousel-split-container">
                             <div class="carousel-image-section">
-                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Envío Gratis">
+                                <img id="cartel-2" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Envío Gratis">
                             </div>
                             <div class="carousel-content-section">
-                                <h2 class="carousel-title">Envío Gratis</h2>
-                                <p class="carousel-subtitle">En compras superiores a $150.000. Recibe tus accesorios favoritos directamente en la comodidad de tu hogar, sin costos adicionales de envío.</p>
-                                <a href="#" class="carousel-btn">Comprar Ahora</a>
+                                <h2 class="carousel-title " id="titulo-cartel-2">Envío Gratis</h2>
+                                <p class="carousel-subtitle" id="texto-cartel-2">En compras superiores a $150.000. Recibe tus accesorios favoritos directamente en la comodidad de tu hogar, sin costos adicionales de envío.</p>
+                                <a href="#filter-bar" class="carousel-btn">Comprar Ahora</a>
                             </div>
                         </div>
                     </div>
@@ -208,43 +208,9 @@
         <!-- Products Grid -->
         <div class="container mb-5">
             <div class="row" id="contenedor-productos">
-                <!-- Product 1 -->
-                <div class="col-6 col-md-4 col-lg-3 fade-in">
-                    <div class="product-card">
-                        <img src="./img/accesorio2.webp" class="card-img-top rounded-3 img-fluid" alt="Aretes Luna">
-                        <div class="card-body d-flex flex-column flex-md-row align-items-start align-items-md-center px-0">
-                            <div>
-                                <h4 class="product-title playfair-title">Aretes Luna</h4>
-                                <p class="product-price poppins-light">$45.000</p>
-                            </div>
-                            <a href="./producto.php" class="btn  ms-0 ms-md-auto mt-1 mt-md-0 boton-fondo-morado">
-                                <i class="bi bi-bag-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <!-- Seccion de productos -->
             </div>
 
-            <!-- Pagination -->
-            <!-- <div class="d-flex justify-content-center mt-5"> -->
-            <!--     <nav aria-label="Page navigation"> -->
-            <!--         <ul class="pagination"> -->
-            <!--             <li class="page-item disabled"> -->
-            <!--                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true"> -->
-            <!--                     <i class="bi bi-chevron-left"></i> -->
-            <!--                 </a> -->
-            <!--             </li> -->
-            <!--             <li class="page-item active .color-paginacion"><a class="page-link" href="#">1</a></li> -->
-            <!--             <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-            <!--             <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-            <!--             <li class="page-item"> -->
-            <!--                 <a class="page-link" href="#"> -->
-            <!--                     <i class="bi bi-chevron-right"></i> -->
-            <!--                 </a> -->
-            <!--             </li> -->
-            <!--         </ul> -->
-            <!--     </nav> -->
-            <!-- </div> -->
         </div>
     </main>
 

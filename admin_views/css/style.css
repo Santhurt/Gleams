@@ -24,6 +24,14 @@
     --info: linear-gradient(135deg, #e48cf5 0%, #9034eb 100%) !important;
     --info-hover: linear-gradient(135deg, #d160f0 0%, #7a2fd1 100%) !important;
 }
+.cartel {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+}
 
 body {
     min-height: 100vh;
@@ -53,6 +61,10 @@ body {
 }
 /* Asegurar que el logo no interfiera */
 .sidebar-collapsed .logo {
+    overflow: hidden;
+    width: var(--sidebar-width-collapsed);
+}
+.sidebar-collapsed .user-info {
     overflow: hidden;
     width: var(--sidebar-width-collapsed);
 }
@@ -291,5 +303,4 @@ a {
         padding: 15px;
         font-size: 20px;
     }
-
 }

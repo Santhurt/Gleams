@@ -122,12 +122,12 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                         <li class="nav-item">
                             <a class="nav-link" href="./shop.php">Tienda</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Colecciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Accesorios</a>
-                        </li>
+                        <!-- <li class="nav-item"> -->
+                        <!--     <a class="nav-link" href="#">Colecciones</a> -->
+                        <!-- </li> -->
+                        <!-- <li class="nav-item"> -->
+                        <!--     <a class="nav-link" href="#">Accesorios</a> -->
+                        <!-- </li> -->
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
                             <li class="nav-item">
                                 <a class="nav-link active" href="./pedidos.php">Pedidos</a>

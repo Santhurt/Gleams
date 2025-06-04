@@ -63,12 +63,12 @@
                         <li class="nav-item">
                             <a class="nav-link poppins-light" href="./shop.php">Tienda</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Colecciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="#">Accesorios</a>
-                        </li>
+                        <!-- <li class="nav-item"> -->
+                        <!--     <a class="nav-link poppins-light" href="#">Colecciones</a> -->
+                        <!-- </li> -->
+                        <!-- <li class="nav-item"> -->
+                        <!--     <a class="nav-link poppins-light" href="#">Accesorios</a> -->
+                        <!-- </li> -->
                         <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="./pedidos.php">Pedidos</a>
@@ -136,7 +136,12 @@
                     <h2 class="mb-3 mt-3 playfair-title" id="titulo"></h2>
 
                     <div class="price-container mb-3">
-                        <h3 class="poppins-light" id="precio"></h3>
+                        <!-- Contenedor para precios original y con descuento -->
+                        <div class="precios-detalle mb-2">
+                            <span class="precio-original-detalle text-muted text-decoration-line-through me-3" id="precio-original" style="display: none;"></span>
+                            <h3 class="precio-actual poppins-light d-inline" id="precio"></h3>
+                            <span class="badge bg-danger ms-2" id="badge-descuento" style="display: none;"></span>
+                        </div>
                         <p class="text-muted small">Impuesto incluido. Los gastos de envío se calculan en la pantalla de pagos.</p>
                     </div>
 

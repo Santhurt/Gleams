@@ -5,7 +5,6 @@ namespace modelos;
 require_once __DIR__ . "/../config/database.php";
 
 use config\Database;
-use Error;
 use Exception;
 
 class Pedido

@@ -161,7 +161,8 @@ class Producto
                 estado,
                 categorias.id_categoria as categoria,
                 ruta,
-                descuento
+                descuento,
+                fecha_fin as 'Fin del descuento'
             from productos
             join categorias 
             on categorias.id_categoria = productos.id_categoria

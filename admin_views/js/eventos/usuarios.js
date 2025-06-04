@@ -165,7 +165,7 @@ export async function renderUsuarios() {
 
                 if (respuesta.status == 200) {
                     swal.fire({
-                        title: "Producto editado",
+                        title: "Usuario editado",
                         icon: "success",
                         confirmButtonText: "Continuar",
                         customClass: {

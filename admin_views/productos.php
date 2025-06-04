@@ -48,7 +48,6 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             <a href="./dashboard.php" class="sidebar-item">
                 <i class="fas fa-home"></i>
                 <span class="sidebar-text">Dashboard</span>
-                <i class="fas fa-chevron-right ms-auto"></i>
             </a>
 
             <!--Inicio de opciones de productos-->
@@ -89,7 +88,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </a>
 
             <a class="sidebar-item" href="./promos.php">
-                <i class="fas fa-search"></i>
+                <i class="fas fa-bullhorn"></i>
                 <span class="sidebar-text">Promociones</span>
             </a>
         </div>

@@ -20,10 +20,11 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
 
 </head>
+
 <body>
     <!-- Overlay for mobile -->
     <div class="overlay" id="sidebar-overlay"></div>
-    
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="logo d-flex align-items-center">
@@ -86,8 +87,8 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
             <!--Inicio de opciones de consultas-->
             <a class="sidebar-item" href="./promos.php">
-                <i class="fas fa-search"></i>
-                <span class="sidebar-text">Consultas</span>
+                <i class="fas fa-bullhorn"></i>
+                <span class="sidebar-text">Promociones</span>
             </a>
         </div>
     </div>
@@ -157,7 +158,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
             <div class="col-md-4">
                 <div class="widget-card orders-card">
-                    <div class="mb-3">Ventas del mes</div>
+                    <div class="mb-3">Total de ventas en el mes</div>
                     <h2 class="mb-3" id="total-ventas">500</h2>
                     <div class="text-end">
                         <i class="fas fa-bookmark fa-2x opacity-50"></i>
@@ -167,9 +168,8 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
             <div class="col-md-4">
                 <div class="widget-card visitors-card">
-                    <div class="mb-3">Cantidad de pedidos del mes</div>
-                    <h2 class="mb-3">$1200000</h2>
-                    <div>Aumento del 5%</div>
+                    <div class="mb-3">Total de ventas en el día</div>
+                    <h2 class="mb-3" id="total-dia"></h2>
                     <div class="text-end">
                         <i class="fas fa-heart fa-2x opacity-50"></i>
                     </div>
@@ -178,44 +178,44 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
         </div>
 
         <!-- Charts -->
-        <div class="row g-4">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between mb-4">
-                            <h5 class="card-title">Pedidos pendientes</h5>
-                            <div>
-                                <span class="badge rounded-pill bg-light text-secondary me-1">
-                                    <span class="me-1" style="color: #A976F8;">●</span> CHN
-                                </span>
-                                <span class="badge rounded-pill bg-light text-secondary me-1">
-                                    <span class="me-1" style="color: #38BFED;">●</span> USA
-                                </span>
-                                <span class="badge rounded-pill bg-light text-secondary">
-                                    <span class="me-1" style="color: #FF9E8A;">●</span> UK
-                                </span>
-                            </div>
-                        </div>
-                        <div class="chart-container">
-                            <!-- Aquí iría el gráfico -->
-                            <img src="/api/placeholder/700/300" alt="Chart placeholder" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card position-relative">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4">Ventas recientes</h5>
-                        <div class="chart-container">
-                            <!-- Aquí iría el gráfico de pastel -->
-                            <img src="/api/placeholder/300/300" alt="Pie chart placeholder" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- <div class="row g-4"> -->
+        <!--     <div class="col-md-8"> -->
+        <!--         <div class="card"> -->
+        <!--             <div class="card-body"> -->
+        <!--                 <div class="d-flex justify-content-between mb-4"> -->
+        <!--                     <h5 class="card-title">Pedidos pendientes</h5> -->
+        <!--                     <div> -->
+        <!--                         <span class="badge rounded-pill bg-light text-secondary me-1"> -->
+        <!--                             <span class="me-1" style="color: #A976F8;">●</span> CHN -->
+        <!--                         </span> -->
+        <!--                         <span class="badge rounded-pill bg-light text-secondary me-1"> -->
+        <!--                             <span class="me-1" style="color: #38BFED;">●</span> USA -->
+        <!--                         </span> -->
+        <!--                         <span class="badge rounded-pill bg-light text-secondary"> -->
+        <!--                             <span class="me-1" style="color: #FF9E8A;">●</span> UK -->
+        <!--                         </span> -->
+        <!--                     </div> -->
+        <!--                 </div> -->
+        <!--                 <div class="chart-container"> -->
+        <!--                     <!-- Aquí iría el gráfico -->
+        <!--                     <img src="/api/placeholder/700/300" alt="Chart placeholder" class="img-fluid"> -->
+        <!--                 </div> -->
+        <!--             </div> -->
+        <!--         </div> -->
+        <!--     </div> -->
+        <!---->
+        <!--     <div class="col-md-4"> -->
+        <!--         <div class="card position-relative"> -->
+        <!--             <div class="card-body"> -->
+        <!--                 <h5 class="card-title mb-4">Ventas recientes</h5> -->
+        <!--                 <div class="chart-container"> -->
+        <!--                     <!-- Aquí iría el gráfico de pastel -->
+        <!--                     <img src="/api/placeholder/300/300" alt="Pie chart placeholder" class="img-fluid"> -->
+        <!--                 </div> -->
+        <!--             </div> -->
+        <!--         </div> -->
+        <!--     </div> -->
+        <!-- </div> -->
 
     </div>
 
