@@ -335,7 +335,9 @@
         min-height: 350px;
     }
     .carousel-image-section {
-        height: 150px;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        order: 1;
     }
     .carousel-content-section {
         padding: 25px 20px;
