@@ -102,10 +102,15 @@ export async function renderizarProducto() {
     const producto = respuesta.datos;
     infoProducto.imagen.src = "../" + producto.ruta;
     infoProducto.titulo.textContent = producto.producto;
-    infoProducto.precio.textContent =
+    infoProducto.descripcion.textContent = producto.descripcion;
+
+    const precioFinal =
         producto.descuento != 0
-            ? `$${producto.precio * (1 - producto.descuento / 100)}`
-            : `$${producto.precio}`;
+            ? producto.precio * (1 - producto.descuento / 100)
+            : producto.precio;
+
+    infoProducto.precio.textContent = `$${parseFloat(precioFinal).toFixed(2)}`;
+
     infoProducto.descripcion.textContent = producto.descripcion;
 
     // condicional para verificar el descuento --------------------------
@@ -120,7 +125,7 @@ export async function renderizarProducto() {
         infoProducto.precioOriginal.style.display = "inline";
 
         // Mostrar precio con descuento
-        infoProducto.precio.textContent = `$${precioConDescuento}`;
+        infoProducto.precio.textContent = `$${precioConDescuento.toFixed(2)}`;
         infoProducto.precio.classList.add("poppins-light");
 
         // Mostrar badge de descuento

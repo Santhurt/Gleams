@@ -33,6 +33,7 @@
 
 .carousel-content-section {
     flex: 1;
+    height: 100%;
     padding: 40px 60px;
     display: flex;
     flex-direction: column;
