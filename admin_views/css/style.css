@@ -64,6 +64,10 @@ body {
     overflow: hidden;
     width: var(--sidebar-width-collapsed);
 }
+.sidebar-collapsed .user-info {
+    overflow: hidden;
+    width: var(--sidebar-width-collapsed);
+}
 
 .sidebar-item {
     padding: 12px 20px;

@@ -241,7 +241,7 @@ CREATE TABLE `detalle_pedidos` (
   KEY `fk_detalle_producto` (`id_producto`),
   CONSTRAINT `fk_detalle_has_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
   CONSTRAINT `fk_detalle_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -297,7 +297,8 @@ INSERT INTO `detalle_pedidos` VALUES
 (60,33,55,1,8000),
 (61,34,55,1,8000),
 (62,35,61,1,50000),
-(63,36,56,2,12500);
+(63,36,56,2,12500),
+(64,37,56,2,12500);
 /*!40000 ALTER TABLE `detalle_pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -384,7 +385,7 @@ CREATE TABLE `pedidos` (
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedidos_clientes` (`id_cliente`),
   CONSTRAINT `fk_pedidos_clientes` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -420,7 +421,8 @@ INSERT INTO `pedidos` VALUES
 (33,'2025-05-28 18:34:05',30,6400,'cancelado'),
 (34,'2025-05-28 18:36:33',30,8000,'cancelado'),
 (35,'2025-05-30 12:20:36',34,50000,'cancelado'),
-(36,'2025-05-30 16:02:01',27,25000,'pendiente');
+(36,'2025-05-30 16:02:01',27,25000,'pendiente'),
+(37,'2025-06-04 02:50:14',34,25000,'entregado');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -544,7 +546,7 @@ INSERT INTO `productos` VALUES
 (53,'fanta','fanta de gaseosa',0,0,0,3),
 (54,'despues pruebo','hsushiushui',2020,2,0,1),
 (55,'producto de prueba','ahaoihaiohio',10000,8,1,2),
-(56,'cocacolaa','Cocacola de buen sabor',25000,10,1,2),
+(56,'cocacolaa','Cocacola de buen sabor',25000,8,1,2),
 (57,'papas con nuevo sabor','habia una vez',10000,15,1,3),
 (58,'papue ginea','no se que es eso',25000,46,0,3),
 (59,'salchichon','salchichon maduro',20000,6,0,2),
@@ -694,4 +696,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-30 17:38:57
+-- Dump completed on 2025-06-04  3:41:26

@@ -86,7 +86,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
             </a>
 
             <a class="sidebar-item active" href="./promos.php">
-                <i class="fas fa-search"></i>
+                <i class="fas fa-bullhorn"></i>
                 <span class="sidebar-text">Promociones</span>
             </a>
         </div>
