@@ -61,7 +61,7 @@ CREATE TABLE `clientes` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id_cliente`),
   UNIQUE KEY `correo` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,8 @@ INSERT INTO `clientes` VALUES
 (31,'nose','1234567897','2025-05-25','ahiuahiu@gmail.com','cll 20 5 20 ',0,'$2y$12$uzzX2oX6/bahsBTPggM9dOu21L3WfiRPW.8Pw6D/0oF9boobrxBWS'),
 (32,'basik','1234567898','2025-05-25','basik@gmail.com','calle 20 #5 - 30 emaus',1,'$2y$12$xoO1bynwZMvvcWA8iKLo4ejaDfSAtj9/Q476FwLFrHBjc70tJErsq'),
 (33,'eliminado','eliminado','2025-05-29','eliminado_20250529010749@example.com','eliminado',0,'$2y$12$8sU0G4XBdhKLutlTjVLuYuNhUbb6tTFRY86t/BkpBbD68lh9mvmKS'),
-(34,'santi','1234567894','2025-05-29','santiruizhurt@gmail.com','Direccion #20 - 40',1,'$2y$12$0CyS4cQzDFkpmRJfNE0BUe4oBpjocFwxC0vEBCqkDpdPZFu3uVGZu');
+(34,'santi','3205504030','2025-05-29','santiruizhurt@gmail.com','Direccion #20 - 40 barrio el espiritu',1,'$2y$12$0CyS4cQzDFkpmRJfNE0BUe4oBpjocFwxC0vEBCqkDpdPZFu3uVGZu'),
+(35,'sopas','1234567892','2025-06-10','sopas@gmail.com','Carrera 20 40 - 30',1,'$2y$12$ZqmXPgW8qHtloBEkvUsUreGfOgXPgNdDcNSpCwDwGJrIevo1aH1NC');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +145,8 @@ INSERT INTO `clientes_rol` VALUES
 (31,2),
 (32,1),
 (33,2),
-(34,2);
+(34,2),
+(35,2);
 /*!40000 ALTER TABLE `clientes_rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,13 +164,13 @@ CREATE TABLE `comentarios` (
   `comentario` text NOT NULL,
   `estrellas` int(10) NOT NULL,
   `estado` tinyint(1) NOT NULL,
-  `fecha` datetime DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
   PRIMARY KEY (`id_comentario`),
   KEY `fk_cliente_has_comentarios` (`id_cliente`),
   KEY `fk_productos_has_comentarios` (`id_producto`),
   CONSTRAINT `fk_cliente_has_comentarios` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
   CONSTRAINT `fk_productos_has_comentarios` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,17 +180,7 @@ CREATE TABLE `comentarios` (
 LOCK TABLES `comentarios` WRITE;
 /*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
 INSERT INTO `comentarios` VALUES
-(1,29,56,'aaaaaaaaaa',5,0,'2025-05-23 02:17:37'),
-(2,29,56,'Si me gisto',3,0,'2025-05-23 02:21:20'),
-(3,29,56,'Bueno ya esta bien',4,1,'2025-05-23 02:22:00'),
-(4,29,56,'aaaaaaaaaaaa',4,1,'2025-05-23 02:22:06'),
-(5,29,56,'vamosssss',1,1,'2025-05-23 02:22:39'),
-(6,29,56,'aaaaaaaaaaaaaaaaaaaaaaaaaaaa',3,1,'2025-05-23 02:22:57'),
-(7,29,56,'yaaaaaaaaa',5,1,'2025-05-23 02:23:18'),
-(8,29,56,'aver si funciona',1,1,'2025-05-23 02:26:45'),
-(9,29,56,'ahora ?',2,0,'2025-05-23 02:27:40'),
-(10,30,56,'Esta fea esta madre',4,0,'2025-05-23 22:40:19'),
-(11,30,56,'Ta bueno',4,1,'2025-05-24 18:38:55');
+(18,35,73,'Holaaaaa',5,1,'2025-06-10');
 /*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,10 +208,6 @@ CREATE TABLE `descuentos` (
 
 LOCK TABLES `descuentos` WRITE;
 /*!40000 ALTER TABLE `descuentos` DISABLE KEYS */;
-INSERT INTO `descuentos` VALUES
-(5,55,20,'2025-05-29 12:00:00'),
-(6,56,50,'2025-05-31 12:00:00'),
-(7,61,20,'2025-05-31 12:00:00');
 /*!40000 ALTER TABLE `descuentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +229,7 @@ CREATE TABLE `detalle_pedidos` (
   KEY `fk_detalle_producto` (`id_producto`),
   CONSTRAINT `fk_detalle_has_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
   CONSTRAINT `fk_detalle_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,54 +239,7 @@ CREATE TABLE `detalle_pedidos` (
 LOCK TABLES `detalle_pedidos` WRITE;
 /*!40000 ALTER TABLE `detalle_pedidos` DISABLE KEYS */;
 INSERT INTO `detalle_pedidos` VALUES
-(17,10,56,3,25000),
-(18,11,56,3,25000),
-(19,11,55,2,123456),
-(20,12,56,4,25000),
-(21,12,58,3,25000),
-(22,13,56,4,25000),
-(23,13,58,3,25000),
-(24,13,55,2,123456),
-(25,14,56,4,25000),
-(26,14,58,3,25000),
-(27,14,55,1,123456),
-(28,15,56,4,25000),
-(29,15,58,3,25000),
-(30,15,55,2,123456),
-(31,16,56,4,25000),
-(32,16,58,3,25000),
-(33,16,55,2,123456),
-(34,17,56,4,25000),
-(35,17,58,4,25000),
-(36,17,55,2,123456),
-(37,18,56,4,25000),
-(38,18,58,4,25000),
-(39,18,55,2,123456),
-(40,18,57,2,10000),
-(41,19,59,3,20000),
-(42,20,59,1,20000),
-(43,21,55,2,123456),
-(44,21,56,1,25000),
-(45,21,59,1,20000),
-(46,22,59,2,20000),
-(47,22,55,1,123456),
-(48,23,55,2,123456),
-(49,24,58,2,25000),
-(50,25,55,2,123456),
-(51,26,56,2,25000),
-(52,27,59,2,20000),
-(53,27,56,1,25000),
-(54,28,59,2,20000),
-(55,29,56,2,25000),
-(56,30,59,2,20000),
-(57,31,56,1,25000),
-(58,31,55,1,8000),
-(59,32,55,1,8000),
-(60,33,55,1,8000),
-(61,34,55,1,8000),
-(62,35,61,1,50000),
-(63,36,56,2,12500),
-(64,37,56,2,12500);
+(65,38,73,2,75000);
 /*!40000 ALTER TABLE `detalle_pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,7 +282,7 @@ CREATE TABLE `imagenes_prod` (
   PRIMARY KEY (`id_imagen`),
   KEY `fk_imagenes_productos` (`id_producto`),
   CONSTRAINT `fk_imagenes_productos` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -351,21 +292,8 @@ CREATE TABLE `imagenes_prod` (
 LOCK TABLES `imagenes_prod` WRITE;
 /*!40000 ALTER TABLE `imagenes_prod` DISABLE KEYS */;
 INSERT INTO `imagenes_prod` VALUES
-(46,'assets/fotos/imagen_20250517_034432000.jpg',55),
-(47,'assets/fotos/imagen_20250518_043713000.png',56),
-(48,'assets/fotos/imagen_20250519_235927000.png',57),
-(51,'assets/fotos/imagen_20250525_052830000.jpg',60),
-(52,'assets/fotos/imagen_20250525_053558000.jpg',61),
-(53,'assets/fotos/imagen_20250525_061004000.webp',62),
-(54,'assets/fotos/imagen_20250525_054451000.webp',63),
-(55,'assets/fotos/imagen_20250525_060713000.webp',64),
-(56,'assets/fotos/imagen_20250525_065200000.jpg',65),
-(57,'assets/fotos/imagen_20250525_065415000.jpg',66),
-(58,'assets/fotos/imagen_20250525_065634000.jpg',67),
-(59,'assets/fotos/imagen_20250525_065711000.jpg',68),
-(60,'assets/fotos/imagen_20250525_065759000.jpg',69),
-(61,'assets/fotos/imagen_20250528_183027000.webp',70),
-(62,'assets/fotos/imagen_20250530_190010000.jpg',71);
+(63,'assets/fotos/imagen_20250610_053612000.webp',72),
+(64,'assets/fotos/imagen_20250610_054100000.jpg',73);
 /*!40000 ALTER TABLE `imagenes_prod` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,7 +313,7 @@ CREATE TABLE `pedidos` (
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedidos_clientes` (`id_cliente`),
   CONSTRAINT `fk_pedidos_clientes` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,34 +323,7 @@ CREATE TABLE `pedidos` (
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
 INSERT INTO `pedidos` VALUES
-(10,'2025-05-21 00:00:00',28,75000,'entregado'),
-(11,'2025-05-21 00:00:00',27,321912,'cancelado'),
-(12,'2025-05-21 00:00:00',27,175000,'cancelado'),
-(13,'2025-05-21 00:00:00',27,421912,'cancelado'),
-(14,'2025-05-21 00:00:00',27,298456,'cancelado'),
-(15,'2025-05-21 00:00:00',27,421912,'cancelado'),
-(16,'2025-05-21 00:00:00',27,421912,'entregado'),
-(17,'2025-05-21 00:00:00',27,446912,'entregado'),
-(18,'2025-05-21 00:00:00',27,466912,'cancelado'),
-(19,'2025-05-21 00:00:00',27,60000,'cancelado'),
-(20,'2025-05-22 00:00:00',28,20000,'entregado'),
-(21,'2025-05-22 00:00:00',28,291912,'pendiente'),
-(22,'2025-05-22 00:00:00',28,163456,'pendiente'),
-(23,'2025-05-23 00:00:00',29,246912,'entregado'),
-(24,'2025-05-23 00:00:00',29,50000,'pendiente'),
-(25,'2025-05-23 00:00:00',30,246912,'cancelado'),
-(26,'2025-05-24 00:00:00',30,50000,'cancelado'),
-(27,'2025-05-24 00:00:00',30,65000,'entregado'),
-(28,'2025-05-24 00:00:00',30,40000,'cancelado'),
-(29,'2025-05-25 00:00:00',30,50000,'cancelado'),
-(30,'2025-05-24 19:47:57',32,40000,'entregado'),
-(31,'2025-05-28 18:28:03',30,31400,'cancelado'),
-(32,'2025-05-28 18:31:00',30,6400,'cancelado'),
-(33,'2025-05-28 18:34:05',30,6400,'cancelado'),
-(34,'2025-05-28 18:36:33',30,8000,'cancelado'),
-(35,'2025-05-30 12:20:36',34,50000,'cancelado'),
-(36,'2025-05-30 16:02:01',27,25000,'pendiente'),
-(37,'2025-06-04 02:50:14',34,25000,'entregado');
+(38,'2025-06-10 02:40:43',35,150000,'pendiente');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -504,7 +405,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id_producto`),
   KEY `fk_productos_categorias` (`id_categoria`),
   CONSTRAINT `fk_productos_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -514,54 +415,8 @@ CREATE TABLE `productos` (
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES
-(24,'manzana','ahiuahahui',85885,10,0,1),
-(25,'manzana','ahiuahahui',85885,10,0,1),
-(26,'cocacola','hola',10000,25,0,3),
-(27,'arroz','arroz blando',28800,20,0,2),
-(28,'esta es la prueba','definitiva',2829,20,0,1),
-(29,'esta es la prueba','definitiva',2829,20,0,1),
-(30,'papas fritas','papas de buen sabor',20,40,0,2),
-(31,'papas fritas','papas de buen sabor',20,40,0,1),
-(32,'papas fritas','papas de buen sabor',20,40,0,1),
-(33,'todas van a ser pepsis','pepsi pa',840,20,0,2),
-(34,'se editooooooooo','editadooooooooooooo',2000,20,0,2),
-(35,'calabaza','calabaza naranja',3000,30,0,2),
-(36,'no quiere editarse','ayudaaaaa',500,20,0,3),
-(37,'ayuda a otra vez','demasiadas imagenes en la base de datos',12500,20,0,2),
-(38,'prueba definitiva','no lo se',50000,10,0,1),
-(39,'vamos a probar si hay problemas','ajajioajiojio',2993,8939,0,1),
-(40,'que paso ahoraaaaa','ajajioajiojio',2993,8939,0,1),
-(41,'esto es una pepsi','ajajioajiojio',1000,8939,0,1),
-(42,'prueba desde el ajaz','ajajioajiojio',2993,8939,0,1),
-(43,'ya deberia estar bien','ahuahiuhiua',20000,199,0,3),
-(44,'neuva pepsi','nueva pepsi para probar',29000,23,0,1),
-(45,'neuva cocacola','esta es una cocacola',19099,30,0,3),
-(46,'primer producto','producto de prueba',20000,20,0,1),
-(47,'otro producto','nose que crear',2000,82,0,1),
-(48,'otro producto','nose que crear',2000,82,0,1),
-(49,'ya se edito','ya tengo demasiados productos',20000,25,0,2),
-(50,'creemos mas','holaaa',40555,15,0,3),
-(51,'fanta','gaseosa',28773,30,0,3),
-(52,'ediciooon','ya tengo demasiados productos',2000,20,0,1),
-(53,'fanta','fanta de gaseosa',0,0,0,3),
-(54,'despues pruebo','hsushiushui',2020,2,0,1),
-(55,'producto de prueba','ahaoihaiohio',10000,8,1,2),
-(56,'cocacolaa','Cocacola de buen sabor',25000,8,1,2),
-(57,'papas con nuevo sabor','habia una vez',10000,15,1,3),
-(58,'papue ginea','no se que es eso',25000,46,0,3),
-(59,'salchichon','salchichon maduro',20000,6,0,2),
-(60,'me quede sin nombres ya','y sin descripcion',20,36,1,3),
-(61,'prueba de imagen redimensionada','alooooooooooooo',50000,15,1,2),
-(62,'esta es una imagen grande','alooooooooooooo',50000,12,1,3),
-(63,'esta es una imagen grande','alooooooooooooo',50000,12,1,3),
-(64,'mas productos','aioajioajiojaiojioajio',200,12,1,3),
-(65,'ultima prueba','ahaiuaiuhiuh',12355,40,1,2),
-(66,'vamosssssssssss','ahaiuaiuhiuh',12355,40,1,2),
-(67,'aaaaaaaaaaaaaaaaaaa','ahaiuaiuhiuh',12355,40,1,2),
-(68,'yo creo que ahora si','demasiados prodcutos xd',40000,8,1,3),
-(69,'el ultimo producto que añado','aaaaaaaaaaaaa',20000,4,1,2),
-(70,'Pruebaaaaaa','ahahiuahiuhiu',12345,20,1,2),
-(71,'Producto con decimal','holaaaaaaaaa',1,20,1,2);
+(72,'Aretes de oro','Aretes bañados en oro de 24k',50000,5,1,2),
+(73,'Anillo de acero','Anillo de acero bañado en oro',75000,6,1,2);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -588,8 +443,8 @@ CREATE TABLE `promocion` (
 LOCK TABLES `promocion` WRITE;
 /*!40000 ALTER TABLE `promocion` DISABLE KEYS */;
 INSERT INTO `promocion` VALUES
-(1,'holaa','aun otraaaaaaaaaaaaaaa','assets/fotos/imagen_20250530_203115000.jpg'),
-(2,'holaa','nueva desc','assets/fotos/imagen_20250530_190837000.webp');
+(1,'Revisa nuestras nuevas ofertas','Contamos con los mejores precios en joyerias.','assets/fotos/imagen_20250530_203115000.jpg'),
+(2,'Nueva promocion','Revisa nuestras promociones','assets/fotos/imagen_20250610_062717000.jpg');
 /*!40000 ALTER TABLE `promocion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -696,4 +551,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-04  3:41:26
+-- Dump completed on 2025-06-10  3:00:46
