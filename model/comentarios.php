@@ -130,7 +130,7 @@ class Comentario {
                 estrellas,
                 estado,
                 fecha
-            ) values(?, ?, ?, ?, ?, NOW())
+            ) values(?, ?, ?, ?, ?, ?)
             ";
 
             $respuesta = mysqli_execute_query($this->conn, $insertar_comentario, [
@@ -138,7 +138,8 @@ class Comentario {
                 $comentario["id_producto"],
                 $comentario["comentario"],
                 $comentario["estrellas"],
-                1
+                1,
+                $comentario["fecha"]
             ]);
 
             return $respuesta;

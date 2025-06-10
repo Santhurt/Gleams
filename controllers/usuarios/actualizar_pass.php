@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if (!$validar->password("pass-nueva", "confirm-pass-nueva")) {
+    if (!$validar->password(trim($_POST["pass-nueva"]), trim($_POST["confirm-pass-nueva"]))) {
         $_SESSION["msg_edit"] = "Contraseña inválida";
         header("Location: {$ruta}");
 

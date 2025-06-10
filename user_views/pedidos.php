@@ -178,8 +178,8 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
             <!-- Título de la sección -->
             <div class="row mb-4">
                 <div class="col-12 text-center fade-in">
-                    <h2 class="color-texto mb-3" style="letter-spacing: 2px;">MIS PEDIDOS</h2>
-                    <p class="text-muted">Aquí puedes ver el estado de todos tus pedidos</p>
+                    <h2 class="color-texto mb-3 playfair-title" style="letter-spacing: 2px; font-weight: 500;">MIS PEDIDOS</h2>
+                    <p class="text-muted poppins-light">Aquí puedes ver el estado de todos tus pedidos</p>
                 </div>
             </div>
 
@@ -230,14 +230,14 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
             </div>
 
             <!-- Estado vacío (ejemplo para cuando no hay pedidos) -->
-            <div class="fade-in empty-state" id="mensaje" style="display: block;">
-                <i class="fas fa-shopping-bag"></i>
-                <h4>No tienes pedidos aún</h4>
-                <p>Cuando realices tu primera compra, aparecerá aquí</p>
-                <a href="./shop.php" class="btn boton-fondo-morado">
-                    Ir a la tienda
-                </a>
-            </div>
+            <!-- <div class="fade-in empty-state" id="mensaje" style="display: block;"> -->
+            <!--     <i class="fas fa-shopping-bag"></i> -->
+            <!--     <h4>No tienes pedidos aún</h4> -->
+            <!--     <p>Cuando realices tu primera compra, aparecerá aquí</p> -->
+            <!--     <a href="./shop.php" class="btn boton-fondo-morado"> -->
+            <!--         Ir a la tienda -->
+            <!--     </a> -->
+            <!-- </div> -->
         </div>
     </main>
 

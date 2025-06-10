@@ -49,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $promo_anterior = $promo->traer_promo_por_id($id_promo);
 
     $imagen_nueva_subida = is_uploaded_file($_FILES["imagen"]["tmp_name"]);
+    error_log($id_promo);
 
     if ($imagen_nueva_subida) {
         $img_nueva = insertar_imagen("imagen", true, $promo_anterior["ruta"], true, 1200, 600, 85);

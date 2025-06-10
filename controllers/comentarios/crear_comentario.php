@@ -55,17 +55,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         "id_cliente" => trim($_SESSION["id_cliente"]),
         "id_producto" => trim($_POST["id-producto"]),
         "comentario" => trim($_POST["comentario"]),
-        "estrellas" => trim($_POST["rating"])
+        "estrellas" => trim($_POST["rating"]),
+        "fecha" => date("Y-m-d")
     ];
 
     $comentario = new Comentario();
 
     if($comentario->insertar_comentario($comentario_data)) {
         http_response_code(200);
+        $comentario_data["cliente"] = $_SESSION["usuario"];
+        
 
         echo json_encode([
             "status" => 200,
-            "datos" => $comentario
+            "datos" => $comentario_data
         ]);
         exit;
     } else {

@@ -218,10 +218,12 @@ export const dom = {
         );
         const divProductoCard = document.createElement("div");
         divProductoCard.classList.add("product-card");
+
         const img = document.createElement("img");
         img.classList.add("card-img-top", "rounded-3", "imagen-producto");
         img.src = `../${producto.imagen.ruta}`;
         img.style.height = "300px";
+
         const cardBody = document.createElement("div");
         cardBody.classList.add(
             "card-body",
@@ -232,7 +234,9 @@ export const dom = {
             "align-items-md-center",
             "px-0",
         );
+
         const div = document.createElement("div");
+
         const h4 = document.createElement("h4");
         h4.classList.add("product-title", "playfair-title");
         h4.textContent = `${producto.producto}`;
