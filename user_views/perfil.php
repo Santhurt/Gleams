@@ -326,7 +326,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
 
                             <div class="tab-pane fade show active" id="info" role="tabpanel">
                                 <div class="section-card">
-                                    <h4 class="section-title poppins-semibold">
+                                    <h4 class="section-title poppins-light">
                                         <i class="fas fa-user-edit me-2"></i>
                                         Información Personal
                                     </h4>
@@ -364,7 +364,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
 
 
                                         <div class="d-flex justify-content-end">
-                                            <button type="submit" form="form-usuario" class="btn boton-fondo-morado poppins-medium me-2">
+                                            <button type="submit" form="form-usuario" class="btn boton-fondo-morado poppins-light me-2">
                                                 <i class="fas fa-save me-2"></i>Guardar Cambios
                                             </button>
                                         </div>
@@ -375,7 +375,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                             <!-- Cambiar Contraseña -->
                             <div class="tab-pane fade" id="password" role="tabpanel">
                                 <div class="section-card">
-                                    <h4 class="section-title poppins-semibold">
+                                    <h4 class="section-title poppins-light">
                                         <i class="fas fa-shield-alt me-2"></i>
                                         Cambiar contraseña
                                     </h4>
@@ -417,7 +417,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                                         </div>
 
                                         <div class="d-flex justify-content-end">
-                                            <button type="submit" form="password-form" class="btn boton-fondo-morado poppins-medium">
+                                            <button type="submit" form="password-form" class="btn boton-fondo-morado poppins-light">
                                                 <i class="fas fa-key me-2"></i>Cambiar Contraseña
                                             </button>
                                         </div>
@@ -429,12 +429,12 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
                             <div class="tab-pane fade" id="account" role="tabpanel">
                                 <!-- Zona de Peligro -->
                                 <div class="section-card danger-zone">
-                                    <h4 class="section-title poppins-semibold text-danger-custom">
+                                    <h4 class="section-title poppins-light text-danger-custom">
                                         <i class="fas fa-exclamation-triangle me-2"></i>
                                         Eliminacion de cuenta
                                     </h4>
 
-                                    <div class="alert alert-warning alert-custom">
+                                    <div class="alert alert-warning alert-custom poppins-light">
                                         <i class="fas fa-warning me-2"></i>
                                         <strong>Atención:</strong> Esta accion es pemanente, una vez eliminada tu cuenta, no podras
                                         recuperarla.
@@ -446,7 +446,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
 
 
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button type="submit" form="form-eliminar" id="eliminar-cuenta" class="btn boton-danger-custom poppins-medium">
+                                        <button type="submit" form="form-eliminar" id="eliminar-cuenta" class="btn boton-danger-custom poppins-light">
                                             <i class="fas fa-trash me-2"></i>Eliminar Cuenta
                                         </button>
                                     </div>

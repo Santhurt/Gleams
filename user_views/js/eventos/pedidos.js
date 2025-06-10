@@ -40,12 +40,12 @@ export async function renderPedidos() {
 
     const respuesta = await dataPedido.traerPedidosCliente();
 
-    const mensajeDisponible = document.querySelector("#mensaje");
+    // const mensajeDisponible = document.querySelector("#mensaje");
     const mensajePendientes = document.querySelector("#mensaje-pendientes");
     const mensajeEntregados = document.querySelector("#mensaje-entregados");
 
     if (respuesta.status != 200) {
-        mensajeDisponible.style.display = "block";
+        // mensajeDisponible.style.display = "block";
         Toast.fire({
             title: "Error al traer los pedidos",
             icon: "error",
@@ -54,9 +54,9 @@ export async function renderPedidos() {
 
     const pedidos = respuesta.datos;
 
-    if (pedidos.length > 0) {
-        mensajeDisponible.style.display = "none";
-    }
+    // if (pedidos.length > 0) {
+    //     mensajeDisponible.style.display = "none";
+    // }
 
     const contenedorPendientes = document.querySelector(
         "#contenedor-pendientes",

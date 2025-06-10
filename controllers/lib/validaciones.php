@@ -77,8 +77,8 @@ class Validar
 
     public function direccion($direccion)
     {
+        $patron = "/^([a-zA-Z0-9\s.áéíóúÁÉÍÓÚñÑ]+?)\s*(?:#\s*)?(\d+[A-Za-z]*)(?:\s*-\s*(\d+[A-Za-z]*))?(?:\s+(.+))?$/";
 
-        $patron = "/^([a-zA-Z0-9\s.áéíóúÁÉÍÓÚñÑ]+?)\s+#\s*(\d+[A-Za-z]*)(?:\s*-\s*(\d+[A-Za-z]*))?(?:\s+(.+))?$/";
         if (!preg_match($patron, $direccion)) {
             return false;
         }

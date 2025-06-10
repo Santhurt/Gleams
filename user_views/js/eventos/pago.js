@@ -81,7 +81,11 @@ export async function renderPago() {
             swal.fire({
                 title: "Compra realizada",
                 text: "Revisa tu seccion de pedidos para hacer seguimiento de tus compras",
+                confirmButtonText: "Continuar",
                 icon: "success",
+                customClass: {
+                   confirmButton: "boton-fondo-morado"
+                }
             }).then((respuesta) => {
                 e.target.disabled;
                 if (respuesta.isConfirmed) {

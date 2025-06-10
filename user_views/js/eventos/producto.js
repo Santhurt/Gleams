@@ -226,6 +226,11 @@ export async function renderizarProducto() {
                 icon: "success",
             });
 
+            console.log(respuesta);
+            const comentarioNuevo = dom.crearComentario(respuesta.datos);
+
+            comentariosContenedor.appendChild(comentarioNuevo);
+
             // TODO: Mostrar el comentario una vez creado
         } else {
             Toast.fire({

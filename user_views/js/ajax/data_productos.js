@@ -47,10 +47,7 @@ export const dataProductos = {
                 throw mensaje;
             }
 
-            return {
-                status: 200,
-                datos: await respuesta.json(),
-            };
+            return await respuesta.json();
         } catch (error) {
             if (error.name == "AbortError") {
                 return {
