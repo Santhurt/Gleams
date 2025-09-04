@@ -1,4 +1,4 @@
-const url = "../../../controllers/usuarios/";
+const url = "/gleams/controllers/usuarios/";
 
 export const data = {
     crearUsuario: async (producto) => {

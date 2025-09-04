@@ -1,5 +1,5 @@
-const url = "../../../controllers/productos/";
-const urlComentario =  "../../../controllers/comentarios/"
+const url = "/gleams/controllers/productos/";
+const urlComentario =  "/gleams/controllers/comentarios/"
 
 export const dataProductos = {
     traerComentarioProducto: async (id) => {

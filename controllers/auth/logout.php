@@ -16,4 +16,4 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-header("Location: /user_views/shop.php");
+header("Location: /gleams/user_views/shop.php");

@@ -1,6 +1,6 @@
 <?php session_start();
 if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
-    header("Location: /user_views/login.php");
+    header("Location: /gleams/user_views/login.php");
     exit;
 }
 ?>

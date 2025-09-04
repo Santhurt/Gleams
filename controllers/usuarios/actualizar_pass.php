@@ -1,6 +1,6 @@
 <?php
 session_start();
-$ruta = "/user_views/perfil.php#msg";
+$ruta = "/gleams/user_views/perfil.php#msg";
 
 if (!isset($_SESSION["correo"]) || !isset($_SESSION["id_cliente"])) {
     http_response_code(401);
@@ -48,8 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
+
     if (trim($_POST["pass-nueva"]) != trim($_POST["confirm-pass-nueva"])) {
-        $_SESSION["msg_edit"] = "Las contraseñas no coinciden";
+
+        $_SESSION["msg_edit"] = "Las contraseñas no coinciden " . $_POST["pass-nueva"] . $_POST["confirm-pass-nueva"];
         header("Location: {$ruta}");
 
         exit;

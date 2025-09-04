@@ -1,4 +1,4 @@
-const url = "../../../controllers/pedidos/";
+const url = "/gleams/controllers/pedidos/";
 
 export const dataPedido = {
     cancelarPedido: async (id) => {

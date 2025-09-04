@@ -1,6 +1,6 @@
 <?php
 session_start();
-$ruta = "/user_views/perfil.php#msg";
+$ruta = "/gleams/user_views/perfil.php#msg";
 
 if (!isset($_SESSION["correo"]) || !isset($_SESSION["id_cliente"])) {
     http_response_code(401);
