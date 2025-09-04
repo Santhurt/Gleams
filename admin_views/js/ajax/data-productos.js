@@ -1,4 +1,4 @@
-const url = "../../controllers/productos/";
+const url = "/gleams/controllers/productos/";
 export const dataProductos = {
     eliminarDescuento: async (id) => {
         const controlador = new AbortController();

@@ -58,11 +58,11 @@ export async function renderizarIndex() {
 
     promos.forEach((promo) => {
         if (promo.id_promocion == 1) {
-            rutaCartel1 = `../../../${promo.ruta}`;
+            rutaCartel1 = `/gleams/${promo.ruta}`;
             tituloCartel1.innerHTML = promo.titulo;
             textoCartel1.innerHTML = promo.descripcion;
         } else if (promo.id_promocion == 2) {
-            rutaCartel2 = `../../../${promo.ruta}`;
+            rutaCartel2 = `/gleams/${promo.ruta}`;
             tituloCartel2.innerHTML = promo.titulo;
             textoCartel2.innerHTML = promo.descripcion;
         }
@@ -126,20 +126,22 @@ export async function renderizarIndex() {
     const inputBuscar = document.querySelector("#buscar");
 
     inputBuscar.addEventListener("input", (e) => {
-        const input = e.target.value;
+        // Convierte el texto de búsqueda a minúsculas una sola vez
+        const busqueda = e.target.value.toLowerCase().trim();
         const items = document.querySelectorAll(".item-producto");
 
         items.forEach((item) => {
             const nombre = item.querySelector("#nombre-producto");
+            // Convierte también el nombre del producto a minúsculas
+            const nombreProducto = nombre.textContent.toLowerCase();
 
-            if (!nombre.textContent.includes(input.trim())) {
+            if (!nombreProducto.includes(busqueda)) {
                 item.style.display = "none";
             } else {
                 item.style.display = "block";
             }
         });
     });
-
     dom.actualizarContadorCarrito();
 
     // ---------------- renderizar en el carrito----------------------------

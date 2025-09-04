@@ -1,4 +1,4 @@
-const url = "../../../controllers/promos/";
+const url = "/gleams/controllers/promos/";
 export const dataPromo = {
     traerPromos: async () => {
         const controlador = new AbortController();

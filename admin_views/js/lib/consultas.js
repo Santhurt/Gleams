@@ -1,4 +1,4 @@
-const url = "../../../controllers/consultas/";
+const url = "/gleams/controllers/consultas/";
 
 export const consultar = {
     pedidos: async (consulta) => {

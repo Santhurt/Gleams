@@ -38,9 +38,9 @@ export async function renderPromocion() {
 
     promos.forEach((promo) => {
         if (promo.id_promocion == 1) {
-            ruta1 = `../../../${promo.ruta}`;
+            ruta1 = `/gleams/${promo.ruta}`;
         } else if (promo.id_promocion == 2) {
-            ruta2 = `../../../${promo.ruta}`;
+            ruta2 = `/gleams/${promo.ruta}`;
         }
     });
 
@@ -99,7 +99,7 @@ export async function renderPromocion() {
                     console.log(respuesta);
                     const ruta = respuesta.datos;
 
-                    imagen.src = `../../../${ruta}`;
+                    imagen.src = `/gleams/${ruta}`;
 
                     modalInstancia.hide();
                 }
