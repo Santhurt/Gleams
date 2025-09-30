@@ -1,5 +1,38 @@
 const url = "/gleams/controllers/productos/";
 export const dataProductos = {
+    crearCategoria: async (categoria) => {
+        const controlador = new AbortController();
+        const timeOut = setTimeout(() => controlador.abort(), 10000);
+
+        try {
+            const respuesta = await fetch(url + "crear_categoria.php", {
+                method: "POST",
+                body: categoria,
+                signal: controlador.signal,
+            });
+
+            if (!respuesta.ok) {
+                const error = await respuesta.json();
+                throw error;
+            }
+
+            return respuesta.json();
+        } catch (error) {
+            if (error.name == "AbortError") {
+                return {
+                    status: 500,
+                    mensaje: "Tiempo de respuesta agotado",
+                };
+            }
+            return {
+                ok: false,
+                error: error,
+            };
+        } finally {
+            clearTimeout(timeOut);
+        }
+    
+    }, 
     eliminarDescuento: async (id) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);

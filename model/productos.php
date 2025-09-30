@@ -22,7 +22,8 @@ class Producto
         return $this->error;
     }
 
-    public function eliminar_descuento($id_producto) {
+    public function eliminar_descuento($id_producto)
+    {
         try {
             if (!$this->conn) {
                 throw new Exception("No hay conexion con la base de datos:");
@@ -31,7 +32,7 @@ class Producto
             $verificar_descuento = "select 1 from descuentos where id_producto = ?";
             $resultado_verificacion = mysqli_execute_query($this->conn, $verificar_descuento, [$id_producto]);
 
-            if(!$resultado_verificacion->fetch_assoc()) {
+            if (!$resultado_verificacion->fetch_assoc()) {
                 throw new Exception("No hay descuento aplicado a este producto");
             }
 
@@ -44,7 +45,6 @@ class Producto
             $this->error = $e->getMessage();
 
             return false;
- 
         }
     }
 
@@ -58,7 +58,7 @@ class Producto
             $verificar_descuento = "select 1 from descuentos where id_producto = ?";
             $resultado_verificacion = mysqli_execute_query($this->conn, $verificar_descuento, [$id_producto]);
 
-            if($resultado_verificacion->fetch_assoc()) {
+            if ($resultado_verificacion->fetch_assoc()) {
                 throw new Exception("El producto ya tiene un descuento asignado");
             }
 
@@ -386,6 +386,35 @@ class Producto
             }
 
             return $resultado->fetch_column();
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
+    public function crearCategoria($nombre)
+    {
+        try {
+            $consulta = "insert into categorias(nombre) values (?)";
+
+            if (!$this->conn) {
+                throw new Exception("no hay conexion con la base de datos");
+            }
+
+            $resultado = mysqli_execute_query($this->conn, $consulta, [$nombre]);
+
+            if (!$resultado) {
+                throw new Exception("No se pudo insertar la categoria");
+            }
+
+            $nueva_id = mysqli_insert_id($this->conn);
+
+            return [
+                "id" => $nueva_id,
+                "nombre" => $nombre
+            ];
         } catch (Exception $e) {
             error_log($e->getMessage());
             $this->error = $e->getMessage();

@@ -8,14 +8,12 @@
             <div class="modal-body">
 
 
-                <form id="form-descuento">
-                    <input type="hidden" id="hidden-descuento" name="id-producto">
-
+                <form id="form-categoria">
                     <div class="mb-3 d-flex flex-grow-1 align-items-center gap-2">
                         <label for="input-nombre" class="label-form">Nombre: </label>
                         <input type="text" id="input-nombre" name="nombre" class="form-control">
 
-                        <button type="button" id="crear-categoria" class="btn btn-success">+</button>
+                        <button type="submit" id="crear-categoria" class="btn btn-success">+</button>
                     </div>
 
                 </form>
