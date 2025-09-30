@@ -12,9 +12,11 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
 }
 
 require_once __DIR__ . "/../../model/pedidos.php";
+require_once __DIR__ . "/../../model/productos.php";
 require_once __DIR__ . "/../lib/validaciones.php";
 
 use modelos\Pedido;
+use modelos\Producto;
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     header("Content-Type. application/json");
@@ -32,8 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         return $suma + $pedido["cantidad"] * $pedido["precio"];
     }, 0);
 
+
     $pedido = new Pedido();
-    $respuesta = $pedido->insertar_pedido($id_cliente, $total, $pedidos);
+    $producto = new Producto();
+
+    $respuesta = $pedido->insertar_pedido($id_cliente, $total + $producto->traer_domicilio(), $pedidos);
 
     if ($respuesta) {
         http_response_code(200);
@@ -44,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         unset($_SESSION["pedido"]);
 
         exit;
-
     } else {
         http_response_code(500);
 
