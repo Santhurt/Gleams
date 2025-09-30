@@ -1,5 +1,70 @@
 const url = "/gleams/controllers/productos/";
 export const dataProductos = {
+    eliminarCategoria: async (id) => {
+        const controlador = new AbortController();
+        const timeOut = setTimeout(() => controlador.abort(), 10000);
+
+        try {
+            const respuesta = await fetch(
+                url + `eliminar_categoria.php?id=${id}`,
+                {
+                    signal: controlador.signal,
+                },
+            );
+
+            if (!respuesta.ok) {
+                const error = await respuesta.json();
+                throw error;
+            }
+
+            return respuesta.json();
+        } catch (error) {
+            if (error.name == "AbortError") {
+                return {
+                    status: 500,
+                    mensaje: "Tiempo de respuesta agotado",
+                };
+            }
+            return {
+                ok: false,
+                error: error,
+            };
+        } finally {
+            clearTimeout(timeOut);
+        }
+    },
+    editarCategoria: async (categoria) => {
+        const controlador = new AbortController();
+        const timeOut = setTimeout(() => controlador.abort(), 10000);
+
+        try {
+            const respuesta = await fetch(url + "editar_categoria.php", {
+                method: "POST",
+                body: categoria,
+                signal: controlador.signal,
+            });
+
+            if (!respuesta.ok) {
+                const error = await respuesta.json();
+                throw error;
+            }
+
+            return respuesta.json();
+        } catch (error) {
+            if (error.name == "AbortError") {
+                return {
+                    status: 500,
+                    mensaje: "Tiempo de respuesta agotado",
+                };
+            }
+            return {
+                ok: false,
+                error: error,
+            };
+        } finally {
+            clearTimeout(timeOut);
+        }
+    },
     crearCategoria: async (categoria) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);
@@ -31,16 +96,18 @@ export const dataProductos = {
         } finally {
             clearTimeout(timeOut);
         }
-    
-    }, 
+    },
     eliminarDescuento: async (id) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);
 
         try {
-            const respuesta = await fetch(url + `eliminar_descuento.php?id=${id}`, {
-                signal: controlador.signal,
-            });
+            const respuesta = await fetch(
+                url + `eliminar_descuento.php?id=${id}`,
+                {
+                    signal: controlador.signal,
+                },
+            );
 
             if (!respuesta.ok) {
                 const error = await respuesta.json();

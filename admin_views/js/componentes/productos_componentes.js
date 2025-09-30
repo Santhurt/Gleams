@@ -3,8 +3,9 @@ export const dom = {
         const div = document.createElement("div");
 
         div.innerHTML = `
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                ${categoria.nombre}
+            <li class="list-group-item d-flex justify-content-between align-items-center gap-2 py-3">
+                <input type="text" value="${categoria.nombre}" class="form-control" disabled>
+                
                 <div class="btn-group btn-group-sm" role="group" aria-label="Acciones de Categoría">
                     <button type="button" data-id="${categoria.id_categoria}" class="btn editar btn-primary">Editar</button>
                     <button type="button" data-id="${categoria.id_categoria}" class="btn eliminar btn-danger">Eliminar</button>

@@ -394,6 +394,30 @@ class Producto
         }
     }
 
+    public function editar_categoria($id, $nombre)
+    {
+        try {
+            $consulta = "update categorias set nombre = ? where id_categoria = ?";
+
+            if (!$this->conn) {
+                throw new Exception("no hay conexion con la base de datos");
+            }
+
+            $resultado = mysqli_execute_query($this->conn, $consulta, [$nombre, $id]);
+
+            if (!$resultado) {
+                throw new Exception("No se pudo insertar la categoria");
+            }
+
+            return true;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+
     public function crearCategoria($nombre)
     {
         try {
