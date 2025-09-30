@@ -19,7 +19,7 @@
                     </div>
 
                 </form>
-                <ul class="list-group">
+                <ul class="list-group" id="lista-categorias">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Nombre de la Categoría 1
                         <div class="btn-group btn-group-sm" role="group" aria-label="Acciones de Categoría">

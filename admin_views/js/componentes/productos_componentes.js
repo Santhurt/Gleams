@@ -6,13 +6,13 @@ export const dom = {
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 ${categoria.nombre}
                 <div class="btn-group btn-group-sm" role="group" aria-label="Acciones de Categoría">
-                    <button type="button" data-id="${categoria.id}" class="btn btn-primary">Editar</button>
-                    <button type="button" data-id="${categoria.id}" class="btn btn-danger">Eliminar</button>
+                    <button type="button" data-id="${categoria.id_categoria}" class="btn btn-primary">Editar</button>
+                    <button type="button" data-id="${categoria.id_categoria}" class="btn btn-danger">Eliminar</button>
                 </div>
             </li>
         `;
 
-        return div.firstChild;
+        return div.firstElementChild;
     },
     crearOpcionCategoria: (id, categoria) => {
         const opt = document.createElement("option");
