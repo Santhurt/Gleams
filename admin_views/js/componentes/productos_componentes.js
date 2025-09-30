@@ -1,4 +1,19 @@
 export const dom = {
+    crearItemCategoria: (categoria) => {
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                ${categoria.nombre}
+                <div class="btn-group btn-group-sm" role="group" aria-label="Acciones de Categoría">
+                    <button type="button" data-id="${categoria.id}" class="btn btn-primary">Editar</button>
+                    <button type="button" data-id="${categoria.id}" class="btn btn-danger">Eliminar</button>
+                </div>
+            </li>
+        `;
+
+        return div.firstChild;
+    },
     crearOpcionCategoria: (id, categoria) => {
         const opt = document.createElement("option");
         opt.value = id;
@@ -44,7 +59,7 @@ export const dom = {
 
                 if (!campos.includes(campo)) {
                     campos.push(campo);
-                } else if(campo == "descuento") {
+                } else if (campo == "descuento") {
                     td.innerHTML = `${producto[campo]}%`;
                 }
 
@@ -88,7 +103,7 @@ export const dom = {
         <div class="card h-100 shadow-sm">
             <div class="position-relative">
                 <img src="../${imagen}" style="height:300px" class="card-img-top img-fluid w-100 object-fit-cover" alt="Imagen del producto ${nombre}">
-                <span class="position-absolute top-0 start-0 badge bg-primary rounded-pill m-2">${precio}</span>
+                <span class="position-absolute top-0 start-0 badge bg-primary rounded-pill m-2">$${precio}</span>
                 <div class="position-absolute top-0 end-0 m-2">
                     <div class="dropdown">
                         <button class="btn btn-sm btn-light rounded-circle" type="button" id="dropdownMenuButton-${id}" data-bs-toggle="dropdown" aria-expanded="false">

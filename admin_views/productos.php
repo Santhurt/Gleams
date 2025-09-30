@@ -152,6 +152,17 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                                 </button>
 
                                 <a href="../controllers/reportes/inventario.php" class="btn btn-success">Generar pdf inventario</a>
+
+                                <button
+                                    class="btn btn-info"
+                                    type="button"
+                                    id="abrir-categorias"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modal-categorias"
+                                    >
+                                    Categorías
+                                </button>
+                                
                             </div>
 
                             <div class="row">
@@ -202,6 +213,9 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                 </div>
             </div>
         </div>
+
+        <!--Modal de categorias-->
+        <?php require_once "componentes/modal_categorias.php"; ?>
 
         <!--modal de descuento -->
 

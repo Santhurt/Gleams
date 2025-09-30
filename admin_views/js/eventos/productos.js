@@ -2,9 +2,11 @@ import { dataProductos } from "../ajax/data-productos.js";
 import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
 import { dom } from "../componentes/productos_componentes.js";
 import { responsive } from "./responsive.js";
+import { categorias } from "./categorias.js";
 
 export async function renderProductos() {
     responsive();
+    categorias();
 
     //configuracion del input de descuento
     flatpickr("#fecha-descuento", {

@@ -61,7 +61,7 @@ CREATE TABLE `clientes` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id_cliente`),
   UNIQUE KEY `correo` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,17 +92,19 @@ INSERT INTO `clientes` VALUES
 (21,'caspacho','3205502030','2025-05-15','caspacho@gmail.com','direccion',0,'$2y$12$7M83mzERmXmBR0IhBs9RUOFBiWm/aa9edrVob9qasOfbkY4j92Im2'),
 (22,'Jhon pecueco','1234567890','2025-05-16','doe@gmail.com','aijaio',0,'$2y$12$rXX2TkcBQq59Zu8l5yAQ9OX/kbcrMWfLfUbnIwSRg4xAxct/Ev/ZO'),
 (23,'aver aver','1234567890','2025-05-22','hash@gmail.com','holaaaaaaaaaaaaaa',0,'$2y$12$aXZHEQyrPhC.cSTr26cMzOc1Om0Ir1AhQMoDg88Vyph6MjU.HmwJS'),
-(25,'elpaco','3205504020','2025-05-17','elpaco@gmail.com','Holaaa',1,'$2y$12$WymwD2nZ6jTZEM16x89Pqey4.9GDpH1b0TNxcUKaiK3UtNlnacvwa'),
+(25,'elpaco','3205504020','2025-05-17','elpaco@gmail.com','Holaaa',0,'$2y$12$WymwD2nZ6jTZEM16x89Pqey4.9GDpH1b0TNxcUKaiK3UtNlnacvwa'),
 (26,'olo','1234567898','2025-05-17','olo@gmail.com','aaioajiaioa',1,'$2y$12$VFNASF3Sd1mGQ327cxx4AO2kql2j7SMrpmxeHiyEr9oRLXl0TFPei'),
 (27,'admin','1234567898','2025-05-17','admin@gmail.com','direccion',1,'$2y$12$OAOyCzqs.8a24xxwuCyi2uxZNV9C7/t8sZD4WkyjEnOkjrlz1Rgx2'),
-(28,'user','1234567','2025-05-21','user@gmail.com','Calle 400',1,'$2y$12$7eUfBYLQE9NsstTeFCT3BeT5kTrVOE8QRKIJL.vr3mK4izjxJqqci'),
+(28,'user','1234567','2025-05-21','user@gmail.com','Calle 400',0,'$2y$12$7eUfBYLQE9NsstTeFCT3BeT5kTrVOE8QRKIJL.vr3mK4izjxJqqci'),
 (29,'facu','1234567898','2025-05-23','facu@gmail.com','Direccion random',0,'$2y$12$ZAbbe/IrbVi76ahxiaZl8OqT0oZ6MJNzFwE9Fw3e287K9aX2fRRI2'),
 (30,'eliminado','eliminado','2025-05-23','eliminado','eliminado',0,'$2y$12$DJ4/ke5VBgUfuK/kkrusFehOdvQs8Nt2ZBM/BmsiiyvXU0zHnvv5W'),
 (31,'nose','1234567897','2025-05-25','ahiuahiu@gmail.com','cll 20 5 20 ',0,'$2y$12$uzzX2oX6/bahsBTPggM9dOu21L3WfiRPW.8Pw6D/0oF9boobrxBWS'),
-(32,'basik','1234567898','2025-05-25','basik@gmail.com','calle 20 #5 - 30 emaus',1,'$2y$12$xoO1bynwZMvvcWA8iKLo4ejaDfSAtj9/Q476FwLFrHBjc70tJErsq'),
+(32,'basik','222222222','2025-05-25','basik@gmail.com','calle 20 #5 - 30 emaus',1,'$2y$12$xoO1bynwZMvvcWA8iKLo4ejaDfSAtj9/Q476FwLFrHBjc70tJErsq'),
 (33,'eliminado','eliminado','2025-05-29','eliminado_20250529010749@example.com','eliminado',0,'$2y$12$8sU0G4XBdhKLutlTjVLuYuNhUbb6tTFRY86t/BkpBbD68lh9mvmKS'),
-(34,'santi','3205504030','2025-05-29','santiruizhurt@gmail.com','Direccion #20 - 40 barrio el espiritu',1,'$2y$12$0CyS4cQzDFkpmRJfNE0BUe4oBpjocFwxC0vEBCqkDpdPZFu3uVGZu'),
-(35,'sopas','1234567892','2025-06-10','sopas@gmail.com','Carrera 20 40 - 30',1,'$2y$12$ZqmXPgW8qHtloBEkvUsUreGfOgXPgNdDcNSpCwDwGJrIevo1aH1NC');
+(34,'santiago','3205504030','2025-05-29','santiruizhurt@gmail.com','Direccion #20 - 40 barrio el espiritu',1,'$2y$12$frxyfWTbAIumYvEtJ5nhjeP6qaXPhXEokJCZE.y4sWJqlrVuLy0ui'),
+(35,'sopas','1234567892','2025-06-10','sopas@gmail.com','Carrera 20 40 - 30',1,'$2y$12$ZqmXPgW8qHtloBEkvUsUreGfOgXPgNdDcNSpCwDwGJrIevo1aH1NC'),
+(36,'eliminado','eliminado','2025-09-04','eliminado_20250904060003@example.com','eliminado',0,'$2y$12$89SaPWGgD9ZBV3ctSLZpM.395zN.fAs4f32UOGxobqW/FQGG.Yzeq'),
+(37,'comprador','12345678','2025-09-04','comprador@gmail.com','calle 33 numero 4 n ',1,'$2y$12$Bd8sDFt40hpPUUmEecZ4GeRA8Lt7zyAqlDbi/W.S1KX/XeJ9gX5pC');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,10 +145,12 @@ INSERT INTO `clientes_rol` VALUES
 (29,2),
 (30,2),
 (31,2),
-(32,1),
+(32,2),
 (33,2),
 (34,2),
-(35,2);
+(35,2),
+(36,2),
+(37,2);
 /*!40000 ALTER TABLE `clientes_rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +174,7 @@ CREATE TABLE `comentarios` (
   KEY `fk_productos_has_comentarios` (`id_producto`),
   CONSTRAINT `fk_cliente_has_comentarios` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
   CONSTRAINT `fk_productos_has_comentarios` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +184,8 @@ CREATE TABLE `comentarios` (
 LOCK TABLES `comentarios` WRITE;
 /*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
 INSERT INTO `comentarios` VALUES
-(18,35,73,'Holaaaaa',5,1,'2025-06-10');
+(18,35,73,'Holaaaaa',5,0,'2025-06-10'),
+(19,27,74,'Buen producto',3,1,'2025-06-14');
 /*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +204,7 @@ CREATE TABLE `descuentos` (
   PRIMARY KEY (`id_descuento`),
   KEY `fk_descuento_producto` (`id_producto`),
   CONSTRAINT `fk_descuento_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +234,7 @@ CREATE TABLE `detalle_pedidos` (
   KEY `fk_detalle_producto` (`id_producto`),
   CONSTRAINT `fk_detalle_has_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
   CONSTRAINT `fk_detalle_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +244,11 @@ CREATE TABLE `detalle_pedidos` (
 LOCK TABLES `detalle_pedidos` WRITE;
 /*!40000 ALTER TABLE `detalle_pedidos` DISABLE KEYS */;
 INSERT INTO `detalle_pedidos` VALUES
-(65,38,73,2,75000);
+(65,38,73,2,75000),
+(66,39,74,2,35000),
+(67,40,72,2,50000),
+(68,40,74,1,35000),
+(69,41,72,1,50000);
 /*!40000 ALTER TABLE `detalle_pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +291,7 @@ CREATE TABLE `imagenes_prod` (
   PRIMARY KEY (`id_imagen`),
   KEY `fk_imagenes_productos` (`id_producto`),
   CONSTRAINT `fk_imagenes_productos` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,7 +302,8 @@ LOCK TABLES `imagenes_prod` WRITE;
 /*!40000 ALTER TABLE `imagenes_prod` DISABLE KEYS */;
 INSERT INTO `imagenes_prod` VALUES
 (63,'assets/fotos/imagen_20250610_053612000.webp',72),
-(64,'assets/fotos/imagen_20250610_054100000.jpg',73);
+(64,'assets/fotos/imagen_20250610_054100000.jpg',73),
+(70,'assets/fotos/imagen_20250904_061349000.jpg',79);
 /*!40000 ALTER TABLE `imagenes_prod` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +323,7 @@ CREATE TABLE `pedidos` (
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedidos_clientes` (`id_cliente`),
   CONSTRAINT `fk_pedidos_clientes` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +333,10 @@ CREATE TABLE `pedidos` (
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
 INSERT INTO `pedidos` VALUES
-(38,'2025-06-10 02:40:43',35,150000,'pendiente');
+(38,'2025-06-10 02:40:43',35,150000,'entregado'),
+(39,'2025-06-14 02:55:38',34,70000,'entregado'),
+(40,'2025-06-14 03:01:07',34,135000,'entregado'),
+(41,'2025-09-04 01:01:34',37,50000,'cancelado');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -335,7 +348,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER pedidos_bu
+/*!50003 CREATE TRIGGER pedidos_bu
 BEFORE UPDATE ON pedidos
 FOR EACH ROW
 BEGIN
@@ -369,7 +382,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER pedidos_au AFTER UPDATE ON pedidos
+/*!50003 CREATE TRIGGER pedidos_au AFTER UPDATE ON pedidos
 FOR EACH ROW
 BEGIN
 
@@ -405,7 +418,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id_producto`),
   KEY `fk_productos_categorias` (`id_categoria`),
   CONSTRAINT `fk_productos_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -415,8 +428,15 @@ CREATE TABLE `productos` (
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES
-(72,'Aretes de oro','Aretes bañados en oro de 24k',50000,5,1,2),
-(73,'Anillo de acero','Anillo de acero bañado en oro',75000,6,1,2);
+(72,'Aretes de oro','Aretes bañados en oro de 50k',50000,18,1,1),
+(73,'Anillo de acero','Anillo de acero bañado en oro',75000,4,1,2),
+(74,'Cadena blanca','Cadena de color blanco',35000,2,0,3),
+(75,'Aretes','Aretes',45000,6,0,1),
+(76,'Aretes','Aretes',45000,6,0,1),
+(77,'Aretes','Aretes',60000,9,0,1),
+(78,'Cadena','Cadena para manos',20000,5,0,3),
+(79,'joyas','hoyas de oro',20000,20,1,2),
+(80,'atfaytf','ytftyfyt',2555,20,0,2);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,8 +463,8 @@ CREATE TABLE `promocion` (
 LOCK TABLES `promocion` WRITE;
 /*!40000 ALTER TABLE `promocion` DISABLE KEYS */;
 INSERT INTO `promocion` VALUES
-(1,'Revisa nuestras nuevas ofertas','Contamos con los mejores precios en joyerias.','assets/fotos/imagen_20250530_203115000.jpg'),
-(2,'Nueva promocion','Revisa nuestras promociones','assets/fotos/imagen_20250610_062717000.jpg');
+(1,'Nuevas ofertas','Contamos con los mejores precios en joyerias.','assets/fotos/imagen_20250904_061808000.jpg'),
+(2,'Nueva promocion','Revisa nuestras promociones','assets/fotos/imagen_20250904_062312000.jpg');
 /*!40000 ALTER TABLE `promocion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -461,7 +481,7 @@ CREATE TABLE `recuperacion` (
   `codigo` varchar(20) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_recuperacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -486,7 +506,8 @@ INSERT INTO `recuperacion` VALUES
 (13,'santiruizhurt@gmail.com','bf24f9027b5665107323','2025-05-29 03:24:11'),
 (14,'santiruizhurt@gmail.com','2aee4718a37c6f05fa78','2025-05-29 03:27:19'),
 (15,'santiruizhurt@gmail.com','3b8f9e30208fb3d9eadd','2025-05-29 04:16:22'),
-(16,'santiruizhurt@gmail.com','15779307469aef09bcb5','2025-05-30 17:22:48');
+(16,'santiruizhurt@gmail.com','15779307469aef09bcb5','2025-05-30 17:22:48'),
+(17,'santiruizhurt@gmail.com','5dc3a57cba7b426c9fc6','2025-06-14 08:09:14');
 /*!40000 ALTER TABLE `recuperacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -532,7 +553,7 @@ DELIMITER ;;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;;
 /*!50003 SET @saved_time_zone      = @@time_zone */ ;;
 /*!50003 SET time_zone             = 'SYSTEM' */ ;;
-/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `eliminar_descuentos_vencidos` ON SCHEDULE EVERY 1 MINUTE STARTS '2025-05-28 15:55:31' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM descuentos
+/*!50106 CREATE EVENT `eliminar_descuentos_vencidos` ON SCHEDULE EVERY 1 MINUTE STARTS '2025-05-28 15:55:31' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM descuentos
   WHERE fecha_fin < NOW() */ ;;
 /*!50003 SET time_zone             = @saved_time_zone */ ;;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;;
@@ -551,4 +572,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-10  3:00:46
+-- Dump completed on 2025-09-04  1:44:19
