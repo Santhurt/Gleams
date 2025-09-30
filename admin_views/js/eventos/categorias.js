@@ -99,11 +99,28 @@ export function categorias() {
                         await dataProductos.editarCategoria(nuevaCategoria);
                     console.log(respuesta);
 
-
                     volverAModoVisualizacion(listItem, inputElement, boton);
                 }
-            } else if(boton.classList.contains("eliminar")) {
+            } else if (boton.classList.contains("eliminar")) {
+                const idCategoria = boton.dataset.id;
+                const respuesta =
+                    await dataProductos.eliminarCategoria(idCategoria);
+                console.log(respuesta);
+                cargarCategorias();
 
+                if (respuesta.status != 200) {
+                    swal.fire({
+                        title: "Error",
+                        text: respuesta.mensaje,
+                        icon: "error",
+                        confirmButtonText: "Continuar",
+                        customClass: {
+                            confirmButton: "btn btn-primary",
+                        },
+                    });
+
+                    return;
+                }
             }
         });
     // Función para revertir el estado del item a modo de visualización

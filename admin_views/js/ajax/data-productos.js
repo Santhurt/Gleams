@@ -25,10 +25,7 @@ export const dataProductos = {
                     mensaje: "Tiempo de respuesta agotado",
                 };
             }
-            return {
-                ok: false,
-                error: error,
-            };
+            return error;
         } finally {
             clearTimeout(timeOut);
         }

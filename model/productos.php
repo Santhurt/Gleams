@@ -417,6 +417,71 @@ class Producto
             return false;
         }
     }
+    public function verificar_categoria($id)
+    {
+        try {
+            // 1. Ajustar la consulta: no necesitas el JOIN si la columna está en 'productos'.
+            // Asumiendo que 'productos.id_categoria' es la columna. 
+            // ¡IMPORTANTE!: También cambiamos 'id = ?' por 'id_categoria = ?'.
+            $verificar = "SELECT * 
+                      FROM productos 
+                      JOIN categorias
+                      ON categorias.id_categoria = productos.id_categoria
+                      WHERE categorias.id_categoria = ? 
+                      "; // Usamos LIMIT 1 para mayor eficiencia, solo necesitamos saber si existe uno.
+
+            // 2. Ejecutar la consulta con mysqli_execute_query
+            // El 'id' que pasas a la función es el ID de la categoría a verificar.
+            $resultado = mysqli_execute_query($this->conn, $verificar, [$id]);
+
+            // 3. Verificar si la conexión falló DESPUÉS de intentar la consulta (opcional, 
+            // ya que mysqli_execute_query ya lanzaría un error si no hay conexión o la consulta falla)
+            if ($resultado === false) {
+                // Esto captura errores de SQL o problemas de conexión si no se manejan de otra manera.
+                throw new Exception("Error al ejecutar la consulta: " . mysqli_error($this->conn));
+            }
+
+            // 4. Procesar el resultado: verificar el número de filas encontradas.
+            $num_filas = mysqli_num_rows($resultado);
+
+            // 5. Devolver el valor:
+            // Si $num_filas > 0, significa que HAY productos asignados (debe devolver FALSE para el borrado/eliminación).
+            // Si $num_filas == 0, significa que NO HAY productos (debe devolver TRUE, indicando que es seguro eliminar).
+            return $num_filas === 0;
+        } catch (Exception $e) {
+            // Manejo de errores
+            error_log("Error en verificar_categoria: " . $e->getMessage());
+            // $this->error = $e->getMessage(); // Si usas una propiedad de error
+
+            // En caso de cualquier error (conexión, SQL, etc.), asumimos que la verificación falló o
+            // que por seguridad no debe proceder, devolviendo FALSE.
+            return false;
+        }
+    }
+    public function eliminar_categoria($id)
+    {
+        try {
+
+            $consulta  = "delete from categorias where id_categoria = ?";
+
+            if (!$this->conn) {
+                throw new Exception("no hay conexion con la base de datos");
+            }
+
+            $resultado = mysqli_execute_query($this->conn, $consulta, [$id]);
+
+            if (!$resultado) {
+                throw new Exception("No se pudo eliminar la categoria");
+            }
+
+            return true;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
 
     public function crearCategoria($nombre)
     {
