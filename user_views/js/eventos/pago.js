@@ -62,13 +62,14 @@ export async function renderPago() {
 
     const subtotalLabel = document.querySelector("#subtotal");
     const totalLabel = document.querySelector("#total");
+    const envio = document.querySelector("#envio").value;
 
     const subtotal = pedidos.reduce((acumulador, pedido) => {
         return acumulador + pedido.precio * pedido.cantidad;
     }, 0);
 
     subtotalLabel.textContent = `$${subtotal}`;
-    totalLabel.textContent = `$${subtotal + 5000}`;
+    totalLabel.textContent = `$${subtotal + parseInt(envio)}`;
 
     //--------------- logica de pago
 
@@ -84,8 +85,8 @@ export async function renderPago() {
                 confirmButtonText: "Continuar",
                 icon: "success",
                 customClass: {
-                   confirmButton: "boton-fondo-morado"
-                }
+                    confirmButton: "boton-fondo-morado",
+                },
             }).then((respuesta) => {
                 e.target.disabled;
                 if (respuesta.isConfirmed) {

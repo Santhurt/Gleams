@@ -4,10 +4,17 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
     exit;
 }
 
-if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
+if (!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
     header("Location: /user_views/shop.php");
     exit;
 }
+
+require_once __DIR__ . "/../model/productos.php";
+
+use modelos\Producto;
+
+$producto = new Producto();
+$monto = $producto->traer_domicilio();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -184,7 +191,7 @@ if(!isset($_SESSION["pedido"]) || count($_SESSION["pedido"]) < 1) {
                             </div>
                             <div class="price-row">
                                 <span>Envío</span>
-                                <span>$5000</span>
+                                <span> $<?php echo $monto; ?> <input id="envio" type="hidden" value="<?php echo $monto; ?>"></span>
                             </div>
 
                             <!--TODO: Agreagar el envio-->
