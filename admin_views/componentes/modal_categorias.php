@@ -21,10 +21,6 @@
                     <!--Lista de categorias-->
                 </ul>
             </div>
-            <div class="modal-footer">
-                <button type="submit" form="form-descuento" class="btn btn-success" data-bs-dismiss="modal">Aplicar descuento</button>
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-            </div>
         </div>
     </div>
 </div>

@@ -511,4 +511,58 @@ class Producto
             return false;
         }
     }
+
+    public function traer_domicilio()
+    {
+        try {
+            $consulta = "select monto from domicilio";
+
+            if (!$this->conn) {
+                throw new Exception("no hay conexion con la base de datos");
+            }
+
+            $resultado = mysqli_execute_query($this->conn, $consulta);
+
+            if (!$resultado) {
+                throw new Exception("No se pudo traer el monto");
+            }
+
+            $fila = mysqli_fetch_row($resultado);
+
+            if ($fila) {
+                $monto = $fila[0];
+                return $monto;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
+    public function asignar_domicilio($monto)
+    {
+        try {
+            $consulta = "update domicilio set monto = ? where id_domicilio = 1";
+
+            if (!$this->conn) {
+                throw new Exception("no hay conexion con la base de datos");
+            }
+
+            $resultado = mysqli_execute_query($this->conn, $consulta, [$monto]);
+
+            if (!$resultado) {
+                throw new Exception("No se pudo traer el monto");
+            }
+
+            return true;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            $this->error = $e->getMessage();
+
+            return false;
+        }
+    }
 }

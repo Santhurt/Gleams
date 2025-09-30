@@ -3,10 +3,12 @@ import swal from "../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js"
 import { dom } from "../componentes/productos_componentes.js";
 import { responsive } from "./responsive.js";
 import { categorias } from "./categorias.js";
+import { domicilio } from "./domicilio.js";
 
 export async function renderProductos() {
     responsive();
     categorias();
+    domicilio();
 
     //configuracion del input de descuento
     flatpickr("#fecha-descuento", {
@@ -270,7 +272,6 @@ export async function renderProductos() {
                         confirmButton: "btn btn-primary",
                     },
                 });
-
             }
         }
     });
@@ -415,8 +416,9 @@ export async function renderProductos() {
                     producto[campo] == 1 ? "Disponible" : "No disponible";
             }
 
-            if(campo == "Fin del descuento") {
-                producto[campo] = (producto[campo] == null) ? "Sin descuento" : producto[campo];
+            if (campo == "Fin del descuento") {
+                producto[campo] =
+                    producto[campo] == null ? "Sin descuento" : producto[campo];
             }
 
             return dom.crearTablaProducto(campo, producto[campo]);

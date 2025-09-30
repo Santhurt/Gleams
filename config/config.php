@@ -6,7 +6,7 @@ return [
     'db' => [
         'host' => 'localhost',
         'user' => 'root',
-        'password' => '091620Phi',
+        'password' => '1234',
         'name' => 'gleams',
         'charset' => 'utf8mb4'
     ]

@@ -163,6 +163,16 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
                                     Categorías
                                 </button>
                                 
+
+                                <button
+                                    class="btn btn-primary"
+                                    type="button"
+                                    id="abrir-domicilio"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modal-domicilio"
+                                    >
+                                    Domicilio
+                                </button>
                             </div>
 
                             <div class="row">
@@ -216,6 +226,9 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
         <!--Modal de categorias-->
         <?php require_once "componentes/modal_categorias.php"; ?>
+
+        <!--Modal de domicilio-->
+        <?php require_once "componentes/modal_domicilio.php"; ?>
 
         <!--modal de descuento -->
 

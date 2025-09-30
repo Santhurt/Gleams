@@ -1,5 +1,35 @@
 const url = "/gleams/controllers/productos/";
 export const dataProductos = {
+    editarDomiclio: async (monto) => {
+        const controlador = new AbortController();
+        const timeOut = setTimeout(() => controlador.abort(), 10000);
+
+        try {
+            const respuesta = await fetch(
+                url + `editar_domicilio.php?monto=${monto}`,
+                {
+                    signal: controlador.signal,
+                },
+            );
+
+            if (!respuesta.ok) {
+                const error = await respuesta.json();
+                throw error;
+            }
+
+            return respuesta.json();
+        } catch (error) {
+            if (error.name == "AbortError") {
+                return {
+                    status: 500,
+                    mensaje: "Tiempo de respuesta agotado",
+                };
+            }
+            return error;
+        } finally {
+            clearTimeout(timeOut);
+        }
+    },
     eliminarCategoria: async (id) => {
         const controlador = new AbortController();
         const timeOut = setTimeout(() => controlador.abort(), 10000);
