@@ -56,56 +56,7 @@ $monto = $producto->traer_domicilio();
         </div>
     </div>
     <header class="sticky-top">
-
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg fondo">
-            <div class="container">
-
-                <!-- Botón hamburguesa -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="me-auto">
-                    <a href="https://www.instagram.com/gleamns_accesorios/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/3104502353" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                </div>
-
-                <!-- Contenido colapsable (incluye menú y botones) -->
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <!-- Menú de navegación -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="./shop.php">Tienda</a>
-                        </li>
-                        <!-- <li class="nav-item"> -->
-                        <!--     <a class="nav-link poppins-light" href="#">Colecciones</a> -->
-                        <!-- </li> -->
-                        <!-- <li class="nav-item"> -->
-                        <!--     <a class="nav-link poppins-light" href="#">Accesorios</a> -->
-                        <!-- </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link poppins-light" href="./pedidos.php">Pedidos</a>
-                        </li>
-                    </ul>
-
-                    <!-- Botones de autenticación y carrito -->
-                    <div class="d-flex align-items-center gap-3 justify-content-center">
-
-                        <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
-                            <a href="perfil.php" class="btn boton-fondo-morado poppins-light ms-3">
-                                <i class="fas fa-user"></i>
-                                <?php echo htmlspecialchars($_SESSION["usuario"] ?? 'Usuario'); ?>
-                            </a>
-                            <a href="../controllers/auth/logout.php" type="button" class="btn boton-fondo-blanco poppins-light">Cerrar sesión</a>
-                        <?php else: ?>
-                            <a href="./login.php" class="btn boton-fondo-morado ms-3 poppins-light">Ingresar</a>
-                            <a href="./registro.php" type="button" class="btn boton-fondo-blanco poppins-light">Registrarse</a>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <?php require_once __DIR__ . "/componentes/navbar.php" ?>
     </header>
 
     <!-- Main Checkout Area -->
