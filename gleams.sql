@@ -27,7 +27,7 @@ CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,8 @@ LOCK TABLES `categorias` WRITE;
 INSERT INTO `categorias` VALUES
 (1,'aretes'),
 (2,'anillos'),
-(3,'pulseras');
+(3,'pulseras'),
+(16,'perfecto');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +235,7 @@ CREATE TABLE `detalle_pedidos` (
   KEY `fk_detalle_producto` (`id_producto`),
   CONSTRAINT `fk_detalle_has_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
   CONSTRAINT `fk_detalle_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -248,7 +249,9 @@ INSERT INTO `detalle_pedidos` VALUES
 (66,39,74,2,35000),
 (67,40,72,2,50000),
 (68,40,74,1,35000),
-(69,41,72,1,50000);
+(69,41,72,1,50000),
+(70,42,79,2,20000),
+(71,43,72,1,50000);
 /*!40000 ALTER TABLE `detalle_pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,7 +276,7 @@ CREATE TABLE `domicilio` (
 LOCK TABLES `domicilio` WRITE;
 /*!40000 ALTER TABLE `domicilio` DISABLE KEYS */;
 INSERT INTO `domicilio` VALUES
-(1,5000);
+(1,2000);
 /*!40000 ALTER TABLE `domicilio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,7 +326,7 @@ CREATE TABLE `pedidos` (
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedidos_clientes` (`id_cliente`),
   CONSTRAINT `fk_pedidos_clientes` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -336,7 +339,9 @@ INSERT INTO `pedidos` VALUES
 (38,'2025-06-10 02:40:43',35,150000,'entregado'),
 (39,'2025-06-14 02:55:38',34,70000,'entregado'),
 (40,'2025-06-14 03:01:07',34,135000,'entregado'),
-(41,'2025-09-04 01:01:34',37,50000,'cancelado');
+(41,'2025-09-04 01:01:34',37,50000,'cancelado'),
+(42,'2025-09-30 21:56:42',27,42000,'entregado'),
+(43,'2025-09-30 21:58:34',27,52000,'entregado');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -348,7 +353,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE TRIGGER pedidos_bu
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER pedidos_bu
 BEFORE UPDATE ON pedidos
 FOR EACH ROW
 BEGIN
@@ -382,7 +387,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE TRIGGER pedidos_au AFTER UPDATE ON pedidos
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER pedidos_au AFTER UPDATE ON pedidos
 FOR EACH ROW
 BEGIN
 
@@ -428,14 +433,14 @@ CREATE TABLE `productos` (
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES
-(72,'Aretes de oro','Aretes bañados en oro de 50k',50000,18,1,1),
+(72,'Aretes de oro','Aretes bañados en oro de 50k',50000,17,1,1),
 (73,'Anillo de acero','Anillo de acero bañado en oro',75000,4,1,2),
 (74,'Cadena blanca','Cadena de color blanco',35000,2,0,3),
 (75,'Aretes','Aretes',45000,6,0,1),
 (76,'Aretes','Aretes',45000,6,0,1),
 (77,'Aretes','Aretes',60000,9,0,1),
 (78,'Cadena','Cadena para manos',20000,5,0,3),
-(79,'joyas','hoyas de oro',20000,20,1,2),
+(79,'joyas','hoyas de oro',20000,18,1,2),
 (80,'atfaytf','ytftyfyt',2555,20,0,2);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -453,7 +458,7 @@ CREATE TABLE `promocion` (
   `descripcion` text DEFAULT NULL,
   `ruta` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_promocion`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -464,7 +469,8 @@ LOCK TABLES `promocion` WRITE;
 /*!40000 ALTER TABLE `promocion` DISABLE KEYS */;
 INSERT INTO `promocion` VALUES
 (1,'Nuevas ofertas','Contamos con los mejores precios en joyerias.','assets/fotos/imagen_20250904_061808000.jpg'),
-(2,'Nueva promocion','Revisa nuestras promociones','assets/fotos/imagen_20250904_062312000.jpg');
+(2,'Nueva promocion','Revisa nuestras promociones','assets/fotos/imagen_20250904_062312000.jpg'),
+(3,'promocion','La mejor promocion','assets/fotos/imagen_20251001_024515000.png');
 /*!40000 ALTER TABLE `promocion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -553,7 +559,7 @@ DELIMITER ;;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;;
 /*!50003 SET @saved_time_zone      = @@time_zone */ ;;
 /*!50003 SET time_zone             = 'SYSTEM' */ ;;
-/*!50106 CREATE EVENT `eliminar_descuentos_vencidos` ON SCHEDULE EVERY 1 MINUTE STARTS '2025-05-28 15:55:31' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM descuentos
+/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `eliminar_descuentos_vencidos` ON SCHEDULE EVERY 1 MINUTE STARTS '2025-05-28 15:55:31' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM descuentos
   WHERE fecha_fin < NOW() */ ;;
 /*!50003 SET time_zone             = @saved_time_zone */ ;;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;;
@@ -572,4 +578,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-04  1:44:19
+-- Dump completed on 2025-10-01  3:00:49
