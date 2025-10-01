@@ -105,7 +105,7 @@
     <!-- Main Content -->
     <main class="fondo">
         <!-- Contacto Content -->
-        <section class="container contacto-container fade-in">
+        <section class="container py-5  contacto-container fade-in">
 
             <!-- Intro -->
             <div class="intro-text pt-5">
@@ -164,24 +164,24 @@
             </div>
 
             <!-- Información Adicional -->
-            <div class="info-adicional">
-                <h3>Horario de Atención</h3>
-                <p>Nuestro equipo está disponible para atenderte en los siguientes horarios:</p>
-                <div class="horarios">
-                    <div class="horario-item">
-                        <i class="bi bi-calendar-week"></i>
-                        Lunes a Viernes: 9:00 AM - 6:00 PM
-                    </div>
-                    <div class="horario-item">
-                        <i class="bi bi-calendar-check"></i>
-                        Sábados: 10:00 AM - 2:00 PM
-                    </div>
-                </div>
-                <p class="mt-4 mb-0" style="color: #999; font-size: 0.95rem;">
-                    <i class="bi bi-clock-history me-2"></i>
-                    Tiempo de respuesta estimado: 24 horas hábiles
-                </p>
-            </div>
+            <!-- <div class="info-adicional"> -->
+            <!--     <h3>Horario de Atención</h3> -->
+            <!--     <p>Nuestro equipo está disponible para atenderte en los siguientes horarios:</p> -->
+            <!--     <div class="horarios"> -->
+            <!--         <div class="horario-item"> -->
+            <!--             <i class="bi bi-calendar-week"></i> -->
+            <!--             Lunes a Viernes: 9:00 AM - 6:00 PM -->
+            <!--         </div> -->
+            <!--         <div class="horario-item"> -->
+            <!--             <i class="bi bi-calendar-check"></i> -->
+            <!--             Sábados: 10:00 AM - 2:00 PM -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!--     <p class="mt-4 mb-0" style="color: #999; font-size: 0.95rem;"> -->
+            <!--         <i class="bi bi-clock-history me-2"></i> -->
+            <!--         Tiempo de respuesta estimado: 24 horas hábiles -->
+            <!--     </p> -->
+            <!-- </div> -->
 
         </section>
 

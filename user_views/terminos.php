@@ -149,7 +149,7 @@
                 </div>
 
                 <!-- Término 3 -->
-                <div class="termino-item">
+                <div class="termino-item" id="envios">
                     <div class="termino-header">
                         <div class="termino-numero">3</div>
                         <h2 class="termino-titulo">Precios y Pagos</h2>
