@@ -450,3 +450,292 @@
     color: #2c3e50;
     margin-bottom: 8px;
 }
+
+/*El select de ayuda*/
+
+/* Estilos para el dropdown de Ayuda */
+.dropdown-menu {
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    margin-top: 0;
+}
+
+.dropdown-item {
+    color: var(--color-texto);
+    padding: 12px 25px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-item:hover {
+    background-color: #f5d5dc;
+    color: var(--color-base);
+    border-left-color: var(--color-base);
+    padding-left: 28px;
+}
+
+.dropdown-item.active {
+    background-color: #f5d5dc;
+    color: var(--color-base);
+    border-left-color: var(--color-base);
+}
+
+.dropdown-divider {
+    border-top: 1px solid #f5d5dc;
+    margin: 8px 0;
+}
+
+/* Efecto para el botón dropdown */
+.nav-link.dropdown-toggle::after {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.nav-link.dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+
+/* Animación de entrada del dropdown */
+.dropdown-menu {
+    animation: fadeInDown 0.3s ease-in-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive: para móviles */
+@media (max-width: 991px) {
+    .dropdown-menu {
+        box-shadow: none;
+        background-color: transparent;
+        padding-left: 15px;
+    }
+
+    .dropdown-item {
+        padding: 10px 20px;
+    }
+
+    .dropdown-item:hover {
+        padding-left: 23px;
+    }
+}
+
+/* Seccion de nosotros */
+
+.hero-nosotros {
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero-nosotros {
+    font-size: 2.5rem;
+    letter-spacing: 7px;
+    color: white;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero-nosotros p {
+    font-size: 1.1rem;
+    color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.section-title {
+    font-size: 2rem;
+    letter-spacing: 3px;
+    color: var(--color-texto);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.card-nosotros {
+    border: none;
+    background: white;
+    border-radius: 15px;
+    padding: 40px 30px;
+    height: 100%;
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-nosotros:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(165, 90, 108, 0.2);
+}
+
+.card-nosotros .icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 30px;
+    color: white;
+}
+
+.card-nosotros h3 {
+    font-size: 1.3rem;
+    color: var(--color-base);
+    margin-bottom: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.card-nosotros p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+.mision-vision {
+    background: white;
+    border-radius: 15px;
+    padding: 50px;
+    margin: 60px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.mision-vision h2 {
+    color: var(--color-base);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+.mision-vision p {
+    color: #555;
+    line-height: 1.9;
+    font-size: 1.05rem;
+}
+
+.valores-list {
+    list-style: none;
+    padding: 0;
+}
+
+.valores-list li {
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    color: #555;
+    font-size: 1.05rem;
+    position: relative;
+    padding-left: 30px;
+}
+
+.valores-list li:last-child {
+    border-bottom: none;
+}
+
+.valores-list li::before {
+    content: "✦";
+    color: var(--color-base);
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    padding: 60px 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 60px 0;
+}
+
+.cta-section h1,
+.cta-section h2 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.cta-section p {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.btn-custom {
+    background-color: white;
+    color: var(--color-base);
+    padding: 12px 40px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: 2px solid white;
+    transition: all 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+
+.stats-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.stat-item {
+    margin-bottom: 30px;
+}
+
+.stat-item .number {
+    font-size: 3rem;
+    color: var(--color-base);
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.stat-item .label {
+    font-size: 1rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .hero-nosotros h1 {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+
+    .mision-vision {
+        padding: 30px 20px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}

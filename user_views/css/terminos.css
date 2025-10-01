@@ -1,0 +1,169 @@
+.hero-terminos {
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero-terminos h1 {
+    font-size: 2.5rem;
+    letter-spacing: 7px;
+    color: white;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero-terminos p {
+    font-size: 1rem;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.terminos-container {
+    background: white;
+    border-radius: 15px;
+    padding: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 60px;
+}
+
+.termino-item {
+    margin-bottom: 45px;
+    padding-bottom: 35px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.termino-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.termino-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.termino-numero {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.termino-titulo {
+    font-size: 1.4rem;
+    color: var(--color-base);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.termino-contenido {
+    color: #555;
+    line-height: 1.9;
+    font-size: 1.05rem;
+    padding-left: 70px;
+}
+
+.intro-text {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid var(--color-base);
+}
+
+.fecha-actualizacion {
+    text-align: center;
+    color: #999;
+    font-size: 0.95rem;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.contacto-cta {
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.contacto-cta h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.contacto-cta p {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 1.05rem;
+}
+
+.btn-contacto {
+    background-color: white;
+    color: var(--color-base);
+    padding: 12px 35px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: 2px solid white;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-contacto:hover {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+
+@media (max-width: 768px) {
+    .hero-terminos h1 {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+
+    .terminos-container {
+        padding: 30px 20px;
+    }
+
+    .termino-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .termino-numero {
+        margin-bottom: 15px;
+    }
+
+    .termino-contenido {
+        padding-left: 0;
+    }
+
+    .termino-titulo {
+        font-size: 1.2rem;
+    }
+}

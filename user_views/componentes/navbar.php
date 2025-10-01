@@ -16,21 +16,31 @@
 
         <!-- Contenido colapsable (incluye menú y botones) -->
         <div class="collapse navbar-collapse" id="navbarContent">
-            <!-- Menú de navegación -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link <?= ($current_page == 'shop.php') ? 'active' : '' ?>" href="./shop.php">Tienda</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link <?= ($current_page == 'nosotros.php') ? 'active' : '' ?>" href="./nosotros.php">Nosotros</a>
                 </li>
-                <!-- <li class="nav-item"> -->
-                <!--     <a class="nav-link" href="#">Colecciones</a> -->
-                <!-- </li> -->
-                <!-- <li class="nav-item"> -->
-                <!--     <a class="nav-link" href="#">Accesorios</a> -->
-                <!-- </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle <?= (in_array($current_page, ['faq.php', 'envios.php', 'contacto.php'])) ? 'active' : '' ?>"
+                        href="#"
+                        id="navbarDropdownAyuda"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Ayuda
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownAyuda">
+                        <li><a class="dropdown-item <?= ($current_page == 'terminos.php') ? 'active' : '' ?>" href="./terminos.php">Términos y condiciones</a></li>
+                        <li><a class="dropdown-item <?= ($current_page == 'preguntas.php') ? 'active' : '' ?>" href="./preguntas.php">Preguntas frecuentes</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item <?= ($current_page == 'contacto.php') ? 'active' : '' ?>" href="./contacto.php">Contacto</a></li>
+                    </ul>
+                </li>
                 <?php if (isset($_SESSION["correo"]) && isset($_SESSION["usuario"])): ?>
                     <li class="nav-item">
                         <a class="nav-link <?= ($current_page == 'pedidos.php') ? 'active' : '' ?>" href="./pedidos.php">Pedidos</a>

@@ -38,5 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/recuperacion.js").then((modulo) => {
             modulo.renderRecuperacion();
         });
+    } else if (
+        pagina.includes("/user_views/nosotros.php") ||
+        pagina.includes("/user_views/terminos.php") ||
+        pagina.includes("/user_views/preguntas.php")
+    ) {
+        import("./eventos/carrito.js").then((modulo) => {
+            modulo.renderCarrito();
+        });
     }
 });
