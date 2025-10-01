@@ -46,9 +46,8 @@
                 <!-- <a class="navbar-brand playfair-title" href="#">GLEAMS</a> -->
 
                 <div class="me-auto">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/gleamns_accesorios/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/3104502353" class="social-icon"><i class="fab fa-whatsapp"></i></a>
                 </div>
 
                 <!-- Botón hamburguesa -->
