@@ -10,25 +10,21 @@
     <!--Boostrap-->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
+
+    <link href="../node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
+
     <link href="./css/transiciones.css" rel="stylesheet">
     <link href="./css/fonts.css" rel="stylesheet">
     <link href="./css/toast.css" rel="stylesheet">
 
-    <link href="../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="./css/modal_carrito.css" rel="stylesheet">
-    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
 
 <body>
 
     <!-- Top bar -->
-    <div class="container-fluid top-bar">
-        <div class="row py-2">
-            <div class="col-md-6 text-center text-md-start">
-                <small>Envío gratuito en pedidos superiores a $150.000</small>
-            </div>
-        </div>
-    </div>
+    <?php require_once __DIR__ . "/componentes/toplabel.php" ?>
 
     <div class="container-fluid">
         <div class="row justify-content-center">

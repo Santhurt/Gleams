@@ -78,13 +78,8 @@
     </button>
 
     <!-- Top bar -->
-    <div class="container-fluid top-bar">
-        <div class="row py-2">
-            <div class="col-md-6 text-center text-md-start">
-                <small>Envío gratuito en pedidos superiores a $150.000</small>
-            </div>
-        </div>
-    </div>
+
+    <?php require_once __DIR__ . "/componentes/toplabel.php" ?>
 
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -188,7 +183,7 @@
                 </div>
 
                 <!-- Término 6 -->
-                <div class="termino-item">
+                <div class="termino-item" id="privacidad">
                     <div class="termino-header">
                         <div class="termino-numero">6</div>
                         <h2 class="termino-titulo">Garantía</h2>

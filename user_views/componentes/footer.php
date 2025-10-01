@@ -35,7 +35,7 @@
             <!-- Columna Ayuda -->
             <div class="col-lg-6 col-md-6 mb-4 mb-lg-0">
                 <h5 class="footer-title">Ayuda</h5>
-                <a href="./faq.php" class="footer-link">Preguntas Frecuentes</a>
+                <a href="./preguntas.php" class="footer-link">Preguntas Frecuentes</a>
                 <a href="./terminos.php#envios" class="footer-link">Envíos y Devoluciones</a>
                 <a href="./terminos.php" class="footer-link">Términos y Condiciones</a>
                 <a href="./contacto.php" class="footer-link">Contáctanos</a>
@@ -52,11 +52,11 @@
                 <div class="col-12 text-center">
                     <p>© 2025 Gleamns. Todos los derechos reservados.</p>
                     <div class="footer-bottom-links">
-                        <a href="./terminos.php" class="footer-bottom-link">Términos de Uso</a>
+                        <a href="./preguntas.php" class="footer-bottom-link poppins-light">Preguntas frecuentes</a>
                         <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-                        <a href="./privacidad.php" class="footer-bottom-link">Política de Privacidad</a>
+                        <a href="./terminos.php#privacidad" class="footer-bottom-link poppins-light">Política de Privacidad</a>
                         <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-                        <a href="./contacto.php" class="footer-bottom-link">Soporte</a>
+                        <a href="./contacto.php" class="footer-bottom-link poppins-light">Contacto</a>
                     </div>
                 </div>
             </div>

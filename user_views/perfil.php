@@ -190,13 +190,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
 
 
     <!-- Top bar -->
-    <div class="container-fluid top-bar">
-        <div class="row py-2">
-            <div class="col-md-6 text-center text-md-start">
-                <small>Envío gratuito en pedidos superiores a $150.000</small>
-            </div>
-        </div>
-    </div>
+    <?php require_once __DIR__ . "/componentes/toplabel.php" ?>
 
 
     <div class="container-fluid">
@@ -217,7 +211,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
     <!-- Main Content -->
     <main class="fondo">
         <div class="container fade-in">
-            <div class="row justify-content-center">
+            <div class="pb-5 row justify-content-center">
                 <div class="col-12 col-lg-10">
                     <div class="profile-container">
                         <!-- Profile Header -->
