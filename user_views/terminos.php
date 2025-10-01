@@ -234,8 +234,8 @@
                 <!-- CTA Contacto -->
                 <div class="contacto-cta">
                     <h3>¿Tienes alguna duda?</h3>
-                    <p>Nuestro equipo está disponible para ayudarte</p>
-                    <a href="./contacto.php" class="btn-contacto">Contáctanos</a>
+                    <p>Visita las preguntas más frecuentes que nos hacen nuestros clientes</p>
+                    <a href="./preguntas.php" class="btn-contacto">Preguntas frecuentes</a>
                 </div>
 
             </div>

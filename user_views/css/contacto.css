@@ -1,0 +1,236 @@
+.hero-contacto {
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero-contacto h1 {
+    font-size: 2.5rem;
+    letter-spacing: 7px;
+    color: white;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero-contacto p {
+    font-size: 1.1rem;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.contacto-container {
+    margin-bottom: 60px;
+}
+
+.intro-text {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.intro-text h2 {
+    color: var(--color-base);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+.intro-text p {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    transition: left 0.4s ease;
+    z-index: 0;
+}
+
+.contact-card:hover::before {
+    left: 0;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(165, 90, 108, 0.25);
+}
+
+.contact-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    font-size: 2.5rem;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.contact-card:hover .contact-icon {
+    background: white;
+    color: var(--color-base);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.contact-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-base);
+    margin-bottom: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.4s ease;
+}
+
+.contact-card:hover h3 {
+    color: white;
+}
+
+.contact-card p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    transition: color 0.4s ease;
+}
+
+.contact-card:hover p {
+    color: white;
+}
+
+.contact-link {
+    color: #888;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    display: block;
+    word-break: break-all;
+    transition: color 0.4s ease;
+}
+
+.contact-card:hover .contact-link {
+    color: white;
+    font-weight: 500;
+}
+
+.btn-contact {
+    background-color: var(--color-base);
+    color: white;
+    padding: 12px 35px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: 2px solid var(--color-base);
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-contact:hover {
+    background-color: transparent;
+    color: var(--color-base);
+    border-color: var(--color-base);
+}
+
+.contact-card:hover .btn-contact {
+    background-color: white;
+    color: var(--color-base);
+    border-color: white;
+}
+
+.contact-card:hover .btn-contact:hover {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+
+.info-adicional {
+    background: white;
+    border-radius: 15px;
+    padding: 50px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 60px;
+}
+
+.info-adicional h3 {
+    color: var(--color-base);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.info-adicional p {
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+.horario-item {
+    display: inline-block;
+    background-color: var(--color-fondo);
+    padding: 15px 30px;
+    border-radius: 25px;
+    margin: 10px;
+    color: var(--color-texto);
+    font-weight: 500;
+}
+
+.horario-item i {
+    color: var(--color-base);
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .hero-contacto h1 {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+
+    .contact-card {
+        padding: 40px 30px;
+        margin-bottom: 30px;
+    }
+
+    .info-adicional {
+        padding: 30px 20px;
+    }
+
+    .horario-item {
+        display: block;
+        margin: 10px 0;
+    }
+}

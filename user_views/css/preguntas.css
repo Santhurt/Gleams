@@ -1,0 +1,220 @@
+.hero-faq {
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero-faq h1 {
+    font-size: 2.5rem;
+    letter-spacing: 7px;
+    color: white;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero-faq p {
+    font-size: 1.1rem;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.faq-container {
+    background: white;
+    border-radius: 15px;
+    padding: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 60px;
+}
+
+.intro-faq {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.intro-faq .icon-container {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+}
+
+.intro-faq .icon-container i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.intro-faq h2 {
+    color: var(--color-base);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.intro-faq p {
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* Estilos personalizados para el accordion */
+.accordion-item {
+    border: none;
+    margin-bottom: 15px;
+    border-radius: 10px !important;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 4px 15px rgba(165, 90, 108, 0.15);
+    transform: translateY(-2px);
+}
+
+.accordion-button {
+    background-color: #f8f9fa;
+    color: var(--color-texto);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 20px 25px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    color: white;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23a55a6c'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    transition: transform 0.3s ease;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-body {
+    padding: 25px;
+    background-color: white;
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    border-top: 2px solid #f5d5dc;
+}
+
+/* Icono de pregunta antes del texto */
+.accordion-button::before {
+    content: "?";
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.accordion-button:not(.collapsed)::before {
+    background: white;
+    color: var(--color-base);
+}
+
+/* CTA de contacto */
+.contacto-box {
+    background: linear-gradient(135deg, #f5d5dc 0%, #c98d9e 100%);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.contacto-box h3 {
+    color: white;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.contacto-box p {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 1.05rem;
+}
+
+.btn-contacto {
+    background-color: white;
+    color: var(--color-base);
+    padding: 12px 35px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: 2px solid white;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-contacto:hover {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+
+/* Categorías de preguntas */
+.categoria-badge {
+    display: inline-block;
+    background-color: var(--color-fondo);
+    color: var(--color-base);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .hero-faq h1 {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+
+    .faq-container {
+        padding: 30px 20px;
+    }
+
+    .accordion-button {
+        font-size: 1rem;
+        padding: 18px 20px;
+    }
+
+    .accordion-button::before {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        margin-right: 12px;
+    }
+}
