@@ -90,7 +90,7 @@
                 <p class="poppins-light" style="text-align: center;font-size: 1.1rem; line-height: 1.9;">
                     Somos una empresa colombiana dedicada a la comercialización de joyería y accesorios femeninos elaborados en rodio, hipoalergénicos y de alta calidad. Nacimos con el propósito de realzar la belleza y la autenticidad de cada mujer a través de piezas elegantes, modernas y accesibles.
                 </p>
-                <a href="#" class="btn btn-custom">Ver Productos</a>
+                <a href="./shop.php" class="btn btn-custom">Ver Productos</a>
             </div>
         </section>
 

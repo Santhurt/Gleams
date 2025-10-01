@@ -47,5 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
         import("./eventos/carrito.js").then((modulo) => {
             modulo.renderCarrito();
         });
+
+        import("./componentes/shop_componentes.js").then((modulo) => {
+            modulo.dom.actualizarContadorCarrito();
+        });
     }
 });
