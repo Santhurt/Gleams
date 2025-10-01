@@ -53,8 +53,13 @@ export async function renderizarIndex() {
     const tituloCartel2 = document.querySelector("#titulo-cartel-2");
     const textoCartel2 = document.querySelector("#texto-cartel-2");
 
+    const cartel3 = document.querySelector("#cartel-3");
+    const tituloCartel3 = document.querySelector("#titulo-cartel-3");
+    const textoCartel3 = document.querySelector("#texto-cartel-3");
+
     let rutaCartel1 = "";
     let rutaCartel2 = "";
+    let rutaCartel3 = "";
 
     promos.forEach((promo) => {
         if (promo.id_promocion == 1) {
@@ -65,6 +70,10 @@ export async function renderizarIndex() {
             rutaCartel2 = `/gleams/${promo.ruta}`;
             tituloCartel2.innerHTML = promo.titulo;
             textoCartel2.innerHTML = promo.descripcion;
+        } else if(promo.id_promocion == 3) {
+            rutaCartel3 = `/gleams/${promo.ruta}`;
+            tituloCartel3.innerHTML = promo.titulo;
+            textoCartel3.innerHTML = promo.descripcion;
         }
     });
 
@@ -73,6 +82,9 @@ export async function renderizarIndex() {
     }
     if (rutaCartel2) {
         cartel2.src = rutaCartel2;
+    }
+    if (rutaCartel3) {
+        cartel3.src = rutaCartel3;
     }
 
     // --------------------renderizado de productos -----------------------------------

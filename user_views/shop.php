@@ -173,6 +173,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-split-container">
+                            <div class="carousel-image-section">
+                                <img id="cartel-3" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="carousel-image" alt="Envío Gratis">
+                            </div>
+                            <div class="carousel-content-section">
+                                <h2 class="carousel-title playfair-title" id="titulo-cartel-3">Envío Gratis</h2>
+                                <p class="carousel-subtitle poppins-light" id="texto-cartel-3">En compras superiores a $150.000. Recibe tus accesorios favoritos directamente en la comodidad de tu hogar, sin costos adicionales de envío.</p>
+                                <a href="#filter-bar" class="carousel-btn">Comprar Ahora</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Controles -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#promotionalCarousel" data-bs-slide="prev">
