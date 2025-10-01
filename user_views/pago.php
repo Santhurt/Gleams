@@ -165,51 +165,7 @@ $monto = $producto->traer_domicilio();
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <!-- About Column -->
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="footer-title">GLEAMS</h5>
-                    <p class="text-muted">Somos una marca colombiana de accesorios artesanales creados con amor y dedicación, apoyando el talento local.</p>
-                    <div class="mt-3">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-
-                <!-- Links Column 1 -->
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="footer-title">NAVEGACIÓN</h5>
-                    <a href="#" class="footer-link">Inicio</a>
-                    <a href="#" class="footer-link">Colecciones</a>
-                    <a href="#" class="footer-link">Accesorios</a>
-                    <a href="#" class="footer-link">Nosotros</a>
-                    <a href="#" class="footer-link">Contacto</a>
-                </div>
-
-                <!-- Links Column 2 -->
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="footer-title">AYUDA</h5>
-                    <a href="#" class="footer-link">Preguntas frecuentes</a>
-                    <a href="#" class="footer-link">Envíos y devoluciones</a>
-                    <a href="#" class="footer-link">Términos y condiciones</a>
-                    <a href="#" class="footer-link">Política de privacidad</a>
-                    <a href="#" class="footer-link">Contáctanos</a>
-                </div>
-
-            </div>
-
-            <!-- Copyright -->
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <p class="text-muted small">© 2025 Gleams. Todos los derechos reservados.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php require_once "./componentes/footer.php" ?>
 
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/main.js"></script>

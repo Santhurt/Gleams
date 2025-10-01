@@ -3,7 +3,7 @@
 <nav id="navbar" class="navbar navbar-expand-lg fondo">
     <div class="container">
         <!-- Logo -->
-        <div class="me-auto">
+        <div class="me-auto social-links">
             <a href="https://www.instagram.com/gleamns_accesorios/" class="social-icon"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/3104502353" class="social-icon"><i class="fab fa-whatsapp"></i></a>
         </div>

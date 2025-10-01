@@ -88,7 +88,7 @@
     <main class="fondo">
 
         <!-- CTA Section -->
-        <section class="container fade-in">
+        <section class="container py-3 fade-in">
             <div class="cta-section">
 
                 <h2 class="section-title playfair-title">Nosotros</h2>
