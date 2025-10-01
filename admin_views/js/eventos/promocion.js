@@ -31,22 +31,27 @@ export async function renderPromocion() {
 
     const imagen1 = document.querySelector("#imagen-1");
     const imagen2 = document.querySelector("#imagen-2");
+    const imagen3 = document.querySelector("#imagen-3");
 
     // Inicialmente no establecer src
     let ruta1 = "";
     let ruta2 = "";
+    let ruta3 = "";
 
     promos.forEach((promo) => {
         if (promo.id_promocion == 1) {
             ruta1 = `/gleams/${promo.ruta}`;
         } else if (promo.id_promocion == 2) {
             ruta2 = `/gleams/${promo.ruta}`;
+        } else if (promo.id_promocion == 3) {
+            ruta3 = `/gleams/${promo.ruta}`;
         }
     });
 
     // Asignar al final
     if (ruta1) imagen1.src = ruta1;
     if (ruta2) imagen2.src = ruta2;
+    if (ruta3) imagen3.src = ruta3;
     modalPromo.addEventListener("show.bs.modal", async (e) => {
         const boton = e.relatedTarget;
         const id = boton.id;

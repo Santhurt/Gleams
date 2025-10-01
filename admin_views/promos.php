@@ -140,23 +140,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
 
                         <div class="chart-container">
                             <div class="gap-3 d-flex">
-                                <button
-                                    class="btn btn-primary"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#modal-promo"
-                                    id="1"
-                                    type="button">
-                                    Editar imagen promocional 1
-                                </button>
 
-                                <button
-                                    class="btn btn-info"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#modal-promo"
-                                    id="2"
-                                    type="button">
-                                    Editar imagen promocional 2
-                                </button>
 
                             </div>
 
@@ -202,26 +186,67 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["rol"]) || $_SESSION["rol"] 
         </div>
 
         <div class="row mt-2 g-4">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card">
+
                     <div class="card-body">
                         <div class="chart-container">
-                            <div class="gap-3 d-flex">
+                            <div class="gap-3 d-flex flex-column">
                                 <img id="imagen-1" src="" class="cartel" alt="">
 
+                                <button
+                                    class="btn btn-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modal-promo"
+                                    id="1"
+                                    type="button">
+                                    Editar imagen promocional 1
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="chart-container">
+                            <div class="gap-3 d-flex flex-column">
+                                <img src="" alt="" id="imagen-2" class="cartel">
+
+                                <button
+                                    class="btn btn-info"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modal-promo"
+                                    id="2"
+                                    type="button">
+                                    Editar imagen promocional 2
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
 
                         <div class="chart-container">
-                            <div class="gap-3 d-flex">
-                                <img src="" alt="" id="imagen-2" class="cartel">
+                            <div class="gap-3 d-flex flex-column">
+                                <img src="" alt="" id="imagen-3" class="cartel">
+
+                                <button
+                                    class="btn btn-success"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modal-promo"
+                                    id="3"
+                                    type="button">
+                                    Editar imagen promocional 3
+                                </button>
 
                             </div>
                         </div>
