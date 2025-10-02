@@ -63,15 +63,15 @@ export async function renderizarIndex() {
 
     promos.forEach((promo) => {
         if (promo.id_promocion == 1) {
-            rutaCartel1 = `/gleams/${promo.ruta}`;
+            rutaCartel1 = `/gleamns/${promo.ruta}`;
             tituloCartel1.innerHTML = promo.titulo;
             textoCartel1.innerHTML = promo.descripcion;
         } else if (promo.id_promocion == 2) {
-            rutaCartel2 = `/gleams/${promo.ruta}`;
+            rutaCartel2 = `/gleamns/${promo.ruta}`;
             tituloCartel2.innerHTML = promo.titulo;
             textoCartel2.innerHTML = promo.descripcion;
         } else if(promo.id_promocion == 3) {
-            rutaCartel3 = `/gleams/${promo.ruta}`;
+            rutaCartel3 = `/gleamns/${promo.ruta}`;
             tituloCartel3.innerHTML = promo.titulo;
             textoCartel3.innerHTML = promo.descripcion;
         }

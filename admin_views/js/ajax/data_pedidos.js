@@ -1,4 +1,4 @@
-const url = "/gleams/controllers/pedidos/";
+const url = "/gleamns/controllers/pedidos/";
 export const dataPedidos = {
     traerDetallesPedidos: async (id) => {
         const controlador = new AbortController();

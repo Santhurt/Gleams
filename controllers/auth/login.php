@@ -1,6 +1,6 @@
 <?php
 session_start();
-$ruta = "/gleams/user_views/login.php";
+$ruta = "/gleamns/user_views/login.php";
 
 
 require_once __DIR__ . "/../lib/validaciones.php";
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["rol"] = $res_usuario["rol"];
         $_SESSION["id_cliente"] = $res_usuario["id"];
 
-        $ruta_destino = ($res_usuario["rol"] == "admin") ? "/gleams/admin_views/dashboard.php" : "/gleams/user_views/shop.php";
+        $ruta_destino = ($res_usuario["rol"] == "admin") ? "/gleamns/admin_views/dashboard.php" : "/gleamns/user_views/shop.php";
 
         header("Location: {$ruta_destino}");
         exit;

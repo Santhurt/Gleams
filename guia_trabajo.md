@@ -25,7 +25,7 @@ colaboradores  deben de seguir los siguientes pasos:
 ### 1. Clonar/copiar el repositorio a su equipo local
 
 ```bash 
-git clone https://github.com/Santhurt/Gleams 
+git clone https://github.com/Santhurt/gleamns 
 ```
 
 Este comando crea una carpeta con todos los archivos del proyecto. 

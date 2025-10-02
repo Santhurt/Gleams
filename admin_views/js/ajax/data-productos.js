@@ -1,4 +1,4 @@
-const url = "/gleams/controllers/productos/";
+const url = "/gleamns/controllers/productos/";
 export const dataProductos = {
     editarDomiclio: async (monto) => {
         const controlador = new AbortController();

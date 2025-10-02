@@ -1,6 +1,6 @@
 <?php session_start();
 if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
-    header("Location: /gleams/user_views/login.php");
+    header("Location: /gleamns/user_views/login.php");
     exit;
 }
 ?>
@@ -10,7 +10,7 @@ if (!isset($_SESSION["correo"]) || !isset($_SESSION["usuario"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gleams</title>
+    <title>gleamns</title>
     <!-- Bootstrap CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">

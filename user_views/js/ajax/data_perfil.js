@@ -1,4 +1,4 @@
-const url = "/gleams/controllers/usuarios/";
+const url = "/gleamns/controllers/usuarios/";
 
 export const dataPerfil = {
     traerUsuarioSesion: async () => {

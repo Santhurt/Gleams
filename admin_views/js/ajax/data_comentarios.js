@@ -1,4 +1,4 @@
-const url = "/gleams/controllers/comentarios/";
+const url = "/gleamns/controllers/comentarios/";
 
 export const dataComentarios = {
     eliminarComentario: async (id) => {
